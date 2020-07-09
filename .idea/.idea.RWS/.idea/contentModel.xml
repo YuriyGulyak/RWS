@@ -7,11 +7,6 @@
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="Camera" t="Include">
-          <e p="Scripts" t="Include">
-            <e p="OrbitCamera.cs" t="Include" />
-          </e>
-        </e>
         <e p="Environment" t="Include">
           <e p="Skyboxes" t="Include">
             <e p="HorizontalSkybox.shader" t="Include" />
@@ -55,6 +50,11 @@
             <e p="RateProfileEditor.cs" t="Include" />
           </e>
         </e>
+        <e p="OrbitCamera" t="Include">
+          <e p="Scripts" t="Include">
+            <e p="OrbitCamera.cs" t="Include" />
+          </e>
+        </e>
         <e p="Race" t="Include">
           <e p="RaceNotes.txt" t="Include" />
           <e p="Scripts" t="Include">
@@ -64,7 +64,6 @@
             <e p="RaceTrack.cs" t="Include" />
           </e>
         </e>
-        <e p="Tasks.txt" t="Include" />
         <e p="Terrain Tools" t="Include">
           <e p="0.1.0-preview" t="Include">
             <e p="Terrain Assets" t="Include">

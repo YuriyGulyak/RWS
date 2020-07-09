@@ -65,6 +65,7 @@ public class OrbitCamera : MonoBehaviour
         }
 
         var deltaTime = Time.deltaTime;
+        
         angles.x += smoothedSpeed.x * deltaTime;
         angles.y += smoothedSpeed.y * deltaTime;
         angles.y = Wrap360( angles.y );
