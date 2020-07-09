@@ -5,7 +5,7 @@
       <Path>../../AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.test-framework@1.1.1</Path>
     </attachedFolders>
     <explicitIncludes>
-      <Path>../../AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.test-framework@1.1.1</Path>
+      <Path>$USER_HOME$/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.test-framework@1.1.1</Path>
       <Path>Library/PackageCache/com.unity.ext.nunit@1.0.0</Path>
       <Path>Library/PackageCache/com.unity.ide.rider@1.1.4</Path>
       <Path>Library/PackageCache/com.unity.inputsystem@1.0.0</Path>
@@ -18,6 +18,7 @@
       <Path>ProjectSettings</Path>
     </explicitIncludes>
     <explicitExcludes>
+      <Path>.git</Path>
       <Path>.idea</Path>
       <Path>Builds</Path>
       <Path>Library</Path>
