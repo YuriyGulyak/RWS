@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ec8dfa21-70a7-49bd-99c3-ee88cfdbf58d" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Utils/GizmosLine.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9B956647-017D-4DC1-B8D3-D25EEF012467/f0/6ce06c43/Physics.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/8e/8520acfa/UnitySynchronizationContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FlyingWing/Scripts/FlyingWing.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FlyingWing/Scripts/WindSound.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FlyingWing/Scripts/Propeller.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/UI/Scripts/BatteryTelemetry.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/UI/Scripts/StickDisplay.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0/InputSystem/Actions/InputAction.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/UI/Scripts/MotorTelemetry.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GameManagers/SinglePlayerGameManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/54/a54de53b/SetupCoroutine.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://D:/#Backup/2018-08-31/Desktop/Bus/Assets/Utility/VectorHelper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FlyingWing/Scripts/Altimeter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/UI/Scripts/LapTimer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../DRS/Assets/Craft/Scripts/Receiver.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Input/PlayerInputWrapper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9B956647-017D-4DC1-B8D3-D25EEF012467/17/79080709/Rigidbody.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/dc/2eb04c6d/WaitUntil.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://D:/#Backup/2018-08-31/Desktop/Bus/Assets/Game/Weapon/Scripts/BulletController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Utils/CurveEditor/Path.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://D:/#Backup/2018-08-31/Desktop/Bus/Assets/Game/Weapon/Scripts/WeaponAim.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Utils/CurveEditor/Editor/PathEditor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Input/Rates/RateProfile.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://D:/#Backup/2018-08-31/Desktop/Bus/Assets/Game/Weapon/Scripts/WeaponShooting.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Utils/FpsLimit.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Utils/CurveEditor/PathPlacer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../DRS/Assets/Craft/Scripts/Battery.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FlyingWing/Scripts/WingSetupHelperEditor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FlyingWing/Scripts/WingLauncher.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FlyingWing/Scripts/Battery.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Input/Rates/RateProfileEditor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../DRS/Assets/Craft/Scripts/DroneUserControl.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/4d/a57c38c9/Object.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../DRS/Assets/Misc/Other/MathUtils.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FlyingWing/Scripts/WingSetupHelper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FlyingWing/Scripts/AirfoilConfig.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/f4/3fa918d6/Mathf.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../DRS/Assets/Craft/Scripts/PID.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FlyingWing/Scripts/MathUtils.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FlyingWing/Scripts/Motor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Utils/CurveEditor/PathCreator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FlyingWing/Scripts/MotorSound.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/ae/a93e6b12/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/f8/ccaba7f8/Transform.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/BC2876E8-FF0B-42A2-A2A1-1B51F2B23C8A/6d/d8af68c6/AudioSource.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Race/Scripts/RaceTrack.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Race/Scripts/RaceGate.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FlyingWing/Scripts/PIDController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FlyingWing/Scripts/WingAutoControl.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Race/Scripts/MarkerPlacerEditor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Camera/Scripts/OrbitCamera.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FlyingWing/Scripts/Elevon.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../DRS/Assets/Craft/Scripts/Motor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/90D4BCB0-03FB-405F-B092-41AED2F178AA/61/d4ee949a/EditorUtility.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/4b/226b4505/Component.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FlyingWing/Scripts/AerodynamicsFormulas.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/35BAB3C7-B0DC-4999-845B-CFCCC7758D96/a5/3d841b23/GUILayoutUtility.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FlyingWing/Scripts/WingSpawner.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Utils/Patterns/Singleton.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Utils/FpsDisplay.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@2.0.1/Scripts/Runtime/TMPro_UGUI_Private.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FlyingWing/Scripts/MotorModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/UI/Scripts/InputTelemetry.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/UI/Scripts/WingTelemetry.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FlyingWing/Scripts/AirfoilSection.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/BC2876E8-FF0B-42A2-A2A1-1B51F2B23C8A/80/3ef5e49f/AudioMixer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/BC2876E8-FF0B-42A2-A2A1-1B51F2B23C8A/0f/ecbc316c/AudioSettings.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../DRS/Assets/Craft/Scripts/FlightController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/59/ba95d060/LayerMask.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FlyingWing/Scripts/WingPlayerControl.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Race/Scripts/MarkerPlacer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/2a/a027d61e/UnityEvent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Utils/CursorHider.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../DRS/Assets/Craft/Scripts/Gyroscope.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Assets/FlyingWing/Scripts/AirfoilSection.cs" />
+        <option value="$PROJECT_DIR$/Assets/FlyingWing/Scripts/Propeller.cs" />
+        <option value="$PROJECT_DIR$/Assets/FlyingWing/Scripts/WingAutoControl.cs" />
+        <option value="$PROJECT_DIR$/Assets/FlyingWing/Scripts/WingTelemetry.cs" />
+        <option value="$PROJECT_DIR$/Assets/FlyingWing/Scripts/MotorTelemetry.cs" />
+        <option value="$PROJECT_DIR$/Assets/Utils/CurveEditor/Editor/PathEditor.cs" />
+        <option value="$PROJECT_DIR$/Assets/Utils/CurveEditor/PathCreator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Utils/CurveEditor/PathPlacer.cs" />
+        <option value="$PROJECT_DIR$/Assets/UI/Scripts/WingTelemetry.cs" />
+        <option value="$PROJECT_DIR$/Assets/UI/Scripts/MotorTelemetry.cs" />
+        <option value="$PROJECT_DIR$/Assets/UI/Scripts/BatteryTelemetry.cs" />
+        <option value="$PROJECT_DIR$/Assets/FlyingWing/Scripts/Battery.cs" />
+        <option value="$PROJECT_DIR$/Assets/FlyingWing/Scripts/Elevon.cs" />
+        <option value="$PROJECT_DIR$/Assets/Utils/FPSDisplay.cs" />
+        <option value="$PROJECT_DIR$/Assets/Race/Scripts/MarkerPlacer.cs" />
+        <option value="$PROJECT_DIR$/Assets/FlyingWing/Scripts/Altimeter.cs" />
+        <option value="$PROJECT_DIR$/Assets/Race/Scripts/RaceManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Race/Scripts/LapTimer.cs" />
+        <option value="$PROJECT_DIR$/Assets/FlyingWing/Scripts/WingSetupHelperEditor.cs" />
+        <option value="$PROJECT_DIR$/Assets/Managers/SingleplayerRaceManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/FlyingWing/Scripts/WingFactory.cs" />
+        <option value="$PROJECT_DIR$/Assets/FlyingWing/Scripts/Motor.cs" />
+        <option value="$PROJECT_DIR$/Assets/FlyingWing/Scripts/WindSound.cs" />
+        <option value="$PROJECT_DIR$/Assets/Camera/Scripts/CameraOrbit.cs" />
+        <option value="$PROJECT_DIR$/Assets/Utils/CursorHider.cs" />
+        <option value="$PROJECT_DIR$/Assets/FlyingWing/Scripts/WingLauncher.cs" />
+        <option value="$PROJECT_DIR$/Assets/Managers/SinglePlayerRaceManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Camera/Scripts/OrbitCamera.cs" />
+        <option value="$PROJECT_DIR$/Assets/Race/Scripts/RaceTrack.cs" />
+        <option value="$PROJECT_DIR$/Assets/Input/PlayerInput.cs" />
+        <option value="$PROJECT_DIR$/Assets/Input/PlayerControls.cs" />
+        <option value="$PROJECT_DIR$/Assets/UI/Scripts/LapTimer.cs" />
+        <option value="$PROJECT_DIR$/Assets/FlyingWing/Scripts/WingSpawner.cs" />
+        <option value="$PROJECT_DIR$/Assets/UI/Scripts/InputTelemetry.cs" />
+        <option value="$PROJECT_DIR$/Assets/Managers/SinglePlayerGameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/FlyingWing/Scripts/FlyingWing.cs" />
+        <option value="$PROJECT_DIR$/Assets/Utils/Patterns/Singleton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Input/PlayerInputWrapper.cs" />
+        <option value="$PROJECT_DIR$/Assets/GameManagers/SinglePlayerGameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Input/ControllerNotes.txt" />
+        <option value="$PROJECT_DIR$/Assets/Utils/FpsDisplay.cs" />
+        <option value="$PROJECT_DIR$/Assets/Utils/FpsLimit.cs" />
+        <option value="$PROJECT_DIR$/Assets/UI/Scripts/Blinker.cs" />
+        <option value="$PROJECT_DIR$/Assets/Tasks.txt" />
+        <option value="$PROJECT_DIR$/Assets/FlyingWing/Scripts/MotorSound.cs" />
+        <option value="$PROJECT_DIR$/Assets/Input/RateCurve.cs" />
+        <option value="$PROJECT_DIR$/Assets/Input/RateProfile.cs" />
+        <option value="$PROJECT_DIR$/Assets/Input/RateProfileEditor.cs" />
+        <option value="$PROJECT_DIR$/Assets/Input/Rates/RateProfileEditor.cs" />
+        <option value="$PROJECT_DIR$/Assets/Input/Rates/RateProfile.cs" />
+        <option value="$PROJECT_DIR$/Assets/FlyingWing/Scripts/WingPlayerControl.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1clGdmiOwQWk7lIMwLy5c39Sc1M" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="settings.editor.selected.configurable" value="CodeLensConfigurable" />
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" pid="30436">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" value="30436" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="WindowStateProjectService">
+    <state width="1876" height="401" key="GridCell.Tab.0.bottom" timestamp="1592847760204">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state width="1876" height="401" key="GridCell.Tab.0.bottom/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1592847760204" />
+    <state width="1876" height="401" key="GridCell.Tab.0.center" timestamp="1592847760204">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state width="1876" height="401" key="GridCell.Tab.0.center/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1592847760204" />
+    <state width="1876" height="401" key="GridCell.Tab.0.left" timestamp="1592847760204">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state width="1876" height="401" key="GridCell.Tab.0.left/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1592847760204" />
+    <state width="1876" height="401" key="GridCell.Tab.0.right" timestamp="1592847760204">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state width="1876" height="401" key="GridCell.Tab.0.right/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1592847760204" />
+    <state width="1876" height="401" key="GridCell.Tab.1.bottom" timestamp="1592847760204">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state width="1876" height="401" key="GridCell.Tab.1.bottom/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1592847760204" />
+    <state width="1876" height="401" key="GridCell.Tab.1.center" timestamp="1592847760204">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state width="1876" height="401" key="GridCell.Tab.1.center/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1592847760204" />
+    <state width="1876" height="401" key="GridCell.Tab.1.left" timestamp="1592847760204">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state width="1876" height="401" key="GridCell.Tab.1.left/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1592847760204" />
+    <state width="1876" height="401" key="GridCell.Tab.1.right" timestamp="1592847760204">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state width="1876" height="401" key="GridCell.Tab.1.right/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1592847760204" />
+    <state width="1876" height="401" key="GridCell.Tab.2.bottom" timestamp="1592847760204">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state width="1876" height="401" key="GridCell.Tab.2.bottom/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1592847760204" />
+    <state width="1876" height="401" key="GridCell.Tab.2.center" timestamp="1592847760204">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state width="1876" height="401" key="GridCell.Tab.2.center/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1592847760204" />
+    <state width="1876" height="401" key="GridCell.Tab.2.left" timestamp="1592847760204">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state width="1876" height="401" key="GridCell.Tab.2.left/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1592847760204" />
+    <state width="1876" height="401" key="GridCell.Tab.2.right" timestamp="1592847760204">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state width="1876" height="401" key="GridCell.Tab.2.right/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1592847760204" />
+    <state width="1876" height="401" key="GridCell.Tab.3.bottom" timestamp="1592847760205">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state width="1876" height="401" key="GridCell.Tab.3.bottom/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1592847760205" />
+    <state width="1876" height="401" key="GridCell.Tab.3.center" timestamp="1592847760204">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state width="1876" height="401" key="GridCell.Tab.3.center/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1592847760204" />
+    <state width="1876" height="401" key="GridCell.Tab.3.left" timestamp="1592847760204">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state width="1876" height="401" key="GridCell.Tab.3.left/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1592847760204" />
+    <state width="1876" height="401" key="GridCell.Tab.3.right" timestamp="1592847760205">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state width="1876" height="401" key="GridCell.Tab.3.right/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1592847760205" />
+    <state x="845" y="302" key="RiderGenerateDialog" timestamp="1593272985793">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state x="845" y="302" key="RiderGenerateDialog/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1593272985793" />
+    <state x="461" y="211" key="SettingsEditor" timestamp="1592743730322">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state x="461" y="211" key="SettingsEditor/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1592743730322" />
+    <state x="616" y="222" width="670" height="676" key="search.everywhere.popup" timestamp="1594066636454">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state x="616" y="222" width="670" height="676" key="search.everywhere.popup/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1594066636454" />
+  </component>
+</project>
