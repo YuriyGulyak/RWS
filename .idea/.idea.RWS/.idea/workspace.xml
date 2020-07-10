@@ -15,6 +15,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9B956647-017D-4DC1-B8D3-D25EEF012467/f0/6ce06c43/Physics.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/8e/8520acfa/UnitySynchronizationContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@2.0.1/Scripts/Runtime/TMPro_UGUI_Private.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Multiplayer/TestPhotonConnect.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/54/a54de53b/SetupCoroutine.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://D:/#Backup/2018-08-31/Desktop/Bus/Assets/Utility/VectorHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/FlyingWing/Scripts/Elevon.cs" root0="FORCE_HIGHLIGHTING" />
@@ -80,7 +81,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/FlyingWing/Scripts/WingAutoControl.cs" />
         <option value="$PROJECT_DIR$/Assets/FlyingWing/Scripts/WingTelemetry.cs" />
         <option value="$PROJECT_DIR$/Assets/FlyingWing/Scripts/MotorTelemetry.cs" />
         <option value="$PROJECT_DIR$/Assets/Utils/CurveEditor/Editor/PathEditor.cs" />
@@ -131,6 +131,7 @@
         <option value="$PROJECT_DIR$/Assets/Tasks.txt" />
         <option value="$PROJECT_DIR$/Assets/OrbitCamera/Scripts/OrbitCamera.cs" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/Assets/Multiplayer/TestPhotonConnect.cs" />
       </list>
     </option>
   </component>
