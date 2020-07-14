@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ContentModelUserStore">
     <attachedFolders>
+      <Path>$USER_HOME$/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.test-framework@1.1.1</Path>
       <Path>../../AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.test-framework@1.1.1</Path>
     </attachedFolders>
     <explicitIncludes>
@@ -23,6 +24,7 @@
       <Path>Builds</Path>
       <Path>Library</Path>
       <Path>Logs</Path>
+      <Path>Temp</Path>
       <Path>obj</Path>
     </explicitExcludes>
   </component>

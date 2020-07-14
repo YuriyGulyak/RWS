@@ -8,11 +8,9 @@ public class Altimeter : MonoBehaviour
     [SerializeField] 
     LayerMask terrainLayer = default;
 
-    //----------------------------------------------------------------------------------------------------
 
     public float Altitude => craftTransform.position.y - terrainHeight;
 
-    //----------------------------------------------------------------------------------------------------
 
     float terrainHeight;
 

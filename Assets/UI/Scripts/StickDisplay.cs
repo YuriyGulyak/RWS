@@ -25,6 +25,7 @@ public class StickDisplay : MonoBehaviour
             handleTransform.anchoredPosition = new Vector2( areaHalfSize.x * x, areaHalfSize.y * y );
         }
     }
+    
     public float Y
     {
         get => y;
@@ -42,7 +43,6 @@ public class StickDisplay : MonoBehaviour
         UpdateHandlePosition();
     }
 
-    //----------------------------------------------------------------------------------------------------
     
     void UpdateHandlePosition()
     {

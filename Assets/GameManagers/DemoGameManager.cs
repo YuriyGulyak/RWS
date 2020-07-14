@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class SinglePlayerGameManager : MonoBehaviour
+public class DemoGameManager : MonoBehaviour
 {
     [SerializeField]
     GameObject pressSpacebarText = null;

@@ -30,11 +30,13 @@ public class WingPlayerControl : MonoBehaviour
     void OnEnable()
     {
         var playerInput = PlayerInputWrapper.Instance;
-        
-        playerInput.Throttle.AddListener( SetThrottle );
-        playerInput.Roll.AddListener( SetRoll );
-        playerInput.Pitch.AddListener( SetPitch );
-        playerInput.Trim.AddListener( SetTrim );
+        if( playerInput )
+        {        
+            playerInput.Throttle.AddListener( SetThrottle );
+            playerInput.Roll.AddListener( SetRoll );
+            playerInput.Pitch.AddListener( SetPitch );
+            playerInput.Trim.AddListener( SetTrim );
+        }
     }
 
     void OnDisable()

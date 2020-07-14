@@ -37,7 +37,8 @@
           </e>
         </e>
         <e p="GameManagers" t="Include">
-          <e p="SinglePlayerGameManager.cs" t="Include" />
+          <e p="DemoGameManager.cs" t="Include" />
+          <e p="MainMenuManager.cs" t="Include" />
         </e>
         <e p="Input" t="Include">
           <e p="ControllerNotes.txt" t="Include" />
@@ -51,7 +52,9 @@
           </e>
         </e>
         <e p="Multiplayer" t="Include">
-          <e p="TestPhotonConnect.cs" t="Include" />
+          <e p="Scripts" t="Include">
+            <e p="TestPhotonView.cs" t="Include" />
+          </e>
         </e>
         <e p="OrbitCamera" t="Include">
           <e p="Scripts" t="Include">
@@ -458,6 +461,15 @@
             <e p="InputTelemetry.cs" t="Include" />
             <e p="LapTimer.cs" t="Include" />
             <e p="MotorTelemetry.cs" t="Include" />
+            <e p="MultiplayerLobby" t="Include">
+              <e p="CreateRoomPanel.cs" t="Include" />
+              <e p="InsideRoomPanel.cs" t="Include" />
+              <e p="LoginPanel.cs" t="Include" />
+              <e p="MultiplayerLobby.cs" t="Include" />
+              <e p="PlayerListEntry.cs" t="Include" />
+              <e p="RoomListEntry.cs" t="Include" />
+              <e p="RoomListPanel.cs" t="Include" />
+            </e>
             <e p="StickDisplay.cs" t="Include" />
             <e p="WingTelemetry.cs" t="Include" />
           </e>
@@ -475,6 +487,7 @@
             <e p="PathCreator.cs" t="Include" />
             <e p="PathPlacer.cs" t="Include" />
           </e>
+          <e p="DragRect.cs" t="Include" />
           <e p="Editor" t="Include">
             <e p="MaximizeWindow.cs" t="Include" />
           </e>

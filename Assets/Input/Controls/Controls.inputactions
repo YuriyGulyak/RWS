@@ -76,10 +76,32 @@
                 },
                 {
                     "name": "",
+                    "id": "b12dfe6b-1c83-4e44-90d5-7e4c8b3257f4",
+                    "path": "<HID::Logitech Logitech Force 3D Pro>/stick/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Roll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "f122b0cb-0688-40e1-8461-e41d95348639",
                     "path": "<HID::FrSky FrSky Taranis Joystick>/ry",
                     "interactions": "",
                     "processors": "",
+                    "groups": "",
+                    "action": "Pitch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9eba0a8d-73c2-4831-a7b4-86588c2f5c04",
+                    "path": "<HID::Logitech Logitech Force 3D Pro>/stick/y",
+                    "interactions": "",
+                    "processors": "Invert",
                     "groups": "",
                     "action": "Pitch",
                     "isComposite": false,
@@ -120,6 +142,17 @@
                 },
                 {
                     "name": "",
+                    "id": "a1247bf6-dae1-4783-8714-bf24d81cb35b",
+                    "path": "<HID::Logitech Logitech Force 3D Pro>/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Launch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "64ccebbc-f9e8-418c-ae01-d88c0bcbb2b8",
                     "path": "<HID::FrSky FrSky Taranis Joystick>/button3",
                     "interactions": "",
@@ -131,8 +164,30 @@
                 },
                 {
                     "name": "",
+                    "id": "7553bffe-7c11-42ec-b417-8ca80b7048f3",
+                    "path": "<HID::Logitech Logitech Force 3D Pro>/button2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Restart",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "fcfc01fb-f8ae-49dc-a584-8ee623f7319b",
                     "path": "<HID::FrSky FrSky Taranis Joystick>/stick/y",
+                    "interactions": "",
+                    "processors": "Invert",
+                    "groups": "",
+                    "action": "Throttle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c0189500-ed28-42b3-a6f0-d20bd5353dbb",
+                    "path": "<HID::Logitech Logitech Force 3D Pro>/slider",
                     "interactions": "",
                     "processors": "Invert",
                     "groups": "",
