@@ -18,6 +18,9 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField]
     MultiplayerLobby multiplayerLobby = null;
     
+    [SerializeField]
+    SingleplayerPanel singleplayerPanel = null;
+    
     //----------------------------------------------------------------------------------------------------
     
     void Awake()
@@ -27,16 +30,20 @@ public class MainMenuManager : MonoBehaviour
         settingsButton.onClick.AddListener( OnSettingsButton );
         exitButton.onClick.AddListener( OnExitButton );
 
+        singleplayerPanel.Hide();
         multiplayerLobby.Hide();
     }
 
 
     void OnSingleplayerButton()
     {
+        multiplayerLobby.Hide();
+        singleplayerPanel.Show();
     }
     
     void OnMultiplayerButton()
     {
+        singleplayerPanel.Hide();
         multiplayerLobby.Show();
     }
     

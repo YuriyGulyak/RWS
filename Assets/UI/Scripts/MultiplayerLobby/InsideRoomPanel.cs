@@ -54,15 +54,15 @@ public class InsideRoomPanel : MonoBehaviourPunCallbacks
     public override void OnPlayerEnteredRoom( Player newPlayer )
     {
         //print( "OnPlayerEnteredRoom" );
-        AddPlayerListEntry( newPlayer );
         UpdatePlayerCountText();
+        AddPlayerListEntry( newPlayer );
     }
 
     public override void OnPlayerLeftRoom( Player otherPlayer )
     {
         //print( "OnPlayerLeftRoom" );
-        RemovePlayerListEntry( otherPlayer );
         UpdatePlayerCountText();
+        RemovePlayerListEntry( otherPlayer );
     }
 
     //----------------------------------------------------------------------------------------------------

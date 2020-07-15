@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MultiplayerLobby : MonoBehaviourPunCallbacks, IInRoomCallbacks
+public class MultiplayerLobby : MonoBehaviourPunCallbacks
 {
     [SerializeField]
     RectTransform panelRect = null;
@@ -47,7 +47,6 @@ public class MultiplayerLobby : MonoBehaviourPunCallbacks, IInRoomCallbacks
         {
             return;
         }
-
         gameObject.SetActive( true );
 
         //if( skipLoginPanel )

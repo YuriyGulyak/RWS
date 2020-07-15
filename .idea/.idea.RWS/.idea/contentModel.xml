@@ -38,7 +38,6 @@
         </e>
         <e p="GameManagers" t="Include">
           <e p="DemoGameManager.cs" t="Include" />
-          <e p="MainMenuManager.cs" t="Include" />
         </e>
         <e p="Input" t="Include">
           <e p="ControllerNotes.txt" t="Include" />
@@ -458,8 +457,10 @@
         <e p="UI" t="Include">
           <e p="Scripts" t="Include">
             <e p="BatteryTelemetry.cs" t="Include" />
+            <e p="BlackScreen.cs" t="Include" />
             <e p="InputTelemetry.cs" t="Include" />
             <e p="LapTimer.cs" t="Include" />
+            <e p="MainMenuManager.cs" t="Include" />
             <e p="MotorTelemetry.cs" t="Include" />
             <e p="MultiplayerLobby" t="Include">
               <e p="CreateRoomPanel.cs" t="Include" />
@@ -470,6 +471,7 @@
               <e p="RoomListEntry.cs" t="Include" />
               <e p="RoomListPanel.cs" t="Include" />
             </e>
+            <e p="SingleplayerPanel.cs" t="Include" />
             <e p="StickDisplay.cs" t="Include" />
             <e p="WingTelemetry.cs" t="Include" />
           </e>

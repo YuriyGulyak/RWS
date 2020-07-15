@@ -31,6 +31,8 @@ public class DemoGameManager : MonoBehaviour
     {
         raceTrack.OnStart.AddListener( _ => lapTimer.StartNewTime() );
         raceTrack.OnFinish.AddListener( _ => lapTimer.CompareTime() );
+        
+        BlackScreen.Instance.StartFromBlackScreenAnimation();
     }
 
     IEnumerator Start()
