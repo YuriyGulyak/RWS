@@ -48,7 +48,8 @@ public class MultiplayerLobby : MonoBehaviourPunCallbacks
             return;
         }
         gameObject.SetActive( true );
-
+        gameObject.transform.SetAsLastSibling();
+        
         //if( skipLoginPanel )
         //{
         //    PhotonNetwork.ConnectUsingSettings();

@@ -38,6 +38,7 @@
         </e>
         <e p="GameManagers" t="Include">
           <e p="DemoGameManager.cs" t="Include" />
+          <e p="MultiplayerGameManager.cs" t="Include" />
         </e>
         <e p="Input" t="Include">
           <e p="ControllerNotes.txt" t="Include" />
@@ -52,7 +53,7 @@
         </e>
         <e p="Multiplayer" t="Include">
           <e p="Scripts" t="Include">
-            <e p="TestPhotonView.cs" t="Include" />
+            <e p="WingPhotonView.cs" t="Include" />
           </e>
         </e>
         <e p="OrbitCamera" t="Include">
@@ -496,10 +497,7 @@
           <e p="FPSDisplay.cs" t="Include" />
           <e p="FpsLimit.cs" t="Include" />
           <e p="GizmosLine.cs" t="Include" />
-          <e p="Patterns" t="Include">
-            <e p="ObjectPool.cs" t="Include" />
-            <e p="Singleton.cs" t="Include" />
-          </e>
+          <e p="Singleton.cs" t="Include" />
         </e>
       </e>
       <e p="obj" t="ExcludeRecursive" />

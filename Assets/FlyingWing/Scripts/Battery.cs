@@ -75,15 +75,23 @@ public class Battery : MonoBehaviour
     
     //----------------------------------------------------------------------------------------------------
 
+    // TODO Temporary solution
+    readonly string infiniteBatteryKey = "InfiniteBattery";
+    
+    float capacityDrawn;
+    float stateOfCharge;
+    float voltage;
+    
+    
     void Awake()
     {
         stateOfCharge = 1f;
         voltage = cellVoltage.Evaluate( 0f ) * cellCount;
+
+        // TODO Temporary solution
+        if( PlayerPrefs.HasKey( infiniteBatteryKey ) )
+        {
+            infiniteCapacity = PlayerPrefs.GetInt( infiniteBatteryKey ) > 0;
+        }
     }
-
-    //----------------------------------------------------------------------------------------------------
-
-    float capacityDrawn;
-    float stateOfCharge;
-    float voltage;
 }

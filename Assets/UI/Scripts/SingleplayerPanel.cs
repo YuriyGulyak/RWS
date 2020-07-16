@@ -30,7 +30,8 @@ public class SingleplayerPanel : MonoBehaviour
             return;
         }
         gameObject.SetActive( true );
-
+        gameObject.transform.SetAsLastSibling();
+        
         if( PlayerPrefs.HasKey( bestLapKey ) )
         {
             var bestLapSeconds = PlayerPrefs.GetFloat( bestLapKey );
@@ -51,6 +52,7 @@ public class SingleplayerPanel : MonoBehaviour
     
     //----------------------------------------------------------------------------------------------------
 
+    // TODO Temporary solution
     readonly string bestLapKey = "BestLap";
     readonly string infiniteBatteryKey = "InfiniteBattery";
     
@@ -63,6 +65,7 @@ public class SingleplayerPanel : MonoBehaviour
         
         infiniteBatteryToggle.onValueChanged.AddListener( value =>
         {
+            // TODO Temporary solution
             PlayerPrefs.SetInt( infiniteBatteryKey, value ? 1 : 0 );
         } );
         

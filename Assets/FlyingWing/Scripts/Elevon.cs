@@ -52,11 +52,6 @@ public class Elevon : MonoBehaviour
         rodLength = Vector3.Distance( pivotATransform.position, pivotBTransform.position );
         armLength = Vector3.Distance( pivotBTransform.position, pivotCTransform.position );
     }
-
-    //void FixedUpdate()
-    //{
-    //    UpdateElevonKinematic();
-    //}
     
     void OnDrawGizmos()
     {

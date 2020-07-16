@@ -7,6 +7,14 @@ public class CursorHider : MonoBehaviour
 
     //----------------------------------------------------------------------------------------------------
 
+    void Awake()
+    {
+        if( !Application.isEditor || hideInEditor )
+        {
+            Cursor.visible = false;
+        }
+    }
+
     void OnApplicationFocus( bool hasFocus )
     {
         if( Application.isEditor && !hideInEditor )

@@ -41,6 +41,8 @@ public class InsideRoomPanel : MonoBehaviourPunCallbacks
         }
 
         UpdatePlayerCountText();
+
+        startGameButton.gameObject.SetActive( PhotonNetwork.IsMasterClient );
     }
 
     public void Hide()
@@ -94,7 +96,10 @@ public class InsideRoomPanel : MonoBehaviourPunCallbacks
 
     void OnStartGameButton()
     {
-        
+        //PhotonNetwork.CurrentRoom.IsOpen = false;
+        //PhotonNetwork.CurrentRoom.IsVisible = false;
+
+        PhotonNetwork.LoadLevel( 2 );
     }
 
     

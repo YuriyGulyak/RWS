@@ -12,13 +12,25 @@ public class WingLauncher : MonoBehaviour
     float launchForce = 1f; // Kg
 
     //----------------------------------------------------------------------------------------------------
-    
+
     public void Launch()
+    {
+        if( wingRigidbody )
+        {
+            Launch( wingRigidbody );
+        }
+    }
+
+    public void Launch( Rigidbody wingRigidbody )
     {
         if( state != State.Ready )
         {
             return;
         }
+
+        this.wingRigidbody = wingRigidbody;
+        this.wingTransform = wingRigidbody.transform;
+        this.startPosition = wingTransform.position;
         
         state = State.Launching;
         wingRigidbody.isKinematic = false;
@@ -46,9 +58,11 @@ public class WingLauncher : MonoBehaviour
 
     void Awake()
     {
-        wingRigidbody.isKinematic = true;
-        wingTransform = wingRigidbody.transform;
-        startPosition = wingTransform.position;
+        if( wingRigidbody )
+        {
+            wingRigidbody.isKinematic = true;
+        }
+
         state = State.Ready;
     }
 

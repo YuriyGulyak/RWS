@@ -24,6 +24,12 @@ public class CreateRoomPanel : MonoBehaviour
     
     [SerializeField]
     Button cancelButton = null;
+
+    [SerializeField]
+    int minPlayers = 2;
+    
+    [SerializeField]
+    int maxPlayers = 8;
     
     //----------------------------------------------------------------------------------------------------
 
@@ -59,25 +65,13 @@ public class CreateRoomPanel : MonoBehaviour
     void OnCreateRoomButton()
     {
         var roomName = roomNameInputField.text;
-        
-        if( !byte.TryParse( maxPlayersInputField.text, out var maxPlayers ) )
-        {
-            maxPlayers = 8;
-        }
-        if( maxPlayers < 2 )
-        {
-            maxPlayers = 2;
-        }
-        else if( maxPlayers > 12 )
-        {
-            maxPlayers = 12;
-        }
+        var maxPlayersInputValue = (byte)Mathf.Clamp( int.Parse( maxPlayersInputField.text ), minPlayers, maxPlayers );
 
         var roomOptions = new RoomOptions
         {
             IsVisible = true,
             IsOpen = roomIsOpenToggle.isOn,
-            MaxPlayers = maxPlayers
+            MaxPlayers = maxPlayersInputValue
         };
 
         PhotonNetwork.CreateRoom( roomName, roomOptions );

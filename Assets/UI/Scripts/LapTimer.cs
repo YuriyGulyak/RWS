@@ -18,6 +18,14 @@ public class LapTimer : MonoBehaviour
 
     //----------------------------------------------------------------------------------------------------
 
+    public void Init( float bestTime )
+    {
+        this.bestTime = bestTime;
+        bestTimeText.text = TimeSpan.FromSeconds( bestTime ).ToString( timeFormat );
+    }
+
+    public Action<float> OnNewBestTime;
+
     public void StartNewTime()
     {
         lapTime = 0f;
@@ -35,6 +43,8 @@ public class LapTimer : MonoBehaviour
         {
             bestTime = lapTime;
             bestTimeText.text = $"Best: {TimeSpan.FromSeconds( bestTime ).ToString( timeFormat )}";
+            
+            OnNewBestTime?.Invoke( bestTime );
         }
     }
 
@@ -50,7 +60,7 @@ public class LapTimer : MonoBehaviour
     }
 
     //----------------------------------------------------------------------------------------------------
-    
+
     string timeFormat = @"mm\:ss\.ff";
     
     bool lapStarted;

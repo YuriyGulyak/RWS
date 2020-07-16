@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class DemoGameManager : MonoBehaviour
 {
@@ -27,12 +28,39 @@ public class DemoGameManager : MonoBehaviour
 
     //----------------------------------------------------------------------------------------------------
 
+    readonly string bestLapKey = "BestLap";
+    
+    
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnsceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnsceneLoaded;
+    }
+
+    void OnsceneLoaded( Scene scene, LoadSceneMode mode )
+    {
+        BlackScreen.Instance.StartFromBlackScreenAnimation();
+    }
+    
     void Awake()
     {
+        //print( PlayerPrefs.HasKey( bestLapKey ) );
+        
+        if( PlayerPrefs.HasKey( bestLapKey ) )
+        {
+            lapTimer.Init( PlayerPrefs.GetFloat( bestLapKey ) );
+        }
+        lapTimer.OnNewBestTime += newBestTime =>
+        {
+            PlayerPrefs.SetFloat( bestLapKey, newBestTime );
+        };
+
         raceTrack.OnStart.AddListener( _ => lapTimer.StartNewTime() );
         raceTrack.OnFinish.AddListener( _ => lapTimer.CompareTime() );
-        
-        BlackScreen.Instance.StartFromBlackScreenAnimation();
     }
 
     IEnumerator Start()
@@ -40,6 +68,7 @@ public class DemoGameManager : MonoBehaviour
         yield return new WaitUntil( () => Keyboard.current.spaceKey.wasPressedThisFrame );
                         
         var playerInput = PlayerInputWrapper.Instance;
+        
         playerInput.Launch.AddListener( wingLauncher.Launch );
         playerInput.Restart.AddListener( RestartGame );
         

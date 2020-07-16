@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class BlackScreen : Singleton<BlackScreen>
@@ -9,10 +8,7 @@ public class BlackScreen : Singleton<BlackScreen>
     [SerializeField] 
     Image image = null;
 
-    //[SerializeField]
-    //bool startFromBlackScreenOnAwake = false;
-    
-    
+
     public void StartFromBlackScreenAnimation( Action onAnimationFinished = null )
     {
         var colorBlack = new Color( 0f, 0f, 0f, 1f );
@@ -25,7 +21,7 @@ public class BlackScreen : Singleton<BlackScreen>
         {
             StopCoroutine( blackScreenAnimationCoroutine );
         }
-        blackScreenAnimationCoroutine = ImageColorLerpCoroutine( colorBlack, colorBlackTransparent, () =>
+        blackScreenAnimationCoroutine = ImageColorLerpCoroutine( colorBlack, colorBlackTransparent, 1.5f, () =>
         {
             image.enabled = false;
             onAnimationFinished?.Invoke();
@@ -44,40 +40,18 @@ public class BlackScreen : Singleton<BlackScreen>
         {
             StopCoroutine( blackScreenAnimationCoroutine );
         }
-        blackScreenAnimationCoroutine = ImageColorLerpCoroutine( colorCurrent, colorBlack, () =>
+        blackScreenAnimationCoroutine = ImageColorLerpCoroutine( colorCurrent, colorBlack, 1f, () =>
         {
             onAnimationFinished?.Invoke();
         } );
         StartCoroutine( blackScreenAnimationCoroutine );
     }
 
-
-    //void Awake()
-    //{
-    //    throw new NotImplementedException();
-    //}
-
-    /*
-    void Update()
-    {
-        //image.color = Color.Lerp( new Color( 0f, 0f, 0f, 0f ), new Color( 0f, 0f, 0f, 1f ), Mathf.PingPong( Time.time, 1f ) );
-
-        if( Keyboard.current.aKey.wasPressedThisFrame )
-        {
-            StartFromBlackScreenAnimation();
-        }
-        if( Keyboard.current.dKey.wasPressedThisFrame )
-        {
-            StartToBlackScreenAnimation();
-        }
-    }
-*/
-
-    IEnumerator ImageColorLerpCoroutine( Color colorA, Color colorB, Action onFinished = null )
+    
+    IEnumerator ImageColorLerpCoroutine( Color colorA, Color colorB, float speed, Action onFinished = null )
     {
         var transition = 0f;
-        var speed = 1f;
-        
+
         while( transition < 1f )
         {
             transition += Time.deltaTime * speed;
