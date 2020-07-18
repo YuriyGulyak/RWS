@@ -11,6 +11,8 @@ public class BlackScreen : Singleton<BlackScreen>
 
     public void StartFromBlackScreenAnimation( Action onAnimationFinished = null )
     {
+        image.transform.SetAsLastSibling();
+        
         var colorBlack = new Color( 0f, 0f, 0f, 1f );
         var colorBlackTransparent = new Color( 0f, 0f, 0f, 0f );
         
@@ -31,6 +33,8 @@ public class BlackScreen : Singleton<BlackScreen>
 
     public void StartToBlackScreenAnimation( Action onAnimationFinished = null )
     {
+        image.transform.SetAsLastSibling();
+    
         var colorCurrent = image.color;
         var colorBlack = new Color( 0f, 0f, 0f, 1f );
         

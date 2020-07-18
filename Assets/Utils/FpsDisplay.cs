@@ -8,7 +8,7 @@ public class FpsDisplay : MonoBehaviour
     TextMeshProUGUI text = null;
 
     [SerializeField]
-    float updateRate = 60f;
+    float updateRate = 30f;
     
     float deltaTime;
     int fps;

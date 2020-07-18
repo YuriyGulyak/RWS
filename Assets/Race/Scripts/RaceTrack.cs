@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -11,10 +12,14 @@ public class RaceTrack : MonoBehaviour
     public class GameObjectEvent : UnityEvent<GameObject> { }
     public GameObjectEvent OnStart = new GameObjectEvent();
     public GameObjectEvent OnFinish = new GameObjectEvent();
+    
 
-
-    int targetGateIndex;
-    int prevGateIndex;
+    struct TrackProgress
+    {
+        public int nextGateIndex;
+        public int prevGateIndex;
+    }
+    Dictionary<int, TrackProgress> trackProgressDictionary;
     
     
     void OnValidate()
@@ -27,10 +32,13 @@ public class RaceTrack : MonoBehaviour
 
     void Start()
     {
+        trackProgressDictionary = new Dictionary<int,TrackProgress>();
+        
         for( var i = 0; i < gates.Length; i++ )
         {
             var gateIndex = i;
             var gate = gates[ gateIndex ];
+            
             gate.OnSuccess.AddListener( craft => OnGateSuccess( gateIndex, craft ) );
         }
     }
@@ -38,15 +46,25 @@ public class RaceTrack : MonoBehaviour
 
     void OnGateSuccess( int gateIndex, GameObject craft )
     {
-        if( gateIndex == targetGateIndex )
+        var craftID = craft.GetInstanceID();
+
+        if( !trackProgressDictionary.ContainsKey( craftID ) )
         {
-            if( targetGateIndex == 0 && prevGateIndex == gates.Length - 1 )
+            trackProgressDictionary.Add( craftID, new TrackProgress() );
+        }
+        var trackProgress = trackProgressDictionary[ craftID ];
+
+        if( gateIndex == trackProgress.nextGateIndex )
+        {
+            if( trackProgress.nextGateIndex == 0 && trackProgress.prevGateIndex == gates.Length - 1 )
             {
                 OnFinish.Invoke( craft );
             }
 
-            prevGateIndex = targetGateIndex;
-            targetGateIndex = ++targetGateIndex % gates.Length;
+            trackProgress.prevGateIndex = trackProgress.nextGateIndex;
+            trackProgress.nextGateIndex = ++trackProgress.nextGateIndex % gates.Length;
+
+            trackProgressDictionary[ craftID ] = trackProgress;
         }
         
         if( gateIndex == 0 )

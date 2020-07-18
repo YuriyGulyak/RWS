@@ -33,7 +33,7 @@ public class LapTimer : MonoBehaviour
 
         if( !timeVisible )
         {
-            ShowTime();
+            ShowUI();
         }
     }
     
@@ -48,17 +48,17 @@ public class LapTimer : MonoBehaviour
         }
     }
 
-    public void ResetAndHide()
+    public void Hide()
+    {
+        HideUI();
+    }
+
+    public void Reset()
     {
         lapTime = 0f;
         lapStarted = false;
-
-        if( timeVisible )
-        {
-            HideTime();
-        }
     }
-
+    
     //----------------------------------------------------------------------------------------------------
 
     string timeFormat = @"mm\:ss\.ff";
@@ -68,12 +68,7 @@ public class LapTimer : MonoBehaviour
     float bestTime;
     float lastUpdateTime;
     bool timeVisible;
-    
-    
-    void Awake()
-    {
-        HideTime();
-    }
+
     
     void Update()
     {
@@ -94,19 +89,19 @@ public class LapTimer : MonoBehaviour
         {
             lapTime = 0f;
             lapStarted = false;
-            HideTime();
+            HideUI();
         }
     }
 
     
-    void ShowTime()
+    void ShowUI()
     {
         timeVisible = true;
         timeText.enabled = true;
         bestTimeText.enabled = true;
     }
     
-    void HideTime()
+    void HideUI()
     {
         timeVisible = false;
         timeText.enabled = false;

@@ -30,8 +30,7 @@ public class SingleplayerPanel : MonoBehaviour
             return;
         }
         gameObject.SetActive( true );
-        gameObject.transform.SetAsLastSibling();
-        
+
         if( PlayerPrefs.HasKey( bestLapKey ) )
         {
             var bestLapSeconds = PlayerPrefs.GetFloat( bestLapKey );

@@ -48,24 +48,14 @@ public class MultiplayerLobby : MonoBehaviourPunCallbacks
             return;
         }
         gameObject.SetActive( true );
-        gameObject.transform.SetAsLastSibling();
-        
-        //if( skipLoginPanel )
-        //{
-        //    PhotonNetwork.ConnectUsingSettings();
-        //    stateText.gameObject.SetActive( true );
-        //}
-        //else
-        //{
-            loginPanel.Show( () =>
-            {
-                loginPanel.Hide();
-                stateText.gameObject.SetActive( true );
-                PhotonNetwork.NickName = loginPanel.Nickname;
-                PhotonNetwork.ConnectUsingSettings();
-                //skipLoginPanel = true;
-            } );
-        //}
+
+        loginPanel.Show( () =>
+        {
+            loginPanel.Hide();
+            stateText.gameObject.SetActive( true );
+            PhotonNetwork.NickName = loginPanel.Nickname;
+            PhotonNetwork.ConnectUsingSettings();
+        } );
     }
 
     public void Hide()
@@ -150,9 +140,8 @@ public class MultiplayerLobby : MonoBehaviourPunCallbacks
     //----------------------------------------------------------------------------------------------------
     
     ClientState prevState;
-    //bool skipLoginPanel;
 
-
+    
     void Awake()
     {
         closeButton.onClick.AddListener( Hide );

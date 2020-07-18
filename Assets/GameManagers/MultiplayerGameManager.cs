@@ -35,10 +35,16 @@ public class MultiplayerGameManager : MonoBehaviour, IOnEventCallback
     MotorTelemetry motorTelemetry = null;
     
     [SerializeField]
-    int sendRate = 60; // Default 20
+    RaceTrack raceTrack = null;
+    
+    [SerializeField]
+    LapTimer lapTimer = null;
+    
+    [SerializeField]
+    int photonSendRate = 60; // Default 20
 
     [SerializeField]
-    int serializationRate = 60; // Default 10
+    int photonSerializationRate = 60; // Default 10
 
     //----------------------------------------------------------------------------------------------------
 
@@ -60,6 +66,9 @@ public class MultiplayerGameManager : MonoBehaviour, IOnEventCallback
 
     //----------------------------------------------------------------------------------------------------
 
+    readonly string bestLapKey = "BestLap";
+    readonly string playerTag = "Player";
+    
     enum RaiseEventCodes : byte
     {
         SpawnRemotePlayerWing = 1
@@ -81,8 +90,33 @@ public class MultiplayerGameManager : MonoBehaviour, IOnEventCallback
 
     void Awake()
     {
-        PhotonNetwork.SendRate = sendRate;
-        PhotonNetwork.SerializationRate = serializationRate;
+        PhotonNetwork.SendRate = photonSendRate;
+        PhotonNetwork.SerializationRate = photonSerializationRate;
+        
+        if( PlayerPrefs.HasKey( bestLapKey ) )
+        {
+            lapTimer.Init( PlayerPrefs.GetFloat( bestLapKey ) );
+        }
+        lapTimer.OnNewBestTime += newBestTime =>
+        {
+            PlayerPrefs.SetFloat( bestLapKey, newBestTime );
+        };
+        lapTimer.Hide();
+
+        raceTrack.OnStart.AddListener( craft =>
+        {
+            if( craft.CompareTag( playerTag ) )
+            {
+                lapTimer.StartNewTime();
+            }
+        } );
+        raceTrack.OnFinish.AddListener( craft =>
+        {
+            if( craft.CompareTag( playerTag ) )
+            {
+                lapTimer.CompareTime();
+            }
+        } );
     }
 
     IEnumerator Start()
@@ -170,5 +204,8 @@ public class MultiplayerGameManager : MonoBehaviour, IOnEventCallback
         localWingRigidbody.rotation = Quaternion.Euler( -10f, 0f, 0f );
 
         wingLauncher.Reset();
+        
+        lapTimer.Reset();
+        lapTimer.Hide();
     }
 }

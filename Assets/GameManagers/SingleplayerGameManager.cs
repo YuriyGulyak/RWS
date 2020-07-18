@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class DemoGameManager : MonoBehaviour
+public class SingleplayerGameManager : MonoBehaviour
 {
     [SerializeField]
     GameObject pressSpacebarText = null;
@@ -48,8 +48,6 @@ public class DemoGameManager : MonoBehaviour
     
     void Awake()
     {
-        //print( PlayerPrefs.HasKey( bestLapKey ) );
-        
         if( PlayerPrefs.HasKey( bestLapKey ) )
         {
             lapTimer.Init( PlayerPrefs.GetFloat( bestLapKey ) );
@@ -58,6 +56,7 @@ public class DemoGameManager : MonoBehaviour
         {
             PlayerPrefs.SetFloat( bestLapKey, newBestTime );
         };
+        lapTimer.Hide();
 
         raceTrack.OnStart.AddListener( _ => lapTimer.StartNewTime() );
         raceTrack.OnFinish.AddListener( _ => lapTimer.CompareTime() );
@@ -66,24 +65,18 @@ public class DemoGameManager : MonoBehaviour
     IEnumerator Start()
     {
         yield return new WaitUntil( () => Keyboard.current.spaceKey.wasPressedThisFrame );
-                        
-        var playerInput = PlayerInputWrapper.Instance;
-        
-        playerInput.Launch.AddListener( wingLauncher.Launch );
-        playerInput.Restart.AddListener( RestartGame );
-        
-        StartGame();
-    }
-    
-
-    void StartGame()
-    {
+                 
         pressSpacebarText.SetActive( false );
         inputInfo.SetActive( false );
         
         orbitCamera.SetActive( false );
         fpvCamera.SetActive( true );
+
+        var playerInput = PlayerInputWrapper.Instance;
+        playerInput.Launch.AddListener( wingLauncher.Launch );
+        playerInput.Restart.AddListener( RestartGame );
     }
+    
 
     void RestartGame()
     {
@@ -96,6 +89,7 @@ public class DemoGameManager : MonoBehaviour
 
         wingLauncher.Reset();
 
-        lapTimer.ResetAndHide();
+        lapTimer.Reset();
+        lapTimer.Hide();
     }
 }

@@ -8,6 +8,9 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Environment" t="Include">
+          <e p="Skybox" t="Include">
+            <e p="HorizontalSkybox.shader" t="Include" />
+          </e>
           <e p="Skyboxes" t="Include">
             <e p="HorizontalSkybox.shader" t="Include" />
           </e>
@@ -30,6 +33,7 @@
             <e p="WindSound.cs" t="Include" />
             <e p="WingAutoControl.cs" t="Include" />
             <e p="WingLauncher.cs" t="Include" />
+            <e p="WingPhotonView.cs" t="Include" />
             <e p="WingPlayerControl.cs" t="Include" />
             <e p="WingSetupHelper.cs" t="Include" />
             <e p="WingSetupHelperEditor.cs" t="Include" />
@@ -37,8 +41,8 @@
           </e>
         </e>
         <e p="GameManagers" t="Include">
-          <e p="DemoGameManager.cs" t="Include" />
           <e p="MultiplayerGameManager.cs" t="Include" />
+          <e p="SingleplayerGameManager.cs" t="Include" />
         </e>
         <e p="Input" t="Include">
           <e p="ControllerNotes.txt" t="Include" />
@@ -49,11 +53,6 @@
           <e p="Rates" t="Include">
             <e p="RateProfile.cs" t="Include" />
             <e p="RateProfileEditor.cs" t="Include" />
-          </e>
-        </e>
-        <e p="Multiplayer" t="Include">
-          <e p="Scripts" t="Include">
-            <e p="WingPhotonView.cs" t="Include" />
           </e>
         </e>
         <e p="OrbitCamera" t="Include">
