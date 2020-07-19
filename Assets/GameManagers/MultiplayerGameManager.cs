@@ -135,7 +135,7 @@ public class MultiplayerGameManager : MonoBehaviour, IOnEventCallback
             yield break;
         }
 
-        spawnPointIndex = PhotonNetwork.CountOfPlayersInRooms ;
+        spawnPointIndex = PhotonNetwork.LocalPlayer.ActorNumber;
         localWingGameObject = wingSpawner.SpawnLocalPlayerWing( spawnPointIndex );
 
         var localWingTransform = localWingGameObject.transform;

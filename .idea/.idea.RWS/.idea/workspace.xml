@@ -8,6 +8,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/GameManagers/GameConstants.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9B956647-017D-4DC1-B8D3-D25EEF012467/f0/6ce06c43/Physics.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/UtilityScripts/Room/CountdownTimer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/8e/8520acfa/UnitySynchronizationContext.cs" root0="SKIP_HIGHLIGHTING" />
@@ -119,9 +120,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Input/RateProfileEditor.cs" />
-        <option value="$PROJECT_DIR$/Assets/Input/Rates/RateProfileEditor.cs" />
-        <option value="$PROJECT_DIR$/Assets/Input/Rates/RateProfile.cs" />
         <option value="$PROJECT_DIR$/Assets/Tasks.txt" />
         <option value="$PROJECT_DIR$/Assets/OrbitCamera/Scripts/OrbitCamera.cs" />
         <option value="$PROJECT_DIR$/.gitignore" />
@@ -165,10 +163,13 @@
         <option value="$PROJECT_DIR$/Assets/UI/Scripts/LapTimer.cs" />
         <option value="$PROJECT_DIR$/Assets/UI/Scripts/LapTime.cs" />
         <option value="$PROJECT_DIR$/Assets/GameManagers/SingleplayerGameManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/GameManagers/MultiplayerGameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Utils/VersionDisplay.cs" />
         <option value="$USER_HOME$/Desktop/DRS/Assets/Common/Scripts/GraphicsConfig.cs" />
         <option value="$PROJECT_DIR$/Assets/@Temp/GameResolution.cs" />
+        <option value="$PROJECT_DIR$/Assets/GameManagers/MultiplayerGameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/GameManagers/GameConstants.cs" />
+        <option value="$PROJECT_DIR$/Assets/FlyingWing/Scripts/MotorSound.cs" />
+        <option value="$PROJECT_DIR$/Assets/FlyingWing/Scripts/MotorRemote.cs" />
         <option value="$PROJECT_DIR$/Assets/FlyingWing/Scripts/WingPhotonView.cs" />
       </list>
     </option>

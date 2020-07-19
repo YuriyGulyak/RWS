@@ -568,7 +568,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 5
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -3179,7 +3179,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 5
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -7443,6 +7443,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetRigidbody: {fileID: 879353226194359548}
+  leftElevon: {fileID: 879353226501767620}
+  rightElevon: {fileID: 879353226373648889}
+  motor: {fileID: 879353226623638831}
+  rotorTransform: {fileID: 1435092532503078954}
+  motorSound: {fileID: 879353225943701984}
   targetPhotonView: {fileID: 8670096918939386670}
   teleportEnabled: 1
   teleportIfDistanceGreaterThan: 50

@@ -44,6 +44,7 @@
           </e>
         </e>
         <e p="GameManagers" t="Include">
+          <e p="GameConstants.cs" t="Include" />
           <e p="MultiplayerGameManager.cs" t="Include" />
           <e p="SingleplayerGameManager.cs" t="Include" />
         </e>

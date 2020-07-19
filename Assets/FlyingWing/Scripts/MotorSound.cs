@@ -59,8 +59,11 @@ public class MotorSound : MonoBehaviour
 
     void Update()
     {
-        SoundTransition = motor.rpm / motorRpmMax;
-        
+        if( motor )
+        {
+            SoundTransition = motor.rpm / motorRpmMax;
+        }
+
         // smoothedSoundTransition = Mathf.Lerp( smoothedSoundTransition, motor.rpm / 30000f, deltaTime / smoothTime );
     }
     

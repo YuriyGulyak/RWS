@@ -11,6 +11,15 @@ public class WingPhotonView : MonoBehaviourPunCallbacks, IPunObservable
     
     [SerializeField]
     Elevon rightElevon = null;
+
+    [SerializeField]
+    Motor motor = null;
+    
+    [SerializeField]
+    Transform rotorTransform = null;
+    
+    [SerializeField]
+    MotorSound motorSound = null;
     
     [SerializeField]
     PhotonView targetPhotonView = null;
@@ -32,6 +41,8 @@ public class WingPhotonView : MonoBehaviourPunCallbacks, IPunObservable
             stream.SendNext( targetRigidbody.angularVelocity );
             stream.SendNext( leftElevon.Angle );
             stream.SendNext( rightElevon.Angle );
+            stream.SendNext( motor.rpm );
+            stream.SendNext( motorSound.SoundTransition );
         }
         else
         {
@@ -41,7 +52,9 @@ public class WingPhotonView : MonoBehaviourPunCallbacks, IPunObservable
             netAngularVelocity = (Vector3)stream.ReceiveNext();
             netLeftElevonAngle = (float)stream.ReceiveNext();
             netRightElevonAngle = (float)stream.ReceiveNext();
-
+            netRpm = (float)stream.ReceiveNext();
+            netSoundTransition = (float)stream.ReceiveNext();
+            
             if( teleportEnabled )
             {
                 if( Vector3.Distance( targetRigidbody.position, netPosition ) > teleportIfDistanceGreaterThan )
@@ -69,14 +82,25 @@ public class WingPhotonView : MonoBehaviourPunCallbacks, IPunObservable
     Vector3 netAngularVelocity;
     float netLeftElevonAngle;
     float netRightElevonAngle;
+    float netRpm;
+    float netSoundTransition;
     float distance;
     float angle;
-
+    float rotorSpeed;
+    
 
     void Awake()
     {
         netPosition = targetRigidbody.position;
         netRotation = targetRigidbody.rotation;
+    }
+
+    void Update()
+    {
+        motorSound.SoundTransition = netSoundTransition;
+
+        var degPerSec = netRpm / 60f * 360f;
+        rotorTransform.localRotation *= Quaternion.Euler( 0f, 0f, degPerSec * Time.deltaTime );
     }
 
     void FixedUpdate()
@@ -89,8 +113,7 @@ public class WingPhotonView : MonoBehaviourPunCallbacks, IPunObservable
         targetRigidbody.position = Vector3.MoveTowards( targetRigidbody.position, netPosition, distance * ( 1f / PhotonNetwork.SerializationRate ) );
         targetRigidbody.rotation = Quaternion.RotateTowards( targetRigidbody.rotation, netRotation, angle * ( 1f / PhotonNetwork.SerializationRate ) );
 
-        var deltaTime = Time.deltaTime;
-        leftElevon.Angle = Mathf.LerpUnclamped( leftElevon.Angle, netLeftElevonAngle, deltaTime * 100f );
-        rightElevon.Angle = Mathf.LerpUnclamped( rightElevon.Angle, netRightElevonAngle, deltaTime * 100f );
+        leftElevon.Angle = netLeftElevonAngle;
+        rightElevon.Angle = netRightElevonAngle;
     }
 }
