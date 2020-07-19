@@ -7,6 +7,9 @@
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="@Temp" t="Include">
+          <e p="GameResolution.cs" t="Include" />
+        </e>
         <e p="Environment" t="Include">
           <e p="Skybox" t="Include">
             <e p="HorizontalSkybox.shader" t="Include" />
@@ -459,7 +462,7 @@
             <e p="BatteryTelemetry.cs" t="Include" />
             <e p="BlackScreen.cs" t="Include" />
             <e p="InputTelemetry.cs" t="Include" />
-            <e p="LapTimer.cs" t="Include" />
+            <e p="LapTime.cs" t="Include" />
             <e p="MainMenuManager.cs" t="Include" />
             <e p="MotorTelemetry.cs" t="Include" />
             <e p="MultiplayerLobby" t="Include">
@@ -471,6 +474,8 @@
               <e p="RoomListEntry.cs" t="Include" />
               <e p="RoomListPanel.cs" t="Include" />
             </e>
+            <e p="PlayerOverviewEntry.cs" t="Include" />
+            <e p="PlayerOverviewPanel.cs" t="Include" />
             <e p="SingleplayerPanel.cs" t="Include" />
             <e p="StickDisplay.cs" t="Include" />
             <e p="WingTelemetry.cs" t="Include" />
@@ -497,6 +502,7 @@
           <e p="FpsLimit.cs" t="Include" />
           <e p="GizmosLine.cs" t="Include" />
           <e p="Singleton.cs" t="Include" />
+          <e p="VersionDisplay.cs" t="Include" />
         </e>
       </e>
       <e p="obj" t="ExcludeRecursive" />

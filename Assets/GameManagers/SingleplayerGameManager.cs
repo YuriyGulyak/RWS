@@ -24,7 +24,7 @@ public class SingleplayerGameManager : MonoBehaviour
     RaceTrack raceTrack = null;
     
     [SerializeField]
-    LapTimer lapTimer = null;
+    LapTime lapTime = null;
 
     //----------------------------------------------------------------------------------------------------
 
@@ -48,18 +48,15 @@ public class SingleplayerGameManager : MonoBehaviour
     
     void Awake()
     {
-        if( PlayerPrefs.HasKey( bestLapKey ) )
-        {
-            lapTimer.Init( PlayerPrefs.GetFloat( bestLapKey ) );
-        }
-        lapTimer.OnNewBestTime += newBestTime =>
+        lapTime.Init( PlayerPrefs.HasKey( bestLapKey ) ? PlayerPrefs.GetFloat( bestLapKey ) : 0f );
+        lapTime.OnNewBestTime += newBestTime =>
         {
             PlayerPrefs.SetFloat( bestLapKey, newBestTime );
         };
-        lapTimer.Hide();
+        lapTime.Hide();
 
-        raceTrack.OnStart.AddListener( _ => lapTimer.StartNewTime() );
-        raceTrack.OnFinish.AddListener( _ => lapTimer.CompareTime() );
+        raceTrack.OnStart.AddListener( _ => lapTime.StartNewTime() );
+        raceTrack.OnFinish.AddListener( _ => lapTime.CompareTime() );
     }
 
     IEnumerator Start()
@@ -89,7 +86,7 @@ public class SingleplayerGameManager : MonoBehaviour
 
         wingLauncher.Reset();
 
-        lapTimer.Reset();
-        lapTimer.Hide();
+        lapTime.Reset();
+        lapTime.Hide();
     }
 }

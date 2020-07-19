@@ -3224,7 +3224,7 @@ GameObject:
   - component: {fileID: 8670096918939386670}
   - component: {fileID: 6234959618746319268}
   m_Layer: 10
-  m_Name: RaceWingRemote
+  m_Name: FlyingWingRemote
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3303,6 +3303,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetRigidbody: {fileID: 879353226194359548}
+  leftElevon: {fileID: 879353226501767620}
+  rightElevon: {fileID: 879353226373648889}
   targetPhotonView: {fileID: 8670096918939386670}
   teleportEnabled: 1
   teleportIfDistanceGreaterThan: 50

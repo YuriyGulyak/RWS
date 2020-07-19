@@ -3,31 +3,57 @@
 public class WingSpawner : MonoBehaviour
 {
     [SerializeField]
-    GameObject wingPrefab = null;
-
-    [SerializeField] 
-    WingTelemetry wingTelemetry = null;
-
-    [SerializeField]
-    BatteryTelemetry batteryTelemetry = null;
+    Transform[] spawnPoints = null;
     
     [SerializeField]
-    MotorTelemetry motorTelemetry = null;
-
-
-    public void SpawnWing( Vector3 position, Quaternion rotation )
+    GameObject localPlayerWingPrefab = null;
+    
+    [SerializeField]
+    GameObject remotePlayerWingPrefab = null;
+    
+    
+    public GameObject SpawnLocalPlayerWing( int spawnPointIndex )
     {
-        var wingGameObject = Instantiate( wingPrefab, position, rotation );
-        wingGameObject.name = wingPrefab.name;
+        var position = GetSpawnPosition( spawnPointIndex );
+        var rotation = GetSpawnRotation();
         
-        wingTelemetry.Init( wingGameObject.GetComponentInChildren<FlyingWing>() );
-        motorTelemetry.Init( wingGameObject.GetComponentInChildren<Motor>() );
-        batteryTelemetry.Init( wingGameObject.GetComponentInChildren<Battery>() );
+        return Instantiate( localPlayerWingPrefab, position, rotation );
+    }
+    
+    public GameObject SpawnRemotePlayerWing( Vector3 position, Quaternion rotation )
+    {
+        return Instantiate( remotePlayerWingPrefab, position, rotation );
     }
 
-
-    void Awake()
+    public Vector3 GetSpawnPosition( int spawnPointIndex )
     {
-        SpawnWing( transform.position, transform.rotation );
+        return spawnPoints[ spawnPointIndex ].position;
+    }
+
+    public Quaternion GetSpawnRotation()
+    {
+        return Quaternion.Euler( -10f, 0f, 0f );
+    }
+    
+    
+    void OnDrawGizmos()
+    {
+        if( spawnPoints == null || spawnPoints.Length == 0 )
+        {
+            return;
+        }
+
+        var gizmosColorBackup = Gizmos.color;
+        Gizmos.color = new Color32( 255, 255, 255, 100 );
+
+        for( var i = 0; i < spawnPoints.Length; i++ )
+        {
+            var spawnPosition = spawnPoints[ i ].position;
+            
+            Gizmos.DrawWireSphere( spawnPosition, 0.05f );
+            Gizmos.DrawRay( spawnPosition, GetSpawnRotation() * Vector3.forward );
+        }
+
+        Gizmos.color = gizmosColorBackup;
     }
 }

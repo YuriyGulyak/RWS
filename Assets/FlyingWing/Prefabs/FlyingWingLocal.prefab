@@ -7198,7 +7198,7 @@ GameObject:
   - component: {fileID: 8670096918939386670}
   - component: {fileID: 9046538607207118387}
   m_Layer: 10
-  m_Name: RaceWingLocal
+  m_Name: FlyingWingLocal
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

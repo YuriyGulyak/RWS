@@ -1,9 +1,11 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using ExitGames.Client.Photon;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class MultiplayerGameManager : MonoBehaviour, IOnEventCallback
 {
@@ -17,11 +19,8 @@ public class MultiplayerGameManager : MonoBehaviour, IOnEventCallback
     GameObject inputInfo = null;
 
     [SerializeField]
-    GameObject wingLocalPlayerPrefab = null;
+    WingSpawner wingSpawner = null;
     
-    [SerializeField]
-    GameObject wingRemotePlayerPrefab = null;
-
     [SerializeField]
     WingLauncher wingLauncher = null;
 
@@ -38,7 +37,7 @@ public class MultiplayerGameManager : MonoBehaviour, IOnEventCallback
     RaceTrack raceTrack = null;
     
     [SerializeField]
-    LapTimer lapTimer = null;
+    LapTime lapTime = null;
     
     [SerializeField]
     int photonSendRate = 60; // Default 20
@@ -60,13 +59,22 @@ public class MultiplayerGameManager : MonoBehaviour, IOnEventCallback
             var wingRotation = (Quaternion)data[1];
             var viewID = (int)data[2];
             
-            SpawnRemotePlayerWing( wingPosition, wingRotation ).GetComponent<PhotonView>().ViewID = viewID;
+            var wingGameObject = wingSpawner.SpawnRemotePlayerWing( wingPosition, wingRotation );
+            
+            var photonView = wingGameObject.GetComponent<PhotonView>();
+            photonView.ViewID = viewID;
+
+            if( remoteWingDictionary == null )
+            {
+                remoteWingDictionary = new Dictionary<int, GameObject>();
+            }
+            remoteWingDictionary.Add( viewID, wingGameObject );
         }
     }
 
     //----------------------------------------------------------------------------------------------------
 
-    readonly string bestLapKey = "BestLap";
+    readonly string bestLapPropertyKey = "BestLapProperty";
     readonly string playerTag = "Player";
     
     enum RaiseEventCodes : byte
@@ -76,6 +84,10 @@ public class MultiplayerGameManager : MonoBehaviour, IOnEventCallback
 
     GameObject localWingGameObject;
     Rigidbody localWingRigidbody;
+
+    Dictionary<int, GameObject> remoteWingDictionary;
+
+    int spawnPointIndex;
     
 
     void OnEnable()
@@ -93,28 +105,25 @@ public class MultiplayerGameManager : MonoBehaviour, IOnEventCallback
         PhotonNetwork.SendRate = photonSendRate;
         PhotonNetwork.SerializationRate = photonSerializationRate;
         
-        if( PlayerPrefs.HasKey( bestLapKey ) )
+        lapTime.Init( 0f );
+        lapTime.OnNewBestTime += newBestTime =>
         {
-            lapTimer.Init( PlayerPrefs.GetFloat( bestLapKey ) );
-        }
-        lapTimer.OnNewBestTime += newBestTime =>
-        {
-            PlayerPrefs.SetFloat( bestLapKey, newBestTime );
+            PhotonNetwork.LocalPlayer.SetCustomProperties( new Hashtable { { bestLapPropertyKey, newBestTime } } );
         };
-        lapTimer.Hide();
+        lapTime.Hide();
 
         raceTrack.OnStart.AddListener( craft =>
         {
             if( craft.CompareTag( playerTag ) )
             {
-                lapTimer.StartNewTime();
+                lapTime.StartNewTime();
             }
         } );
         raceTrack.OnFinish.AddListener( craft =>
         {
             if( craft.CompareTag( playerTag ) )
             {
-                lapTimer.CompareTime();
+                lapTime.CompareTime();
             }
         } );
     }
@@ -126,11 +135,13 @@ public class MultiplayerGameManager : MonoBehaviour, IOnEventCallback
             yield break;
         }
 
-        
-        var wingPosition = new Vector3( Random.Range( -50f, 50f ), 10f, -250f );
-        var wingRotation = Quaternion.Euler( -10f, 0f, 0f );
-        
-        localWingGameObject = SpawnLocalPlayerWing( wingPosition, wingRotation );
+        spawnPointIndex = PhotonNetwork.CountOfPlayersInRooms ;
+        localWingGameObject = wingSpawner.SpawnLocalPlayerWing( spawnPointIndex );
+
+        var localWingTransform = localWingGameObject.transform;
+        var wingPosition = localWingTransform.position;
+        var wingRotation = localWingTransform.rotation;
+
         localWingRigidbody = localWingGameObject.GetComponent<Rigidbody>();
         
         var photonView = localWingGameObject.GetComponent<PhotonView>();
@@ -169,17 +180,7 @@ public class MultiplayerGameManager : MonoBehaviour, IOnEventCallback
         playerInput.Launch.AddListener( () => wingLauncher.Launch( localWingRigidbody ) );
         playerInput.Restart.AddListener( RespawnLocalPlayerWing );
     }
-
-
-    GameObject SpawnLocalPlayerWing( Vector3 position, Quaternion rotation )
-    {
-        return Instantiate( wingLocalPlayerPrefab, position, rotation );
-    }
-
-    GameObject SpawnRemotePlayerWing( Vector3 position, Quaternion rotation )
-    {
-        return Instantiate( wingRemotePlayerPrefab, position, rotation );
-    }
+    
 
     void SendEventToSpawnRemotePlayerWing( Vector3 position, Quaternion rotation, int viewID )
     {
@@ -200,12 +201,12 @@ public class MultiplayerGameManager : MonoBehaviour, IOnEventCallback
     void RespawnLocalPlayerWing()
     {
         localWingRigidbody.isKinematic = true;
-        localWingRigidbody.position = new Vector3( Random.Range( -50f, 50f ), 10f, -250f );
-        localWingRigidbody.rotation = Quaternion.Euler( -10f, 0f, 0f );
+        localWingRigidbody.position = wingSpawner.GetSpawnPosition( spawnPointIndex );
+        localWingRigidbody.rotation = wingSpawner.GetSpawnRotation();
 
         wingLauncher.Reset();
         
-        lapTimer.Reset();
-        lapTimer.Hide();
+        lapTime.Reset();
+        lapTime.Hide();
     }
 }

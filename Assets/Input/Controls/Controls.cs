@@ -100,6 +100,17 @@ public class @Controls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""4145c709-54ea-4aa5-8f51-3a2733cd0e14"",
+                    ""path"": ""<HID::Madcatz Saitek Pro Flight X-55 Rhino Stick>/stick/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Roll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""f122b0cb-0688-40e1-8461-e41d95348639"",
                     ""path"": ""<HID::FrSky FrSky Taranis Joystick>/ry"",
                     ""interactions"": """",
@@ -113,6 +124,17 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""9eba0a8d-73c2-4831-a7b4-86588c2f5c04"",
                     ""path"": ""<HID::Logitech Logitech Force 3D Pro>/stick/y"",
+                    ""interactions"": """",
+                    ""processors"": ""Invert"",
+                    ""groups"": """",
+                    ""action"": ""Pitch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""abd1de5e-4e5f-46e4-b1e8-6b675045d3ad"",
+                    ""path"": ""<HID::Madcatz Saitek Pro Flight X-55 Rhino Stick>/stick/y"",
                     ""interactions"": """",
                     ""processors"": ""Invert"",
                     ""groups"": """",
@@ -144,6 +166,17 @@ public class @Controls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""80b22a80-010c-4579-adbe-22e252f0f3a2"",
+                    ""path"": ""<HID::Madcatz Saitek Pro Flight X-55 Rhino Throttle>/rx"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Trim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""bf0edbb7-8ddf-4c16-b815-624c770d0772"",
                     ""path"": ""<HID::FrSky FrSky Taranis Joystick>/trigger"",
                     ""interactions"": """",
@@ -157,6 +190,17 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""a1247bf6-dae1-4783-8714-bf24d81cb35b"",
                     ""path"": ""<HID::Logitech Logitech Force 3D Pro>/trigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Launch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d0f56534-579f-4eda-806f-02940b8b09c6"",
+                    ""path"": ""<HID::Madcatz Saitek Pro Flight X-55 Rhino Stick>/trigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -188,6 +232,17 @@ public class @Controls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""5b5bd25b-4534-4636-8808-431d3bcb001a"",
+                    ""path"": ""<HID::Madcatz Saitek Pro Flight X-55 Rhino Stick>/button2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Restart"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""fcfc01fb-f8ae-49dc-a584-8ee623f7319b"",
                     ""path"": ""<HID::FrSky FrSky Taranis Joystick>/stick/y"",
                     ""interactions"": """",
@@ -201,6 +256,17 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""c0189500-ed28-42b3-a6f0-d20bd5353dbb"",
                     ""path"": ""<HID::Logitech Logitech Force 3D Pro>/slider"",
+                    ""interactions"": """",
+                    ""processors"": ""Invert"",
+                    ""groups"": """",
+                    ""action"": ""Throttle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""91621762-c485-4880-bff2-f0f5296199aa"",
+                    ""path"": ""<HID::Madcatz Saitek Pro Flight X-55 Rhino Throttle>/stick/x"",
                     ""interactions"": """",
                     ""processors"": ""Invert"",
                     ""groups"": """",

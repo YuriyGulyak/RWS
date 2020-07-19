@@ -126,7 +126,7 @@ public class MultiplayerLobby : MonoBehaviourPunCallbacks
 
     public override void OnCreatedRoom()
     {
-        print( "OnCreatedRoom" );
+        //print( "OnCreatedRoom" );
     }
     
     public override void OnCreateRoomFailed( short returnCode, string message )

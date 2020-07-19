@@ -7,6 +7,12 @@ public class WingPhotonView : MonoBehaviourPunCallbacks, IPunObservable
     Rigidbody targetRigidbody = null;
 
     [SerializeField]
+    Elevon leftElevon = null;
+    
+    [SerializeField]
+    Elevon rightElevon = null;
+    
+    [SerializeField]
     PhotonView targetPhotonView = null;
 
     [SerializeField]
@@ -24,43 +30,53 @@ public class WingPhotonView : MonoBehaviourPunCallbacks, IPunObservable
             stream.SendNext( targetRigidbody.rotation );
             stream.SendNext( targetRigidbody.velocity );
             stream.SendNext( targetRigidbody.angularVelocity );
+            stream.SendNext( leftElevon.Angle );
+            stream.SendNext( rightElevon.Angle );
         }
         else
         {
-            networkPosition = (Vector3)stream.ReceiveNext();
-            networkRotation = (Quaternion)stream.ReceiveNext();
+            netPosition = (Vector3)stream.ReceiveNext();
+            netRotation = (Quaternion)stream.ReceiveNext();
+            netVelocity = (Vector3)stream.ReceiveNext();
+            netAngularVelocity = (Vector3)stream.ReceiveNext();
+            netLeftElevonAngle = (float)stream.ReceiveNext();
+            netRightElevonAngle = (float)stream.ReceiveNext();
 
             if( teleportEnabled )
             {
-                if( Vector3.Distance( targetRigidbody.position, networkPosition ) > teleportIfDistanceGreaterThan )
+                if( Vector3.Distance( targetRigidbody.position, netPosition ) > teleportIfDistanceGreaterThan )
                 {
-                    targetRigidbody.position = networkPosition;
+                    targetRigidbody.position = netPosition;
                 }
             }
 
             var lag = Mathf.Abs( (float)( PhotonNetwork.Time - info.SentServerTime ) );
 
-            targetRigidbody.velocity = (Vector3)stream.ReceiveNext();
-            networkPosition += targetRigidbody.velocity * lag;
-            distance = Vector3.Distance( targetRigidbody.position, networkPosition );
+            targetRigidbody.velocity = netVelocity;
+            netPosition += targetRigidbody.velocity * lag;
+            distance = Vector3.Distance( targetRigidbody.position, netPosition );
 
-            targetRigidbody.angularVelocity = (Vector3)stream.ReceiveNext();
-            networkRotation = Quaternion.Euler( targetRigidbody.angularVelocity * lag ) * networkRotation;
-            angle = Quaternion.Angle( targetRigidbody.rotation, networkRotation );
+            targetRigidbody.angularVelocity = netAngularVelocity;
+            netRotation = Quaternion.Euler( targetRigidbody.angularVelocity * lag ) * netRotation;
+            angle = Quaternion.Angle( targetRigidbody.rotation, netRotation );
         }
     }
 
 
-    Vector3 networkPosition;
-    Quaternion networkRotation;
+    Vector3 netPosition;
+    Quaternion netRotation;
+    Vector3 netVelocity;
+    Vector3 netAngularVelocity;
+    float netLeftElevonAngle;
+    float netRightElevonAngle;
     float distance;
     float angle;
-    
-    
+
+
     void Awake()
     {
-        networkPosition = targetRigidbody.position;
-        networkRotation = targetRigidbody.rotation;
+        netPosition = targetRigidbody.position;
+        netRotation = targetRigidbody.rotation;
     }
 
     void FixedUpdate()
@@ -70,7 +86,11 @@ public class WingPhotonView : MonoBehaviourPunCallbacks, IPunObservable
             return;
         }
 
-        targetRigidbody.position = Vector3.MoveTowards( targetRigidbody.position, networkPosition, distance * ( 1f / PhotonNetwork.SerializationRate ) );
-        targetRigidbody.rotation = Quaternion.RotateTowards( targetRigidbody.rotation, networkRotation, angle * ( 1f / PhotonNetwork.SerializationRate ) );
+        targetRigidbody.position = Vector3.MoveTowards( targetRigidbody.position, netPosition, distance * ( 1f / PhotonNetwork.SerializationRate ) );
+        targetRigidbody.rotation = Quaternion.RotateTowards( targetRigidbody.rotation, netRotation, angle * ( 1f / PhotonNetwork.SerializationRate ) );
+
+        var deltaTime = Time.deltaTime;
+        leftElevon.Angle = Mathf.LerpUnclamped( leftElevon.Angle, netLeftElevonAngle, deltaTime * 100f );
+        rightElevon.Angle = Mathf.LerpUnclamped( rightElevon.Angle, netRightElevonAngle, deltaTime * 100f );
     }
 }

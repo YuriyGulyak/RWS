@@ -2,7 +2,7 @@
 using TMPro;
 using UnityEngine;
 
-public class LapTimer : MonoBehaviour
+public class LapTime : MonoBehaviour
 {
     [SerializeField]
     TextMeshProUGUI timeText = null;
@@ -21,7 +21,15 @@ public class LapTimer : MonoBehaviour
     public void Init( float bestTime )
     {
         this.bestTime = bestTime;
-        bestTimeText.text = TimeSpan.FromSeconds( bestTime ).ToString( timeFormat );
+
+        if( bestTime.Equals( 0f ) )
+        {
+            bestTimeText.text = $"Best: No Time";
+        }
+        else
+        {
+            bestTimeText.text = $"Best: {TimeSpan.FromSeconds( bestTime ).ToString( timeFormat )}";
+        }
     }
 
     public Action<float> OnNewBestTime;
@@ -61,7 +69,7 @@ public class LapTimer : MonoBehaviour
     
     //----------------------------------------------------------------------------------------------------
 
-    string timeFormat = @"mm\:ss\.ff";
+    readonly string timeFormat = @"mm\:ss\.ff";
     
     bool lapStarted;
     float lapTime;
