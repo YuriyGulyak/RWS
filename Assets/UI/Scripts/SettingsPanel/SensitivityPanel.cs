@@ -7,10 +7,6 @@ using UnityEngine.UI.Extensions;
 
 public class SensitivityPanel : MonoBehaviour
 {
-    //[SerializeField]
-    //RateProfile rateProfile = null;
-
-    
     [SerializeField]
     Slider rollExpoSlider = null;
     
@@ -50,12 +46,27 @@ public class SensitivityPanel : MonoBehaviour
     [SerializeField]
     Button backButton = null;
     
+    [SerializeField]
+    Button saveButton = null;
+    
     //--------------------------------------------------------------------------------------------------------------
     
     public void Show( Action onBackButtonCallback = null )
     {
         this.onBackButtonCallback = onBackButtonCallback;
         gameObject.SetActive( true );
+        
+        
+        sensitivity.LoadPlayerPrefs();
+        
+        rollExpoSlider.value = sensitivity.RollExpo;
+        rollSuperExpoSlider.value = sensitivity.RollSuperExpo;
+        
+        pitchExpoSlider.value = sensitivity.PitchExpo;
+        pitchSuperExpoSlider.value = sensitivity.PitchSuperExpo;
+        
+        
+        saveButton.gameObject.SetActive( false );
     }
 
     public void Hide()
@@ -66,49 +77,52 @@ public class SensitivityPanel : MonoBehaviour
     
     //--------------------------------------------------------------------------------------------------------------
 
-    ControllerSensitivity sensitivity;
+    ControlSensitivity sensitivity;
     Action onBackButtonCallback;
     
     
     void Awake()
     {
-        sensitivity = new ControllerSensitivity();
-        sensitivity.LoadPlayerPrefs();
-        
-        
         rollExpoSlider.onValueChanged.AddListener( OnRollExpoSliderChanged );
         rollExpoInputField.onEndEdit.AddListener( OnRollExpoInputFieldChanged );
 
-        rollSuperExpoSlider.onValueChanged.AddListener( OnRollSuperRateSliderChanged );
-        rollSuperExpoInputField.onEndEdit.AddListener( OnRollSuperRateInputFieldChanged );
+        rollSuperExpoSlider.onValueChanged.AddListener( OnRollSuperExpoSliderChanged );
+        rollSuperExpoInputField.onEndEdit.AddListener( OnRollSuperExpoInputFieldChanged );
 
-        rollExpoSlider.value = sensitivity.RollExpo;
-        rollSuperExpoSlider.value = sensitivity.RollSuperExpo;
-        
-        
+
         pitchExpoSlider.onValueChanged.AddListener( OnPitchExpoSliderChanged );
         pitchExpoInputField.onEndEdit.AddListener( OnPitchExpoInputFieldChanged );
 
-        pitchSuperExpoSlider.onValueChanged.AddListener( OnPitchSuperRateSliderChanged );
-        pitchSuperExpoInputField.onEndEdit.AddListener( OnPitchSuperRateInputFieldChanged );
-
+        pitchSuperExpoSlider.onValueChanged.AddListener( OnPitchSuperExpoSliderChanged );
+        pitchSuperExpoInputField.onEndEdit.AddListener( OnPitchSuperExpoInputFieldChanged );
+        
+        
+        sensitivity = new ControlSensitivity( true );
+        
+        rollExpoSlider.value = sensitivity.RollExpo;
+        rollSuperExpoSlider.value = sensitivity.RollSuperExpo;
+        
         pitchExpoSlider.value = sensitivity.PitchExpo;
         pitchSuperExpoSlider.value = sensitivity.PitchSuperExpo;
         
+        
         backButton.onClick.AddListener( OnBackButton );
         
-        //UpdateCurve( rollLineRenderer, ( value ) => rateProfile.EvaluateRoll( value ) );
-        //UpdateCurve( rollLineRenderer, ( value ) => rateProfile.EvaluatePitch( value ) );
+        saveButton.onClick.AddListener( OnSaveButton );
+        saveButton.gameObject.SetActive( false );
     }
 
-
+    
     void OnRollExpoSliderChanged( float newValue )
     {
         newValue = RoundValue( newValue );
         rollExpoInputField.text = FormatValue( newValue );
 
         sensitivity.RollExpo = newValue;
+        
         UpdateCurve( rollLineRenderer, ( value ) => sensitivity.EvaluateRoll( value ) );
+        
+        saveButton.gameObject.SetActive( true );
     }
     
     void OnRollExpoInputFieldChanged( string newValueString )
@@ -122,16 +136,19 @@ public class SensitivityPanel : MonoBehaviour
         rollExpoInputField.text = FormatValue( newValue );
     }
     
-    void OnRollSuperRateSliderChanged( float newValue )
+    void OnRollSuperExpoSliderChanged( float newValue )
     {
         newValue = RoundValue( newValue );
         rollSuperExpoInputField.text = FormatValue( newValue );
 
         sensitivity.RollSuperExpo = newValue;
+        
         UpdateCurve( rollLineRenderer, ( value ) => sensitivity.EvaluateRoll( value ) );
+        
+        saveButton.gameObject.SetActive( true );
     }
     
-    void OnRollSuperRateInputFieldChanged( string newValueString )
+    void OnRollSuperExpoInputFieldChanged( string newValueString )
     {
         var newValue = ParseValue( newValueString );
         
@@ -149,7 +166,10 @@ public class SensitivityPanel : MonoBehaviour
         pitchExpoInputField.text = FormatValue( newValue );
 
         sensitivity.PitchExpo = newValue;
+        
         UpdateCurve( pitchLineRenderer, ( value ) => sensitivity.EvaluatePitch( value ) );
+        
+        saveButton.gameObject.SetActive( true );
     }
     
     void OnPitchExpoInputFieldChanged( string newValueString )
@@ -163,16 +183,19 @@ public class SensitivityPanel : MonoBehaviour
         pitchExpoSlider.value = newValue;
     }
     
-    void OnPitchSuperRateSliderChanged( float newValue )
+    void OnPitchSuperExpoSliderChanged( float newValue )
     {
         newValue = RoundValue( newValue );
         pitchSuperExpoInputField.text = FormatValue( newValue );
 
         sensitivity.PitchSuperExpo = newValue;
+        
         UpdateCurve( pitchLineRenderer, ( value ) => sensitivity.EvaluatePitch( value ) );
+        
+        saveButton.gameObject.SetActive( true );
     }
     
-    void OnPitchSuperRateInputFieldChanged( string newValueString )
+    void OnPitchSuperExpoInputFieldChanged( string newValueString )
     {
         var newValue = ParseValue( newValueString );
         
@@ -181,6 +204,17 @@ public class SensitivityPanel : MonoBehaviour
         
         pitchSuperExpoInputField.text = FormatValue( newValue );
         pitchSuperExpoSlider.value = newValue;
+    }
+
+    
+    void OnBackButton()
+    {
+        onBackButtonCallback?.Invoke();
+    }
+
+    void OnSaveButton()
+    {
+        sensitivity.SavePlayerPrefs();
     }
 
 
@@ -202,14 +236,7 @@ public class SensitivityPanel : MonoBehaviour
         // Need set new array, updating the existing array points not working
         lineRenderer.Points = newCurvePoints;
     }
-
-
-    void OnBackButton()
-    {
-        sensitivity.SavePlayerPrefs();
-        onBackButtonCallback?.Invoke();
-    }
-
+    
 
     static float ParseValue( string value )
     {

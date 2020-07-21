@@ -1,9 +1,14 @@
 ﻿using UnityEngine;
 
-class ControllerSensitivity
+public class ControlSensitivity
 {
-    public ControllerSensitivity()
+    public ControlSensitivity( bool loadPlayerPrefs = false )
     {
+        if( loadPlayerPrefs )
+        {
+            LoadPlayerPrefs();
+        }
+
         UpdateMaxValues();
     }
 

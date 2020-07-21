@@ -25,6 +25,7 @@
             <e p="AirfoilSection.cs" t="Include" />
             <e p="Altimeter.cs" t="Include" />
             <e p="Battery.cs" t="Include" />
+            <e p="ControlSensitivity.cs" t="Include" />
             <e p="Elevon.cs" t="Include" />
             <e p="FlyingWing.cs" t="Include" />
             <e p="MathUtils.cs" t="Include" />
@@ -51,7 +52,6 @@
         </e>
         <e p="Input" t="Include">
           <e p="ControllerNotes.txt" t="Include" />
-          <e p="ControllerSensitivity.cs" t="Include" />
           <e p="Controls" t="Include">
             <e p="Controls.cs" t="Include" />
           </e>

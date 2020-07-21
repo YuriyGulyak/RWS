@@ -31,6 +31,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/bc/397f9542/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/ae/a93e6b12/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/A497A6F1-8E1F-4B41-9421-B940ADD27A6E/1f/b340bfcd/Hashtable.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FlyingWing/Scripts/ControlSensitivity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Input/Rates/RateProfileEditor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/FlyingWing/Scripts/WingPhotonView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Input/PlayerInputWrapper.cs" root0="FORCE_HIGHLIGHTING" />
@@ -131,14 +132,10 @@
     <setting file="file://$PROJECT_DIR$/Assets/Utils/UILineRenderer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Code/PhotonNetwork.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UI/Scripts/SingleplayerPanel.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Input/ControllerSensitivity.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Scripts/Lobby/LobbyMainPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/UI/Scripts/MultiplayerLobby/RoomListEntry.cs" />
-        <option value="$PROJECT_DIR$/Assets/UI/Scripts/MultiplayerLobby/PlayerListEntry.cs" />
         <option value="$PROJECT_DIR$/Assets/UI/Scripts/MultiplayerLobby/RoomListPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/GameManagers/MainMenuManager.cs" />
         <option value="$PROJECT_DIR$/Assets/UI/Scripts/TestBlackScreen.cs" />
@@ -184,8 +181,11 @@
         <option value="$PROJECT_DIR$/Assets/Input/Rates/Rates.cs" />
         <option value="$PROJECT_DIR$/Assets/Input/Rates/RateProfile.cs" />
         <option value="$PROJECT_DIR$/Assets/UI/Scripts/SettingsPanel/SettingsPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/FlyingWing/Scripts/WingPlayerControl.cs" />
         <option value="$PROJECT_DIR$/Assets/Input/ControllerSensitivity.cs" />
+        <option value="$PROJECT_DIR$/Assets/Input/ControllSensitivity.cs" />
+        <option value="$PROJECT_DIR$/Assets/Input/ControlSensitivity.cs" />
+        <option value="$PROJECT_DIR$/Assets/FlyingWing/Scripts/ControlSensitivity.cs" />
+        <option value="$PROJECT_DIR$/Assets/FlyingWing/Scripts/WingPlayerControl.cs" />
         <option value="$PROJECT_DIR$/Assets/UI/Scripts/SettingsPanel/SensitivityPanel.cs" />
       </list>
     </option>
