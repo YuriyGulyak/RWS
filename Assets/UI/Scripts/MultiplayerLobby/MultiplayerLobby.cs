@@ -60,6 +60,11 @@ public class MultiplayerLobby : MonoBehaviourPunCallbacks
 
     public void Hide()
     {
+        if( !gameObject.activeSelf )
+        {
+            return;
+        }
+
         loginPanel.Hide();
         createRoomPanel.Hide();
         insideRoomPanel.Hide();
@@ -72,10 +77,10 @@ public class MultiplayerLobby : MonoBehaviourPunCallbacks
         showRoomListButton.gameObject.SetActive( false );
         joinRandomRoomButton.gameObject.SetActive( false );
         
+        PhotonNetwork.Disconnect();
+        
         gameObject.SetActive( false );
         panelRect.anchoredPosition = Vector2.zero;
-        
-        PhotonNetwork.Disconnect();
     }
 
     //----------------------------------------------------------------------------------------------------

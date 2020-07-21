@@ -20,6 +20,9 @@ public class MainMenuManager : MonoBehaviour
     
     [SerializeField]
     SingleplayerPanel singleplayerPanel = null;
+
+    [SerializeField]
+    SettingsPanel settingsPanel = null;
     
     //----------------------------------------------------------------------------------------------------
     
@@ -32,23 +35,29 @@ public class MainMenuManager : MonoBehaviour
 
         singleplayerPanel.Hide();
         multiplayerLobby.Hide();
+        //settingsPanel.Hide();
     }
 
 
     void OnSingleplayerButton()
     {
         multiplayerLobby.Hide();
+        settingsPanel.Hide();
         singleplayerPanel.Show();
     }
     
     void OnMultiplayerButton()
     {
         singleplayerPanel.Hide();
+        settingsPanel.Hide();
         multiplayerLobby.Show();
     }
     
-    void OnSettingsButton()
+    void OnSettingsButton()        
     {
+        singleplayerPanel.Hide();
+        multiplayerLobby.Hide();
+        settingsPanel.Show();
     }
     
     void OnExitButton()

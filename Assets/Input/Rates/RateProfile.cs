@@ -9,7 +9,7 @@ public class RateProfile : ScriptableObject
     float rollExpo = 0.2f;
     
     [SerializeField, Range( 0f, 1f )]
-    float rollSuperRate = 0.75f;
+    float rollSuperExpo = 0.75f;
 
     [Space]
 
@@ -17,58 +17,78 @@ public class RateProfile : ScriptableObject
     float pitchExpo = 0.2f;
     
     [SerializeField, Range( 0f, 1f )]
-    float pitchSuperRate = 0.75f;
+    float pitchSuperExpo = 0.75f;
     
     //--------------------------------------------------------------------------------------------------------------
 
+    public float RollExpo
+    {
+        get => rollExpo;
+        set
+        {
+            rollExpo = value;
+            Init();
+        }
+    }
+
+    public float RollSuperExpo
+    {
+        get => rollSuperExpo;
+        set
+        {
+            rollSuperExpo = value;
+            Init();
+        }
+    }
+    
+    public float PitchExpo
+    {
+        get => pitchExpo;
+        set
+        {
+            pitchExpo = value;
+            Init();
+        }
+    }
+
+    public float PitchSuperExpo
+    {
+        get => pitchSuperExpo;
+        set
+        {
+            pitchSuperExpo = value;
+            Init();
+        }
+    }
+    
     public float EvaluateRoll( float roll )
     {
-        return BfCalc( roll, 1f, rollExpo, rollSuperRate ) / maxRollRate;
+        return Rates.BfCalc( roll, 1f, rollExpo, rollSuperExpo ) / maxRollValue;
     }
 
     public float EvaluatePitch( float pitch )
     {
-        return BfCalc( pitch, 1f, pitchExpo, pitchSuperRate ) / maxPitchRate;
+        return Rates.BfCalc( pitch, 1f, pitchExpo, pitchSuperExpo ) / maxPitchValue;
     }
     
     //--------------------------------------------------------------------------------------------------------------
     
     [SerializeField, HideInInspector]
-    float maxRollRate;
+    float maxRollValue;
     
     [SerializeField, HideInInspector]
-    float maxPitchRate;
-
+    float maxPitchValue;
+   
     
     void OnValidate()
     {
-        maxRollRate = BfCalc( 1f, 1f, rollExpo, rollSuperRate );
-        maxPitchRate = BfCalc( 1f, 1f, pitchExpo, pitchSuperRate );
+        Init();
     }
 
-    
-    // BetaFlight Rates. Return angular velocity, deg/s
-    // https://apocolipse.github.io/RotorPirates/ - from page js code
-    static float BfCalc( float rcCommand, float rcRate, float expo, float superRate )
+
+    void Init()
     {
-        if( rcRate > 2f )
-        {
-            rcRate = rcRate + ( 14.54f * ( rcRate - 2f ) );
-        }
-
-        if( !expo.Equals( 0f ) )
-        {
-            rcCommand = rcCommand * Mathf.Pow( Mathf.Abs( rcCommand ), 3f ) * expo + rcCommand * ( 1f - expo );
-        }
-
-        var angleRate = 200f * rcRate * rcCommand;
-
-        if( !superRate.Equals( 0f ) )
-        {
-            var rcSuperFactor = 1f / ( Mathf.Clamp( 1f - ( Mathf.Abs( rcCommand ) * superRate ), 0.01f, 1f ) );
-            angleRate *= rcSuperFactor;
-        }
-
-        return angleRate;
+        maxRollValue = Rates.BfCalc( 1f, 1f, rollExpo, rollSuperExpo );
+        maxPitchValue = Rates.BfCalc( 1f, 1f, pitchExpo, pitchSuperExpo );
     }
 }

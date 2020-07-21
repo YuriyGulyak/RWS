@@ -45,6 +45,10 @@ public class SingleplayerPanel : MonoBehaviour
 
     public void Hide()
     {
+        if( !gameObject.activeSelf )
+        {
+            return;
+        }
         gameObject.SetActive( false );
         panelRect.anchoredPosition = Vector2.zero;
     }

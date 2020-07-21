@@ -1,12 +1,13 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class WingPlayerControl : MonoBehaviour
 {
     [SerializeField]
     FlyingWing wing = null;
 
-    [SerializeField]
-    RateProfile rateProfile = null;
+    //[SerializeField]
+    //RateProfile rateProfile = null;
 
     [SerializeField]
     float rollRate = 1f;
@@ -21,12 +22,20 @@ public class WingPlayerControl : MonoBehaviour
     float pitchTrimRate = 0.1f;
 
     //----------------------------------------------------------------------------------------------------
+
+    ControllerSensitivity sensitivity;
     
     float throttle;
     float roll;
     float pitch;
-    
-    
+
+
+    void Awake()
+    {
+        sensitivity = new ControllerSensitivity();
+        sensitivity.LoadPlayerPrefs();
+    }
+
     void OnEnable()
     {
         var playerInput = PlayerInputWrapper.Instance;
@@ -60,13 +69,13 @@ public class WingPlayerControl : MonoBehaviour
     
     void SetRoll( float value )
     {
-        roll = rateProfile.EvaluateRoll( value ) * rollRate;
+        roll = sensitivity.EvaluateRoll( value ) * rollRate;
         wing.RollSetpoint = roll;
     }
     
     void SetPitch( float value )
     {
-        pitch = ( rateProfile.EvaluatePitch( value ) * pitchRate ) + ( pitchTrim * pitchTrimRate );
+        pitch = ( sensitivity.EvaluatePitch( value ) * pitchRate ) + ( pitchTrim * pitchTrimRate );
         wing.PitchSetpoint = pitch;
     }
     
