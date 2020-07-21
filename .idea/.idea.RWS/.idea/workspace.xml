@@ -14,6 +14,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/8e/8520acfa/UnitySynchronizationContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@2.0.1/Scripts/Runtime/TMPro_UGUI_Private.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonRealtime/Code/Player.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FB3709D4-3DAE-4F5F-B978-5D5202B86B97/2b/71a34504/Math.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonRealtime/Code/LoadBalancingClient.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/54/a54de53b/SetupCoroutine.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/90/94001f8e/LoadSceneMode.cs" root0="SKIP_HIGHLIGHTING" />
@@ -136,7 +137,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/UI/Scripts/MultiplayerLobby/RoomListPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/GameManagers/MainMenuManager.cs" />
         <option value="$PROJECT_DIR$/Assets/UI/Scripts/TestBlackScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/FlyingWing/Scripts/Battery.cs" />
@@ -186,6 +186,7 @@
         <option value="$PROJECT_DIR$/Assets/Input/ControlSensitivity.cs" />
         <option value="$PROJECT_DIR$/Assets/FlyingWing/Scripts/ControlSensitivity.cs" />
         <option value="$PROJECT_DIR$/Assets/FlyingWing/Scripts/WingPlayerControl.cs" />
+        <option value="$PROJECT_DIR$/Assets/@Tests/SliderWithInputField.cs" />
         <option value="$PROJECT_DIR$/Assets/UI/Scripts/SettingsPanel/SensitivityPanel.cs" />
       </list>
     </option>

@@ -3593,14 +3593,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45a14f7ee265fed47976cba876787e7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rollExpoSlider: {fileID: 2063388306}
-  rollExpoInputField: {fileID: 757138164}
-  rollSuperExpoSlider: {fileID: 481600389}
-  rollSuperExpoInputField: {fileID: 1359805988}
-  pitchExpoSlider: {fileID: 1438372811}
-  pitchExpoInputField: {fileID: 1922167626}
-  pitchSuperExpoSlider: {fileID: 1201219253}
-  pitchSuperExpoInputField: {fileID: 639056031}
+  rollExpoSlider: {fileID: 1116307677}
+  rollSuperExpoSlider: {fileID: 1948320974}
+  pitchExpoSlider: {fileID: 944424020}
+  pitchSuperExpoSlider: {fileID: 867338316}
   curvesPanelRect: {fileID: 1924397840}
   rollLineRenderer: {fileID: 994859051}
   pitchLineRenderer: {fileID: 2072426859}
@@ -26672,8 +26668,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 867338315}
+  - component: {fileID: 867338316}
   m_Layer: 5
-  m_Name: SettingWithSlider (2)
+  m_Name: SuperExpoSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26701,6 +26698,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -100}
   m_SizeDelta: {x: 550, y: 35}
   m_Pivot: {x: 0, y: 1}
+--- !u!114 &867338316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 867338314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3df0c799ee5ab4247a42fb2211d62def, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 1201219253}
+  inputField: {fileID: 639056031}
+  OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &868645553
 GameObject:
   m_ObjectHideFlags: 0
@@ -29891,8 +29905,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 944424019}
+  - component: {fileID: 944424020}
   m_Layer: 5
-  m_Name: SettingWithSlider (1)
+  m_Name: ExpoSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29920,6 +29935,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -50}
   m_SizeDelta: {x: 550, y: 35}
   m_Pivot: {x: 0, y: 1}
+--- !u!114 &944424020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 944424018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3df0c799ee5ab4247a42fb2211d62def, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 1438372811}
+  inputField: {fileID: 1922167626}
+  OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &951020513
 GameObject:
   m_ObjectHideFlags: 0
@@ -36344,8 +36376,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1116307676}
+  - component: {fileID: 1116307677}
   m_Layer: 5
-  m_Name: SettingWithSlider (1)
+  m_Name: ExpoSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36373,6 +36406,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -50}
   m_SizeDelta: {x: 550, y: 35}
   m_Pivot: {x: 0, y: 1}
+--- !u!114 &1116307677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116307675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3df0c799ee5ab4247a42fb2211d62def, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 2063388306}
+  inputField: {fileID: 757138164}
+  OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1116510981
 GameObject:
   m_ObjectHideFlags: 0
@@ -51637,8 +51687,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1615272576}
-  - component: {fileID: 1615272578}
-  - component: {fileID: 1615272577}
   m_Layer: 5
   m_Name: PitchPanel
   m_TagString: Untagged
@@ -51668,43 +51716,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -165}
   m_SizeDelta: {x: 550, y: 165}
   m_Pivot: {x: 0, y: 1}
---- !u!114 &1615272577
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1615272575}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.19607843}
-  m_RaycastTarget: 1
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1615272578
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1615272575}
-  m_CullTransparentMesh: 0
 --- !u!1 &1618502733
 GameObject:
   m_ObjectHideFlags: 0
@@ -60019,8 +60030,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1823801854}
-  - component: {fileID: 1823801856}
-  - component: {fileID: 1823801855}
   m_Layer: 5
   m_Name: RollPanel
   m_TagString: Untagged
@@ -60050,43 +60059,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 550, y: 165}
   m_Pivot: {x: 0, y: 1}
---- !u!114 &1823801855
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1823801853}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.19607843}
-  m_RaycastTarget: 1
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1823801856
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1823801853}
-  m_CullTransparentMesh: 0
 --- !u!1 &1824973812
 GameObject:
   m_ObjectHideFlags: 0
@@ -64752,8 +64724,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1948320973}
+  - component: {fileID: 1948320974}
   m_Layer: 5
-  m_Name: SettingWithSlider (2)
+  m_Name: SuperExpoSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64781,6 +64754,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -100}
   m_SizeDelta: {x: 550, y: 35}
   m_Pivot: {x: 0, y: 1}
+--- !u!114 &1948320974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1948320972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3df0c799ee5ab4247a42fb2211d62def, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 481600389}
+  inputField: {fileID: 1359805988}
+  OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1951865527
 GameObject:
   m_ObjectHideFlags: 0

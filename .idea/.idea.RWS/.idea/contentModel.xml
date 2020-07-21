@@ -513,6 +513,7 @@
           <e p="FpsLimit.cs" t="Include" />
           <e p="GizmosLine.cs" t="Include" />
           <e p="Singleton.cs" t="Include" />
+          <e p="SliderWithInputField.cs" t="Include" />
           <e p="UILineRenderer.cs" t="Include" />
           <e p="VersionDisplay.cs" t="Include" />
         </e>
