@@ -9,7 +9,7 @@ public class GraphicsPanel : MonoBehaviour
 {
     [SerializeField]
     GraphicsManager graphicsManager = null;
-    
+
     [SerializeField]
     TMP_Dropdown resolutionDropdown = null;
 
@@ -18,47 +18,166 @@ public class GraphicsPanel : MonoBehaviour
 
     [SerializeField]
     Toggle postProcessToggle = null;
-    
+
+    [SerializeField]
+    TMP_InputField displayInputField = null;
+
     [SerializeField]
     Toggle vSyncToggle = null;
 
     [SerializeField]
-    TMP_InputField displayInputField = null;
-    
+    TMP_InputField fpsLimitInputField = null;
+
     [SerializeField]
-    TMP_InputField maxFpsInputField = null;
-    
-    [SerializeField]
-    Button cancelButton = null;
-    
+    Button backButton = null;
+
     [SerializeField]
     Button applyButton = null;
-    
+
     //----------------------------------------------------------------------------------------------------
-    
-    public void Show( Action onCancelCallback = null )
+
+    public void Show( Action onBackButtonCallback = null )
     {
-        this.onCancelCallback = onCancelCallback;
+        this.onBackButtonCallback = onBackButtonCallback;
         gameObject.SetActive( true );
+
+        applyButton.gameObject.SetActive( false );
     }
 
     public void Hide()
     {
         gameObject.SetActive( false );
-        onCancelCallback = null;
+        onBackButtonCallback = null;
     }
-    
+
     //----------------------------------------------------------------------------------------------------
 
-    Action onCancelCallback;
+    Action onBackButtonCallback;
+    int targetDisplay;
+    int fpsLimit;
 
 
     void Awake()
     {
         resolutionDropdown.ClearOptions();
-        resolutionDropdown.AddOptions( new List<string>( Screen.resolutions.Select( resolution => $"{resolution.width} x {resolution.height}" ) ) );
+        resolutionDropdown.AddOptions( new List<string>( graphicsManager.Resolutions.Select( resolution => $"{resolution.width} x {resolution.height}" ) ) );
+        resolutionDropdown.value = Array.IndexOf( graphicsManager.Resolutions, graphicsManager.Resolution );
+        resolutionDropdown.onValueChanged.AddListener( OnResolutionDropdownChanged );
 
         qualityDropdown.ClearOptions();
-        qualityDropdown.AddOptions( new List<string>( QualitySettings.names ) );
+        qualityDropdown.AddOptions( new List<string>( graphicsManager.QualityNames ) );
+        qualityDropdown.value = graphicsManager.QualityLevel;
+        qualityDropdown.onValueChanged.AddListener( OnQualityDropdownChanged );
+
+        postProcessToggle.isOn = graphicsManager.PostProcess;
+        postProcessToggle.onValueChanged.AddListener( OnPostProcessToggleChanged );
+
+        if( graphicsManager.DisplayCount > 1 )
+        {
+            SetInteractable( displayInputField, true );
+            displayInputField.text = ( graphicsManager.TargetDisplay + 1 ).ToString();
+        }
+        else
+        {
+            SetInteractable( displayInputField, false );
+            displayInputField.text = "1";
+        }
+
+        displayInputField.onEndEdit.AddListener( OnDisplayInputFieldChanged );
+
+        vSyncToggle.isOn = graphicsManager.VSync;
+        vSyncToggle.onValueChanged.AddListener( OnVSyncToggleChanged );
+
+        fpsLimit = graphicsManager.FpsLimit;
+        fpsLimitInputField.text = fpsLimit.ToString();
+        SetInteractable( fpsLimitInputField, !vSyncToggle.isOn );
+        fpsLimitInputField.onEndEdit.AddListener( OnFpsLimitInputFieldChanged );
+
+        backButton.onClick.AddListener( OnBackButton );
+
+        applyButton.onClick.AddListener( OnApplyButton );
+        applyButton.gameObject.SetActive( false );
+    }
+
+
+    void OnResolutionDropdownChanged( int value )
+    {
+        applyButton.gameObject.SetActive( true );
+    }
+
+    void OnQualityDropdownChanged( int value )
+    {
+        applyButton.gameObject.SetActive( true );
+    }
+
+    void OnPostProcessToggleChanged( bool value )
+    {
+        applyButton.gameObject.SetActive( true );
+    }
+
+    void OnDisplayInputFieldChanged( string value )
+    {
+        var newTargetDisplay = int.Parse( value ) - 1;
+        newTargetDisplay = Mathf.Clamp( newTargetDisplay, 0, graphicsManager.DisplayCount - 1 );
+
+        if( newTargetDisplay == targetDisplay )
+        {
+            return;
+        }
+
+        targetDisplay = newTargetDisplay;
+
+        displayInputField.text = ( targetDisplay + 1 ).ToString();
+        applyButton.gameObject.SetActive( true );
+    }
+
+    void OnVSyncToggleChanged( bool value )
+    {
+        SetInteractable( fpsLimitInputField, !value );
+        applyButton.gameObject.SetActive( true );
+    }
+
+    void OnFpsLimitInputFieldChanged( string value )
+    {
+        var newFpsLimit = int.Parse( value );
+        newFpsLimit = Mathf.Clamp( newFpsLimit, 10, 1000 );
+
+        if( newFpsLimit == fpsLimit )
+        {
+            return;
+        }
+
+        fpsLimit = newFpsLimit;
+
+        fpsLimitInputField.text = fpsLimit.ToString();
+        applyButton.gameObject.SetActive( true );
+    }
+
+
+    void OnBackButton()
+    {
+        onBackButtonCallback?.Invoke();
+        Hide();
+    }
+
+    void OnApplyButton()
+    {
+        graphicsManager.Resolution = graphicsManager.Resolutions[ resolutionDropdown.value ];
+        graphicsManager.QualityLevel = qualityDropdown.value;
+        graphicsManager.PostProcess = postProcessToggle.isOn;
+        graphicsManager.TargetDisplay = targetDisplay;
+        graphicsManager.VSync = vSyncToggle.isOn;
+        graphicsManager.FpsLimit = fpsLimit;
+        graphicsManager.SavePlayerPrefs();
+
+        applyButton.gameObject.SetActive( false );
+    }
+
+
+    static void SetInteractable( Component target, bool interactable )
+    {
+        var canvasGroup = target.GetComponent<CanvasGroup>();
+        canvasGroup.interactable = interactable;
+        canvasGroup.enabled = !interactable;
     }
 }

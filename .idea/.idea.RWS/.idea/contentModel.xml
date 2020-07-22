@@ -44,12 +44,6 @@
             <e p="WingSpawner.cs" t="Include" />
           </e>
         </e>
-        <e p="GameManagers" t="Include">
-          <e p="GameConstants.cs" t="Include" />
-          <e p="GraphicsManager.cs" t="Include" />
-          <e p="MultiplayerGameManager.cs" t="Include" />
-          <e p="SingleplayerGameManager.cs" t="Include" />
-        </e>
         <e p="Input" t="Include">
           <e p="ControllerNotes.txt" t="Include" />
           <e p="Controls" t="Include">
@@ -61,6 +55,12 @@
             <e p="RateProfileEditor.cs" t="Include" />
             <e p="Rates.cs" t="Include" />
           </e>
+        </e>
+        <e p="Managers" t="Include">
+          <e p="GameConstants.cs" t="Include" />
+          <e p="GraphicsManager.cs" t="Include" />
+          <e p="MultiplayerGameManager.cs" t="Include" />
+          <e p="SingleplayerGameManager.cs" t="Include" />
         </e>
         <e p="OrbitCamera" t="Include">
           <e p="Scripts" t="Include">

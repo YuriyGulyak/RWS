@@ -110,11 +110,13 @@ public class SensitivityPanel : MonoBehaviour
     void OnBackButton()
     {
         onBackButtonCallback?.Invoke();
+        Hide();
     }
 
     void OnSaveButton()
     {
         sensitivity.SavePlayerPrefs();
+        saveButton.gameObject.SetActive( false );
     }
 
 

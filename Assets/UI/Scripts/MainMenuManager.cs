@@ -35,7 +35,7 @@ public class MainMenuManager : MonoBehaviour
 
         singleplayerPanel.Hide();
         multiplayerLobby.Hide();
-        //settingsPanel.Hide();
+        settingsPanel.Hide();
     }
 
 
@@ -53,7 +53,7 @@ public class MainMenuManager : MonoBehaviour
         multiplayerLobby.Show();
     }
     
-    void OnSettingsButton()        
+    void OnSettingsButton()
     {
         singleplayerPanel.Hide();
         multiplayerLobby.Hide();

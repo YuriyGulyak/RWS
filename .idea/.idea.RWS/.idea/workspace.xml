@@ -8,17 +8,16 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/GameManagers/GameConstants.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9B956647-017D-4DC1-B8D3-D25EEF012467/f0/6ce06c43/Physics.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/UtilityScripts/Room/CountdownTimer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/8e/8520acfa/UnitySynchronizationContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Managers/GraphicsManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@2.0.1/Scripts/Runtime/TMPro_UGUI_Private.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonRealtime/Code/Player.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FB3709D4-3DAE-4F5F-B978-5D5202B86B97/2b/71a34504/Math.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonRealtime/Code/LoadBalancingClient.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/54/a54de53b/SetupCoroutine.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/90/94001f8e/LoadSceneMode.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GameManagers/MultiplayerGameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Desktop/DRS/Assets/Misc/GUI/GUIExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Desktop/DRS/Assets/Misc/GUI/GUILineRenderer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UI/Scripts/MultiplayerLobby/RoomListEntry.cs" root0="FORCE_HIGHLIGHTING" />
@@ -31,8 +30,11 @@
     <setting file="file://$PROJECT_DIR$/Assets/Input/Rates/RateProfile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/bc/397f9542/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/ae/a93e6b12/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Utils/SliderWithInputField.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/A497A6F1-8E1F-4B41-9421-B940ADD27A6E/1f/b340bfcd/Hashtable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/FlyingWing/Scripts/ControlSensitivity.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/31/f0bdf6ea/GameObject.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/2a/46763d44/QualitySettings.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Input/Rates/RateProfileEditor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/FlyingWing/Scripts/WingPhotonView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Input/PlayerInputWrapper.cs" root0="FORCE_HIGHLIGHTING" />
@@ -68,7 +70,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/UI/Scripts/PlayerOverviewEntry.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UI/Scripts/BatteryTelemetry.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UI/Scripts/WingTelemetry.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GameManagers/GraphicsManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UI/Scripts/InputTelemetry.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Desktop/DRS/Assets/@Tests/TestRateCurve/RateCurveRenderer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://D:/UPTK/Simulator/Assets/Utils/UIExtensions/Scripts/FocusPanel.cs" root0="SKIP_HIGHLIGHTING" />
@@ -97,6 +98,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Utils/DisplayManger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/FlyingWing/Scripts/WingSetupHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/f4/3fa918d6/Mathf.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@2.0.1/Scripts/Runtime/TMP_InputField.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/FlyingWing/Scripts/WingLauncher.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://D:/UPTK/Watcher (U9)/Assets/Scripts/ApplicationLogic.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/FlyingWing/Scripts/WindSound.cs" root0="FORCE_HIGHLIGHTING" />
@@ -106,9 +108,11 @@
     <setting file="file://D:/UPTK/Watcher (U9)/Assets/Scripts/DisplayManger.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/FlyingWing/Scripts/Motor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UI/Scripts/MenuPanel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://C:/Program Files/Unity 2019/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/EventSystem/UIBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/f8/ccaba7f8/Transform.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UI/Scripts/SettingsPanel/SensitivityPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/BC2876E8-FF0B-42A2-A2A1-1B51F2B23C8A/6d/d8af68c6/AudioSource.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://C:/Program Files/Unity 2019/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Selectable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Desktop/DRS/Assets/Misc/UIExtensions/Scripts/UILineRenderer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Desktop/DRS/Assets/Common/Scripts/GameGraphicsAgent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UI/Scripts/MainMenuManager.cs" root0="FORCE_HIGHLIGHTING" />
@@ -116,7 +120,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Scripts/AsteroidsGame.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Desktop/DRS/Assets/Common/Scripts/GraphicsConfig.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Desktop/DRS/Assets/Common/Scripts/ApplicationManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GameManagers/SingleplayerGameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/cc/5cb8297a/Screen.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UI/Scripts/MultiplayerLobby/LoginPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Utils/VersionDisplay.cs" root0="FORCE_HIGHLIGHTING" />
@@ -168,11 +171,8 @@
         <option value="$PROJECT_DIR$/Assets/UI/Scripts/MenuPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/UI/Scripts/MultiplayerLobby/MultiplayerLobby.cs" />
         <option value="$PROJECT_DIR$/Assets/UI/Scripts/SingleplayerPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/UI/Scripts/MainMenuManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Utils/DisplayManger.cs" />
         <option value="$PROJECT_DIR$/Assets/@Temp/GameResolution.cs" />
-        <option value="$PROJECT_DIR$/Assets/UI/Scripts/SettingsPanel/GraphicsPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/GameManagers/GraphicsManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Utils/GUIExtensions.cs" />
         <option value="$PROJECT_DIR$/Assets/Utils/GUILineRenderer.cs" />
         <option value="$PROJECT_DIR$/Assets/UI/Scripts/SettingsPanel/RatesPanel.cs" />
@@ -180,14 +180,17 @@
         <option value="$PROJECT_DIR$/Assets/Utils/UILineRenderer.cs" />
         <option value="$PROJECT_DIR$/Assets/Input/Rates/Rates.cs" />
         <option value="$PROJECT_DIR$/Assets/Input/Rates/RateProfile.cs" />
-        <option value="$PROJECT_DIR$/Assets/UI/Scripts/SettingsPanel/SettingsPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Input/ControllerSensitivity.cs" />
         <option value="$PROJECT_DIR$/Assets/Input/ControllSensitivity.cs" />
         <option value="$PROJECT_DIR$/Assets/Input/ControlSensitivity.cs" />
-        <option value="$PROJECT_DIR$/Assets/FlyingWing/Scripts/ControlSensitivity.cs" />
         <option value="$PROJECT_DIR$/Assets/FlyingWing/Scripts/WingPlayerControl.cs" />
         <option value="$PROJECT_DIR$/Assets/@Tests/SliderWithInputField.cs" />
+        <option value="$PROJECT_DIR$/Assets/FlyingWing/Scripts/ControlSensitivity.cs" />
         <option value="$PROJECT_DIR$/Assets/UI/Scripts/SettingsPanel/SensitivityPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/UI/Scripts/SettingsPanel/SettingsPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/UI/Scripts/MainMenuManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/UI/Scripts/SettingsPanel/GraphicsPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/GameManagers/GraphicsManager.cs" />
       </list>
     </option>
   </component>
@@ -200,7 +203,7 @@
   <component name="PropertiesComponent">
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="settings.editor.selected.configurable" value="CodeLensConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C#" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -299,10 +302,10 @@
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state x="845" y="302" key="RiderGenerateDialog/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1595187298690" />
-    <state x="461" y="211" key="SettingsEditor" timestamp="1595073807541">
+    <state x="461" y="211" key="SettingsEditor" timestamp="1595442258126">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
-    <state x="461" y="211" key="SettingsEditor/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1595073807541" />
+    <state x="461" y="211" key="SettingsEditor/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1595442258126" />
     <state x="616" y="222" width="672" height="676" key="search.everywhere.popup" timestamp="1594742278151">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
