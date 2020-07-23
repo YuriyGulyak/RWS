@@ -1,5 +1,6 @@
 ﻿// !! Need set execution order after default time fot this script !!
 
+using Boo.Lang;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
@@ -13,11 +14,19 @@ public class GraphicsManager : MonoBehaviour
 
     //----------------------------------------------------------------------------------------------------
 
-    public Resolution[] Resolutions => Screen.resolutions;
+    public Resolution[] Resolutions => resolutions;
 
     public Resolution Resolution
     {
-        get => Screen.currentResolution;
+        get
+        {
+            var resolutionWithoutRefreshRate = new Resolution
+            {
+                width = Screen.currentResolution.width, 
+                height = Screen.currentResolution.height
+            };
+            return resolutionWithoutRefreshRate;
+        }
         set => Screen.SetResolution( value.width, value.height, true );
     }
 
@@ -114,12 +123,28 @@ public class GraphicsManager : MonoBehaviour
     readonly string vSyncKey = "VSync";
     readonly string fpsLimitKey = "FpsLimit";
 
+    Resolution[] resolutions;
     int targetDisplay;
     int fpsLimit;
 
     
     void Awake()
     {
+        var resolutionList = new List<Resolution>();
+        foreach( var resolution in Screen.resolutions )
+        {
+            var resolutionWithoutRefreshRate = new Resolution
+            {
+                width = resolution.width, 
+                height = resolution.height
+            };
+            if( !resolutionList.Contains( resolutionWithoutRefreshRate ) )
+            {
+                resolutionList.Add( resolutionWithoutRefreshRate );
+            }
+        }
+        resolutions = resolutionList.ToArray();
+        
         LoadAndApllyPlayerPrefs();
     }
 }

@@ -140,7 +140,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/GameManagers/MainMenuManager.cs" />
         <option value="$PROJECT_DIR$/Assets/UI/Scripts/TestBlackScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/FlyingWing/Scripts/Battery.cs" />
         <option value="$PROJECT_DIR$/Assets/Utils/CursorHider.cs" />
@@ -189,8 +188,9 @@
         <option value="$PROJECT_DIR$/Assets/UI/Scripts/SettingsPanel/SensitivityPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/UI/Scripts/SettingsPanel/SettingsPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/UI/Scripts/MainMenuManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/UI/Scripts/SettingsPanel/GraphicsPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/GameManagers/GraphicsManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/UI/Scripts/SettingsPanel/GraphicsPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Managers/GraphicsManager.cs" />
       </list>
     </option>
   </component>
