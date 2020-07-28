@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using RWS;
+using UnityEngine;
 using UnityEngine.UI;
 
-public class InputTelemetry : MonoBehaviour
+public class InputTelemetry : Singleton<InputTelemetry>
 {
     [SerializeField] 
     StickDisplay leftStick = null;
@@ -9,17 +10,58 @@ public class InputTelemetry : MonoBehaviour
     [SerializeField] 
     StickDisplay rightStick = null;
     
-    [SerializeField] 
+    [SerializeField]
     Slider trimSlider = null;
 
+    //----------------------------------------------------------------------------------------------------
 
-    void Awake()
+    public void Init( InputManager inputManager )
     {
-        var playerInput = PlayerInputWrapper.Instance;
+        this.inputManager = inputManager;
+    }
+
+    public void Show()
+    {
+        gameObject.SetActive( true );
         
-        playerInput.Throttle.AddListener( value => leftStick.Y = Mathf.Lerp( -1f, 1f, value ) );
-        playerInput.Roll.AddListener( value => rightStick.X = value );
-        playerInput.Pitch.AddListener( value => rightStick.Y = -value );
-        playerInput.Trim.AddListener( value => trimSlider.value = value );
+        inputManager.ThrottleControl.Performed += OnThrottlePerformed;
+        inputManager.RollControl.Performed += OnRollPerformed;
+        inputManager.PitchControl.Performed += OnPitchPerformed;
+        inputManager.TrimControl.Performed += OnTrimPerformed;
+    }
+
+    public void Hide()
+    {
+        gameObject.SetActive( false );
+        
+        inputManager.ThrottleControl.Performed -= OnThrottlePerformed;
+        inputManager.RollControl.Performed -= OnRollPerformed;
+        inputManager.PitchControl.Performed -= OnPitchPerformed;
+        inputManager.TrimControl.Performed -= OnTrimPerformed;
+    }
+
+    //----------------------------------------------------------------------------------------------------
+
+    InputManager inputManager;
+
+
+    void OnThrottlePerformed( float value )
+    {
+        leftStick.Y = value;
+    }
+    
+    void OnRollPerformed( float value )
+    {
+        rightStick.X = value;
+    }
+    
+    void OnPitchPerformed( float value )
+    {
+        rightStick.Y = -value;
+    }
+    
+    void OnTrimPerformed( float value )
+    {
+        trimSlider.value = value;
     }
 }

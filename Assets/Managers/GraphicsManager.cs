@@ -1,5 +1,6 @@
 ﻿// !! Need set execution order after default time fot this script !!
 
+using System;
 using Boo.Lang;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
@@ -13,22 +14,6 @@ public class GraphicsManager : MonoBehaviour
     PostProcessVolume postProcessVolume = null;
 
     //----------------------------------------------------------------------------------------------------
-
-    public Resolution[] Resolutions => resolutions;
-
-    public Resolution Resolution
-    {
-        get
-        {
-            var resolutionWithoutRefreshRate = new Resolution
-            {
-                width = Screen.currentResolution.width, 
-                height = Screen.currentResolution.height
-            };
-            return resolutionWithoutRefreshRate;
-        }
-        set => Screen.SetResolution( value.width, value.height, true );
-    }
 
     public string[] QualityNames => QualitySettings.names;
 
@@ -45,7 +30,7 @@ public class GraphicsManager : MonoBehaviour
     }
 
     public int DisplayCount => displayManger.GetDisplays().Length;
-
+    
     public int TargetDisplay
     {
         get => targetDisplay;
@@ -55,12 +40,14 @@ public class GraphicsManager : MonoBehaviour
             {
                 return;
             }
-
             targetDisplay = value;
             displayManger.SetTargetDisplay( targetDisplay );
+            OnTargetDisplayChenged?.Invoke( targetDisplay );
         }
     }
 
+    public Action<int> OnTargetDisplayChenged;
+    
     public bool VSync
     {
         get => QualitySettings.vSyncCount == 1;
@@ -77,6 +64,39 @@ public class GraphicsManager : MonoBehaviour
         }
     }
 
+
+    public Resolution GetResolution()
+    {
+        var resolutionWithoutRefreshRate = new Resolution
+        {
+            width = Screen.currentResolution.width, 
+            height = Screen.currentResolution.height
+        };
+        return resolutionWithoutRefreshRate;
+    }
+
+    public void SetResolution( Resolution resolution )
+    {
+        Screen.SetResolution( resolution.width, resolution.height, true );
+    }
+
+    public List<Resolution> GetResolutions()
+    {
+        var resolutions = new List<Resolution>();
+        foreach( var resolution in Screen.resolutions )
+        {
+            var resolutionWithoutRefreshRate = new Resolution
+            {
+                width = resolution.width, 
+                height = resolution.height
+            };
+            if( !resolutions.Contains( resolutionWithoutRefreshRate ) )
+            {
+                resolutions.Add( resolutionWithoutRefreshRate );
+            }
+        }
+        return resolutions;
+    }
 
     public void LoadAndApllyPlayerPrefs()
     {
@@ -104,6 +124,10 @@ public class GraphicsManager : MonoBehaviour
         {
             FpsLimit = PlayerPrefs.GetInt( fpsLimitKey );
         }
+        else
+        {
+            FpsLimit = 60;
+        }
     }
 
     public void SavePlayerPrefs()
@@ -122,29 +146,13 @@ public class GraphicsManager : MonoBehaviour
     readonly string targetDisplayKey = "TargetDisplay";
     readonly string vSyncKey = "VSync";
     readonly string fpsLimitKey = "FpsLimit";
-
-    Resolution[] resolutions;
+    
     int targetDisplay;
     int fpsLimit;
 
     
     void Awake()
     {
-        var resolutionList = new List<Resolution>();
-        foreach( var resolution in Screen.resolutions )
-        {
-            var resolutionWithoutRefreshRate = new Resolution
-            {
-                width = resolution.width, 
-                height = resolution.height
-            };
-            if( !resolutionList.Contains( resolutionWithoutRefreshRate ) )
-            {
-                resolutionList.Add( resolutionWithoutRefreshRate );
-            }
-        }
-        resolutions = resolutionList.ToArray();
-        
         LoadAndApllyPlayerPrefs();
     }
 }

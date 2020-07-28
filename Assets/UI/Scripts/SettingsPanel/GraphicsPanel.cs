@@ -59,11 +59,22 @@ public class GraphicsPanel : MonoBehaviour
 
     void Awake()
     {
-        resolutionDropdown.ClearOptions();
-        resolutionDropdown.AddOptions( new List<string>( graphicsManager.Resolutions.Select( resolution => $"{resolution.width} x {resolution.height}" ) ) );
-        resolutionDropdown.value = Array.IndexOf( graphicsManager.Resolutions, graphicsManager.Resolution );
-        resolutionDropdown.onValueChanged.AddListener( OnResolutionDropdownChanged );
-
+        void updateResolutionDropdown() 
+        {
+            var allResolutions = graphicsManager.GetResolutions();
+            var currentResolution = graphicsManager.GetResolution();
+            
+            resolutionDropdown.ClearOptions();
+            resolutionDropdown.AddOptions( new List<string>( allResolutions.Select( resolution => $"{resolution.width} x {resolution.height}" ) ) );
+            resolutionDropdown.value = allResolutions.IndexOf( currentResolution );
+            resolutionDropdown.onValueChanged.AddListener( OnResolutionDropdownChanged );
+        };
+        updateResolutionDropdown();
+        graphicsManager.OnTargetDisplayChenged += newDisplay =>
+        {
+            updateResolutionDropdown();
+        };
+        
         qualityDropdown.ClearOptions();
         qualityDropdown.AddOptions( new List<string>( graphicsManager.QualityNames ) );
         qualityDropdown.value = graphicsManager.QualityLevel;
@@ -162,7 +173,7 @@ public class GraphicsPanel : MonoBehaviour
 
     void OnApplyButton()
     {
-        graphicsManager.Resolution = graphicsManager.Resolutions[ resolutionDropdown.value ];
+        graphicsManager.SetResolution( graphicsManager.GetResolutions()[ resolutionDropdown.value ] );
         graphicsManager.QualityLevel = qualityDropdown.value;
         graphicsManager.PostProcess = postProcessToggle.isOn;
         graphicsManager.TargetDisplay = targetDisplay;

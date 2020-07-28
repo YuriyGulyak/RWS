@@ -49,6 +49,7 @@
           <e p="Controls" t="Include">
             <e p="Controls.cs" t="Include" />
           </e>
+          <e p="InputManager.cs" t="Include" />
           <e p="PlayerInputWrapper.cs" t="Include" />
           <e p="Rates" t="Include">
             <e p="RateProfile.cs" t="Include" />
@@ -482,6 +483,8 @@
             <e p="PlayerOverviewEntry.cs" t="Include" />
             <e p="PlayerOverviewPanel.cs" t="Include" />
             <e p="SettingsPanel" t="Include">
+              <e p="ControlListEntry.cs" t="Include" />
+              <e p="ControlsPanel.cs" t="Include" />
               <e p="GraphicsPanel.cs" t="Include" />
               <e p="SensitivityPanel.cs" t="Include" />
               <e p="SettingsPanel.cs" t="Include" />

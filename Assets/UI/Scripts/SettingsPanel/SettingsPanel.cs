@@ -26,6 +26,9 @@ public class SettingsPanel : MonoBehaviour
 
     [SerializeField]
     GraphicsPanel graphicsPanel = null;
+
+    [SerializeField]
+    ControlsPanel controlsPanel = null;
     
     [SerializeField]
     SensitivityPanel sensitivityPanel = null; 
@@ -49,7 +52,9 @@ public class SettingsPanel : MonoBehaviour
         }
         
         navigationPanelGameObject.SetActive( true );
+        
         graphicsPanel.Hide();
+        controlsPanel.Hide();
         sensitivityPanel.Hide();
         
         gameObject.SetActive( false );
@@ -63,11 +68,13 @@ public class SettingsPanel : MonoBehaviour
         closeButton.onClick.AddListener( Hide );
         
         graphicsButton.onClick.AddListener( OnGraphicsButton );
+        controlsButton.onClick.AddListener( OnControlsButton );
         sensitivityButton.onClick.AddListener( OnSensitivityButton );
         
         navigationPanelGameObject.SetActive( true );
         
-        graphicsPanel.Hide();
+        graphicsPanel.Hide();    
+        controlsPanel.Hide();
         sensitivityPanel.Hide();
     }
 
@@ -80,7 +87,17 @@ public class SettingsPanel : MonoBehaviour
             navigationPanelGameObject.SetActive( true );
         } );
     }
-    
+
+    void OnControlsButton()
+    {
+        navigationPanelGameObject.SetActive( false );
+        
+        controlsPanel.Show( () =>
+        {
+            navigationPanelGameObject.SetActive( true );
+        } );
+    }
+
     void OnSensitivityButton()
     {
         navigationPanelGameObject.SetActive( false );

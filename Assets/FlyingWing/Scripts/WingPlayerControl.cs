@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using RWS;
+using UnityEngine;
 
 public class WingPlayerControl : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class WingPlayerControl : MonoBehaviour
 
     //----------------------------------------------------------------------------------------------------
 
+    InputManager inputManager;
     ControlSensitivity sensitivity;
     
     float throttle;
@@ -29,33 +31,26 @@ public class WingPlayerControl : MonoBehaviour
     void OnEnable()
     {
         sensitivity = new ControlSensitivity( true );
-        
-        var playerInput = PlayerInputWrapper.Instance;
-        if( playerInput )
-        {        
-            playerInput.Throttle.AddListener( SetThrottle );
-            playerInput.Roll.AddListener( SetRoll );
-            playerInput.Pitch.AddListener( SetPitch );
-            playerInput.Trim.AddListener( SetTrim );
-        }
+
+        inputManager = InputManager.Instance;
+        inputManager.ThrottleControl.Performed += SetThrottle;
+        inputManager.RollControl.Performed += SetRoll;
+        inputManager.PitchControl.Performed += SetPitch;
+        inputManager.TrimControl.Performed += SetTrim;
     }
 
     void OnDisable()
     {
-        var playerInput = PlayerInputWrapper.Instance;
-        if( playerInput )
-        {
-            playerInput.Throttle.RemoveListener( SetThrottle );
-            playerInput.Roll.RemoveListener( SetRoll );
-            playerInput.Pitch.RemoveListener( SetPitch );
-            playerInput.Trim.RemoveListener( SetTrim );
-        }
+        inputManager.ThrottleControl.Performed -= SetThrottle;
+        inputManager.RollControl.Performed -= SetRoll;
+        inputManager.PitchControl.Performed -= SetPitch;
+        inputManager.TrimControl.Performed -= SetTrim;
     }
 
 
     void SetThrottle( float value )
     {
-        throttle = value;
+        throttle = Mathf.InverseLerp( -1f, 1f, value );
         wing.Throttle = throttle;
     }
     

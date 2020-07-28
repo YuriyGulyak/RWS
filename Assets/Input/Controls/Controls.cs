@@ -240,39 +240,6 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""Restart"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""fcfc01fb-f8ae-49dc-a584-8ee623f7319b"",
-                    ""path"": ""<HID::FrSky FrSky Taranis Joystick>/stick/y"",
-                    ""interactions"": """",
-                    ""processors"": ""Invert"",
-                    ""groups"": """",
-                    ""action"": ""Throttle"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""c0189500-ed28-42b3-a6f0-d20bd5353dbb"",
-                    ""path"": ""<HID::Logitech Logitech Force 3D Pro>/slider"",
-                    ""interactions"": """",
-                    ""processors"": ""Invert"",
-                    ""groups"": """",
-                    ""action"": ""Throttle"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""91621762-c485-4880-bff2-f0f5296199aa"",
-                    ""path"": ""<HID::Madcatz Saitek Pro Flight X-55 Rhino Throttle>/stick/x"",
-                    ""interactions"": """",
-                    ""processors"": ""Invert"",
-                    ""groups"": """",
-                    ""action"": ""Throttle"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         }

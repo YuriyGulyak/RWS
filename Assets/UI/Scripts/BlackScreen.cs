@@ -8,6 +8,9 @@ public class BlackScreen : Singleton<BlackScreen>
     [SerializeField] 
     Image image = null;
 
+    [SerializeField]
+    bool startOnAwake = false;
+    
 
     public void StartFromBlackScreenAnimation( Action onAnimationFinished = null )
     {
@@ -51,7 +54,16 @@ public class BlackScreen : Singleton<BlackScreen>
         StartCoroutine( blackScreenAnimationCoroutine );
     }
 
-    
+
+    void Awake()
+    {
+        if( startOnAwake )
+        {
+            StartFromBlackScreenAnimation();
+        }
+    }
+
+
     IEnumerator ImageColorLerpCoroutine( Color colorA, Color colorB, float speed, Action onFinished = null )
     {
         var transition = 0f;

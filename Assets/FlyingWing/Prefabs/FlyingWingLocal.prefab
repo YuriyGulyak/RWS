@@ -791,8 +791,8 @@ MonoBehaviour:
   sweepAngle: 26.5
   aspectRatio: 4.665258
   airfoilConfig: {fileID: 11400000, guid: 9b803e336c3af0942a852f61a4fbaae6, type: 2}
-  liftScale: 1.4999362
-  dragScale: 1.0000126
+  liftScale: 0.39759338
+  dragScale: 1.3686478
   centerOfPressurePosition: 0.4798603
   cp: {x: 0.4449988, y: -0.0034999102, z: -0.20327118}
   liftForce: {x: 0, y: 0, z: 0}
@@ -1123,8 +1123,8 @@ MonoBehaviour:
   sweepAngle: 26.5
   aspectRatio: 4.665258
   airfoilConfig: {fileID: 11400000, guid: 9b803e336c3af0942a852f61a4fbaae6, type: 2}
-  liftScale: 1.4999733
-  dragScale: 1.0000052
+  liftScale: 1.2116488
+  dragScale: 1.0982562
   centerOfPressurePosition: 0.4798603
   cp: {x: 0.29499957, y: -0.0034999829, z: -0.12848426}
   liftForce: {x: 0, y: 0, z: 0}
@@ -1538,8 +1538,8 @@ MonoBehaviour:
   sweepAngle: 26.5
   aspectRatio: 4.665258
   airfoilConfig: {fileID: 11400000, guid: 9b803e336c3af0942a852f61a4fbaae6, type: 2}
-  liftScale: 1.4999945
-  dragScale: 1.0000011
+  liftScale: 1.4762105
+  dragScale: 1.0087118
   centerOfPressurePosition: 0.4798603
   cp: {x: 0.145, y: -0.0034999778, z: -0.05369756}
   liftForce: {x: 0, y: 0, z: 0}
@@ -1661,8 +1661,8 @@ MonoBehaviour:
   sweepAngle: 26.5
   aspectRatio: 4.665258
   airfoilConfig: {fileID: 11400000, guid: 9b803e336c3af0942a852f61a4fbaae6, type: 2}
-  liftScale: 1.4999504
-  dragScale: 1.0000098
+  liftScale: 0.7490866
+  dragScale: 1.2522423
   centerOfPressurePosition: 0.4798603
   cp: {x: 0.395001, y: -0.0034999344, z: -0.17834316}
   liftForce: {x: 0, y: 0, z: 0}
@@ -1824,8 +1824,8 @@ MonoBehaviour:
   sweepAngle: 26.5
   aspectRatio: 4.665258
   airfoilConfig: {fileID: 11400000, guid: 9b803e336c3af0942a852f61a4fbaae6, type: 2}
-  liftScale: 1.4999822
-  dragScale: 1.0000035
+  liftScale: 1.3456217
+  dragScale: 1.0532585
   centerOfPressurePosition: 0.4798603
   cp: {x: 0.245, y: -0.0034999603, z: -0.103555724}
   liftForce: {x: 0, y: 0, z: 0}
@@ -2162,8 +2162,8 @@ MonoBehaviour:
   sweepAngle: 26.5
   aspectRatio: 4.665258
   airfoilConfig: {fileID: 11400000, guid: 9b803e336c3af0942a852f61a4fbaae6, type: 2}
-  liftScale: 1.4999998
-  dragScale: 1
+  liftScale: 1.5000027
+  dragScale: 1.0000395
   centerOfPressurePosition: 0.4798603
   cp: {x: 0.045, y: -0.0034999952, z: -0.018235203}
   liftForce: {x: 0, y: 0, z: 0}
@@ -3121,8 +3121,8 @@ MonoBehaviour:
   sweepAngle: -26.5
   aspectRatio: 4.665258
   airfoilConfig: {fileID: 11400000, guid: 9b803e336c3af0942a852f61a4fbaae6, type: 2}
-  liftScale: 1.4999998
-  dragScale: 1
+  liftScale: 1.5000027
+  dragScale: 1.0000395
   centerOfPressurePosition: 0.4798603
   cp: {x: -0.045, y: -0.003500004, z: -0.018235203}
   liftForce: {x: 0, y: 0, z: 0}
@@ -3693,8 +3693,8 @@ MonoBehaviour:
   sweepAngle: -26.5
   aspectRatio: 4.665258
   airfoilConfig: {fileID: 11400000, guid: 9b803e336c3af0942a852f61a4fbaae6, type: 2}
-  liftScale: 1.4999362
-  dragScale: 1.0000126
+  liftScale: 0.39759338
+  dragScale: 1.3686478
   centerOfPressurePosition: 0.4798603
   cp: {x: -0.44500002, y: -0.003500031, z: -0.20326872}
   liftForce: {x: 0, y: 0, z: 0}
@@ -3786,8 +3786,8 @@ MonoBehaviour:
   sweepAngle: -26.5
   aspectRatio: 4.665258
   airfoilConfig: {fileID: 11400000, guid: 9b803e336c3af0942a852f61a4fbaae6, type: 2}
-  liftScale: 1.4999504
-  dragScale: 1.0000098
+  liftScale: 0.7490866
+  dragScale: 1.2522423
   centerOfPressurePosition: 0.4798603
   cp: {x: -0.395, y: -0.0035000267, z: -0.17834514}
   liftForce: {x: 0, y: 0, z: 0}
@@ -3880,8 +3880,8 @@ MonoBehaviour:
   sweepAngle: -26.5
   aspectRatio: 4.665258
   airfoilConfig: {fileID: 11400000, guid: 9b803e336c3af0942a852f61a4fbaae6, type: 2}
-  liftScale: 1.4999945
-  dragScale: 1.0000011
+  liftScale: 1.4762105
+  dragScale: 1.0087118
   centerOfPressurePosition: 0.4798603
   cp: {x: -0.145, y: -0.0035000215, z: -0.05369756}
   liftForce: {x: 0, y: 0, z: 0}
@@ -4105,8 +4105,8 @@ MonoBehaviour:
   sweepAngle: -26.5
   aspectRatio: 4.665258
   airfoilConfig: {fileID: 11400000, guid: 9b803e336c3af0942a852f61a4fbaae6, type: 2}
-  liftScale: 1.4999822
-  dragScale: 1.0000035
+  liftScale: 1.3456217
+  dragScale: 1.0532585
   centerOfPressurePosition: 0.4798603
   cp: {x: -0.245, y: -0.003500039, z: -0.103555724}
   liftForce: {x: 0, y: 0, z: 0}
@@ -4169,8 +4169,8 @@ MonoBehaviour:
   sweepAngle: -26.5
   aspectRatio: 4.665258
   airfoilConfig: {fileID: 11400000, guid: 9b803e336c3af0942a852f61a4fbaae6, type: 2}
-  liftScale: 1.499998
-  dragScale: 1.0000004
+  liftScale: 1.4957303
+  dragScale: 1.0017456
   centerOfPressurePosition: 0.4798603
   cp: {x: -0.095, y: -0.0035000127, z: -0.02876848}
   liftForce: {x: 0, y: 0, z: 0}
@@ -4421,8 +4421,8 @@ MonoBehaviour:
   sweepAngle: 26.5
   aspectRatio: 4.665258
   airfoilConfig: {fileID: 11400000, guid: 9b803e336c3af0942a852f61a4fbaae6, type: 2}
-  liftScale: 1.4999628
-  dragScale: 1.0000073
+  liftScale: 1.016621
+  dragScale: 1.163348
   centerOfPressurePosition: 0.4798603
   cp: {x: 0.3450003, y: -0.0034999587, z: -0.15341371}
   liftForce: {x: 0, y: 0, z: 0}
@@ -4514,8 +4514,8 @@ MonoBehaviour:
   sweepAngle: -26.5
   aspectRatio: 4.665258
   airfoilConfig: {fileID: 11400000, guid: 9b803e336c3af0942a852f61a4fbaae6, type: 2}
-  liftScale: 1.4999733
-  dragScale: 1.0000052
+  liftScale: 1.2116488
+  dragScale: 1.0982562
   centerOfPressurePosition: 0.4798603
   cp: {x: -0.29500002, y: -0.0035000176, z: -0.12848336}
   liftForce: {x: 0, y: 0, z: 0}
@@ -4637,8 +4637,8 @@ MonoBehaviour:
   sweepAngle: -26.5
   aspectRatio: 4.665258
   airfoilConfig: {fileID: 11400000, guid: 9b803e336c3af0942a852f61a4fbaae6, type: 2}
-  liftScale: 1.4999628
-  dragScale: 1.0000073
+  liftScale: 1.016621
+  dragScale: 1.163348
   centerOfPressurePosition: 0.4798603
   cp: {x: -0.34500003, y: -0.003500022, z: -0.15341425}
   liftForce: {x: 0, y: 0, z: 0}
@@ -4796,8 +4796,8 @@ MonoBehaviour:
   sweepAngle: -26.5
   aspectRatio: 4.665258
   airfoilConfig: {fileID: 11400000, guid: 9b803e336c3af0942a852f61a4fbaae6, type: 2}
-  liftScale: 1.4999893
-  dragScale: 1.0000021
+  liftScale: 1.4299916
+  dragScale: 1.0246466
   centerOfPressurePosition: 0.4798603
   cp: {x: -0.195, y: -0.0035000301, z: -0.07862664}
   liftForce: {x: 0, y: 0, z: 0}
@@ -5240,8 +5240,8 @@ MonoBehaviour:
   sweepAngle: 26.5
   aspectRatio: 4.665258
   airfoilConfig: {fileID: 11400000, guid: 9b803e336c3af0942a852f61a4fbaae6, type: 2}
-  liftScale: 1.4999893
-  dragScale: 1.0000021
+  liftScale: 1.4299916
+  dragScale: 1.0246466
   centerOfPressurePosition: 0.4798603
   cp: {x: 0.195, y: -0.0034999691, z: -0.07862664}
   liftForce: {x: 0, y: 0, z: 0}
@@ -7289,13 +7289,13 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 47
+      time: 0.47
       value: 0
-      inSlope: -0.07927634
-      outSlope: -0.07927634
+      inSlope: -9.755946
+      outSlope: -9.755946
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.026434392
+      inWeight: 0.042317014
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -7313,13 +7313,13 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 45
+      time: 0.47
       value: 1.5
-      inSlope: 0.030271443
-      outSlope: 0.030271443
+      inSlope: 3.2199392
+      outSlope: 3.2199392
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.051763322
+      inWeight: 0.049067747
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -7403,7 +7403,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wing: {fileID: 3766638978651995879}
-  rateProfile: {fileID: 11400000, guid: 70e7a0abbcc6dae429962fa5f0152b43, type: 2}
   rollRate: 1
   pitchRate: 1
   pitchTrim: 0
@@ -7509,8 +7508,8 @@ MonoBehaviour:
   sweepAngle: 26.5
   aspectRatio: 4.665258
   airfoilConfig: {fileID: 11400000, guid: 9b803e336c3af0942a852f61a4fbaae6, type: 2}
-  liftScale: 1.499998
-  dragScale: 1.0000004
+  liftScale: 1.4957303
+  dragScale: 1.0017456
   centerOfPressurePosition: 0.4798603
   cp: {x: 0.095, y: -0.0034999866, z: -0.02876848}
   liftForce: {x: 0, y: 0, z: 0}
