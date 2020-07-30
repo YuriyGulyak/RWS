@@ -57,6 +57,14 @@ public class GraphicsPanel : MonoBehaviour
     int fpsLimit;
 
 
+    void OnValidate()
+    {
+        if( !graphicsManager )
+        {
+            graphicsManager = GraphicsManager.Instance;
+        }
+    }
+
     void Awake()
     {
         void updateResolutionDropdown() 

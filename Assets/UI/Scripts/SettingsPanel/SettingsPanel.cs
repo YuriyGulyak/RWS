@@ -16,7 +16,7 @@ public class SettingsPanel : MonoBehaviour
     Button graphicsButton = null;
     
     [SerializeField]
-    Button soundsButton = null;
+    Button soundButton = null;
     
     [SerializeField]
     Button controlsButton = null;
@@ -28,16 +28,21 @@ public class SettingsPanel : MonoBehaviour
     GraphicsPanel graphicsPanel = null;
 
     [SerializeField]
+    SoundPanel soundPanel = null;
+    
+    [SerializeField]
     ControlsPanel controlsPanel = null;
     
     [SerializeField]
     SensitivityPanel sensitivityPanel = null; 
     
     //----------------------------------------------------------------------------------------------------
-    
+
+    public bool IsOpen => gameObject.activeSelf;
+
     public void Show()
     {
-        if( gameObject.activeSelf )
+        if( IsOpen )
         {
             return;
         }
@@ -46,7 +51,7 @@ public class SettingsPanel : MonoBehaviour
 
     public void Hide()
     {
-        if( !gameObject.activeSelf )
+        if( !IsOpen)
         {
             return;
         }
@@ -54,6 +59,7 @@ public class SettingsPanel : MonoBehaviour
         navigationPanelGameObject.SetActive( true );
         
         graphicsPanel.Hide();
+        soundPanel.Hide();
         controlsPanel.Hide();
         sensitivityPanel.Hide();
         
@@ -68,12 +74,14 @@ public class SettingsPanel : MonoBehaviour
         closeButton.onClick.AddListener( Hide );
         
         graphicsButton.onClick.AddListener( OnGraphicsButton );
+        soundButton.onClick.AddListener( OnSoundButton );
         controlsButton.onClick.AddListener( OnControlsButton );
         sensitivityButton.onClick.AddListener( OnSensitivityButton );
         
         navigationPanelGameObject.SetActive( true );
         
         graphicsPanel.Hide();    
+        soundPanel.Hide();
         controlsPanel.Hide();
         sensitivityPanel.Hide();
     }
@@ -83,6 +91,16 @@ public class SettingsPanel : MonoBehaviour
         navigationPanelGameObject.SetActive( false );
         
         graphicsPanel.Show( () =>
+        {
+            navigationPanelGameObject.SetActive( true );
+        } );
+    }
+
+    void OnSoundButton()
+    {
+        navigationPanelGameObject.SetActive( false );
+        
+        soundPanel.Show( () =>
         {
             navigationPanelGameObject.SetActive( true );
         } );

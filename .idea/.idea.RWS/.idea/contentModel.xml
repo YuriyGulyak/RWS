@@ -62,6 +62,7 @@
           <e p="GraphicsManager.cs" t="Include" />
           <e p="MultiplayerGameManager.cs" t="Include" />
           <e p="SingleplayerGameManager.cs" t="Include" />
+          <e p="SoundManager.cs" t="Include" />
         </e>
         <e p="OrbitCamera" t="Include">
           <e p="Scripts" t="Include">
@@ -466,9 +467,10 @@
           <e p="Scripts" t="Include">
             <e p="BatteryTelemetry.cs" t="Include" />
             <e p="BlackScreen.cs" t="Include" />
+            <e p="GameMenu.cs" t="Include" />
             <e p="InputTelemetry.cs" t="Include" />
             <e p="LapTime.cs" t="Include" />
-            <e p="MainMenuManager.cs" t="Include" />
+            <e p="MainMenu.cs" t="Include" />
             <e p="MenuPanel.cs" t="Include" />
             <e p="MotorTelemetry.cs" t="Include" />
             <e p="MultiplayerLobby" t="Include">
@@ -488,6 +490,7 @@
               <e p="GraphicsPanel.cs" t="Include" />
               <e p="SensitivityPanel.cs" t="Include" />
               <e p="SettingsPanel.cs" t="Include" />
+              <e p="SoundPanel.cs" t="Include" />
             </e>
             <e p="SingleplayerPanel.cs" t="Include" />
             <e p="StickDisplay.cs" t="Include" />

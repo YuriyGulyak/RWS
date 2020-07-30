@@ -5,7 +5,7 @@ using Boo.Lang;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
-public class GraphicsManager : MonoBehaviour
+public class GraphicsManager : Singleton<GraphicsManager>
 {
     [SerializeField]
     DisplayManger displayManger = null;
@@ -104,10 +104,18 @@ public class GraphicsManager : MonoBehaviour
         {
             QualityLevel = PlayerPrefs.GetInt( qualityLevelKey );
         }
+        else
+        {
+            QualityLevel = 2;
+        }
         
         if( PlayerPrefs.HasKey( postProcessKey ) )
         {
             PostProcess = PlayerPrefs.GetInt( postProcessKey ) > 0;
+        }
+        else
+        {
+            PostProcess = true;
         }
         
         if( PlayerPrefs.HasKey( targetDisplayKey ) )
@@ -118,6 +126,10 @@ public class GraphicsManager : MonoBehaviour
         if( PlayerPrefs.HasKey( vSyncKey ) )
         {
             VSync = PlayerPrefs.GetInt( vSyncKey ) > 0;
+        }
+        else
+        {
+            VSync = true;
         }
 
         if( PlayerPrefs.HasKey( fpsLimitKey ) )
@@ -146,7 +158,7 @@ public class GraphicsManager : MonoBehaviour
     readonly string targetDisplayKey = "TargetDisplay";
     readonly string vSyncKey = "VSync";
     readonly string fpsLimitKey = "FpsLimit";
-    
+
     int targetDisplay;
     int fpsLimit;
 

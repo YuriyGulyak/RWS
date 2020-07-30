@@ -1,21 +1,14 @@
-﻿using System.Collections;
+﻿using RWS;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class SingleplayerGameManager : MonoBehaviour
 {
     [SerializeField]
-    GameObject pressSpacebarText = null;
-
-    [SerializeField]
     GameObject orbitCamera = null;
 
     [SerializeField]
     GameObject fpvCamera = null;
-
-    [SerializeField]
-    GameObject inputInfo = null;
 
     [SerializeField]
     WingLauncher wingLauncher = null;
@@ -26,22 +19,26 @@ public class SingleplayerGameManager : MonoBehaviour
     [SerializeField]
     LapTime lapTime = null;
 
+    [SerializeField]
+    GameMenu gameMenu = null;
+
+    [SerializeField]
+    SettingsPanel settingsPanel = null;
+    
     //----------------------------------------------------------------------------------------------------
 
     readonly string bestLapKey = "BestLap";
     
+    bool gameStarted;
+
     
     void OnEnable()
     {
-        SceneManager.sceneLoaded += OnsceneLoaded;
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnsceneLoaded;
-    }
 
-    void OnsceneLoaded( Scene scene, LoadSceneMode mode )
+    void OnSceneLoaded( Scene scene, LoadSceneMode mode )
     {
         BlackScreen.Instance.StartFromBlackScreenAnimation();
     }
@@ -57,25 +54,58 @@ public class SingleplayerGameManager : MonoBehaviour
 
         raceTrack.OnStart.AddListener( _ => lapTime.StartNewTime() );
         raceTrack.OnFinish.AddListener( _ => lapTime.CompareTime() );
+        
+        settingsPanel.Hide();
+        gameMenu.Show();
+
+        gameMenu.OnStartButton += OnStartButton;
+        gameMenu.OnResumeButton += OnResumeButton;
+        gameMenu.OnSettingsButton += OnSettingsButton;
+        gameMenu.OnExitButton += OnExitButton;
+        
+        InputManager.Instance.OnEscapeButton += OnEscapeButton;
     }
 
-    IEnumerator Start()
+
+    void OnStartButton()
     {
-        yield return new WaitUntil( () => Keyboard.current.spaceKey.wasPressedThisFrame );
-                 
-        pressSpacebarText.SetActive( false );
-        inputInfo.SetActive( false );
+        gameMenu.Hide();
         
         orbitCamera.SetActive( false );
         fpvCamera.SetActive( true );
 
-        var playerInput = PlayerInputWrapper.Instance;
-        playerInput.Launch.AddListener( wingLauncher.Launch );
-        playerInput.Restart.AddListener( RestartGame );
+        var inputManager = InputManager.Instance;
+        inputManager.LaunchControl.Performed += OnLaunchButton;
+        inputManager.ResetControl.Performed += OnResetButton;
+
+        gameStarted = true;
     }
     
+    void OnResumeButton()
+    {
+        gameMenu.Hide();
+        settingsPanel.Hide();
+    }
+    
+    void OnSettingsButton()
+    {
+        settingsPanel.Show();
+    }
+    
+    void OnExitButton()
+    {
+        BlackScreen.Instance.StartToBlackScreenAnimation( () =>
+        {
+            SceneManager.LoadSceneAsync( 0 );
+        } );
+    }
 
-    void RestartGame()
+    void OnLaunchButton()
+    {
+        wingLauncher.Launch();
+    }
+
+    void OnResetButton()
     {
         var wing = FindObjectOfType<FlyingWing>();
         var wingRigibody = wing.GetComponentInChildren<Rigidbody>();
@@ -88,5 +118,23 @@ public class SingleplayerGameManager : MonoBehaviour
 
         lapTime.Reset();
         lapTime.Hide();
+    }
+    
+    void OnEscapeButton()
+    {
+        if( !gameStarted )
+        {
+            return;
+        }
+        
+        if( gameMenu.IsOpen )
+        {
+            gameMenu.Hide();
+            settingsPanel.Hide();
+        }
+        else
+        {
+            gameMenu.Show();
+        }
     }
 }

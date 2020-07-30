@@ -37,6 +37,9 @@ public class MotorSound : MonoBehaviour
     
     [SerializeField]
     float deadzoneMin = 0.01f;
+
+    [SerializeField]
+    float volumeScale = 1f;
     
     //--------------------------------------------------------------------------------------------------------------
     
@@ -73,8 +76,8 @@ public class MotorSound : MonoBehaviour
     {
         if( soundTransition > deadzoneMin )
         {
-            lowSoundSource.volume = lowSoundVolumeCurve.Evaluate( soundTransition );
-            highSoundSource.volume = highSoundVolumeCurve.Evaluate( soundTransition );
+            lowSoundSource.volume = lowSoundVolumeCurve.Evaluate( soundTransition ) * volumeScale;
+            highSoundSource.volume = highSoundVolumeCurve.Evaluate( soundTransition ) * volumeScale;
         
             lowSoundSource.pitch = lowSoundPitchCurve.Evaluate( soundTransition );
             highSoundSource.pitch = highSoundPitchCurve.Evaluate( soundTransition );

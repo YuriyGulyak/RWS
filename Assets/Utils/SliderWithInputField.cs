@@ -12,6 +12,9 @@ public class SliderWithInputField : MonoBehaviour
     [SerializeField]
     TMP_InputField inputField = null;
 
+    [SerializeField]
+    int fractionalDigits = 2;
+
 
     [System.Serializable]
     public class FloatEvent : UnityEvent<float> { }
@@ -23,6 +26,15 @@ public class SliderWithInputField : MonoBehaviour
         set => slider.value = value;
     }
 
+
+    string valueFormat;
+    
+    
+    void Awake()
+    {
+        valueFormat = inputField.text;
+        inputField.text = RoundValue( slider.value, fractionalDigits ).ToString( valueFormat, CultureInfo.InvariantCulture );
+    }
 
     void OnEnable()
     {
@@ -39,21 +51,21 @@ public class SliderWithInputField : MonoBehaviour
 
     void OnSliderChanged( float newValue )
     {
-        newValue = RoundValue( newValue );
-        inputField.text = newValue.ToString( "0.00", CultureInfo.InvariantCulture );
+        newValue = RoundValue( newValue, fractionalDigits );
+        inputField.text = newValue.ToString( valueFormat, CultureInfo.InvariantCulture );
         OnValueChanged.Invoke( newValue );
     }
     
     void OnInputFieldChanged( string newValueString )
     {
         var newValue = float.Parse( newValueString, CultureInfo.InvariantCulture );
-        newValue = RoundValue( newValue );
-        slider.value = RoundValue( newValue );
+        newValue = RoundValue( newValue, fractionalDigits );
+        slider.value = RoundValue( newValue, fractionalDigits );
     }
     
 
-    static float RoundValue( float value )
+    static float RoundValue( float value, int fractionalDigits )
     {
-        return (float)System.Math.Round( value, 2 );
+        return (float)System.Math.Round( value, fractionalDigits );
     }
 }

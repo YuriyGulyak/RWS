@@ -226,29 +226,7 @@ namespace RWS
         public ButtonControl LaunchControl => launchControl;
 
         public ButtonControl ResetControl => resetControl;
-     
-
-        public void LoadPlayerPrefs()
-        {
-            throttleControl.Load( throttleControlInfoKey );
-            rollControl.Load( rollControlInfoKey );
-            pitchControl.Load( pitchControlInfoKey );
-            trimControl.Load( trimControlInfoKey );
-            launchControl.Load( launchControlInfoKey );
-            resetControl.Load( resetControlInfoKey );
-        }
-
-        public void SavePlayerPrefs()
-        {
-            throttleControl.Save( throttleControlInfoKey );
-            rollControl.Save( rollControlInfoKey );
-            pitchControl.Save( pitchControlInfoKey );
-            trimControl.Save( trimControlInfoKey );
-            launchControl.Save( launchControlInfoKey );
-            resetControl.Save( resetControlInfoKey );
-        }
-
-        
+                
         public bool AxesDisplay
         {
             get => axesDisplay;
@@ -269,6 +247,29 @@ namespace RWS
             }
         }
         
+        public Action OnEscapeButton;
+        
+        
+        public void LoadPlayerPrefs()
+        {
+            throttleControl.Load( throttleControlInfoKey );
+            rollControl.Load( rollControlInfoKey );
+            pitchControl.Load( pitchControlInfoKey );
+            trimControl.Load( trimControlInfoKey );
+            launchControl.Load( launchControlInfoKey );
+            resetControl.Load( resetControlInfoKey );
+        }
+
+        public void SavePlayerPrefs()
+        {
+            throttleControl.Save( throttleControlInfoKey );
+            rollControl.Save( rollControlInfoKey );
+            pitchControl.Save( pitchControlInfoKey );
+            trimControl.Save( trimControlInfoKey );
+            launchControl.Save( launchControlInfoKey );
+            resetControl.Save( resetControlInfoKey );
+        }
+
         //----------------------------------------------------------------------------------------------------
         
         readonly string throttleControlInfoKey = "ThrottleControlInfo";
@@ -287,6 +288,7 @@ namespace RWS
         ButtonControl resetControl;
         InputAction listenButtonInputAction;
         bool axesDisplay;
+        InputAction escapeInputAction;
         
         
         IEnumerator ListenAxisCoroutine( Action<InputControl> callback, float threshold = 0.5f )
@@ -361,6 +363,19 @@ namespace RWS
             {
                 AxesDisplay = true;
             }
+
+            escapeInputAction = new InputAction( type: InputActionType.Button, binding: "<Keyboard>/escape" );
+            escapeInputAction.performed += context => OnEscapeButton?.Invoke();
+        }
+
+        void OnEnable()
+        {
+            escapeInputAction.Enable();
+        }
+        
+        void OnDisable()
+        {
+            escapeInputAction.Disable();
         }
     }
 }
