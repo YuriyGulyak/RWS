@@ -7,9 +7,6 @@
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="@Tests" t="Include">
-          <e p="GameResolution.cs" t="Include" />
-        </e>
         <e p="Environment" t="Include">
           <e p="Skybox" t="Include">
             <e p="HorizontalSkybox.shader" t="Include" />
@@ -49,7 +46,6 @@
           <e p="Controls" t="Include">
             <e p="Controls.cs" t="Include" />
           </e>
-          <e p="InputManager.cs" t="Include" />
           <e p="PlayerInputWrapper.cs" t="Include" />
           <e p="Rates" t="Include">
             <e p="RateProfile.cs" t="Include" />
@@ -58,8 +54,8 @@
           </e>
         </e>
         <e p="Managers" t="Include">
-          <e p="GameConstants.cs" t="Include" />
           <e p="GraphicsManager.cs" t="Include" />
+          <e p="InputManager.cs" t="Include" />
           <e p="MultiplayerGameManager.cs" t="Include" />
           <e p="SingleplayerGameManager.cs" t="Include" />
           <e p="SoundManager.cs" t="Include" />

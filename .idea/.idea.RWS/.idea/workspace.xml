@@ -61,11 +61,13 @@
     <setting file="file://$PROJECT_DIR$/Assets/Race/Scripts/RaceGate.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UI/Scripts/MultiplayerLobby/PlayerListEntry.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/3f/b4c99d38/Resolution.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Managers/MultiplayerGameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Managers/SingleplayerGameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Utils/FpsLimit.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Utils/Singleton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Utils/GizmosLine.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Scripts/Game/PlayerOverviewPanel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Managers/SoundManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Utils/DragRect.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Utils/FpsDisplay.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Scripts/Game/Spaceship.cs" root0="FORCE_HIGHLIGHTING" />
@@ -99,7 +101,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/FlyingWing/Scripts/MotorModel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://D:/#Backup/2018-08-31/Desktop/Bus/Assets/Game/Weapon/Scripts/WeaponAim.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/FlyingWing/Scripts/PIDController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Input/InputManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/FlyingWing/Scripts/Propeller.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://D:/#Backup/2018-08-31/Desktop/Bus/Assets/Game/Weapon/Scripts/WeaponShooting.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UI/Scripts/SettingsPanel/SettingsPanel.cs" root0="FORCE_HIGHLIGHTING" />
@@ -141,6 +142,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/UI/Scripts/MultiplayerLobby/LoginPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Utils/VersionDisplay.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/18/1f1b2e77/GL.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Desktop/DRS/Assets/Common/Scripts/AudioManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://C:/Program Files/Unity 2019/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Slider.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/UtilityScripts/PhotonPlayer/PunPlayerScores.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/BC2876E8-FF0B-42A2-A2A1-1B51F2B23C8A/80/3ef5e49f/AudioMixer.cs" root0="SKIP_HIGHLIGHTING" />
@@ -160,10 +162,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Utils/FpsDisplay.cs" />
-        <option value="$PROJECT_DIR$/Assets/FlyingWing/Scripts/WingSpawner.cs" />
         <option value="$PROJECT_DIR$/Assets/UI/Scripts/PlayerOverviewEntry.cs" />
-        <option value="$PROJECT_DIR$/Assets/UI/Scripts/PlayerOverviewPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/UI/Scripts/LapTimer.cs" />
         <option value="$PROJECT_DIR$/Assets/UI/Scripts/LapTime.cs" />
         <option value="$PROJECT_DIR$/Assets/GameManagers/SingleplayerGameManager.cs" />
@@ -190,7 +189,6 @@
         <option value="$PROJECT_DIR$/Assets/Input/ControlSensitivity.cs" />
         <option value="$PROJECT_DIR$/Assets/@Tests/SliderWithInputField.cs" />
         <option value="$PROJECT_DIR$/Assets/FlyingWing/Scripts/ControlSensitivity.cs" />
-        <option value="$PROJECT_DIR$/Assets/UI/Scripts/SettingsPanel/SensitivityPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/GameManagers/GraphicsManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Input/PlayerInputWrapper.cs" />
         <option value="$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0/InputSystem/Actions/InputAction.cs" />
@@ -202,15 +200,19 @@
         <option value="$PROJECT_DIR$/Assets/UI/Scripts/BlackScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/UI/Scripts/SettingsPanel/SoundsPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/FlyingWing/Scripts/MotorSound.cs" />
-        <option value="$PROJECT_DIR$/Assets/UI/Scripts/SettingsPanel/SoundPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Utils/SliderWithInputField.cs" />
-        <option value="$PROJECT_DIR$/Assets/Input/InputManager.cs" />
         <option value="$PROJECT_DIR$/Assets/UI/Scripts/MainMenuManager.cs" />
         <option value="$PROJECT_DIR$/Assets/UI/Scripts/SettingsPanel/SettingsPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/UI/Scripts/GameMenu.cs" />
+        <option value="$PROJECT_DIR$/Assets/UI/Scripts/PlayerOverviewPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Managers/MultiplayerGameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Input/InputManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Managers/SingleplayerGameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Managers/GraphicsManager.cs" />
         <option value="$PROJECT_DIR$/Assets/UI/Scripts/SettingsPanel/GraphicsPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Managers/SingleplayerGameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Managers/SoundManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/UI/Scripts/SettingsPanel/SoundPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/UI/Scripts/SettingsPanel/SensitivityPanel.cs" />
       </list>
     </option>
   </component>

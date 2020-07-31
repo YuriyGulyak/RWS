@@ -45,7 +45,7 @@ public class SingleplayerGameManager : MonoBehaviour
     
     void Awake()
     {
-        lapTime.Init( PlayerPrefs.HasKey( bestLapKey ) ? PlayerPrefs.GetFloat( bestLapKey ) : 0f );
+        lapTime.Init( PlayerPrefs.HasKey( bestLapKey ) ? PlayerPrefs.GetFloat( bestLapKey, 0f ) : 0f );
         lapTime.OnNewBestTime += newBestTime =>
         {
             PlayerPrefs.SetFloat( bestLapKey, newBestTime );
@@ -78,6 +78,8 @@ public class SingleplayerGameManager : MonoBehaviour
         inputManager.LaunchControl.Performed += OnLaunchButton;
         inputManager.ResetControl.Performed += OnResetButton;
 
+        Cursor.visible = false;
+        
         gameStarted = true;
     }
     
@@ -85,6 +87,7 @@ public class SingleplayerGameManager : MonoBehaviour
     {
         gameMenu.Hide();
         settingsPanel.Hide();
+        Cursor.visible = false;
     }
     
     void OnSettingsButton()
@@ -127,14 +130,10 @@ public class SingleplayerGameManager : MonoBehaviour
             return;
         }
         
-        if( gameMenu.IsOpen )
-        {
-            gameMenu.Hide();
-            settingsPanel.Hide();
-        }
-        else
+        if( !gameMenu.IsOpen )
         {
             gameMenu.Show();
+            Cursor.visible = true;
         }
     }
 }

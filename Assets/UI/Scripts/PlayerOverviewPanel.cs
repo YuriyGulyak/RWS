@@ -12,7 +12,28 @@ public class PlayerOverviewPanel : MonoBehaviourPunCallbacks
     [SerializeField] 
     Transform playerOverviewEntryParent = null;
 
+    //----------------------------------------------------------------------------------------------------
+
+    public bool IsActive => gameObject.activeSelf;
     
+    public void Show()
+    {
+        if( !IsActive )
+        {
+            gameObject.SetActive( true );
+        }
+    }
+
+    public void Hide()
+    {
+        if( IsActive )
+        {
+            gameObject.SetActive( false );
+        }
+    }
+    
+    //----------------------------------------------------------------------------------------------------
+
     public override void OnPlayerEnteredRoom( Player newPlayer )
     {
         //print( $"OnPlayerEnteredRoom: {newPlayer.ActorNumber}" );
@@ -44,7 +65,7 @@ public class PlayerOverviewPanel : MonoBehaviourPunCallbacks
             playerListEntries[ targetPlayer.ActorNumber ].SetTime( newBestTime );
         }
     }
-
+    
 
     readonly string bestLapPropertyKey = "BestLapProperty";
     Dictionary<int, PlayerOverviewEntry> playerListEntries;
@@ -66,6 +87,7 @@ public class PlayerOverviewPanel : MonoBehaviourPunCallbacks
         }
     }
 
+    /*
     void Update()
     {
         if( Input.GetKeyDown( KeyCode.C ) )
@@ -73,7 +95,7 @@ public class PlayerOverviewPanel : MonoBehaviourPunCallbacks
             PhotonNetwork.LocalPlayer.SetCustomProperties( new Hashtable { { bestLapPropertyKey, 15f } } );
         }
     }
-
+    */
 
     PlayerOverviewEntry CreatePlayerEntry( int number, float time, string nickName )
     {

@@ -4,6 +4,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using RWS;
 
 public class GraphicsPanel : MonoBehaviour
 {

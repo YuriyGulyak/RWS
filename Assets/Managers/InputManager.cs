@@ -17,7 +17,7 @@ namespace RWS
                 Performed?.Invoke( context.ReadValue<float>() * axisDirection );
             };
         }
-        
+
         //----------------------------------------------------------------------------------------------------
         
         public Action<float> Performed;
@@ -86,6 +86,11 @@ namespace RWS
             }
         }
 
+        public void Disable()
+        {
+            inputAction.Disable();
+        }
+        
         //----------------------------------------------------------------------------------------------------
         
         InputAction inputAction;
@@ -160,6 +165,11 @@ namespace RWS
             }
         }
 
+        public void Disable()
+        {
+            inputAction.Disable();
+        }
+        
         //----------------------------------------------------------------------------------------------------
         
         InputAction inputAction;
@@ -168,13 +178,13 @@ namespace RWS
     
     public class InputManager : Singleton<InputManager>
     {
-        public void ListenAxis( Action<InputControl> callback, float threshold = 0.5f )
+        public void ListenAxis( Action<InputControl> callback )
         {
             if( listenAxisCoroutine != null )
             {
                 StopCoroutine( listenAxisCoroutine );
             }
-            listenAxisCoroutine = ListenAxisCoroutine( callback, threshold );
+            listenAxisCoroutine = ListenAxisCoroutine( callback );
             StartCoroutine( listenAxisCoroutine );
         }
 
@@ -291,10 +301,10 @@ namespace RWS
         InputAction escapeInputAction;
         
         
-        IEnumerator ListenAxisCoroutine( Action<InputControl> callback, float threshold = 0.5f )
+        IEnumerator ListenAxisCoroutine( Action<InputControl> callback, float threshold = 0.75f )
         {
             var axesDictionary = new Dictionary<string, float>();
-            
+
             while( true )
             {
                 foreach( var device in InputSystem.devices )
@@ -363,19 +373,25 @@ namespace RWS
             {
                 AxesDisplay = true;
             }
-
-            escapeInputAction = new InputAction( type: InputActionType.Button, binding: "<Keyboard>/escape" );
-            escapeInputAction.performed += context => OnEscapeButton?.Invoke();
         }
 
         void OnEnable()
         {
+            escapeInputAction = new InputAction( type: InputActionType.Button, binding: "<Keyboard>/escape" );
+            escapeInputAction.performed += context => OnEscapeButton?.Invoke();
             escapeInputAction.Enable();
         }
         
         void OnDisable()
         {
             escapeInputAction.Disable();
+            
+            throttleControl.Disable();
+            rollControl.Disable();
+            pitchControl.Disable();
+            trimControl.Disable();
+            launchControl.Disable();
+            resetControl.Disable();
         }
     }
 }
