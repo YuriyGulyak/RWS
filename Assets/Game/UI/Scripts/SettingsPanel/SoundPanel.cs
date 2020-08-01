@@ -106,7 +106,7 @@ public class SoundPanel : MonoBehaviour
         soundManager.MasterVolume = masterVolumeSlider.Value;
         soundManager.MotorVolume = motorVolumeSlider.Value;
         soundManager.ServoVolume = servoVolumeSlider.Value;
-        soundManager.WindVolume = motorVolumeSlider.Value;
+        soundManager.WindVolume = windVolumeSlider.Value;
         soundManager.SavePlayerPrefs();
         
         applyButton.gameObject.SetActive( false );

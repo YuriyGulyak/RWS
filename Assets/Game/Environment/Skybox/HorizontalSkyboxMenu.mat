@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HorizontalSkyboxBW
+  m_Name: HorizontalSkyboxMenu
   m_Shader: {fileID: 4800000, guid: 979bdf69ba783ae4483981aa87287c7e, type: 3}
   m_ShaderKeywords: _EMISSION _SUNDISK_HIGH_QUALITY
   m_LightmapFlags: 1

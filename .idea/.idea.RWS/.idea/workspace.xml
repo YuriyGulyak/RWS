@@ -32,6 +32,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/2a/46763d44/QualitySettings.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0/InputSystem/Plugins/PlayerInput/PlayerInputManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Utils/CurveEditor/Editor/PathEditor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/CreateRoomPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/90D4BCB0-03FB-405F-B092-41AED2F178AA/61/d4ee949a/EditorUtility.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Desktop/DRS/Assets/UI/Menu/MainMenuPanel.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/4b/226b4505/Component.cs" root0="SKIP_HIGHLIGHTING" />
@@ -83,6 +84,7 @@
     <setting file="file://D:/UPTK/Watcher (U9)/Assets/Scripts/DisplayManger.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://C:/Program Files/Unity 2019/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/EventSystem/UIBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/f8/ccaba7f8/Transform.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/MotorSound.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/BC2876E8-FF0B-42A2-A2A1-1B51F2B23C8A/6d/d8af68c6/AudioSource.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0/InputSystem/Controls/InputControl.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://C:/Program Files/Unity 2019/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Selectable.cs" root0="SKIP_HIGHLIGHTING" />
@@ -99,6 +101,8 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0/InputSystem/Actions/InputActionSetupExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Utils/VersionDisplay.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/18/1f1b2e77/GL.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/MainMenu.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/GameMenu.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Desktop/DRS/Assets/Common/Scripts/AudioManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://C:/Program Files/Unity 2019/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Slider.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/UtilityScripts/PhotonPlayer/PunPlayerScores.cs" root0="FORCE_HIGHLIGHTING" />
@@ -115,9 +119,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/UI/Scripts/SingleplayerPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Utils/DisplayManger.cs" />
-        <option value="$PROJECT_DIR$/Assets/@Temp/GameResolution.cs" />
         <option value="$PROJECT_DIR$/Assets/Utils/GUIExtensions.cs" />
         <option value="$PROJECT_DIR$/Assets/Utils/GUILineRenderer.cs" />
         <option value="$PROJECT_DIR$/Assets/UI/Scripts/SettingsPanel/RatesPanel.cs" />
@@ -164,8 +165,11 @@
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/GraphicsPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/Managers/GraphicsManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/SoundPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/CreateRoomPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/Managers/SoundManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/ServoSound.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/WindSound.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/MotorSound.cs" />
       </list>
     </option>
   </component>
@@ -277,10 +281,10 @@
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state width="1876" height="401" key="GridCell.Tab.3.right/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1592847760205" />
-    <state x="845" y="302" key="RiderGenerateDialog" timestamp="1595695684056">
+    <state x="845" y="302" key="RiderGenerateDialog" timestamp="1596295311406">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
-    <state x="845" y="302" key="RiderGenerateDialog/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1595695684056" />
+    <state x="845" y="302" key="RiderGenerateDialog/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1596295311406" />
     <state x="461" y="211" key="SettingsEditor" timestamp="1595870835292">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>

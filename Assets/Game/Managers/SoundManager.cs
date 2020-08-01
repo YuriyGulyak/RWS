@@ -5,18 +5,19 @@ namespace RWS
 {
     public class SoundManager : Singleton<SoundManager>
     {
-        public Action<float> OnMasterVolumeChanged;
-        public Action<float> OnMotorVolumeChanged;
-        public Action<float> OnServoVolumeChanged;
-        public Action<float> OnWindVolumeChanged;
-
+        public Action<float, float> OnMotorVolumeChanged;
+        public Action<float, float> OnServoVolumeChanged;
+        public Action<float, float> OnWindVolumeChanged;
+        
         public float MasterVolume
         {
             get => masterVolume;
             set
             {
                 masterVolume = Mathf.Clamp01( value );
-                OnMasterVolumeChanged?.Invoke( masterVolume );
+                OnMotorVolumeChanged?.Invoke( motorVolume, masterVolume );
+                OnServoVolumeChanged?.Invoke( servoVolume, masterVolume );
+                OnWindVolumeChanged?.Invoke( windVolume, masterVolume );
             }
         }
 
@@ -26,7 +27,7 @@ namespace RWS
             set
             {
                 motorVolume = Mathf.Clamp01( value );
-                OnMotorVolumeChanged?.Invoke( motorVolume );
+                OnMotorVolumeChanged?.Invoke( motorVolume, masterVolume );
             }
         }
 
@@ -36,7 +37,7 @@ namespace RWS
             set
             {
                 servoVolume = Mathf.Clamp01( value );
-                OnServoVolumeChanged?.Invoke( servoVolume );
+                OnServoVolumeChanged?.Invoke( servoVolume, masterVolume );
             }
         }
         
@@ -46,7 +47,7 @@ namespace RWS
             set
             {
                 windVolume = Mathf.Clamp01( value );
-                OnWindVolumeChanged?.Invoke( windVolume );
+                OnWindVolumeChanged?.Invoke( windVolume, masterVolume );
             }
         }
 
@@ -54,9 +55,9 @@ namespace RWS
         public void LoadPlayerPrefs()
         {
             MasterVolume = PlayerPrefs.GetFloat( masterVolumeKey, 1f );
-            MotorVolume = PlayerPrefs.GetFloat( masterVolumeKey, 1f );
+            MotorVolume = PlayerPrefs.GetFloat( motorVolumeKey, 1f );
             ServoVolume = PlayerPrefs.GetFloat( servoVolumeKey, 1f );
-            WindVolume = PlayerPrefs.GetFloat( masterVolumeKey, 1f );
+            WindVolume = PlayerPrefs.GetFloat( windVolumeKey, 1f );
         }
 
         public void SavePlayerPrefs()

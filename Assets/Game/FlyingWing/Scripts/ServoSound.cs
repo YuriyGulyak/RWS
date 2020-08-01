@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using RWS;
+using UnityEngine;
 
 public class ServoSound : MonoBehaviour
 {
@@ -19,7 +20,10 @@ public class ServoSound : MonoBehaviour
 
     [SerializeField, Range( 0f, 1f )]
     float soundTransition = 0f;
-
+    
+    [SerializeField]
+    float volumeScale = 1f;
+    
     //--------------------------------------------------------------------------------------------------------------
     
     public float SoundTransition
@@ -33,31 +37,42 @@ public class ServoSound : MonoBehaviour
     }
     
     //--------------------------------------------------------------------------------------------------------------
-
-    float leftElevonAngleLast;
-    float rightElevonAngleLast;
-
     
     void OnValidate()
     {
         UpdateAudioSource();
     }
 
+    void OnEnable()
+    {
+        if( SoundManager )
+        {
+            volumeScale = SoundManager.ServoVolume * SoundManager.MasterVolume;
+            SoundManager.OnServoVolumeChanged += OnManagerVolumeChanged;
+        }
+    }
+
+    void OnDisable()
+    {
+        if( SoundManager )
+        {
+            SoundManager.OnServoVolumeChanged -= OnManagerVolumeChanged;
+        }
+    }
+    
     void Update()
     {
         var deltaTime = Time.deltaTime;
         
-        var leftElevonAngle = leftElevon.Angle;
-        var leftElevonAngleDelta = leftElevonAngle - leftElevonAngleLast;
-        leftElevonAngleLast = leftElevonAngle;
+        var leftElevonAngleDelta = leftElevon.Angle - leftElevonAngleLast;
+        leftElevonAngleLast = leftElevon.Angle;
         var leftElevonSpeed = leftElevonAngleDelta / deltaTime;
-        
-        var rightElevonAngle = rightRlevon.Angle;
-        var rightElevonAngleDelta = rightElevonAngle - rightElevonAngleLast;
-        rightElevonAngleLast = rightElevonAngle;
+
+        var rightElevonAngleDelta = rightRlevon.Angle - rightElevonAngleLast;
+        rightElevonAngleLast = rightRlevon.Angle;
         var rightElevonSpeed = rightElevonAngleDelta / deltaTime;
 
-        var elevonSpeedAbs = Mathf.Max( Mathf.Abs( leftElevonSpeed ), Mathf.Abs( rightElevonSpeed ) );
+        var elevonSpeedAbs = Mathf.Max( Mathf.Abs( leftElevonSpeed ), Mathf.Abs( rightElevonSpeed ) ); // Degrees per second
         if( elevonSpeedAbs < 1f )
         {
             SoundTransition = 0f;
@@ -70,9 +85,22 @@ public class ServoSound : MonoBehaviour
     
     //--------------------------------------------------------------------------------------------------------------
     
+    float leftElevonAngleLast;
+    float rightElevonAngleLast;
+    
+    
+    SoundManager SoundManager => SoundManager.Instance;
+    
+    void OnManagerVolumeChanged( float newServoVolume, float masterVolume )
+    {
+        volumeScale = newServoVolume * masterVolume;
+        UpdateAudioSource();
+    }
+
+
     void UpdateAudioSource()
     {
-        audioSource.volume = volumeCurve.Evaluate( soundTransition );
+        audioSource.volume = volumeCurve.Evaluate( soundTransition ) * volumeScale;
         audioSource.pitch = pitchCurve.Evaluate( soundTransition );
     }
 }

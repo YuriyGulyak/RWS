@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using RWS;
+using UnityEngine;
 
 public class MotorSound : MonoBehaviour
 {
@@ -60,17 +61,41 @@ public class MotorSound : MonoBehaviour
         UpdateAudioSources();
     }
 
+    void OnEnable()
+    {
+        if( SoundManager )
+        {
+            volumeScale = SoundManager.MotorVolume * SoundManager.MasterVolume;
+            SoundManager.OnMotorVolumeChanged += OnManagerVolumeChanged;
+        }
+    }
+
+    void OnDisable()
+    {
+        if( SoundManager )
+        {
+            SoundManager.OnWindVolumeChanged -= OnManagerVolumeChanged;
+        }
+    }
+    
     void Update()
     {
         if( motor )
         {
             SoundTransition = motor.rpm / motorRpmMax;
         }
-
-        // smoothedSoundTransition = Mathf.Lerp( smoothedSoundTransition, motor.rpm / 30000f, deltaTime / smoothTime );
     }
     
     //--------------------------------------------------------------------------------------------------------------
+    
+    SoundManager SoundManager => SoundManager.Instance;
+    
+    void OnManagerVolumeChanged( float newMotorVolume, float masterVolume )
+    {
+        volumeScale = newMotorVolume * masterVolume;
+        UpdateAudioSources();
+    }
+    
     
     void UpdateAudioSources()
     {

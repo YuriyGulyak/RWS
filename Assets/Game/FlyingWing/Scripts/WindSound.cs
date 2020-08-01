@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using RWS;
+using UnityEngine;
 
 public class WindSound : MonoBehaviour
 {
@@ -14,9 +15,13 @@ public class WindSound : MonoBehaviour
     [SerializeField]
     AnimationCurve pitchCurve = AnimationCurve.Linear( 0f, 0.75f, 1f, 3.5f );
 
+    // Serialized for sound debug
     [SerializeField, Range( 0f, 1f )]
     float soundTransition = 0f;
 
+    [SerializeField]
+    float volumeScale = 1f;
+    
     //--------------------------------------------------------------------------------------------------------------
     
     public float SoundTransition
@@ -36,16 +41,42 @@ public class WindSound : MonoBehaviour
         UpdateAudioSource();
     }
 
+    void OnEnable()
+    {
+        if( SoundManager )
+        {
+            volumeScale = SoundManager.WindVolume * SoundManager.MasterVolume;
+            SoundManager.OnWindVolumeChanged += OnManagerVolumeChanged;
+        }
+    }    
+
+    void OnDisable()
+    {
+        if( SoundManager )
+        {
+            SoundManager.OnWindVolumeChanged -= OnManagerVolumeChanged;
+        }
+    }
+
     void Update()
     {
         SoundTransition = flyingWing.TAS / 160f;
     }
     
     //--------------------------------------------------------------------------------------------------------------
+
+    SoundManager SoundManager => SoundManager.Instance;
     
+    void OnManagerVolumeChanged( float newWindVolume, float masterVolume )
+    {
+        volumeScale = newWindVolume * masterVolume;
+        UpdateAudioSource();
+    }
+
+
     void UpdateAudioSource()
     {
-        audioSource.volume = volumeCurve.Evaluate( soundTransition );
+        audioSource.volume = volumeCurve.Evaluate( soundTransition ) * volumeScale;
         audioSource.pitch = pitchCurve.Evaluate( soundTransition );
     }
 }

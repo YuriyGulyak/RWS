@@ -13,8 +13,8 @@ public class CreateRoomPanel : MonoBehaviour
     [SerializeField]
     Toggle roomIsOpenToggle = null;
     
-    [SerializeField]
-    TMP_InputField passwordInputField = null;
+    //[SerializeField]
+    //TMP_InputField passwordInputField = null;
     
     [SerializeField]
     TMP_InputField maxPlayersInputField = null;
