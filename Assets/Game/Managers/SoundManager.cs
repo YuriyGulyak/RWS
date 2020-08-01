@@ -1,0 +1,88 @@
+﻿using System;
+using UnityEngine;
+
+namespace RWS
+{
+    public class SoundManager : Singleton<SoundManager>
+    {
+        public Action<float> OnMasterVolumeChanged;
+        public Action<float> OnMotorVolumeChanged;
+        public Action<float> OnServoVolumeChanged;
+        public Action<float> OnWindVolumeChanged;
+
+        public float MasterVolume
+        {
+            get => masterVolume;
+            set
+            {
+                masterVolume = Mathf.Clamp01( value );
+                OnMasterVolumeChanged?.Invoke( masterVolume );
+            }
+        }
+
+        public float MotorVolume
+        {
+            get => motorVolume;
+            set
+            {
+                motorVolume = Mathf.Clamp01( value );
+                OnMotorVolumeChanged?.Invoke( motorVolume );
+            }
+        }
+
+        public float ServoVolume
+        {
+            get => servoVolume;
+            set
+            {
+                servoVolume = Mathf.Clamp01( value );
+                OnServoVolumeChanged?.Invoke( servoVolume );
+            }
+        }
+        
+        public float WindVolume
+        {
+            get => windVolume;
+            set
+            {
+                windVolume = Mathf.Clamp01( value );
+                OnWindVolumeChanged?.Invoke( windVolume );
+            }
+        }
+
+
+        public void LoadPlayerPrefs()
+        {
+            MasterVolume = PlayerPrefs.GetFloat( masterVolumeKey, 1f );
+            MotorVolume = PlayerPrefs.GetFloat( masterVolumeKey, 1f );
+            ServoVolume = PlayerPrefs.GetFloat( servoVolumeKey, 1f );
+            WindVolume = PlayerPrefs.GetFloat( masterVolumeKey, 1f );
+        }
+
+        public void SavePlayerPrefs()
+        {
+            PlayerPrefs.SetFloat( masterVolumeKey, masterVolume );
+            PlayerPrefs.SetFloat( motorVolumeKey, motorVolume );
+            PlayerPrefs.SetFloat( servoVolumeKey, servoVolume );
+            PlayerPrefs.SetFloat( windVolumeKey, windVolume );
+        }
+    
+        //--------------------------------------------------------------------------------------------------------------
+    
+        readonly string masterVolumeKey = "MasterVolume";
+        readonly string motorVolumeKey = "MotorVolume";
+        readonly string servoVolumeKey = "ServoVolume";
+        readonly string windVolumeKey = "WindVolume";
+    
+        float masterVolume;
+        float motorVolume;
+        float servoVolume;
+        float windVolume;
+
+
+        void Awake()
+        {
+            LoadPlayerPrefs();
+        }
+    }
+}

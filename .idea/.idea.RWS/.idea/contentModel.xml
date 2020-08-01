@@ -7,62 +7,104 @@
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="Environment" t="Include">
-          <e p="Skybox" t="Include">
-            <e p="HorizontalSkybox.shader" t="Include" />
+        <e p="Game" t="Include">
+          <e p="Environment" t="Include">
+            <e p="Skybox" t="Include">
+              <e p="HorizontalSkybox.shader" t="Include" />
+            </e>
+            <e p="Skyboxes" t="Include">
+              <e p="HorizontalSkybox.shader" t="Include" />
+            </e>
           </e>
-          <e p="Skyboxes" t="Include">
-            <e p="HorizontalSkybox.shader" t="Include" />
+          <e p="FlyingWing" t="Include">
+            <e p="Scripts" t="Include">
+              <e p="AerodynamicsFormulas.cs" t="Include" />
+              <e p="AirfoilConfig.cs" t="Include" />
+              <e p="AirfoilSection.cs" t="Include" />
+              <e p="Altimeter.cs" t="Include" />
+              <e p="Battery.cs" t="Include" />
+              <e p="ControlSensitivity.cs" t="Include" />
+              <e p="Elevon.cs" t="Include" />
+              <e p="FlyingWing.cs" t="Include" />
+              <e p="MathUtils.cs" t="Include" />
+              <e p="Motor.cs" t="Include" />
+              <e p="MotorModel.cs" t="Include" />
+              <e p="MotorSound.cs" t="Include" />
+              <e p="PIDController.cs" t="Include" />
+              <e p="Propeller.cs" t="Include" />
+              <e p="ServoSound.cs" t="Include" />
+              <e p="WindSound.cs" t="Include" />
+              <e p="WingAutoControl.cs" t="Include" />
+              <e p="WingLauncher.cs" t="Include" />
+              <e p="WingPhotonView.cs" t="Include" />
+              <e p="WingPlayerControl.cs" t="Include" />
+              <e p="WingSetupHelper.cs" t="Include" />
+              <e p="WingSetupHelperEditor.cs" t="Include" />
+              <e p="WingSpawner.cs" t="Include" />
+            </e>
           </e>
-        </e>
-        <e p="FlyingWing" t="Include">
-          <e p="Scripts" t="Include">
-            <e p="AerodynamicsFormulas.cs" t="Include" />
-            <e p="AirfoilConfig.cs" t="Include" />
-            <e p="AirfoilSection.cs" t="Include" />
-            <e p="Altimeter.cs" t="Include" />
-            <e p="Battery.cs" t="Include" />
-            <e p="ControlSensitivity.cs" t="Include" />
-            <e p="Elevon.cs" t="Include" />
-            <e p="FlyingWing.cs" t="Include" />
-            <e p="MathUtils.cs" t="Include" />
-            <e p="Motor.cs" t="Include" />
-            <e p="MotorModel.cs" t="Include" />
-            <e p="MotorSound.cs" t="Include" />
-            <e p="PIDController.cs" t="Include" />
-            <e p="Propeller.cs" t="Include" />
-            <e p="WindSound.cs" t="Include" />
-            <e p="WingAutoControl.cs" t="Include" />
-            <e p="WingLauncher.cs" t="Include" />
-            <e p="WingPhotonView.cs" t="Include" />
-            <e p="WingPlayerControl.cs" t="Include" />
-            <e p="WingSetupHelper.cs" t="Include" />
-            <e p="WingSetupHelperEditor.cs" t="Include" />
-            <e p="WingSpawner.cs" t="Include" />
+          <e p="Input" t="Include">
+            <e p="ControllerNotes.txt" t="Include" />
+            <e p="Rates" t="Include">
+              <e p="RateProfile.cs" t="Include" />
+              <e p="RateProfileEditor.cs" t="Include" />
+              <e p="Rates.cs" t="Include" />
+            </e>
           </e>
-        </e>
-        <e p="Input" t="Include">
-          <e p="ControllerNotes.txt" t="Include" />
-          <e p="Controls" t="Include">
-            <e p="Controls.cs" t="Include" />
+          <e p="Managers" t="Include">
+            <e p="GraphicsManager.cs" t="Include" />
+            <e p="InputManager.cs" t="Include" />
+            <e p="MultiplayerGameManager.cs" t="Include" />
+            <e p="SingleplayerGameManager.cs" t="Include" />
+            <e p="SoundManager.cs" t="Include" />
           </e>
-          <e p="PlayerInputWrapper.cs" t="Include" />
-          <e p="Rates" t="Include">
-            <e p="RateProfile.cs" t="Include" />
-            <e p="RateProfileEditor.cs" t="Include" />
-            <e p="Rates.cs" t="Include" />
+          <e p="OrbitCamera" t="Include">
+            <e p="Scripts" t="Include">
+              <e p="OrbitCamera.cs" t="Include" />
+            </e>
           </e>
-        </e>
-        <e p="Managers" t="Include">
-          <e p="GraphicsManager.cs" t="Include" />
-          <e p="InputManager.cs" t="Include" />
-          <e p="MultiplayerGameManager.cs" t="Include" />
-          <e p="SingleplayerGameManager.cs" t="Include" />
-          <e p="SoundManager.cs" t="Include" />
-        </e>
-        <e p="OrbitCamera" t="Include">
-          <e p="Scripts" t="Include">
-            <e p="OrbitCamera.cs" t="Include" />
+          <e p="RaceKit" t="Include">
+            <e p="RaceNotes.txt" t="Include" />
+            <e p="Scripts" t="Include">
+              <e p="MarkerPlacer.cs" t="Include" />
+              <e p="MarkerPlacerEditor.cs" t="Include" />
+              <e p="RaceGate.cs" t="Include" />
+              <e p="RaceTrack.cs" t="Include" />
+            </e>
+          </e>
+          <e p="UI" t="Include">
+            <e p="Scripts" t="Include">
+              <e p="BatteryTelemetry.cs" t="Include" />
+              <e p="BlackScreen.cs" t="Include" />
+              <e p="GameMenu.cs" t="Include" />
+              <e p="InputTelemetry.cs" t="Include" />
+              <e p="LapTime.cs" t="Include" />
+              <e p="MainMenu.cs" t="Include" />
+              <e p="MenuPanel.cs" t="Include" />
+              <e p="MotorTelemetry.cs" t="Include" />
+              <e p="MultiplayerPanel" t="Include">
+                <e p="CreateRoomPanel.cs" t="Include" />
+                <e p="InsideRoomPanel.cs" t="Include" />
+                <e p="LoginPanel.cs" t="Include" />
+                <e p="MultiplayerPanel.cs" t="Include" />
+                <e p="PlayerListEntry.cs" t="Include" />
+                <e p="RoomListEntry.cs" t="Include" />
+                <e p="RoomListPanel.cs" t="Include" />
+              </e>
+              <e p="PlayerOverviewEntry.cs" t="Include" />
+              <e p="PlayerOverviewPanel.cs" t="Include" />
+              <e p="SettingsPanel" t="Include">
+                <e p="ControlListEntry.cs" t="Include" />
+                <e p="ControlsPanel.cs" t="Include" />
+                <e p="GraphicsPanel.cs" t="Include" />
+                <e p="SensitivityPanel.cs" t="Include" />
+                <e p="SettingsPanel.cs" t="Include" />
+                <e p="SoundPanel.cs" t="Include" />
+              </e>
+              <e p="SingleplayerPanel.cs" t="Include" />
+              <e p="StickDisplay.cs" t="Include" />
+              <e p="WingTelemetry.cs" t="Include" />
+            </e>
           </e>
         </e>
         <e p="Photon" t="Include">
@@ -418,15 +460,6 @@
             </e>
           </e>
         </e>
-        <e p="Race" t="Include">
-          <e p="RaceNotes.txt" t="Include" />
-          <e p="Scripts" t="Include">
-            <e p="MarkerPlacer.cs" t="Include" />
-            <e p="MarkerPlacerEditor.cs" t="Include" />
-            <e p="RaceGate.cs" t="Include" />
-            <e p="RaceTrack.cs" t="Include" />
-          </e>
-        </e>
         <e p="Terrain Tools" t="Include">
           <e p="0.1.0-preview" t="Include">
             <e p="Terrain Assets" t="Include">
@@ -457,40 +490,6 @@
               <e p="TMPro_Properties.cginc" t="Include" />
               <e p="TMPro_Surface.cginc" t="Include" />
             </e>
-          </e>
-        </e>
-        <e p="UI" t="Include">
-          <e p="Scripts" t="Include">
-            <e p="BatteryTelemetry.cs" t="Include" />
-            <e p="BlackScreen.cs" t="Include" />
-            <e p="GameMenu.cs" t="Include" />
-            <e p="InputTelemetry.cs" t="Include" />
-            <e p="LapTime.cs" t="Include" />
-            <e p="MainMenu.cs" t="Include" />
-            <e p="MenuPanel.cs" t="Include" />
-            <e p="MotorTelemetry.cs" t="Include" />
-            <e p="MultiplayerLobby" t="Include">
-              <e p="CreateRoomPanel.cs" t="Include" />
-              <e p="InsideRoomPanel.cs" t="Include" />
-              <e p="LoginPanel.cs" t="Include" />
-              <e p="MultiplayerLobby.cs" t="Include" />
-              <e p="PlayerListEntry.cs" t="Include" />
-              <e p="RoomListEntry.cs" t="Include" />
-              <e p="RoomListPanel.cs" t="Include" />
-            </e>
-            <e p="PlayerOverviewEntry.cs" t="Include" />
-            <e p="PlayerOverviewPanel.cs" t="Include" />
-            <e p="SettingsPanel" t="Include">
-              <e p="ControlListEntry.cs" t="Include" />
-              <e p="ControlsPanel.cs" t="Include" />
-              <e p="GraphicsPanel.cs" t="Include" />
-              <e p="SensitivityPanel.cs" t="Include" />
-              <e p="SettingsPanel.cs" t="Include" />
-              <e p="SoundPanel.cs" t="Include" />
-            </e>
-            <e p="SingleplayerPanel.cs" t="Include" />
-            <e p="StickDisplay.cs" t="Include" />
-            <e p="WingTelemetry.cs" t="Include" />
           </e>
         </e>
         <e p="Utils" t="Include">
