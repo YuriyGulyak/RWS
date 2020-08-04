@@ -2,18 +2,18 @@
 
 public class Altimeter : MonoBehaviour
 {
-    [SerializeField] 
+    [SerializeField]
     Transform craftTransform = null;
 
-    [SerializeField] 
+    [SerializeField]
     LayerMask terrainLayer = default;
 
 
     public float Altitude => craftTransform.position.y - terrainHeight;
 
-
     float terrainHeight;
 
+    
     void OnValidate()
     {
         if( !craftTransform )

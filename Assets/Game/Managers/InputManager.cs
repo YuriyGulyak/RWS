@@ -326,7 +326,7 @@ namespace RWS
                             var oldAxisValue = axesDictionary[ control.name ];
                             var newAxisValue = (float)control.ReadValueAsObject();
 
-                            if( Math.Abs( Mathf.Abs( newAxisValue ) - Math.Abs( oldAxisValue ) ) > threshold )
+                            if( Math.Abs( newAxisValue - oldAxisValue ) > threshold )
                             {
                                 callback?.Invoke( control );
                                 listenAxisCoroutine = null;

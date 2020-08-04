@@ -12,9 +12,6 @@
             <e p="Skybox" t="Include">
               <e p="HorizontalSkybox.shader" t="Include" />
             </e>
-            <e p="Skyboxes" t="Include">
-              <e p="HorizontalSkybox.shader" t="Include" />
-            </e>
           </e>
           <e p="FlyingWing" t="Include">
             <e p="Scripts" t="Include">

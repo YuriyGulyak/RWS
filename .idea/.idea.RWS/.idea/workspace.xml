@@ -17,6 +17,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonRealtime/Code/LoadBalancingClient.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/54/a54de53b/SetupCoroutine.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/90/94001f8e/LoadSceneMode.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Game/Input/Rates/RateProfile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Desktop/DRS/Assets/Misc/GUI/GUIExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Desktop/DRS/Assets/Misc/GUI/GUILineRenderer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/ServoSound.cs" root0="FORCE_HIGHLIGHTING" />
@@ -66,7 +67,6 @@
     <setting file="file://D:/#Backup/2018-08-31/Desktop/Bus/Assets/Game/Weapon/Scripts/BulletController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://D:/#Backup/2018-08-31/Desktop/Bus/Assets/Game/Weapon/Scripts/WeaponAim.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://D:/#Backup/2018-08-31/Desktop/Bus/Assets/Game/Weapon/Scripts/WeaponShooting.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/Desktop/ArmInputProvider/Assets/Scripts/TestJoysticks.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/Managers/SoundManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0/InputSystem/Actions/InputAction.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Desktop/ArmInputProvider/Assets/Scripts/ComPortReader.cs" root0="SKIP_HIGHLIGHTING" />
@@ -75,13 +75,16 @@
     <setting file="file://$PROJECT_DIR$/Assets/Game/Managers/MultiplayerGameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/f4/3fa918d6/Mathf.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@2.0.1/Scripts/Runtime/TMP_InputField.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/Altimeter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/Elevon.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Game/OrbitCamera/Scripts/OrbitCamera.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://D:/UPTK/Watcher (U9)/Assets/Scripts/ApplicationLogic.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/ControlSensitivity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Desktop/ArmInputProvider/Assets/Scripts/JoysticksDisplay.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0/InputSystem/InputManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/Managers/GraphicsManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://D:/UPTK/Watcher (U9)/Assets/Scripts/DisplayManger.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Game/Managers/InputManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://C:/Program Files/Unity 2019/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/EventSystem/UIBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/f8/ccaba7f8/Transform.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/MotorSound.cs" root0="FORCE_HIGHLIGHTING" />
@@ -91,6 +94,7 @@
     <setting file="file://$USER_HOME$/Desktop/DRS/Assets/Misc/UIExtensions/Scripts/UILineRenderer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Desktop/DRS/Assets/Common/Scripts/GameGraphicsAgent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/SensitivityPanel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/ControlsPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/a5/b1c85288/Quaternion.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Scripts/AsteroidsGame.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/GraphicsPanel.cs" root0="FORCE_HIGHLIGHTING" />
@@ -119,8 +123,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Utils/GUIExtensions.cs" />
-        <option value="$PROJECT_DIR$/Assets/Utils/GUILineRenderer.cs" />
         <option value="$PROJECT_DIR$/Assets/UI/Scripts/SettingsPanel/RatesPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/@Temp/TestCurveGL.cs" />
         <option value="$PROJECT_DIR$/Assets/Utils/UILineRenderer.cs" />
@@ -170,6 +172,8 @@
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/ServoSound.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/WindSound.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/MotorSound.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/Altimeter.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/Managers/InputManager.cs" />
       </list>
     </option>
   </component>
