@@ -1,5 +1,6 @@
 ﻿using Photon.Pun;
 using Photon.Realtime;
+using RWS;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -38,6 +39,9 @@ public class MultiplayerPanel : MonoBehaviourPunCallbacks
 
     [SerializeField]
     RoomListPanel roomListPanel = null;
+
+    [SerializeField]
+    RoomChat roomChat = null;
     
     //----------------------------------------------------------------------------------------------------
 
@@ -119,6 +123,8 @@ public class MultiplayerPanel : MonoBehaviourPunCallbacks
             showRoomListButton.gameObject.SetActive( true );
             joinRandomRoomButton.gameObject.SetActive( true );
         } );
+
+        roomChat.Show();
         
         //leaveRoomButton.gameObject.SetActive( true );
     }
@@ -133,7 +139,7 @@ public class MultiplayerPanel : MonoBehaviourPunCallbacks
     {
         //print( "OnCreatedRoom" );
     }
-    
+
     public override void OnCreateRoomFailed( short returnCode, string message )
     {
         createRoomPanel.Hide();
@@ -142,6 +148,11 @@ public class MultiplayerPanel : MonoBehaviourPunCallbacks
         errorText.text = $"Error: {message}";
     }
 
+    public override void OnLeftRoom()
+    {
+        roomChat.Hide();
+    }
+    
     //----------------------------------------------------------------------------------------------------
     
     ClientState prevState;

@@ -53,15 +53,15 @@ namespace RWS
 
         public void OnEvent( EventData photonEvent )
         {
-            var eventCode = (RaiseEventCodes) photonEvent.Code;
+            var eventCode = (RaiseEventCodes)photonEvent.Code;
 
             if( eventCode == RaiseEventCodes.SpawnRemotePlayerWing )
             {
-                var data = (object[]) photonEvent.CustomData;
+                var data = (object[])photonEvent.CustomData;
 
-                var wingPosition = (Vector3) data[ 0 ];
-                var wingRotation = (Quaternion) data[ 1 ];
-                var viewID = (int) data[ 2 ];
+                var wingPosition = (Vector3)data[ 0 ];
+                var wingRotation = (Quaternion)data[ 1 ];
+                var viewID = (int)data[ 2 ];
 
                 var wingGameObject = wingSpawner.SpawnRemotePlayerWing( wingPosition, wingRotation );
 
@@ -72,7 +72,6 @@ namespace RWS
                 {
                     remoteWingDictionary = new Dictionary<int, GameObject>();
                 }
-
                 remoteWingDictionary.Add( viewID, wingGameObject );
             }
         }
@@ -112,6 +111,7 @@ namespace RWS
             lapTime.Init( 0f );
             lapTime.OnNewBestTime += newBestTime =>
             {
+                // Receiving in PlayerOverviewPanel
                 PhotonNetwork.LocalPlayer.SetCustomProperties( new Hashtable { { bestLapPropertyKey, newBestTime } } );
             };
             lapTime.Hide();
@@ -164,12 +164,10 @@ namespace RWS
                 {
                     wingTelemetry.Init( localWingGameObject.GetComponent<FlyingWing>() );
                 }
-
                 if( batteryTelemetry )
                 {
                     batteryTelemetry.Init( localWingGameObject.GetComponentInChildren<Battery>() );
                 }
-
                 if( motorTelemetry )
                 {
                     motorTelemetry.Init( localWingGameObject.GetComponentInChildren<Motor>() );

@@ -90,6 +90,10 @@
               </e>
               <e p="PlayerOverviewEntry.cs" t="Include" />
               <e p="PlayerOverviewPanel.cs" t="Include" />
+              <e p="RoomChat" t="Include">
+                <e p="RoomChat.cs" t="Include" />
+                <e p="RoomChatMessage.cs" t="Include" />
+              </e>
               <e p="SettingsPanel" t="Include">
                 <e p="ControlListEntry.cs" t="Include" />
                 <e p="ControlsPanel.cs" t="Include" />

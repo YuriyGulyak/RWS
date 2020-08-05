@@ -47,6 +47,7 @@ public class InsideRoomPanel : MonoBehaviourPunCallbacks
 
     public void Hide()
     {
+        RemoveAllPlayerListEntries();
         gameObject.SetActive( false );
         onLeaveRoomCallback = null;
     }
@@ -129,5 +130,19 @@ public class InsideRoomPanel : MonoBehaviourPunCallbacks
             Destroy( playerDictionary[ player.ActorNumber ] );
             playerDictionary.Remove( player.ActorNumber );
         }
+    }
+
+    void RemoveAllPlayerListEntries()
+    {
+        if( playerDictionary == null || playerDictionary.Count == 0 )
+        {
+            return;
+        }
+        
+        foreach( var entry in playerDictionary )
+        {
+            Destroy( entry.Value );
+        }
+        playerDictionary.Clear();
     }
 }

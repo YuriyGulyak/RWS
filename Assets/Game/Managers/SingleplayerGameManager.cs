@@ -45,7 +45,7 @@ public class SingleplayerGameManager : MonoBehaviour
     
     void Awake()
     {
-        lapTime.Init( PlayerPrefs.HasKey( bestLapKey ) ? PlayerPrefs.GetFloat( bestLapKey, 0f ) : 0f );
+        lapTime.Init( PlayerPrefs.GetFloat( bestLapKey, 0f ) );
         lapTime.OnNewBestTime += newBestTime =>
         {
             PlayerPrefs.SetFloat( bestLapKey, newBestTime );

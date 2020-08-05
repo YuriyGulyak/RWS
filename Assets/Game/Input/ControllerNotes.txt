@@ -1,17 +1,17 @@
 
 FrSky Taranis:
 
-CH 1 – Stick X
-CH 2 – Stick Y
-CH 3 – Z
-CH 4 – Rx
-CH 5 – Ry
-CH 6 – Rz
+CH 1 – (Axis) Stick X 
+CH 2 – (Axis) Stick Y 
+CH 3 – (Axis) Z 
+CH 4 – (Axis) Rx
+CH 5 – (Axis) Ry
+CH 6 – (Axis) Rz
 CH 7 – none
-CH 8 – Slider
-CH 9 – Trigger
-CH 10 – Button 2
-CH 11 – Button 3
-CH 12 – Button 4
-CH 13 – Button 5
-CH 14 – Button 6
+CH 8 – (Axis) Slider
+CH 9 – (Button) Trigger
+CH 10 – (Button) Button 2
+CH 11 – (Button) Button 3
+CH 12 – (Button) Button 4
+CH 13 – (Button) Button 5
+CH 14 – (Button) Button 6
