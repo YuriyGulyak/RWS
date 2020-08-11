@@ -56,8 +56,7 @@ public class Battery : MonoBehaviour
 
     // 1...0
     public float StateOfCharge => stateOfCharge;
-
-    // . . .
+    
     public void UpdateState( float currentDraw, float deltaTime )
     {
         capacityDrawn += currentDraw / 3600f * deltaTime;
@@ -72,7 +71,14 @@ public class Battery : MonoBehaviour
         voltage = cellVoltage.Evaluate( 1f - stateOfCharge ) * cellCount - voltageDrop;
         voltage = Mathf.Max( minVoltage, voltage );
     }
-    
+
+    public void Reset()
+    {
+        capacityDrawn = 0f;
+        stateOfCharge = 1f;
+        voltage = cellVoltage.Evaluate( 0f ) * cellCount;
+    }
+
     //----------------------------------------------------------------------------------------------------
 
     // TODO Temporary solution

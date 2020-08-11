@@ -38,6 +38,12 @@ namespace RWS
         PlayerOverviewPanel playerOverviewPanel = null;
         
         [SerializeField]
+        OSDTelemetry osdTelemetry = null;
+
+        [SerializeField]
+        OSDHome osdHome = null;
+        
+        [SerializeField]
         GameMenu gameMenu = null;
 
         [SerializeField]
@@ -108,6 +114,9 @@ namespace RWS
             PhotonNetwork.SendRate = photonSendRate;
             PhotonNetwork.SerializationRate = photonSerializationRate;
 
+            osdTelemetry.Hide();
+            osdHome.Hide();
+            
             lapTime.Init( 0f );
             lapTime.OnNewBestTime += newBestTime =>
             {
@@ -160,17 +169,24 @@ namespace RWS
 
                 orbitCamera.transform.position = wingPosition - new Vector3( 0f, 0f, 0.1f );
 
+                var flyingWing = localWingGameObject.GetComponent<FlyingWing>();
+                var motor = localWingGameObject.GetComponentInChildren<Motor>();
+                var battery = localWingGameObject.GetComponentInChildren<Battery>();
+                
+                osdTelemetry.Init( flyingWing, motor, battery );
+                osdHome.Init( flyingWing );
+                
                 if( wingTelemetry )
                 {
-                    wingTelemetry.Init( localWingGameObject.GetComponent<FlyingWing>() );
+                    wingTelemetry.Init( flyingWing );
                 }
                 if( batteryTelemetry )
                 {
-                    batteryTelemetry.Init( localWingGameObject.GetComponentInChildren<Battery>() );
+                    batteryTelemetry.Init( battery );
                 }
                 if( motorTelemetry )
                 {
-                    motorTelemetry.Init( localWingGameObject.GetComponentInChildren<Motor>() );
+                    motorTelemetry.Init( motor );
                 }
             }
         }
@@ -191,6 +207,9 @@ namespace RWS
             var fpvCamera = localWingGameObject.GetComponentInChildren<Camera>( true );
             fpvCamera.gameObject.SetActive( true );
 
+            osdTelemetry.Show();
+            osdHome.Show();
+            
             var inputManager = InputManager.Instance;
             inputManager.LaunchControl.Performed += OnLaunchButton;
             inputManager.ResetControl.Performed += OnResetButton;
@@ -236,6 +255,9 @@ namespace RWS
 
             wingLauncher.Reset();
 
+            osdTelemetry.Reset();
+            osdHome.Reset();
+            
             lapTime.Reset();
             lapTime.Hide();
         }

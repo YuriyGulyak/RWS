@@ -23,7 +23,6 @@
               <e p="ControlSensitivity.cs" t="Include" />
               <e p="Elevon.cs" t="Include" />
               <e p="FlyingWing.cs" t="Include" />
-              <e p="MathUtils.cs" t="Include" />
               <e p="Motor.cs" t="Include" />
               <e p="MotorModel.cs" t="Include" />
               <e p="MotorSound.cs" t="Include" />
@@ -88,6 +87,8 @@
                 <e p="RoomListEntry.cs" t="Include" />
                 <e p="RoomListPanel.cs" t="Include" />
               </e>
+              <e p="OSDHome.cs" t="Include" />
+              <e p="OSDTelemetry.cs" t="Include" />
               <e p="PlayerOverviewEntry.cs" t="Include" />
               <e p="PlayerOverviewPanel.cs" t="Include" />
               <e p="RoomChat" t="Include">
@@ -514,6 +515,7 @@
           <e p="FPSDisplay.cs" t="Include" />
           <e p="FpsLimit.cs" t="Include" />
           <e p="GizmosLine.cs" t="Include" />
+          <e p="MathUtils.cs" t="Include" />
           <e p="Singleton.cs" t="Include" />
           <e p="SliderWithInputField.cs" t="Include" />
           <e p="UILineRenderer.cs" t="Include" />

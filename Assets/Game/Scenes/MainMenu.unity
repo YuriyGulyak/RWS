@@ -19008,12 +19008,12 @@ PrefabInstance:
     - target: {fileID: 6462577950220848927, guid: d655ada831ed61c44a7b0f117314ebed,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -105.00002
+      value: -95
       objectReference: {fileID: 0}
     - target: {fileID: 6462577950220848927, guid: d655ada831ed61c44a7b0f117314ebed,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 25
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6462577950220848927, guid: d655ada831ed61c44a7b0f117314ebed,
         type: 3}
@@ -37480,7 +37480,7 @@ MonoBehaviour:
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 1, g: 1, b: 1, a: 0.5019608}
-  m_Text: 4
+  m_Text: 8
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
@@ -40736,7 +40736,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "4\u200B"
+  m_text: "8\u200B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -42108,12 +42108,12 @@ PrefabInstance:
     - target: {fileID: 1060792378657849642, guid: b79cd7cdbcf2d664985fe8a563a06e42,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -25
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 1060792378657849642, guid: b79cd7cdbcf2d664985fe8a563a06e42,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 25
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1060792378657849642, guid: b79cd7cdbcf2d664985fe8a563a06e42,
         type: 3}

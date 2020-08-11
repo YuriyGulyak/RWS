@@ -26,8 +26,23 @@ public static class MathUtils
         
         return angle;
     }
-
     
+    
+    // 0...360 to -180...+180
+    public static float WrapAngle180( float angle )
+    {
+        if( angle > 180f )
+        {
+            angle = angle - 360f;
+        }
+        if( angle < -180f )
+        {
+            angle = 360f - Mathf.Abs( angle );
+        }
+        return angle;
+    }
+
+
     // Distance around circle
     public static float Circumference( float radius )
     {

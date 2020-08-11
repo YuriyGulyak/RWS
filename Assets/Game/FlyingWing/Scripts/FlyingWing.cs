@@ -84,7 +84,12 @@ public class FlyingWing : MonoBehaviour
     public float AngleOfAttack => angleOfAttack;
 
     public float SideslipAngle => sideslipAngle;
-    
+
+    public void Reset()
+    {
+        battery.Reset();
+    }
+
     //----------------------------------------------------------------------------------------------------
 
     float wingSurface;

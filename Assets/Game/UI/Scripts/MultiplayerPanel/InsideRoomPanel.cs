@@ -67,7 +67,7 @@ public class InsideRoomPanel : MonoBehaviourPunCallbacks
         UpdatePlayerCountText();
         RemovePlayerListEntry( otherPlayer );
     }
-
+    
     //----------------------------------------------------------------------------------------------------
     
     Action onLeaveRoomCallback;

@@ -74,13 +74,15 @@ public class MultiplayerPanel : MonoBehaviourPunCallbacks
         insideRoomPanel.Hide();
         roomListPanel.Hide();
 
+        roomChat.Hide();
+        
         errorText.gameObject.SetActive( false );
         stateText.gameObject.SetActive( false );
         
         createRoomButton.gameObject.SetActive( false );
         showRoomListButton.gameObject.SetActive( false );
         joinRandomRoomButton.gameObject.SetActive( false );
-        
+
         PhotonNetwork.Disconnect();
         
         gameObject.SetActive( false );
@@ -102,6 +104,12 @@ public class MultiplayerPanel : MonoBehaviourPunCallbacks
 
     public override void OnDisconnected( DisconnectCause cause )
     {
+        print( "OnDisconnected: " + cause );
+    }
+
+    public override void OnLeftLobby()
+    {
+        print( "OnLeftLobby" );
     }
 
     public override void OnJoinedRoom()

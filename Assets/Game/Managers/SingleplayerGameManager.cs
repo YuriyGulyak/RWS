@@ -20,6 +20,12 @@ public class SingleplayerGameManager : MonoBehaviour
     LapTime lapTime = null;
 
     [SerializeField]
+    OSDTelemetry osdTelemetry = null;
+
+    [SerializeField]
+    OSDHome osdHome = null;
+    
+    [SerializeField]
     GameMenu gameMenu = null;
 
     [SerializeField]
@@ -45,6 +51,9 @@ public class SingleplayerGameManager : MonoBehaviour
     
     void Awake()
     {
+        osdTelemetry.Hide();
+        osdHome.Hide();
+        
         lapTime.Init( PlayerPrefs.GetFloat( bestLapKey, 0f ) );
         lapTime.OnNewBestTime += newBestTime =>
         {
@@ -74,6 +83,9 @@ public class SingleplayerGameManager : MonoBehaviour
         orbitCamera.SetActive( false );
         fpvCamera.SetActive( true );
 
+        osdTelemetry.Show();
+        osdHome.Show();
+        
         var inputManager = InputManager.Instance;
         inputManager.LaunchControl.Performed += OnLaunchButton;
         inputManager.ResetControl.Performed += OnResetButton;
@@ -117,8 +129,12 @@ public class SingleplayerGameManager : MonoBehaviour
         wingRigibody.position = wingLauncher.transform.position;
         wingRigibody.rotation = wingLauncher.transform.rotation;
 
+        wing.Reset();
         wingLauncher.Reset();
 
+        osdTelemetry.Reset();
+        osdHome.Reset();
+        
         lapTime.Reset();
         lapTime.Hide();
     }

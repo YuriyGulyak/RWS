@@ -61,6 +61,11 @@ namespace RWS
 
         void OnSubmit(  string message )
         {
+            if( string.IsNullOrEmpty( message ) )
+            {
+                return;
+            }
+
             SendChatMessage( message );
             inputField.text = "";
             inputField.ActivateInputField();
@@ -68,13 +73,18 @@ namespace RWS
 
         void SendChatMessage( string message )
         {
-            // Debug
-            //CreateChatMessage( "Nickname", message );
-
-            if( !PhotonNetwork.IsConnected )
+            if( string.IsNullOrEmpty( message ) )
             {
                 return;
             }
+
+            if( !PhotonNetwork.IsConnected )
+            {
+                // Debug
+                //CreateChatMessage( "Nickname", message );
+                return;
+            }
+            
             photonView.RPC( "ChatMessageRPC", RpcTarget.All, PhotonNetwork.LocalPlayer, message );
         }
 
