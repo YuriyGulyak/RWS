@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using ExitGames.Client.Photon;
 using Photon.Pun;
 using Photon.Realtime;
@@ -192,9 +193,9 @@ namespace RWS
                     motorTelemetry.Init( motor );
                 }
 
-                var photonView = localWingGameObject.GetComponent<PhotonView>();
-                PhotonNetwork.AllocateViewID( photonView );
-                SendEventToSpawnRemotePlayerWing( wingPosition, wingRotation, photonView.ViewID );
+                var wingPhotonView = localWingGameObject.GetComponent<PhotonView>();
+                PhotonNetwork.AllocateViewID( wingPhotonView );
+                SendEventToSpawnRemotePlayerWing( wingPosition, wingRotation, wingPhotonView.ViewID );
             }
         }
 
@@ -259,8 +260,7 @@ namespace RWS
         {
             BlackScreen.Instance.StartToBlackScreenAnimation( () =>
             {
-                PhotonNetwork.LeaveLobby();
-                SceneManager.LoadSceneAsync( 0 );
+                StartCoroutine( ExitCoroutine() );
             } );
         }
 
@@ -277,6 +277,8 @@ namespace RWS
                 localWingRigidbody.isKinematic = true;
                 localWingRigidbody.position = wingSpawner.GetSpawnPosition( spawnPointIndex );
                 localWingRigidbody.rotation = wingSpawner.GetSpawnRotation();
+                
+                localFlyingWing.Reset();
                 
                 osdTelemetry.Reset();
                 osdHome.Reset();
@@ -304,6 +306,24 @@ namespace RWS
             }
         }
 
+
+        IEnumerator ExitCoroutine()
+        {
+            Destroy( localWingGameObject );
+
+            if( remoteWingDictionary != null && remoteWingDictionary.Count > 0 )
+            {
+                foreach( var entry in remoteWingDictionary )
+                {
+                    Destroy( entry.Value );
+                }
+            }
+
+            PhotonNetwork.Disconnect();
+            yield return new WaitWhile( () => PhotonNetwork.IsConnected );
+            
+            SceneManager.LoadSceneAsync( 0 );
+        }
 
         void SendEventToSpawnRemotePlayerWing( Vector3 position, Quaternion rotation, int viewID )
         {

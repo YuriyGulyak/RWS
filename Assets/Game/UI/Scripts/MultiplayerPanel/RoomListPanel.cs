@@ -29,7 +29,7 @@ public class RoomListPanel : MonoBehaviourPunCallbacks
         
         gameObject.SetActive( true );
         
-        if( !PhotonNetwork.InLobby )
+        if( PhotonNetwork.IsConnected && !PhotonNetwork.InLobby )
         {
             PhotonNetwork.JoinLobby();
         }
@@ -40,7 +40,7 @@ public class RoomListPanel : MonoBehaviourPunCallbacks
         onBackCallback = null;
         onJoinCallback = null;
         
-        if( PhotonNetwork.InLobby )
+        if( PhotonNetwork.IsConnected && PhotonNetwork.InLobby )
         {
             PhotonNetwork.LeaveLobby();
         }

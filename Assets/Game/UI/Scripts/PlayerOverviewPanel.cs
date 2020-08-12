@@ -33,7 +33,7 @@ public class PlayerOverviewPanel : MonoBehaviourPunCallbacks
     }
     
     //----------------------------------------------------------------------------------------------------
-
+  
     public override void OnPlayerEnteredRoom( Player newPlayer )
     {
         //print( $"OnPlayerEnteredRoom: {newPlayer.ActorNumber}" );

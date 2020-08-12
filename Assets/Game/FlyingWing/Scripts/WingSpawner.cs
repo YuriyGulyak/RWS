@@ -10,7 +10,13 @@ public class WingSpawner : MonoBehaviour
     
     [SerializeField]
     GameObject remotePlayerWingPrefab = null;
-    
+
+    [SerializeField]
+    LayerMask terrainLayer = default;
+
+    [SerializeField]
+    float spawnHeight = 1.8f;
+
     //----------------------------------------------------------------------------------------------------
     
     public GameObject SpawnLocalPlayerWing( int spawnPointIndex )
@@ -28,6 +34,11 @@ public class WingSpawner : MonoBehaviour
 
     public Vector3 GetSpawnPosition( int spawnPointIndex )
     {
+        var spawnPosition = spawnPoints[ spawnPointIndex ].position;
+        
+        Physics.Raycast( spawnPosition, Vector3.down, out var hit, 100f, terrainLayer );
+        spawnPosition.y = hit.point.y + spawnHeight;
+        
         return spawnPoints[ spawnPointIndex ].position;
     }
 
