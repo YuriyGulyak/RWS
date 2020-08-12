@@ -43,7 +43,7 @@ public class OSDHome : MonoBehaviour
     public void Reset()
     {
         newArrowRotation = Quaternion.identity;
-        directionRect.rotation = Quaternion.identity;
+        directionRect.rotation = newArrowRotation;
         distanceText.text = 0f.ToString( distanceFormat, cultureInfo );
     }
 
@@ -55,6 +55,8 @@ public class OSDHome : MonoBehaviour
     //Transform wingTransform;
     Vector3 homePosition;
     Quaternion newArrowRotation;
+    Vector3 newArrowAngles;
+    float courseToHome;
     
 
     void Awake()
@@ -73,13 +75,16 @@ public class OSDHome : MonoBehaviour
 
     void Update()
     {
-        if( Time.time - lastUpdateTime > 1f / updateRate )
+        var time = Time.time;
+        if( time - lastUpdateTime > 1f / updateRate )
         {
-            lastUpdateTime = Time.time;
+            lastUpdateTime = time;
             UpdateUI();
         }
 
-        directionRect.rotation = Quaternion.Lerp( directionRect.rotation, newArrowRotation, Time.deltaTime * 10f );
+        var directionRectAngles = directionRect.eulerAngles;
+        directionRectAngles.z = Mathf.LerpAngle( directionRectAngles.z, courseToHome, Time.deltaTime * 10f );
+        directionRect.eulerAngles = directionRectAngles;
     }
 
 
@@ -101,10 +106,7 @@ public class OSDHome : MonoBehaviour
                 wingForward.y = 0f;
             
                 var rotationToHome = Quaternion.FromToRotation( wingForward.normalized, vectorToHome.normalized );
-                var courseToHome = MathUtils.WrapAngle180( rotationToHome.eulerAngles.y );
-
-                newArrowRotation = Quaternion.Euler( 0f, 0f, -courseToHome );
-                //directionRect.rotation = Quaternion.Euler( 0f, 0f, -courseToHome );
+                courseToHome = MathUtils.WrapAngle180( rotationToHome.eulerAngles.y ) * -1f;
             }
 
             distanceText.text = distanceToHome.ToString( distanceFormat, cultureInfo );

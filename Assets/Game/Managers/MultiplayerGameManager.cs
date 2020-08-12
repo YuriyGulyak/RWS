@@ -11,7 +11,7 @@ namespace RWS
     public class MultiplayerGameManager : MonoBehaviour, IOnEventCallback
     {
         [SerializeField]
-        GameObject orbitCamera = null;
+        GameObject pilotAvatar = null;
 
         [SerializeField]
         WingSpawner wingSpawner = null;
@@ -49,6 +49,9 @@ namespace RWS
         [SerializeField]
         SettingsPanel settingsPanel = null;
 
+        [SerializeField]
+        BlackScreen blackScreen = null;
+        
         [SerializeField]
         int photonSendRate = 60; // Default 20
 
@@ -92,8 +95,8 @@ namespace RWS
             SpawnRemotePlayerWing = 1
         }
 
+        FlyingWing localFlyingWing;
         GameObject localWingGameObject;
-        Rigidbody localWingRigidbody;
         Dictionary<int, GameObject> remoteWingDictionary;
         int spawnPointIndex;
         bool gameStarted;
@@ -102,11 +105,13 @@ namespace RWS
         void OnEnable()
         {
             PhotonNetwork.AddCallbackTarget( this );
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
         void OnDisable()
         {
             PhotonNetwork.RemoveCallbackTarget( this );
+            SceneManager.sceneLoaded -= OnSceneLoaded;
         }
 
         void Awake()
@@ -155,30 +160,28 @@ namespace RWS
             {
                 spawnPointIndex = PhotonNetwork.LocalPlayer.ActorNumber;
                 localWingGameObject = wingSpawner.SpawnLocalPlayerWing( spawnPointIndex );
+                localFlyingWing = localWingGameObject.GetComponent<FlyingWing>();
 
-                var localWingTransform = localWingGameObject.transform;
-                var wingPosition = localWingTransform.position;
-                var wingRotation = localWingTransform.rotation;
+                var wingTransform = localWingGameObject.transform;
+                var wingPosition = wingTransform.position;
+                var wingRotation = wingTransform.rotation;
 
-                localWingRigidbody = localWingGameObject.GetComponent<Rigidbody>();
+                var pilotPosition = wingPosition + new Vector3( -0.75f, 0f, 0.4f );
+                Physics.Raycast( pilotPosition, Vector3.down, out var hit );
+                pilotPosition.y = hit.point.y;
+                
+                pilotAvatar.transform.position = pilotPosition;
+                pilotAvatar.GetComponent<PilotLook>().SetTarget( wingTransform );
 
-                var photonView = localWingGameObject.GetComponent<PhotonView>();
-                PhotonNetwork.AllocateViewID( photonView );
-
-                SendEventToSpawnRemotePlayerWing( wingPosition, wingRotation, photonView.ViewID );
-
-                orbitCamera.transform.position = wingPosition - new Vector3( 0f, 0f, 0.1f );
-
-                var flyingWing = localWingGameObject.GetComponent<FlyingWing>();
                 var motor = localWingGameObject.GetComponentInChildren<Motor>();
                 var battery = localWingGameObject.GetComponentInChildren<Battery>();
                 
-                osdTelemetry.Init( flyingWing, motor, battery );
-                osdHome.Init( flyingWing );
+                osdTelemetry.Init( localFlyingWing, motor, battery );
+                osdHome.Init( localFlyingWing );
                 
                 if( wingTelemetry )
                 {
-                    wingTelemetry.Init( flyingWing );
+                    wingTelemetry.Init( localFlyingWing );
                 }
                 if( batteryTelemetry )
                 {
@@ -188,9 +191,18 @@ namespace RWS
                 {
                     motorTelemetry.Init( motor );
                 }
+
+                var photonView = localWingGameObject.GetComponent<PhotonView>();
+                PhotonNetwork.AllocateViewID( photonView );
+                SendEventToSpawnRemotePlayerWing( wingPosition, wingRotation, photonView.ViewID );
             }
         }
 
+        
+        void OnSceneLoaded( Scene scene, LoadSceneMode mode )
+        {
+            BlackScreen.Instance.StartFromBlackScreenAnimation();
+        }
 
         void OnStartButton()
         {
@@ -200,23 +212,33 @@ namespace RWS
             }
 
             gameMenu.Hide();
-            playerOverviewPanel.Show();
+
+            blackScreen.StartToBlackScreenAnimation( () =>
+            {
+                var pilotCamera = pilotAvatar.GetComponentInChildren<Camera>( true );
+                pilotCamera.gameObject.SetActive( false );
             
-            orbitCamera.SetActive( false );
+                var fpvCamera = localWingGameObject.GetComponentInChildren<Camera>( true );
+                fpvCamera.gameObject.SetActive( true );
 
-            var fpvCamera = localWingGameObject.GetComponentInChildren<Camera>( true );
-            fpvCamera.gameObject.SetActive( true );
+                osdTelemetry.Show();
+                osdHome.Show();
+                
+                playerOverviewPanel.Show();
 
-            osdTelemetry.Show();
-            osdHome.Show();
-            
-            var inputManager = InputManager.Instance;
-            inputManager.LaunchControl.Performed += OnLaunchButton;
-            inputManager.ResetControl.Performed += OnResetButton;
+                Cursor.visible = false;
 
-            Cursor.visible = false;
-
-            gameStarted = true;
+                blackScreen.StartFromBlackScreenAnimation( () =>
+                {
+                    var inputManager = InputManager.Instance;
+                    inputManager.LaunchControl.Performed += OnLaunchButton;
+                    inputManager.ResetControl.Performed += OnResetButton;
+                    
+                    gameStarted = true;
+                    
+                } );
+                
+            } );
         }
 
         void OnResumeButton()
@@ -244,22 +266,27 @@ namespace RWS
 
         void OnLaunchButton()
         {
-            wingLauncher.Launch( localWingRigidbody );
+            wingLauncher.Launch( localFlyingWing.Rigidbody );
         }
 
         void OnResetButton()
         {
-            localWingRigidbody.isKinematic = true;
-            localWingRigidbody.position = wingSpawner.GetSpawnPosition( spawnPointIndex );
-            localWingRigidbody.rotation = wingSpawner.GetSpawnRotation();
-
-            wingLauncher.Reset();
-
-            osdTelemetry.Reset();
-            osdHome.Reset();
+            blackScreen.StartToBlackScreenAnimation( () =>
+            {
+                var localWingRigidbody = localFlyingWing.Rigidbody;
+                localWingRigidbody.isKinematic = true;
+                localWingRigidbody.position = wingSpawner.GetSpawnPosition( spawnPointIndex );
+                localWingRigidbody.rotation = wingSpawner.GetSpawnRotation();
+                
+                osdTelemetry.Reset();
+                osdHome.Reset();
             
-            lapTime.Reset();
-            lapTime.Hide();
+                lapTime.Reset();
+                lapTime.Hide();
+                
+                blackScreen.StartFromBlackScreenAnimation( wingLauncher.Reset );
+                
+            } );
         }
 
         void OnEscapeButton()

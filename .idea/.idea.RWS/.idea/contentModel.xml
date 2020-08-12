@@ -59,6 +59,12 @@
               <e p="OrbitCamera.cs" t="Include" />
             </e>
           </e>
+          <e p="Pilot" t="Include">
+            <e p="Scripts" t="Include">
+              <e p="PilotLook.cs" t="Include" />
+              <e p="SwayEffect.cs" t="Include" />
+            </e>
+          </e>
           <e p="RaceKit" t="Include">
             <e p="RaceNotes.txt" t="Include" />
             <e p="Scripts" t="Include">

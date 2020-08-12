@@ -33,7 +33,7 @@ public class WingSpawner : MonoBehaviour
 
     public Quaternion GetSpawnRotation()
     {
-        return Quaternion.Euler( -10f, 0f, 0f );
+        return Quaternion.Euler( -20f, 0f, 0f );
     }
     
     //----------------------------------------------------------------------------------------------------

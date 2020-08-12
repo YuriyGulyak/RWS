@@ -55,6 +55,8 @@ public class FlyingWing : MonoBehaviour
 
     //----------------------------------------------------------------------------------------------------
     
+    public Rigidbody Rigidbody => wingRigidbody;
+    
     public float RollSetpoint
     {
         get => rollSetpoint;

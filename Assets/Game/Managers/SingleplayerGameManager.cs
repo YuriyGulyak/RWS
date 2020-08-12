@@ -5,14 +5,17 @@ using UnityEngine.SceneManagement;
 public class SingleplayerGameManager : MonoBehaviour
 {
     [SerializeField]
-    GameObject orbitCamera = null;
-
+    GameObject pilotCamera = null;
+    
     [SerializeField]
     GameObject fpvCamera = null;
 
     [SerializeField]
-    WingLauncher wingLauncher = null;
+    FlyingWing flyingWing = null;
     
+    [SerializeField]
+    WingLauncher wingLauncher = null;
+
     [SerializeField]
     RaceTrack raceTrack = null;
     
@@ -29,6 +32,9 @@ public class SingleplayerGameManager : MonoBehaviour
     GameMenu gameMenu = null;
 
     [SerializeField]
+    BlackScreen blackScreen = null;
+    
+    [SerializeField]
     SettingsPanel settingsPanel = null;
     
     //----------------------------------------------------------------------------------------------------
@@ -36,24 +42,23 @@ public class SingleplayerGameManager : MonoBehaviour
     readonly string bestLapKey = "BestLap";
     
     bool gameStarted;
-
+    
     
     void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-
-    void OnSceneLoaded( Scene scene, LoadSceneMode mode )
+    void OnDisable()
     {
-        BlackScreen.Instance.StartFromBlackScreenAnimation();
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
     
     void Awake()
     {
         osdTelemetry.Hide();
         osdHome.Hide();
-        
+
         lapTime.Init( PlayerPrefs.GetFloat( bestLapKey, 0f ) );
         lapTime.OnNewBestTime += newBestTime =>
         {
@@ -75,24 +80,41 @@ public class SingleplayerGameManager : MonoBehaviour
         InputManager.Instance.OnEscapeButton += OnEscapeButton;
     }
 
+    
+    void OnSceneLoaded( Scene scene, LoadSceneMode mode )
+    {
+        BlackScreen.Instance.StartFromBlackScreenAnimation();
+    }
 
     void OnStartButton()
     {
         gameMenu.Hide();
         
-        orbitCamera.SetActive( false );
-        fpvCamera.SetActive( true );
+        blackScreen.StartToBlackScreenAnimation( () =>
+        {
+            pilotCamera.SetActive( false );
+            fpvCamera.SetActive( true );
 
-        osdTelemetry.Show();
-        osdHome.Show();
-        
-        var inputManager = InputManager.Instance;
-        inputManager.LaunchControl.Performed += OnLaunchButton;
-        inputManager.ResetControl.Performed += OnResetButton;
+            osdTelemetry.Show();
+            osdHome.Show();
 
-        Cursor.visible = false;
-        
-        gameStarted = true;
+            var wingRigibody = flyingWing.Rigidbody;
+            wingRigibody.position = wingLauncher.transform.position;
+            wingRigibody.rotation = wingLauncher.transform.rotation;
+
+            Cursor.visible = false;
+
+            blackScreen.StartFromBlackScreenAnimation( () =>
+            {
+                var inputManager = InputManager.Instance;
+                inputManager.LaunchControl.Performed += OnLaunchButton;
+                inputManager.ResetControl.Performed += OnResetButton;
+                
+                gameStarted = true;
+                
+            } );
+            
+        } );
     }
     
     void OnResumeButton()
@@ -122,21 +144,24 @@ public class SingleplayerGameManager : MonoBehaviour
 
     void OnResetButton()
     {
-        var wing = FindObjectOfType<FlyingWing>();
-        var wingRigibody = wing.GetComponentInChildren<Rigidbody>();
+        blackScreen.StartToBlackScreenAnimation( () =>
+        {
+            var wingRigibody = flyingWing.Rigidbody;
+            wingRigibody.isKinematic = true;
+            wingRigibody.position = wingLauncher.transform.position;
+            wingRigibody.rotation = wingLauncher.transform.rotation;
 
-        wingRigibody.isKinematic = true;
-        wingRigibody.position = wingLauncher.transform.position;
-        wingRigibody.rotation = wingLauncher.transform.rotation;
+            flyingWing.Reset();
 
-        wing.Reset();
-        wingLauncher.Reset();
-
-        osdTelemetry.Reset();
-        osdHome.Reset();
+            osdTelemetry.Reset();
+            osdHome.Reset();
         
-        lapTime.Reset();
-        lapTime.Hide();
+            lapTime.Reset();
+            lapTime.Hide();
+            
+            blackScreen.StartFromBlackScreenAnimation( wingLauncher.Reset );
+            
+        } );
     }
     
     void OnEscapeButton()
