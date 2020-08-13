@@ -94,7 +94,7 @@ AudioHighPassFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 720075568134770491}
   m_Enabled: 1
-  m_CutoffFrequency: 500
+  m_CutoffFrequency: 200
   m_HighpassResonanceQ: 1
 --- !u!114 &720075568134770368
 MonoBehaviour:

@@ -171,7 +171,7 @@ public class SingleplayerGameManager : MonoBehaviour
             return;
         }
         
-        if( !gameMenu.IsOpen )
+        if( !gameMenu.IsActive )
         {
             gameMenu.Show();
             Cursor.visible = true;

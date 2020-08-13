@@ -23,11 +23,11 @@ public class GameMenu : MonoBehaviour
     public Action OnSettingsButton;
     public Action OnExitButton;
     
-    public bool IsOpen => gameObject.activeSelf;
+    public bool IsActive => gameObject.activeSelf;
     
     public void Show()
     {
-        if( IsOpen )
+        if( IsActive )
         {
             return;
         }
@@ -36,7 +36,7 @@ public class GameMenu : MonoBehaviour
 
     public void Hide()
     {
-        if( !IsOpen )
+        if( !IsActive )
         {
             return;
         }

@@ -6716,6 +6716,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 246656557}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &246656559 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3598943837009631068, guid: d5b76c8db09b3584d97980ab33df107c,
+    type: 3}
+  m_PrefabInstance: {fileID: 246656557}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a1b6f8a62bb9d94b98c7192cf3a8110, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &253265995
 GameObject:
   m_ObjectHideFlags: 0
@@ -17291,6 +17303,7 @@ MonoBehaviour:
   osdHome: {fileID: 897305473}
   gameMenu: {fileID: 730291199}
   settingsPanel: {fileID: 1435119844}
+  roomChat: {fileID: 246656559}
   blackScreen: {fileID: 1803243879}
   photonSendRate: 120
   photonSerializationRate: 120

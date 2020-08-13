@@ -154,7 +154,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/FlyingWing/Scripts/MotorSound.cs" />
         <option value="$PROJECT_DIR$/Assets/Utils/SliderWithInputField.cs" />
         <option value="$PROJECT_DIR$/Assets/UI/Scripts/MainMenuManager.cs" />
         <option value="$PROJECT_DIR$/Assets/UI/Scripts/SettingsPanel/SettingsPanel.cs" />
@@ -188,7 +187,6 @@
         <option value="$PROJECT_DIR$/Assets/Game/TestRenderScale.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/OSD.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/InsideRoomPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/RoomChat/RoomChat.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MenuPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/MathUtils.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/Battery.cs" />
@@ -203,8 +201,10 @@
         <option value="$USER_HOME$/Desktop/Form1.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/WingPhotonView.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/PlayerOverviewPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/Managers/MultiplayerGameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/MultiplayerPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/Managers/MultiplayerGameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/GameMenu.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/RoomChat/RoomChat.cs" />
       </list>
     </option>
   </component>

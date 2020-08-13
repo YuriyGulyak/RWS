@@ -19,6 +19,9 @@ namespace RWS
 
         [SerializeField]
         Transform contentTransform = null;
+
+        [SerializeField]
+        GameObject inputPanel = null;
         
         [SerializeField]
         int maxMessages = 10;
@@ -43,6 +46,16 @@ namespace RWS
             }
         }
 
+        public void ShowInput()
+        {
+            inputPanel.SetActive( true );
+        }
+        
+        public void HideInput()
+        {
+            inputPanel.SetActive( false );
+        }
+        
         //----------------------------------------------------------------------------------------------------
 
         void Awake()

@@ -51,6 +51,9 @@ namespace RWS
         SettingsPanel settingsPanel = null;
 
         [SerializeField]
+        RoomChat roomChat = null;
+        
+        [SerializeField]
         BlackScreen blackScreen = null;
         
         [SerializeField]
@@ -227,6 +230,8 @@ namespace RWS
                 
                 playerOverviewPanel.Show();
 
+                roomChat.HideInput();
+                
                 Cursor.visible = false;
 
                 blackScreen.StartFromBlackScreenAnimation( () =>
@@ -247,6 +252,7 @@ namespace RWS
             gameMenu.Hide();
             settingsPanel.Hide();
             playerOverviewPanel.Show();
+            roomChat.HideInput();
             
             Cursor.visible = false;
         }
@@ -298,10 +304,11 @@ namespace RWS
                 return;
             }
 
-            if( !gameMenu.IsOpen )
+            if( !gameMenu.IsActive )
             {
                 playerOverviewPanel.Hide();
                 gameMenu.Show();
+                roomChat.ShowInput();
                 Cursor.visible = true;
             }
         }

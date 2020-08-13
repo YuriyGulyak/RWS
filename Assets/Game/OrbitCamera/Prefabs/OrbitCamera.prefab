@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5286113092403905331}
   - component: {fileID: 5286113092403905328}
   - component: {fileID: 5286113092403905329}
+  - component: {fileID: 2104755824776002997}
   m_Layer: 10
   m_Name: Camera
   m_TagString: Untagged
@@ -144,6 +145,16 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5286113092403905335}
   m_Enabled: 1
+--- !u!165 &2104755824776002997
+AudioHighPassFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5286113092403905335}
+  m_Enabled: 1
+  m_CutoffFrequency: 200
+  m_HighpassResonanceQ: 1
 --- !u!1 &5286113092976292378
 GameObject:
   m_ObjectHideFlags: 0
