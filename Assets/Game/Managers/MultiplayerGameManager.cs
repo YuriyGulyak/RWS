@@ -45,6 +45,9 @@ namespace RWS
         OSDHome osdHome = null;
         
         [SerializeField]
+        AttitudeIndicator attitudeIndicator = null;
+        
+        [SerializeField]
         GameMenu gameMenu = null;
 
         [SerializeField]
@@ -120,11 +123,14 @@ namespace RWS
 
         void Awake()
         {
+            //PhotonNetwork.GetPing();
+            
             PhotonNetwork.SendRate = photonSendRate;
             PhotonNetwork.SerializationRate = photonSerializationRate;
 
             osdTelemetry.Hide();
             osdHome.Hide();
+            attitudeIndicator.Hide();
             
             lapTime.Init( 0f );
             lapTime.OnNewBestTime += newBestTime =>
@@ -170,7 +176,7 @@ namespace RWS
                 var wingPosition = wingTransform.position;
                 var wingRotation = wingTransform.rotation;
 
-                var pilotPosition = wingPosition + new Vector3( -0.75f, 0f, 0.4f );
+                var pilotPosition = wingPosition + new Vector3( -0.75f, 0f, 0.3f );
                 Physics.Raycast( pilotPosition, Vector3.down, out var hit );
                 pilotPosition.y = hit.point.y;
                 
@@ -182,6 +188,7 @@ namespace RWS
                 
                 osdTelemetry.Init( localFlyingWing, motor, battery );
                 osdHome.Init( localFlyingWing );
+                attitudeIndicator.Init( localFlyingWing );
                 
                 if( wingTelemetry )
                 {
@@ -227,6 +234,7 @@ namespace RWS
 
                 osdTelemetry.Show();
                 osdHome.Show();
+                attitudeIndicator.Show();
                 
                 playerOverviewPanel.Show();
 
@@ -249,6 +257,7 @@ namespace RWS
 
         void OnResumeButton()
         {
+            ShowOSD();
             gameMenu.Hide();
             settingsPanel.Hide();
             playerOverviewPanel.Show();
@@ -288,7 +297,8 @@ namespace RWS
                 
                 osdTelemetry.Reset();
                 osdHome.Reset();
-            
+                attitudeIndicator.Reset();
+                
                 lapTime.Reset();
                 lapTime.Hide();
                 
@@ -306,6 +316,7 @@ namespace RWS
 
             if( !gameMenu.IsActive )
             {
+                HideOSD();
                 playerOverviewPanel.Hide();
                 gameMenu.Show();
                 roomChat.ShowInput();
@@ -313,6 +324,26 @@ namespace RWS
             }
         }
 
+        
+        void ShowOSD()
+        {
+            osdTelemetry.Show();
+            osdHome.Show();
+            attitudeIndicator.Show();
+
+            if( lapTime.Started )
+            {
+                lapTime.Show();
+            }
+        }
+
+        void HideOSD()
+        {
+            osdTelemetry.Hide();
+            osdHome.Hide();
+            attitudeIndicator.Hide();
+            lapTime.Hide();
+        }
 
         IEnumerator ExitCoroutine()
         {

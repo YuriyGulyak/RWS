@@ -39,6 +39,9 @@ public class FlyingWing : MonoBehaviour
     Battery battery = null;
 
     [SerializeField]
+    Attitude attitude = null;
+    
+    [SerializeField]
     Altimeter altimeter = null;
     
     [SerializeField]
@@ -77,6 +80,10 @@ public class FlyingWing : MonoBehaviour
     
     public float Altitude => altitude;
 
+    public float RollAngle => rollAngle;
+
+    public float PitchAngle => pitchAngle;
+    
     public float TAS => speed; // True airspeed, TAS 
     
     public float RollSpeed => rollSpeed;
@@ -90,6 +97,10 @@ public class FlyingWing : MonoBehaviour
     public void Reset()
     {
         battery.Reset();
+        
+        velocity = Vector3.zero;
+        velocityLocal = Vector3.zero;
+        speed = 0f;
     }
 
     //----------------------------------------------------------------------------------------------------
@@ -106,6 +117,8 @@ public class FlyingWing : MonoBehaviour
     float sideslipAngle;
     float speed;
     float altitude;
+    float rollAngle;
+    float pitchAngle;
     float rollSpeed;
     float pitchSpeed;
     float leftElevonAngleVelocity;
@@ -189,13 +202,17 @@ public class FlyingWing : MonoBehaviour
         velocityLocal = wingTransform.InverseTransformDirection( velocity );
         speed = velocity.magnitude;
         altitude = altimeter.Altitude;
-        
+
         angleOfAttack = Vector3.SignedAngle( Vector3.forward, new Vector3( 0f, velocityLocal.y, velocityLocal.z ).normalized, Vector3.right );
         angleOfAttack = MathUtils.WrapAngle90( angleOfAttack );
 
         sideslipAngle = Vector3.SignedAngle( Vector3.forward, new Vector3( velocityLocal.x, 0f, velocityLocal.z ).normalized, Vector3.up );
         sideslipAngle = MathUtils.WrapAngle90( sideslipAngle );
 
+        attitude.UpdateState();
+        rollAngle = attitude.Roll;
+        pitchAngle = attitude.Pitch;
+        
         
         // Turbulence imitation
         

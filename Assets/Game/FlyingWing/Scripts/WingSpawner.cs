@@ -17,6 +17,9 @@ public class WingSpawner : MonoBehaviour
     [SerializeField]
     float spawnHeight = 1.8f;
 
+    [SerializeField]
+    float spawnAngle = 20f;
+    
     //----------------------------------------------------------------------------------------------------
     
     public GameObject SpawnLocalPlayerWing( int spawnPointIndex )
@@ -44,7 +47,7 @@ public class WingSpawner : MonoBehaviour
 
     public Quaternion GetSpawnRotation()
     {
-        return Quaternion.Euler( -20f, 0f, 0f );
+        return Quaternion.Euler( -spawnAngle, 0f, 0f );
     }
     
     //----------------------------------------------------------------------------------------------------

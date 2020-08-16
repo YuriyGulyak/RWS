@@ -15,10 +15,10 @@ public class OSDTelemetry : MonoBehaviour
     FlyingWing flyingWing = null;
 
     [SerializeField]
-    TextMeshProUGUI socText = null;
+    TextMeshProUGUI voltageText = null;
     
     [SerializeField]
-    TextMeshProUGUI voltageText = null;
+    TextMeshProUGUI cellVoltageText = null;
 
     [SerializeField]
     TextMeshProUGUI mahUsedText = null;
@@ -74,8 +74,8 @@ public class OSDTelemetry : MonoBehaviour
     {
         flytime = 0f;
         
-        socText.text = 0f.ToString( socFormat, cultureInfo );
         voltageText.text = 0f.ToString( voltageFormat, cultureInfo );
+        cellVoltageText.text = 0f.ToString( voltageFormat, cultureInfo );
         mahUsedText.text = 0f.ToString( mahUsedFormat, cultureInfo );
         rpmText.text = 0f.ToString( rpmFormat, cultureInfo );
         currentText.text = 0f.ToString( currentFormat, cultureInfo );
@@ -87,14 +87,12 @@ public class OSDTelemetry : MonoBehaviour
 
     readonly string timeFormat = @"m\:ss";
     
-    string socFormat;
     string voltageFormat;
     string mahUsedFormat;
     string rpmFormat;
     string currentFormat;
     string speedFormat;
     string altitudeFormat;
-    //string flytimeFormat;
     string throttleFormat;
     CultureInfo cultureInfo;
     float lastUpdateTime;
@@ -103,14 +101,12 @@ public class OSDTelemetry : MonoBehaviour
 
     void Awake()
     {
-        socFormat = socText.text;
         voltageFormat = voltageText.text;
         mahUsedFormat = mahUsedText.text;
         currentFormat = currentText.text;
         rpmFormat = rpmText.text;
         speedFormat = speedText.text;
         altitudeFormat = altitudeText.text;
-        //flytimeFormat = flytimeText.text;
         throttleFormat = throttleText.text;
         
         cultureInfo = CultureInfo.InvariantCulture;
@@ -135,8 +131,8 @@ public class OSDTelemetry : MonoBehaviour
     {
         if( battery )
         {
-            socText.text = battery.StateOfCharge.ToString( socFormat, cultureInfo );
             voltageText.text = battery.Voltage.ToString( voltageFormat, cultureInfo );
+            cellVoltageText.text = ( battery.Voltage / battery.CellCount ).ToString( voltageFormat, cultureInfo );
 
             var mahUsed = battery.CapacityDrawn * 1000f;
             mahUsedText.text = mahUsed.ToString( mahUsedFormat, cultureInfo );

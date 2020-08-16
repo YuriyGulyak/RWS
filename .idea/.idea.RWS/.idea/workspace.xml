@@ -26,6 +26,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/4d/a57c38c9/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Desktop/DRS/Assets/Misc/Other/MathUtils.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Desktop/ARMInput/Исходники/InputReceiver/ViewModel.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/AttitudeIndicator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Desktop/DRS/Assets/UI/Menu/GraphicsPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/LoginPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/InsideRoomPanel.cs" root0="FORCE_HIGHLIGHTING" />
@@ -35,6 +36,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/A497A6F1-8E1F-4B41-9421-B940ADD27A6E/1f/b340bfcd/Hashtable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/31/f0bdf6ea/GameObject.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/2a/46763d44/QualitySettings.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/Attitude.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0/InputSystem/Plugins/PlayerInput/PlayerInputManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Desktop/ARMInput/Исходники/InputSender/ViewModel.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Desktop/ARMInput/Исходники/Protocol/ARMInputProtocol.cs" root0="SKIP_HIGHLIGHTING" />
@@ -71,6 +73,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/48050808-8AEE-40CA-B708-18FF164A29D5/2a/a027d61e/UnityEvent.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Scripts/Game/AsteroidsGameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/Motor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/Orientation.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/RoomChat/RoomChat.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Desktop/DRS/Assets/@Tests/TestRateCurve/RateCurveRenderer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0/InputSystem/Devices/InputDevice.cs" root0="SKIP_HIGHLIGHTING" />
@@ -150,15 +153,11 @@
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Code/PhotonNetworkPart.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Code/PhotonNetwork.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/OSDTelemetry.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Desktop/DRS/Assets/Craft/Scripts/Gyroscope.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Utils/SliderWithInputField.cs" />
-        <option value="$PROJECT_DIR$/Assets/UI/Scripts/MainMenuManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/UI/Scripts/SettingsPanel/SettingsPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/UI/Scripts/GameMenu.cs" />
-        <option value="$PROJECT_DIR$/Assets/UI/Scripts/PlayerOverviewPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Input/InputManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Managers/SingleplayerGameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Managers/GraphicsManager.cs" />
@@ -180,7 +179,6 @@
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/MotorSound.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/Altimeter.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/Managers/InputManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/LapTime.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/Input/ControllerNotes.txt" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/RoomChat/RoomChatLine.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/RoomChat/RoomChatMessage.cs" />
@@ -190,21 +188,27 @@
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MenuPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/MathUtils.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/Battery.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/OSDTelemetry.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/FlyingWing.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/OrbitCamera/Scripts/OrbitCamera.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/Pilot/Scripts/PilotLook.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/Managers/SingleplayerGameManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/OSDHome.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/WingSpawner.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/RoomListPanel.cs" />
         <option value="$USER_HOME$/Desktop/Form1.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/WingPhotonView.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/PlayerOverviewPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/MultiplayerPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/Managers/MultiplayerGameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/GameMenu.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/RoomChat/RoomChat.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/WingSpawner.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/Gyroscope.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/Orientation.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/Attitude.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/BlackScreen.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/LapTime.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/OSDTelemetry.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/FlyingWing.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/Managers/SingleplayerGameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/OSDHome.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/AttitudeIndicator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/Managers/MultiplayerGameManager.cs" />
       </list>
     </option>
   </component>

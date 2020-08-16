@@ -14,6 +14,11 @@ public class BlackScreen : Singleton<BlackScreen>
 
     public void StartFromBlackScreenAnimation( Action onAnimationFinished = null )
     {
+        if( blackScreenAnimationCoroutine != null )
+        {
+            return;
+        }
+        
         image.transform.SetAsLastSibling();
         
         var colorBlack = new Color( 0f, 0f, 0f, 1f );
@@ -22,10 +27,6 @@ public class BlackScreen : Singleton<BlackScreen>
         image.enabled = true;
         image.color = colorBlack;
 
-        if( blackScreenAnimationCoroutine != null )
-        {
-            StopCoroutine( blackScreenAnimationCoroutine );
-        }
         blackScreenAnimationCoroutine = ImageColorLerpCoroutine( colorBlack, colorBlackTransparent, 1.5f, () =>
         {
             image.enabled = false;
@@ -36,6 +37,11 @@ public class BlackScreen : Singleton<BlackScreen>
 
     public void StartToBlackScreenAnimation( Action onAnimationFinished = null )
     {
+        if( blackScreenAnimationCoroutine != null )
+        {
+            return;
+        }
+        
         image.transform.SetAsLastSibling();
     
         var colorCurrent = image.color;
@@ -43,10 +49,6 @@ public class BlackScreen : Singleton<BlackScreen>
         
         image.enabled = true;
 
-        if( blackScreenAnimationCoroutine != null )
-        {
-            StopCoroutine( blackScreenAnimationCoroutine );
-        }
         blackScreenAnimationCoroutine = ImageColorLerpCoroutine( colorCurrent, colorBlack, 1f, () =>
         {
             onAnimationFinished?.Invoke();

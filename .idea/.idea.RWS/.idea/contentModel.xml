@@ -19,6 +19,8 @@
               <e p="AirfoilConfig.cs" t="Include" />
               <e p="AirfoilSection.cs" t="Include" />
               <e p="Altimeter.cs" t="Include" />
+              <e p="Attitude.cs" t="Include" />
+              <e p="AttitudeIndicator.cs" t="Include" />
               <e p="Battery.cs" t="Include" />
               <e p="ControlSensitivity.cs" t="Include" />
               <e p="Elevon.cs" t="Include" />
@@ -26,6 +28,7 @@
               <e p="Motor.cs" t="Include" />
               <e p="MotorModel.cs" t="Include" />
               <e p="MotorSound.cs" t="Include" />
+              <e p="Orientation.cs" t="Include" />
               <e p="PIDController.cs" t="Include" />
               <e p="Propeller.cs" t="Include" />
               <e p="ServoSound.cs" t="Include" />

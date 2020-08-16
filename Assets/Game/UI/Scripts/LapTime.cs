@@ -34,6 +34,8 @@ public class LapTime : MonoBehaviour
 
     public Action<float> OnNewBestTime;
 
+    public bool Started => lapStarted;
+    
     public void StartNewTime()
     {
         lapTime = 0f;
@@ -56,6 +58,11 @@ public class LapTime : MonoBehaviour
         }
     }
 
+    public void Show()
+    {
+        ShowUI();
+    }
+    
     public void Hide()
     {
         HideUI();

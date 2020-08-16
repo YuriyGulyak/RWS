@@ -42,6 +42,7 @@ public class OSDHome : MonoBehaviour
 
     public void Reset()
     {
+        courseToHome = 0f;
         newArrowRotation = Quaternion.identity;
         directionRect.rotation = newArrowRotation;
         distanceText.text = 0f.ToString( distanceFormat, cultureInfo );
@@ -51,8 +52,7 @@ public class OSDHome : MonoBehaviour
     string distanceFormat;
     CultureInfo cultureInfo;
     float lastUpdateTime;
-    Rigidbody wingRigidbody;
-    //Transform wingTransform;
+    Transform wingTransform;
     Vector3 homePosition;
     Quaternion newArrowRotation;
     Vector3 newArrowAngles;
@@ -66,10 +66,8 @@ public class OSDHome : MonoBehaviour
 
         if( flyingWing )
         {
-            wingRigidbody = flyingWing.GetComponent<Rigidbody>();
-            homePosition = wingRigidbody.position;
-            //wingTransform = flyingWing.transform;
-            //homePosition = wingTransform.position;
+            wingTransform = flyingWing.transform;
+            homePosition = wingTransform.position;
         }
     }
 
@@ -92,21 +90,18 @@ public class OSDHome : MonoBehaviour
     {
         if( flyingWing && flyingWing.TAS > 0.1f )
         {
-            //var wingPosition = wingTransform.position;
-            var wingPosition = wingRigidbody.position;
-            wingPosition.y = homePosition.y;
-
+            var wingPosition = wingTransform.position;
             var vectorToHome = homePosition - wingPosition;
+            vectorToHome.y = 0f;
             var distanceToHome = vectorToHome.magnitude;
 
             if( distanceToHome > 1f )
             {
-                //var wingForward = wingTransform.forward;
-                var wingForward = wingRigidbody.velocity;
+                var wingForward = wingTransform.forward;
                 wingForward.y = 0f;
             
                 var rotationToHome = Quaternion.FromToRotation( wingForward.normalized, vectorToHome.normalized );
-                courseToHome = MathUtils.WrapAngle180( rotationToHome.eulerAngles.y ) * -1f;
+                courseToHome = MathUtils.WrapAngle180( rotationToHome.eulerAngles.y + flyingWing.RollAngle ) * -1f;
             }
 
             distanceText.text = distanceToHome.ToString( distanceFormat, cultureInfo );

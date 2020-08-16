@@ -27,6 +27,9 @@ public class SingleplayerGameManager : MonoBehaviour
 
     [SerializeField]
     OSDHome osdHome = null;
+
+    [SerializeField]
+    AttitudeIndicator attitudeIndicator = null;
     
     [SerializeField]
     GameMenu gameMenu = null;
@@ -56,8 +59,12 @@ public class SingleplayerGameManager : MonoBehaviour
     
     void Awake()
     {
+        pilotCamera.SetActive( true );
+        fpvCamera.SetActive( false );
+        
         osdTelemetry.Hide();
         osdHome.Hide();
+        attitudeIndicator.Hide();
 
         lapTime.Init( PlayerPrefs.GetFloat( bestLapKey, 0f ) );
         lapTime.OnNewBestTime += newBestTime =>
@@ -97,7 +104,8 @@ public class SingleplayerGameManager : MonoBehaviour
 
             osdTelemetry.Show();
             osdHome.Show();
-
+            attitudeIndicator.Show();
+            
             var wingRigibody = flyingWing.Rigidbody;
             wingRigibody.position = wingLauncher.transform.position;
             wingRigibody.rotation = wingLauncher.transform.rotation;
@@ -119,6 +127,7 @@ public class SingleplayerGameManager : MonoBehaviour
     
     void OnResumeButton()
     {
+        ShowOSD();
         gameMenu.Hide();
         settingsPanel.Hide();
         Cursor.visible = false;
@@ -155,7 +164,8 @@ public class SingleplayerGameManager : MonoBehaviour
 
             osdTelemetry.Reset();
             osdHome.Reset();
-        
+            attitudeIndicator.Reset();
+            
             lapTime.Reset();
             lapTime.Hide();
             
@@ -173,8 +183,30 @@ public class SingleplayerGameManager : MonoBehaviour
         
         if( !gameMenu.IsActive )
         {
+            HideOSD();
             gameMenu.Show();
             Cursor.visible = true;
         }
+    }
+
+
+    void ShowOSD()
+    {
+        osdTelemetry.Show();
+        osdHome.Show();
+        attitudeIndicator.Show();
+
+        if( lapTime.Started )
+        {
+            lapTime.Show();
+        }
+    }
+
+    void HideOSD()
+    {
+        osdTelemetry.Hide();
+        osdHome.Hide();
+        attitudeIndicator.Hide();
+        lapTime.Hide();
     }
 }

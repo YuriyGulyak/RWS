@@ -515,6 +515,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   soundTransition: 0
+  volumeScale: 1
 --- !u!1 &879353225579301935
 GameObject:
   m_ObjectHideFlags: 0
@@ -7167,6 +7168,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   soundTransition: 0
+  volumeScale: 1
 --- !u!1 &6515234893810010765
 GameObject:
   m_ObjectHideFlags: 0
@@ -7385,6 +7387,7 @@ GameObject:
   - component: {fileID: 7591922440049976524}
   - component: {fileID: 879353226194359548}
   - component: {fileID: 879353226194359549}
+  - component: {fileID: 7723435024811574705}
   - component: {fileID: 879353226194359495}
   - component: {fileID: 3766638978651995879}
   - component: {fileID: 6366237410750979382}
@@ -7517,6 +7520,19 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7723435024811574705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6845670327748925151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da0c33308c637a04e8d6d93b4e9c7c81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTransform: {fileID: 7591922440049976524}
 --- !u!114 &879353226194359495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7578,6 +7594,7 @@ MonoBehaviour:
   elevonMaxSpeed: 600
   motor: {fileID: 879353226623638831}
   battery: {fileID: 879353226276206659}
+  attitude: {fileID: 7723435024811574705}
   altimeter: {fileID: 879353226194359495}
   GC: {x: 0, y: -0.0035, z: -0.06}
   drag: {x: 0, y: 0, z: 0}
