@@ -49,6 +49,7 @@ namespace RWS
         public void ShowInput()
         {
             inputPanel.SetActive( true );
+            inputField.Select();
         }
         
         public void HideInput()

@@ -93,15 +93,14 @@ public class OSDHome : MonoBehaviour
             var wingPosition = wingTransform.position;
             var vectorToHome = homePosition - wingPosition;
             vectorToHome.y = 0f;
+            
             var distanceToHome = vectorToHome.magnitude;
-
             if( distanceToHome > 1f )
             {
                 var wingForward = wingTransform.forward;
                 wingForward.y = 0f;
-            
-                var rotationToHome = Quaternion.FromToRotation( wingForward.normalized, vectorToHome.normalized );
-                courseToHome = MathUtils.WrapAngle180( rotationToHome.eulerAngles.y + flyingWing.RollAngle ) * -1f;
+
+                courseToHome = MathUtils.WrapAngle180( Vector3.SignedAngle( wingForward.normalized, vectorToHome.normalized, Vector3.up ) + flyingWing.RollAngle ) * -1f;
             }
 
             distanceText.text = distanceToHome.ToString( distanceFormat, cultureInfo );

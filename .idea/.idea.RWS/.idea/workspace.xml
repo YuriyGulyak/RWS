@@ -196,7 +196,6 @@
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/PlayerOverviewPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/MultiplayerPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/GameMenu.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/RoomChat/RoomChat.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/WingSpawner.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/Gyroscope.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/Orientation.cs" />
@@ -206,9 +205,10 @@
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/OSDTelemetry.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/FlyingWing.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/Managers/SingleplayerGameManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/OSDHome.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/AttitudeIndicator.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/Managers/MultiplayerGameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/RoomChat/RoomChat.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/OSDHome.cs" />
       </list>
     </option>
   </component>
