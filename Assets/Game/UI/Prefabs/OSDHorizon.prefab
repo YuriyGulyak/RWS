@@ -261,6 +261,16 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0.5882353
       objectReference: {fileID: 0}
+    - target: {fileID: 7712743250755853409, guid: 14b439d01349b664ca2b32e03abe1576,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7712743250755853409, guid: 14b439d01349b664ca2b32e03abe1576,
+        type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8940303930687735390, guid: 14b439d01349b664ca2b32e03abe1576,
         type: 3}
       propertyPath: m_Name
@@ -291,6 +301,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.a
       value: 0.78431374
+      objectReference: {fileID: 0}
+    - target: {fileID: 2970661535435121061, guid: 4dd74717386eccb4497ed15241202e2a,
+        type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2970661535435121061, guid: 4dd74717386eccb4497ed15241202e2a,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7517658744451523254, guid: 4dd74717386eccb4497ed15241202e2a,
         type: 3}

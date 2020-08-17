@@ -98,6 +98,7 @@
               </e>
               <e p="OSDHome.cs" t="Include" />
               <e p="OSDTelemetry.cs" t="Include" />
+              <e p="PingDisplay.cs" t="Include" />
               <e p="PlayerOverviewEntry.cs" t="Include" />
               <e p="PlayerOverviewPanel.cs" t="Include" />
               <e p="RoomChat" t="Include">

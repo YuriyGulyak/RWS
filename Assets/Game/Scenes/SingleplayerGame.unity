@@ -41645,10 +41645,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 146059772}
     m_Modifications:
+    - target: {fileID: 6207345737041670501, guid: 8d376060dd3a7404a8b5ffc7a0abcc35,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6207345737041670501, guid: 8d376060dd3a7404a8b5ffc7a0abcc35,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6207345737041670501, guid: 8d376060dd3a7404a8b5ffc7a0abcc35,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8451784753838556960, guid: 8d376060dd3a7404a8b5ffc7a0abcc35,
         type: 3}
       propertyPath: m_Name
       value: OSDHorizon
+      objectReference: {fileID: 0}
+    - target: {fileID: 8451784753838556960, guid: 8d376060dd3a7404a8b5ffc7a0abcc35,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8451784753838556961, guid: 8d376060dd3a7404a8b5ffc7a0abcc35,
         type: 3}
