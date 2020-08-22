@@ -54289,6 +54289,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PilotAvatar
       objectReference: {fileID: 0}
+    - target: {fileID: 720075569104032214, guid: 01bf3d5341e1f7b42b64b4247547f4ec,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 720075569104032215, guid: 01bf3d5341e1f7b42b64b4247547f4ec,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -6,14 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Game/Scenes/MainMenu.unity
-    guid: c23b0a7280b218648845ae5461ff14df
+    path: Assets/Game/Scenes/MainMenu (New Skybox).unity
+    guid: 699b329a701a4aa489e0cb75b6f4fb30
   - enabled: 1
-    path: Assets/Game/Scenes/SingleplayerGame.unity
-    guid: f74e79bd6f0babe4abe2824b354cc737
+    path: Assets/Game/Scenes/SingleplayerGame (New Skybox).unity
+    guid: e288dd441012fb041883942d763c13d6
   - enabled: 1
-    path: Assets/Game/Scenes/MultiplayerGame.unity
-    guid: 52f4755e7321a56489180c65757982fb
+    path: Assets/Game/Scenes/MultiplayerGame (New Skybox).unity
+    guid: 2728c095c2c723e4bae54e708a89e74a
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 56c70a0d529406a46811de21591f1503,
       type: 2}

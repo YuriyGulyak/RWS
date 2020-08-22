@@ -102,6 +102,8 @@ public class SingleplayerGameManager : MonoBehaviour
             pilotCamera.SetActive( false );
             fpvCamera.SetActive( true );
 
+            settingsPanel.Hide();
+            
             osdTelemetry.Show();
             osdHome.Show();
             attitudeIndicator.Show();

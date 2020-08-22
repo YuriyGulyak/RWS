@@ -232,6 +232,8 @@ namespace RWS
                 var fpvCamera = localWingGameObject.GetComponentInChildren<Camera>( true );
                 fpvCamera.gameObject.SetActive( true );
 
+                settingsPanel.Hide();
+                
                 osdTelemetry.Show();
                 osdHome.Show();
                 attitudeIndicator.Show();

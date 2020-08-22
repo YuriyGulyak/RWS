@@ -10,7 +10,9 @@
         <e p="Game" t="Include">
           <e p="Environment" t="Include">
             <e p="Skybox" t="Include">
-              <e p="HorizontalSkybox.shader" t="Include" />
+              <e p="SimpleProceduralSkybox" t="Include">
+                <e p="HorizontalSkybox.shader" t="Include" />
+              </e>
             </e>
           </e>
           <e p="FlyingWing" t="Include">
@@ -470,6 +472,36 @@
                 <e p="TextToggleIsOnTransition.cs" t="Include" />
               </e>
             </e>
+          </e>
+        </e>
+        <e p="Skybox Creator" t="Include">
+          <e p="Output" t="Include">
+            <e p="defaultOutput.txt" t="Include" />
+          </e>
+          <e p="Scripts" t="Include">
+            <e p="Editor" t="Include">
+              <e p="SkyboxCreatorImageSkyInspector.cs" t="Include" />
+              <e p="SkyboxCreatorInspector.cs" t="Include" />
+              <e p="SkyboxCreatorVideoSkyInspector.cs" t="Include" />
+            </e>
+            <e p="SkyboxCreator.cs" t="Include" />
+            <e p="SkyboxCreatorImageSky.cs" t="Include" />
+            <e p="SkyboxCreatorProfile.cs" t="Include" />
+            <e p="SkyboxCreatorRenderer.cs" t="Include" />
+            <e p="SkyboxCreatorVideoSky.cs" t="Include" />
+          </e>
+          <e p="Shader" t="Include">
+            <e p="Include" t="Include">
+              <e p="SkyboxCreatorCloudsInclude.cginc" t="Include" />
+              <e p="SkyboxCreatorNoiseInclude.cginc" t="Include" />
+              <e p="SkyboxCreatorSkyInclude.cginc" t="Include" />
+            </e>
+            <e p="SkyboxCreatorBlit.shader" t="Include" />
+            <e p="SkyboxCreatorClouds.shader" t="Include" />
+            <e p="SkyboxCreatorPanoramicSkybox.shader" t="Include" />
+            <e p="SkyboxCreatorSkybox.shader" t="Include" />
+            <e p="SkyboxCreatorWeatherMap.shader" t="Include" />
+            <e p="SkyCreatorBakeCubemap.shader" t="Include" />
           </e>
         </e>
         <e p="Terrain Tools" t="Include">
