@@ -38,10 +38,12 @@ public class WingSpawner : MonoBehaviour
     public Vector3 GetSpawnPosition( int spawnPointIndex )
     {
         var spawnPosition = spawnPoints[ spawnPointIndex ].position;
-        
-        Physics.Raycast( spawnPosition, Vector3.down, out var hit, 100f, terrainLayer );
-        spawnPosition.y = hit.point.y + spawnHeight;
-        
+
+        if( Physics.Raycast( spawnPosition, Vector3.down, out var hit, 100f, terrainLayer ) )
+        {
+            spawnPosition.y = hit.point.y + spawnHeight;
+            return spawnPosition;
+        }
         return spawnPoints[ spawnPointIndex ].position;
     }
 
