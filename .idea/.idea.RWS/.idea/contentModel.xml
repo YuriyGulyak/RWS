@@ -34,6 +34,7 @@
               <e p="PIDController.cs" t="Include" />
               <e p="Propeller.cs" t="Include" />
               <e p="ServoSound.cs" t="Include" />
+              <e p="Transceiver.cs" t="Include" />
               <e p="WindSound.cs" t="Include" />
               <e p="WingAutoControl.cs" t="Include" />
               <e p="WingLauncher.cs" t="Include" />
@@ -558,6 +559,10 @@
           <e p="FpsLimit.cs" t="Include" />
           <e p="GizmosLine.cs" t="Include" />
           <e p="MathUtils.cs" t="Include" />
+          <e p="PixelateImageEffect" t="Include">
+            <e p="PixelateImageEffect.cs" t="Include" />
+            <e p="Pixelation.shader" t="Include" />
+          </e>
           <e p="Singleton.cs" t="Include" />
           <e p="SliderWithInputField.cs" t="Include" />
           <e p="UILineRenderer.cs" t="Include" />

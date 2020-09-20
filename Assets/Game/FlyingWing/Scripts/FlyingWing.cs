@@ -43,6 +43,9 @@ public class FlyingWing : MonoBehaviour
     
     [SerializeField]
     Altimeter altimeter = null;
+
+    [SerializeField]
+    Transceiver transceiver = null;
     
     [SerializeField]
     Vector3 GC = Vector3.zero;
@@ -84,7 +87,7 @@ public class FlyingWing : MonoBehaviour
 
     public float PitchAngle => pitchAngle;
     
-    public float TAS => speed; // True airspeed, TAS 
+    public float TAS => speed; // True airspeed (TAS) 
     
     public float RollSpeed => rollSpeed;
     
@@ -93,6 +96,8 @@ public class FlyingWing : MonoBehaviour
     public float AngleOfAttack => angleOfAttack;
 
     public float SideslipAngle => sideslipAngle;
+
+    public float RSSI => rssi;
 
     public void Reset()
     {
@@ -124,6 +129,7 @@ public class FlyingWing : MonoBehaviour
     float leftElevonAngleVelocity;
     float rightElevonAngleVelocity;
     Vector2 perlinOffset;
+    float rssi;
     
     
     void OnValidate()
@@ -212,14 +218,16 @@ public class FlyingWing : MonoBehaviour
         attitude.UpdateState();
         rollAngle = attitude.Roll;
         pitchAngle = attitude.Pitch;
+
+        rssi = transceiver.RSSI;
         
         
         // Turbulence imitation
         
         var speedNorm = ( speed * 3.6f ) / 200f;
 
-        perlinOffset.x += deltaTime * 3f * speedNorm;
-        perlinOffset.y += deltaTime * 1f * speedNorm;
+        perlinOffset.x += deltaTime * 5f * speedNorm;
+        perlinOffset.y += deltaTime * 2f * speedNorm;
         
         if( perlinOffset.x > 1f )
         {

@@ -63,4 +63,10 @@ public static class MathUtils
     //{
     //    return Mathf.Sqrt( a * a + b * b );
     //}
+    
+    
+    //public static float Remap( float a1, float b1, float t1, float a2, float b2 )
+    //{
+    //    return ( t1 - a1 ) * ( b2 - a2 ) / ( b1 - a1 ) + a2;
+    //}
 }

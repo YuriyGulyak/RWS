@@ -42,6 +42,9 @@ public class OSDTelemetry : MonoBehaviour
     TextMeshProUGUI throttleText = null;
     
     [SerializeField]
+    TextMeshProUGUI rssiText = null;
+    
+    [SerializeField]
     float updateRate = 30f;
     
     
@@ -82,6 +85,7 @@ public class OSDTelemetry : MonoBehaviour
         speedText.text = 0f.ToString( speedFormat, cultureInfo );
         altitudeText.text = 0f.ToString( altitudeFormat, cultureInfo );
         flytimeText.text = TimeSpan.FromSeconds( 0f ).ToString( timeFormat, cultureInfo );
+        rssiText.text = 0f.ToString( rssiFormat, cultureInfo );
     }
 
 
@@ -94,6 +98,7 @@ public class OSDTelemetry : MonoBehaviour
     string speedFormat;
     string altitudeFormat;
     string throttleFormat;
+    string rssiFormat;
     CultureInfo cultureInfo;
     float lastUpdateTime;
     float flytime;
@@ -108,6 +113,7 @@ public class OSDTelemetry : MonoBehaviour
         speedFormat = speedText.text;
         altitudeFormat = altitudeText.text;
         throttleFormat = throttleText.text;
+        rssiFormat = rssiText.text;
         
         cultureInfo = CultureInfo.InvariantCulture;
     }
@@ -150,6 +156,7 @@ public class OSDTelemetry : MonoBehaviour
             altitudeText.text = flyingWing.Altitude.ToString( altitudeFormat, cultureInfo );
             flytimeText.text = TimeSpan.FromSeconds( flytime ).ToString( timeFormat, cultureInfo );
             throttleText.text = flyingWing.Throttle.ToString( throttleFormat, cultureInfo );
+            rssiText.text = flyingWing.RSSI.ToString( rssiFormat, cultureInfo );
         }
     }
 }

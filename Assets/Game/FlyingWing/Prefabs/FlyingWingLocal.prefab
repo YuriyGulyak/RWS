@@ -936,7 +936,7 @@ Transform:
   - {fileID: 4897658835295005200}
   - {fileID: 879353225539698998}
   m_Father: {fileID: 7591922440049976524}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &879353225806199916
 GameObject:
@@ -1142,6 +1142,7 @@ GameObject:
   - component: {fileID: 879353225936819656}
   - component: {fileID: 879353225936819657}
   - component: {fileID: 879353225936819663}
+  - component: {fileID: 8822314382070303975}
   m_Layer: 10
   m_Name: FPVCamera
   m_TagString: Untagged
@@ -1187,7 +1188,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 2500
+  far clip plane: 5000
   field of view: 90
   orthographic: 0
   orthographic size: 5
@@ -1223,7 +1224,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   stopNaNPropagation: 1
-  finalBlitToCameraTarget: 1
+  finalBlitToCameraTarget: 0
   antialiasingMode: 2
   temporalAntialiasing:
     jitterSpread: 1
@@ -1274,6 +1275,21 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 879353225936819659}
   m_Enabled: 1
+--- !u!114 &8822314382070303975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879353225936819659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 062732d978b0f3c49b590d69ebc012d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 3a3eaf9a972ce844d8ecbe917e3737e3, type: 2}
+  minHeight: 128
+  intensity: 0
 --- !u!1 &879353225939058365
 GameObject:
   m_ObjectHideFlags: 0
@@ -2385,7 +2401,7 @@ Transform:
   - {fileID: 879353225728029770}
   - {fileID: 879353226434341217}
   m_Father: {fileID: 7591922440049976524}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &879353226385391904
 GameObject:
@@ -2970,7 +2986,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7591922440049976524}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!215 &879353226800911137
 ReflectionProbe:
@@ -7417,6 +7433,7 @@ Transform:
   - {fileID: 887946070415139794}
   - {fileID: 7408028521644281659}
   - {fileID: 541311551418789924}
+  - {fileID: 6329247794464563476}
   - {fileID: 879353226800911136}
   - {fileID: 879353225768688476}
   - {fileID: 879353226373858349}
@@ -7596,6 +7613,7 @@ MonoBehaviour:
   battery: {fileID: 879353226276206659}
   attitude: {fileID: 7723435024811574705}
   altimeter: {fileID: 879353226194359495}
+  transceiver: {fileID: 4069110395676490618}
   GC: {x: 0, y: -0.0035, z: -0.06}
   drag: {x: 0, y: 0, z: 0}
   agularDrag: {x: 0, y: 0, z: 0}
@@ -8243,6 +8261,60 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 3842913220226976532, guid: 24ba10c133aeb20429e546695d92a53c, type: 3}
+--- !u!1 &8494670099235306960
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6329247794464563476}
+  - component: {fileID: 4069110395676490618}
+  m_Layer: 10
+  m_Name: Transceiver
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6329247794464563476
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8494670099235306960}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.075, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7591922440049976524}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4069110395676490618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8494670099235306960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f15a61f6d6ffda64dbc204262a0e28fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pixelateEffect: {fileID: 8822314382070303975}
+  planeAntennaTransform: {fileID: 6329247794464563476}
+  groundAntennaTransform: {fileID: 0}
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 256
+  power: 800
+  rssiMax: 10
+  rssiMin: -40
+  maxObstacleWidth: 50
+  updateRate: 30
 --- !u!1 &8960698370516415895
 GameObject:
   m_ObjectHideFlags: 0

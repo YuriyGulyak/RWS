@@ -185,23 +185,26 @@ namespace RWS
 
                 var motor = localWingGameObject.GetComponentInChildren<Motor>();
                 var battery = localWingGameObject.GetComponentInChildren<Battery>();
+                var transceiver = localWingGameObject.GetComponentInChildren<Transceiver>();
+                
+                transceiver.Init( pilotPosition + new Vector3( 0f, 2f, 0f ) );
                 
                 osdTelemetry.Init( localFlyingWing, motor, battery );
                 osdHome.Init( localFlyingWing );
                 attitudeIndicator.Init( localFlyingWing );
                 
-                if( wingTelemetry )
-                {
+                //if( wingTelemetry )
+                //{
                     wingTelemetry.Init( localFlyingWing );
-                }
-                if( batteryTelemetry )
-                {
+                //}
+                //if( batteryTelemetry )
+                //{
                     batteryTelemetry.Init( battery );
-                }
-                if( motorTelemetry )
-                {
+                //}
+                //if( motorTelemetry )
+                //{
                     motorTelemetry.Init( motor );
-                }
+                //}
 
                 var wingPhotonView = localWingGameObject.GetComponent<PhotonView>();
                 PhotonNetwork.AllocateViewID( wingPhotonView );
