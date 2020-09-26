@@ -47,7 +47,7 @@ namespace RWS
             SetBinding( control.path );
 
             BindingPath = control.path;
-            BindingName = $"{control.device.description.product}: {control.displayName}";
+            BindingName = $"{control.device.displayName}: {control.displayName}";
         }
         
         public void SetBinding( string path )
@@ -65,6 +65,7 @@ namespace RWS
         
         public void Save( string dataKey )
         {
+            Debug.Log( dataKey );
             if( string.IsNullOrEmpty( BindingPath ) )
             {
                 return;
@@ -127,7 +128,7 @@ namespace RWS
             SetBinding( control.path );
 
             BindingPath = control.path;
-            BindingName = $"{control.device.description.product}: {control.displayName}";
+            BindingName = $"{control.device.displayName}: {control.displayName}";
         }
         
         public void SetBinding( string path )
@@ -257,6 +258,7 @@ namespace RWS
             }
         }
         
+        public Action OnEnterButton;
         public Action OnEscapeButton;
         
         
@@ -298,6 +300,7 @@ namespace RWS
         ButtonControl resetControl;
         InputAction listenButtonInputAction;
         bool axesDisplay;
+        InputAction enterInputAction;
         InputAction escapeInputAction;
         
         
@@ -377,6 +380,10 @@ namespace RWS
 
         void OnEnable()
         {
+            enterInputAction = new InputAction( type: InputActionType.Button, binding: "<Keyboard>/enter" );
+            enterInputAction.performed += context => OnEnterButton?.Invoke();
+            enterInputAction.Enable();
+
             escapeInputAction = new InputAction( type: InputActionType.Button, binding: "<Keyboard>/escape" );
             escapeInputAction.performed += context => OnEscapeButton?.Invoke();
             escapeInputAction.Enable();
@@ -384,6 +391,7 @@ namespace RWS
         
         void OnDisable()
         {
+            enterInputAction.Disable();
             escapeInputAction.Disable();
             
             throttleControl.Disable();

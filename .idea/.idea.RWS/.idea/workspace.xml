@@ -63,16 +63,17 @@
     <setting file="file://$PROJECT_DIR$/Assets/Skybox Creator/Scripts/SkyboxCreatorRenderer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonChat/Demos/DemoChat/ChatGui.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Skybox Creator/Scripts/SkyboxCreator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Game/Environment/Terrain/TerrainController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/Transceiver.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Skybox Creator/Shader/SkyboxCreatorPanoramicSkybox.shader" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/Managers/SoundManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/WingPhotonView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Utils/PixelateImageEffect/PixelateImageEffect.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/WingPhotonView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0/InputSystem/Actions/InputAction.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/Managers/SingleplayerGameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@2.0.1/Scripts/Runtime/TextMeshProUGUI.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Game/Managers/MultiplayerGameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Utils/DisplayManger.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Game/Managers/MultiplayerGameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@2.0.1/Scripts/Runtime/TMP_InputField.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/Altimeter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/Elevon.cs" root0="FORCE_HIGHLIGHTING" />
@@ -84,12 +85,14 @@
     <setting file="file://$PROJECT_DIR$/Assets/Game/Managers/InputManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/MotorSound.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0/InputSystem/Controls/InputControl.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://C:/Program Files/Unity 2019/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Selectable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/SensitivityPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/ControlsPanel.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/GraphicsPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Scripts/AsteroidsGame.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/GraphicsPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/SoundPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/PingDisplay.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/ControlListEntry.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/BatteryTelemetry.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0/InputSystem/Actions/InputActionSetupExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/WingTelemetry.cs" root0="FORCE_HIGHLIGHTING" />
@@ -102,25 +105,18 @@
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/LapTime.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/MenuPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Code/PunClasses.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Code/PhotonView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/InputTelemetry.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Code/PhotonView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0/InputSystem/Plugins/HID/HID.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Utils/UILineRenderer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Code/PhotonNetworkPart.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@2.0.1/Scripts/Runtime/TMP_Text.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Code/PhotonNetworkPart.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Code/PhotonNetwork.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/OSDTelemetry.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/RoomChat/RoomChatMessage.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/TestRenderScale.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/OSD.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/InsideRoomPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MenuPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/MathUtils.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/Battery.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/OrbitCamera/Scripts/OrbitCamera.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/Pilot/Scripts/PilotLook.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/RoomListPanel.cs" />
@@ -136,7 +132,6 @@
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/BlackScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/LapTime.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/AttitudeIndicator.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/RoomChat/RoomChat.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/PingDisplay.cs" />
         <option value="$PROJECT_DIR$/Assets/Skybox Creator/Scripts/Editor/SkyboxCreatorImageSkyInspector.cs" />
         <option value="$PROJECT_DIR$/Assets/Skybox Creator/Scripts/SkyboxCreator.cs" />
@@ -156,7 +151,6 @@
         <option value="$PROJECT_DIR$/Assets/@Tests/Glitch/Shader/DigitalGlitch.shader" />
         <option value="$PROJECT_DIR$/Assets/@Tests/PixelateImageEffect/Pixelation.shader" />
         <option value="$PROJECT_DIR$/Assets/@Tests/Transceiver/Transceiver.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/Managers/MultiplayerGameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/FlyingWing.cs" />
         <option value="$PROJECT_DIR$/Assets/@Tests/PixelationCameraEffect/Pixelation.cs" />
         <option value="$PROJECT_DIR$/Assets/@Tests/PixelationEffect/Pixelation.cs" />
@@ -165,6 +159,15 @@
         <option value="$PROJECT_DIR$/Assets/Utils/PixelateImageEffect/PixelateImageEffect.cs" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/Transceiver.cs" />
+        <option value="$PROJECT_DIR$/Assets/@Tests/TestGrass/Scripts/Editor/GrassCreator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/ControlsPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/Managers/GraphicsManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/@Tests/TestGrass/Scripts/TerrainController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/GraphicsPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/Environment/Terrain/TerrainController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/Managers/InputManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/RoomChat/RoomChat.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/Managers/MultiplayerGameManager.cs" />
       </list>
     </option>
   </component>

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using ExitGames.Client.Photon;
 using Photon.Pun;
@@ -164,6 +165,7 @@ namespace RWS
             gameMenu.OnSettingsButton += OnSettingsButton;
             gameMenu.OnExitButton += OnExitButton;
 
+            InputManager.Instance.OnEnterButton += OnEnterButton;
             InputManager.Instance.OnEscapeButton += OnEscapeButton;
 
             if( PhotonNetwork.IsConnected )
@@ -212,7 +214,7 @@ namespace RWS
             }
         }
 
-        
+
         void OnSceneLoaded( Scene scene, LoadSceneMode mode )
         {
             BlackScreen.Instance.StartFromBlackScreenAnimation();
@@ -310,6 +312,23 @@ namespace RWS
                 blackScreen.StartFromBlackScreenAnimation( wingLauncher.Reset );
                 
             } );
+        }
+
+        void OnEnterButton()
+        {
+            if( gameMenu.IsActive )
+            {
+                return;
+            }
+            
+            if( roomChat.IsInputActive )
+            {
+                roomChat.SendAndHideInput();
+            }
+            else
+            {
+                roomChat.ShowInput();
+            }
         }
 
         void OnEscapeButton()

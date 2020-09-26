@@ -30,6 +30,8 @@ namespace RWS
 
         public bool IsActive => gameObject.activeSelf;
 
+        public bool IsInputActive => inputPanel.activeSelf;
+        
         public void Show()
         {
             if( !IsActive )
@@ -50,10 +52,17 @@ namespace RWS
         {
             inputPanel.SetActive( true );
             inputField.Select();
+            inputField.ActivateInputField();
         }
         
         public void HideInput()
         {
+            inputPanel.SetActive( false );
+        }
+        
+        public void SendAndHideInput()
+        {
+            OnSubmit( inputField.text );
             inputPanel.SetActive( false );
         }
         

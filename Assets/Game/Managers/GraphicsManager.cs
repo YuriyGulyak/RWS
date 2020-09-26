@@ -1,4 +1,4 @@
-﻿// !! Need set execution order after default time fot this script !!
+﻿// !! Need set execution order before default time fot this script !!
 
 using System;
 using Boo.Lang;
@@ -15,6 +15,9 @@ namespace RWS
         [SerializeField]
         PostProcessVolume postProcessVolume = null;
 
+        [SerializeField]
+        TerrainController terrainController = null;
+        
         //----------------------------------------------------------------------------------------------------
 
         public string[] QualityNames => QualitySettings.names;
@@ -25,6 +28,14 @@ namespace RWS
             set => QualitySettings.SetQualityLevel( value );
         }
 
+        
+        public int GrassQualityLevel
+        {
+            get => terrainController.GrassQualityLevel;
+            set => terrainController.GrassQualityLevel = value;
+        }
+        
+        
         public bool PostProcess
         {
             get => postProcessVolume.enabled;
@@ -96,51 +107,18 @@ namespace RWS
 
         public void LoadAndApllyPlayerPrefs()
         {
-            if( PlayerPrefs.HasKey( qualityLevelKey ) )
-            {
-                QualityLevel = PlayerPrefs.GetInt( qualityLevelKey );
-            }
-            else
-            {
-                QualityLevel = 2;
-            }
-
-            if( PlayerPrefs.HasKey( postProcessKey ) )
-            {
-                PostProcess = PlayerPrefs.GetInt( postProcessKey ) > 0;
-            }
-            else
-            {
-                PostProcess = true;
-            }
-
-            if( PlayerPrefs.HasKey( targetDisplayKey ) )
-            {
-                TargetDisplay = PlayerPrefs.GetInt( targetDisplayKey );
-            }
-
-            if( PlayerPrefs.HasKey( vSyncKey ) )
-            {
-                VSync = PlayerPrefs.GetInt( vSyncKey ) > 0;
-            }
-            else
-            {
-                VSync = true;
-            }
-
-            if( PlayerPrefs.HasKey( fpsLimitKey ) )
-            {
-                FpsLimit = PlayerPrefs.GetInt( fpsLimitKey );
-            }
-            else
-            {
-                FpsLimit = 60;
-            }
+            QualityLevel = PlayerPrefs.GetInt( qualityLevelKey, 2 );
+            GrassQualityLevel = PlayerPrefs.GetInt( grassQualityLevelKey, 3 );
+            PostProcess = PlayerPrefs.GetInt( postProcessKey, 1 ) > 0;
+            TargetDisplay = PlayerPrefs.GetInt( targetDisplayKey, 0 );
+            VSync = PlayerPrefs.GetInt( vSyncKey, 1 ) > 0;
+            FpsLimit = PlayerPrefs.GetInt( fpsLimitKey, 60 );
         }
 
         public void SavePlayerPrefs()
         {
             PlayerPrefs.SetInt( qualityLevelKey, QualityLevel );
+            PlayerPrefs.SetInt( grassQualityLevelKey, GrassQualityLevel );
             PlayerPrefs.SetInt( postProcessKey, PostProcess ? 1 : 0 );
             PlayerPrefs.SetInt( targetDisplayKey, TargetDisplay );
             PlayerPrefs.SetInt( vSyncKey, VSync ? 1 : 0 );
@@ -150,6 +128,7 @@ namespace RWS
         //----------------------------------------------------------------------------------------------------
 
         readonly string qualityLevelKey = "QualityLevel";
+        readonly string grassQualityLevelKey = "GrassQualityLevel";
         readonly string postProcessKey = "PostProcess";
         readonly string targetDisplayKey = "TargetDisplay";
         readonly string vSyncKey = "VSync";

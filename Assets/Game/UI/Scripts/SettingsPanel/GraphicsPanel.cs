@@ -18,6 +18,9 @@ public class GraphicsPanel : MonoBehaviour
     TMP_Dropdown qualityDropdown = null;
 
     [SerializeField]
+    TMP_Dropdown grassDropdown = null;
+    
+    [SerializeField]
     Toggle postProcessToggle = null;
 
     [SerializeField]
@@ -89,6 +92,9 @@ public class GraphicsPanel : MonoBehaviour
         qualityDropdown.value = graphicsManager.QualityLevel;
         qualityDropdown.onValueChanged.AddListener( OnQualityDropdownChanged );
 
+        grassDropdown.value = graphicsManager.GrassQualityLevel;
+        grassDropdown.onValueChanged.AddListener( OnGrassDropdownChanged );
+        
         postProcessToggle.isOn = graphicsManager.PostProcess;
         postProcessToggle.onValueChanged.AddListener( OnPostProcessToggleChanged );
 
@@ -126,6 +132,11 @@ public class GraphicsPanel : MonoBehaviour
     }
 
     void OnQualityDropdownChanged( int value )
+    {
+        applyButton.gameObject.SetActive( true );
+    }
+    
+    void OnGrassDropdownChanged( int value )
     {
         applyButton.gameObject.SetActive( true );
     }
@@ -184,6 +195,7 @@ public class GraphicsPanel : MonoBehaviour
     {
         graphicsManager.SetResolution( graphicsManager.GetResolutions()[ resolutionDropdown.value ] );
         graphicsManager.QualityLevel = qualityDropdown.value;
+        graphicsManager.GrassQualityLevel = grassDropdown.value;
         graphicsManager.PostProcess = postProcessToggle.isOn;
         graphicsManager.TargetDisplay = targetDisplay;
         graphicsManager.VSync = vSyncToggle.isOn;
