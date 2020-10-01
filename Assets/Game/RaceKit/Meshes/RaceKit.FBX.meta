@@ -3,12 +3,22 @@ guid: 99034df00c22b4d46aa8b12635929ce2
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CourseMarker
+    second: {fileID: 2100000, guid: ab76c3c124c7b6f48ae34e6059bbb815, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: RaceGate
+    second: {fileID: 2100000, guid: bb30844af2585794da3a8ab8a2c99473, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
