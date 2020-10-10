@@ -72,10 +72,15 @@ namespace RWS
 
                 BindingPath = dataSplitted[ 0 ].Trim();
                 BindingName = dataSplitted[ 1 ].Trim();
-                
                 axisDirection = int.Parse( dataSplitted[ 2 ].Trim() );
                 
                 SetBinding( BindingPath );
+            }
+            else
+            {
+                BindingPath = null;
+                BindingName = null;
+                axisDirection = 1;
             }
         }
 
@@ -157,6 +162,11 @@ namespace RWS
                 BindingName = dataSplitted[ 1 ].Trim();
                 
                 SetBinding( BindingPath );
+            }
+            else
+            {
+                BindingPath = null;
+                BindingName = null;
             }
         }
 

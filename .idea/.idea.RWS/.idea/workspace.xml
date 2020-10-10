@@ -170,12 +170,12 @@
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/UIHelperEditor.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/UIHelper.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/WingLauncher.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/ControlsPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/Managers/SingleplayerGameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/Managers/MultiplayerGameManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/Managers/InputManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/OrbitCamera/Scripts/OrbitCamera.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/Pilot/Scripts/PilotZoom.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/ControlsPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/Managers/InputManager.cs" />
       </list>
     </option>
   </component>

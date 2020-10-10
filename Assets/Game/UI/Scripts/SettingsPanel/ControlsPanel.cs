@@ -54,7 +54,7 @@ public class ControlsPanel : MonoBehaviour
         
         trimControlListEntry.BindingName = inputManager.TrimControl.BindingName ?? notDefinedName;
         trimControlListEntry.Invert = inputManager.TrimControl.Invert;
-
+        
         viewControlListEntry.BindingName = inputManager.ViewControl.BindingName ?? notDefinedName;
         launchResetControlListEntry.BindingName = inputManager.LaunchResetControl.BindingName ?? notDefinedName;
 
