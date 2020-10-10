@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using ExitGames.Client.Photon;
 using Photon.Pun;
@@ -61,6 +60,9 @@ namespace RWS
         BlackScreen blackScreen = null;
         
         [SerializeField]
+        BloorEffectController bloorEffect = null;
+        
+        [SerializeField]
         int photonSendRate = 60; // Default 20
 
         [SerializeField]
@@ -107,8 +109,12 @@ namespace RWS
         GameObject localWingGameObject;
         Dictionary<int, GameObject> remoteWingDictionary;
         int spawnPointIndex;
-        bool gameStarted;
-
+        PilotLook pilotLook;
+        GameObject losCameraGameObject;
+        GameObject fpvCameraGameObject;
+        bool fpvMode;
+        float lastLaunchTime;
+        
 
         void OnEnable()
         {
@@ -124,14 +130,32 @@ namespace RWS
 
         void Awake()
         {
-            //PhotonNetwork.GetPing();
-            
             PhotonNetwork.SendRate = photonSendRate;
             PhotonNetwork.SerializationRate = photonSerializationRate;
+            
+            gameMenu.OnResumeButton += OnResumeButton;
+            gameMenu.OnSettingsButton += OnSettingsButton;
+            gameMenu.OnExitButton += OnExitButton;
+            
+            var inputManager = InputManager.Instance;
+            inputManager.LaunchResetControl.Performed += OnLaunchResetButton;
+            inputManager.ViewControl.Performed += OnViewButton;
+            inputManager.OnEnterButton += OnEnterButton;
+            inputManager.OnEscapeButton += OnEscapeButton;
+        }
 
+        void Start()
+        {
+            gameMenu.Hide();
             osdTelemetry.Hide();
             osdHome.Hide();
             attitudeIndicator.Hide();
+            playerOverviewPanel.Show();
+            settingsPanel.Hide();
+            roomChat.HideInput();
+
+            losCameraGameObject = pilotAvatar.GetComponentInChildren<Camera>( true ).gameObject;
+            losCameraGameObject.SetActive( true );
             
             lapTime.Init( 0f );
             lapTime.OnNewBestTime += newBestTime =>
@@ -140,7 +164,7 @@ namespace RWS
                 PhotonNetwork.LocalPlayer.SetCustomProperties( new Hashtable { { bestLapPropertyKey, newBestTime } } );
             };
             lapTime.Hide();
-
+                
             raceTrack.OnStart.AddListener( craft =>
             {
                 if( craft.CompareTag( playerTag ) )
@@ -155,26 +179,17 @@ namespace RWS
                     lapTime.CompareTime();
                 }
             } );
-
-            playerOverviewPanel.Hide();
-            settingsPanel.Hide();
-            gameMenu.Show();
-
-            gameMenu.OnStartButton += OnStartButton;
-            gameMenu.OnResumeButton += OnResumeButton;
-            gameMenu.OnSettingsButton += OnSettingsButton;
-            gameMenu.OnExitButton += OnExitButton;
-
-            InputManager.Instance.OnEnterButton += OnEnterButton;
-            InputManager.Instance.OnEscapeButton += OnEscapeButton;
-
+            
+            Cursor.visible = false;
+            
+            
             if( PhotonNetwork.IsConnected )
             {
                 spawnPointIndex = PhotonNetwork.LocalPlayer.ActorNumber;
                 localWingGameObject = wingSpawner.SpawnLocalPlayerWing( spawnPointIndex );
                 localFlyingWing = localWingGameObject.GetComponent<FlyingWing>();
 
-                var wingTransform = localWingGameObject.transform;
+                var wingTransform = localFlyingWing.Transform;
                 var wingPosition = wingTransform.position;
                 var wingRotation = wingTransform.rotation;
 
@@ -183,7 +198,11 @@ namespace RWS
                 pilotPosition.y = hit.point.y;
                 
                 pilotAvatar.transform.position = pilotPosition;
-                pilotAvatar.GetComponent<PilotLook>().SetTarget( wingTransform );
+
+                pilotLook = pilotAvatar.GetComponentInChildren<PilotLook>( true );
+                pilotLook.SetTarget( wingTransform );
+                
+                pilotAvatar.GetComponentInChildren<PilotZoom>().SetTarget( wingTransform );
 
                 var motor = localWingGameObject.GetComponentInChildren<Motor>();
                 var battery = localWingGameObject.GetComponentInChildren<Battery>();
@@ -194,19 +213,12 @@ namespace RWS
                 osdTelemetry.Init( localFlyingWing, motor, battery );
                 osdHome.Init( localFlyingWing );
                 attitudeIndicator.Init( localFlyingWing );
-                
-                //if( wingTelemetry )
-                //{
-                    wingTelemetry.Init( localFlyingWing );
-                //}
-                //if( batteryTelemetry )
-                //{
-                    batteryTelemetry.Init( battery );
-                //}
-                //if( motorTelemetry )
-                //{
-                    motorTelemetry.Init( motor );
-                //}
+                wingTelemetry.Init( localFlyingWing );
+                batteryTelemetry.Init( battery );
+                motorTelemetry.Init( motor );
+
+                fpvCameraGameObject = localWingGameObject.GetComponentInChildren<Camera>( true ).gameObject;
+                fpvCameraGameObject.SetActive( false );
 
                 var wingPhotonView = localWingGameObject.GetComponent<PhotonView>();
                 PhotonNetwork.AllocateViewID( wingPhotonView );
@@ -214,63 +226,25 @@ namespace RWS
             }
         }
 
-
         void OnSceneLoaded( Scene scene, LoadSceneMode mode )
         {
             BlackScreen.Instance.StartFromBlackScreenAnimation();
         }
-
-        void OnStartButton()
-        {
-            if( !PhotonNetwork.IsConnected )
-            {
-                return;
-            }
-
-            gameMenu.Hide();
-
-            blackScreen.StartToBlackScreenAnimation( () =>
-            {
-                var pilotCamera = pilotAvatar.GetComponentInChildren<Camera>( true );
-                pilotCamera.gameObject.SetActive( false );
-            
-                var fpvCamera = localWingGameObject.GetComponentInChildren<Camera>( true );
-                fpvCamera.gameObject.SetActive( true );
-
-                settingsPanel.Hide();
-                
-                osdTelemetry.Show();
-                osdHome.Show();
-                attitudeIndicator.Show();
-                
-                playerOverviewPanel.Show();
-
-                roomChat.HideInput();
-                
-                Cursor.visible = false;
-
-                blackScreen.StartFromBlackScreenAnimation( () =>
-                {
-                    var inputManager = InputManager.Instance;
-                    inputManager.LaunchControl.Performed += OnLaunchButton;
-                    inputManager.ResetControl.Performed += OnResetButton;
-                    
-                    gameStarted = true;
-                    
-                } );
-                
-            } );
-        }
+        
 
         void OnResumeButton()
         {
-            ShowOSD();
+            if( fpvMode )
+            {
+                ShowOSD();
+            }
+            
             gameMenu.Hide();
             settingsPanel.Hide();
             playerOverviewPanel.Show();
             roomChat.HideInput();
-            
             Cursor.visible = false;
+            bloorEffect.BloorEffectEnabled = false;
         }
 
         void OnSettingsButton()
@@ -286,32 +260,108 @@ namespace RWS
             } );
         }
 
-        void OnLaunchButton()
+        
+        void OnViewButton()
         {
-            wingLauncher.Launch( localFlyingWing.Rigidbody );
-        }
-
-        void OnResetButton()
-        {
-            blackScreen.StartToBlackScreenAnimation( () =>
+            if( gameMenu.IsActive )
             {
-                var localWingRigidbody = localFlyingWing.Rigidbody;
-                localWingRigidbody.isKinematic = true;
-                localWingRigidbody.position = wingSpawner.GetSpawnPosition( spawnPointIndex );
-                localWingRigidbody.rotation = wingSpawner.GetSpawnRotation();
+                return;
+            }
+
+            // FPV
+            if( fpvMode )
+            {
+                blackScreen.StartToBlackScreenAnimation( () =>
+                {
+                    losCameraGameObject.SetActive( true );
+                    fpvCameraGameObject.SetActive( false );
+
+                    osdTelemetry.Hide();
+                    osdHome.Hide();
+                    attitudeIndicator.Hide();
+
+                    blackScreen.StartFromBlackScreenAnimation( () =>
+                    {
+                        fpvMode = false;
+                        
+                    } );
+
+                } );
+            }
+            
+            // LOS (line of sight)
+            else
+            {
+                blackScreen.StartToBlackScreenAnimation( () =>
+                {
+                    losCameraGameObject.SetActive( false );
+                    fpvCameraGameObject.SetActive( true );
+
+                    osdTelemetry.Show();
+                    osdHome.Show();
+                    attitudeIndicator.Show();
+
+                    blackScreen.StartFromBlackScreenAnimation( () =>
+                    {
+                        fpvMode = true;
+                        
+                    } );
+
+                } );
+            }
+        }
+        
+        void OnLaunchResetButton()
+        {
+            if( gameMenu.IsActive )
+            {
+                return;
+            }
+            
+            if( Time.time - lastLaunchTime < 2f )
+            {
+                return;
+            }
+            
+            // Launch
+            if( wingLauncher.Ready )
+            {
+                wingLauncher.Launch( localFlyingWing.Rigidbody );
+                lastLaunchTime = Time.time;
+            }
+
+            // Reset
+            else
+            {
+                blackScreen.StartToBlackScreenAnimation( () =>
+                {
+                    var startPosition = wingSpawner.GetSpawnPosition( spawnPointIndex );
+                    var startRotation = wingSpawner.GetSpawnRotation();
                 
-                localFlyingWing.Reset();
+                    var localWingRigidbody = localFlyingWing.Rigidbody;
+                    localWingRigidbody.isKinematic = true;
+                    localWingRigidbody.position = startPosition;
+                    localWingRigidbody.rotation = startRotation;
                 
-                osdTelemetry.Reset();
-                osdHome.Reset();
-                attitudeIndicator.Reset();
+                    var wingTransform = localFlyingWing.Transform;
+                    wingTransform.position = startPosition;
+                    wingTransform.rotation = startRotation;
                 
-                lapTime.Reset();
-                lapTime.Hide();
+                    localFlyingWing.Reset();
                 
-                blackScreen.StartFromBlackScreenAnimation( wingLauncher.Reset );
+                    osdTelemetry.Reset();
+                    osdHome.Reset();
+                    attitudeIndicator.Reset();
                 
-            } );
+                    lapTime.Reset();
+                    lapTime.Hide();
+                
+                    pilotLook.LookAtTarget();
+                
+                    blackScreen.StartFromBlackScreenAnimation( wingLauncher.Reset );
+                
+                } );
+            }
         }
 
         void OnEnterButton()
@@ -333,11 +383,6 @@ namespace RWS
 
         void OnEscapeButton()
         {
-            if( !gameStarted )
-            {
-                return;
-            }
-
             if( !gameMenu.IsActive )
             {
                 HideOSD();
@@ -345,6 +390,11 @@ namespace RWS
                 gameMenu.Show();
                 roomChat.ShowInput();
                 Cursor.visible = true;
+                bloorEffect.BloorEffectEnabled = true;
+            }
+            else if( !settingsPanel.IsOpen )
+            {
+                OnResumeButton();
             }
         }
 

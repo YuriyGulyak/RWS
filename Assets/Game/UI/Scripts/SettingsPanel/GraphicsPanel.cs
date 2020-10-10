@@ -45,6 +45,31 @@ public class GraphicsPanel : MonoBehaviour
         this.onBackButtonCallback = onBackButtonCallback;
         gameObject.SetActive( true );
 
+        
+        resolutionDropdown.value = graphicsManager.GetResolutions().IndexOf( graphicsManager.GetResolution() );
+        
+        qualityDropdown.value = graphicsManager.QualityLevel;
+        
+        grassDropdown.value = graphicsManager.GrassQualityLevel;
+        
+        postProcessToggle.isOn = graphicsManager.PostProcess;
+
+        if( graphicsManager.DisplayCount > 1 )
+        {
+            SetInteractable( displayInputField, true );
+            displayInputField.text = ( graphicsManager.TargetDisplay + 1 ).ToString();
+        }
+        else
+        {
+            SetInteractable( displayInputField, false );
+            displayInputField.text = "1";
+        }
+
+        vSyncToggle.isOn = graphicsManager.VSync;
+        
+        fpsLimitInputField.text = graphicsManager.FpsLimit.ToString();
+        SetInteractable( fpsLimitInputField, !vSyncToggle.isOn );
+        
         applyButton.gameObject.SetActive( false );
     }
 
@@ -123,6 +148,8 @@ public class GraphicsPanel : MonoBehaviour
 
         applyButton.onClick.AddListener( OnApplyButton );
         applyButton.gameObject.SetActive( false );
+
+        InputManager.Instance.OnEscapeButton += OnEscapeButton;
     }
 
 
@@ -205,7 +232,16 @@ public class GraphicsPanel : MonoBehaviour
         applyButton.gameObject.SetActive( false );
     }
 
-
+    void OnEscapeButton()
+    {
+        if( resolutionDropdown.IsExpanded || qualityDropdown.IsExpanded || grassDropdown.IsExpanded || displayInputField.isFocused || fpsLimitInputField.isFocused )
+        {
+            return;
+        }
+        OnBackButton();
+    }
+    
+    
     static void SetInteractable( Component target, bool interactable )
     {
         var canvasGroup = target.GetComponent<CanvasGroup>();

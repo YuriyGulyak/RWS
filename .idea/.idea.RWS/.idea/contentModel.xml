@@ -78,8 +78,12 @@
           <e p="Pilot" t="Include">
             <e p="Scripts" t="Include">
               <e p="PilotLook.cs" t="Include" />
+              <e p="PilotZoom.cs" t="Include" />
               <e p="SwayEffect.cs" t="Include" />
             </e>
+          </e>
+          <e p="PostProcessing" t="Include">
+            <e p="BloorEffectController.cs" t="Include" />
           </e>
           <e p="RaceKit" t="Include">
             <e p="RaceNotes.txt" t="Include" />
@@ -128,6 +132,8 @@
               </e>
               <e p="SingleplayerPanel.cs" t="Include" />
               <e p="StickDisplay.cs" t="Include" />
+              <e p="UIHelper.cs" t="Include" />
+              <e p="UIHelperEditor.cs" t="Include" />
               <e p="WingTelemetry.cs" t="Include" />
             </e>
           </e>

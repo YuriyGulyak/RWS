@@ -44,28 +44,17 @@ namespace RWS
 
         public void SetBinding( InputControl control )
         {
-            SetBinding( control.path );
-
             BindingPath = control.path;
             BindingName = $"{control.device.displayName}: {control.displayName}";
+            
+            SetBinding( BindingPath );
         }
         
-        public void SetBinding( string path )
-        {
-            BindingPath = path;
 
-            inputAction.Disable();
-            if( inputAction.bindings.Count > 0 )
-            {
-                inputAction.ChangeBinding( 0 ).Erase();
-            }
-            inputAction.AddBinding( path );
-            inputAction.Enable();
-        }
         
         public void Save( string dataKey )
         {
-            Debug.Log( dataKey );
+            //Debug.Log( dataKey );
             if( string.IsNullOrEmpty( BindingPath ) )
             {
                 return;
@@ -80,10 +69,13 @@ namespace RWS
             {
                 var dataString = PlayerPrefs.GetString( dataKey );
                 var dataSplitted = dataString.Split( '@' );
-                
-                SetBinding( dataSplitted[ 0 ].Trim() );
+
+                BindingPath = dataSplitted[ 0 ].Trim();
                 BindingName = dataSplitted[ 1 ].Trim();
+                
                 axisDirection = int.Parse( dataSplitted[ 2 ].Trim() );
+                
+                SetBinding( BindingPath );
             }
         }
 
@@ -96,10 +88,23 @@ namespace RWS
         
         InputAction inputAction;
         int axisDirection;
+        
+        void SetBinding( string path )
+        {
+            inputAction.Disable();
+            if( inputAction.bindings.Count > 0 )
+            {
+                inputAction.ChangeBinding( 0 ).Erase();
+            }
+            inputAction.AddBinding( path );
+            inputAction.Enable();
+        }
     }
 
     public class ButtonControl
     {
+        double startTime;
+        
         public ButtonControl()
         {
             inputAction = new InputAction();
@@ -125,23 +130,10 @@ namespace RWS
 
         public void SetBinding( InputControl control )
         {
-            SetBinding( control.path );
-
             BindingPath = control.path;
             BindingName = $"{control.device.displayName}: {control.displayName}";
-        }
-        
-        public void SetBinding( string path )
-        {
-            BindingPath = path;
             
-            inputAction.Disable();
-            if( inputAction.bindings.Count > 0 )
-            {
-                inputAction.ChangeBinding( 0 ).Erase();
-            }
-            inputAction.AddBinding( path );
-            inputAction.Enable();
+            SetBinding( BindingPath );
         }
         
         public void Save( string dataKey )
@@ -160,9 +152,11 @@ namespace RWS
             {
                 var dataString = PlayerPrefs.GetString( dataKey );
                 var dataSplitted = dataString.Split( '@' );
-                
-                SetBinding( dataSplitted[ 0 ].Trim() );
+
+                BindingPath = dataSplitted[ 0 ].Trim();
                 BindingName = dataSplitted[ 1 ].Trim();
+                
+                SetBinding( BindingPath );
             }
         }
 
@@ -174,6 +168,17 @@ namespace RWS
         //----------------------------------------------------------------------------------------------------
         
         InputAction inputAction;
+        
+        void SetBinding( string path )
+        {
+            inputAction.Disable();
+            if( inputAction.bindings.Count > 0 )
+            {
+                inputAction.ChangeBinding( 0 ).Erase();
+            }
+            inputAction.AddBinding( path, "hold(duration=0.1)" );
+            inputAction.Enable();
+        }
     }
 
     
@@ -204,12 +209,12 @@ namespace RWS
             listenButtonInputAction = new InputAction( type: InputActionType.PassThrough );
 
             listenButtonInputAction.AddBinding( "<Keyboard>/<button>" );
-            listenButtonInputAction.AddBinding( "<Joystick>/<button>" );
-            listenButtonInputAction.AddBinding( "<Gamepad>/<button>" );
+            listenButtonInputAction.AddBinding( "<Joystick>/<button>", "hold(duration=0.1)" );
+            listenButtonInputAction.AddBinding( "<Gamepad>/<button>", "hold(duration=0.1)" );
 
             listenButtonInputAction.performed += context =>
             {
-                if( context.control.name.Contains( "anyKey" ) )
+                if( context.control.name.Contains( "anyKey" ) || context.control.name.Contains( "escape" ) )
                 {
                     return;
                 }
@@ -225,7 +230,7 @@ namespace RWS
             listenButtonInputAction?.Disable();
         }
         
-
+        
         public AxisControl ThrottleControl => throttleControl;
         
         public AxisControl RollControl => rollControl;
@@ -234,9 +239,10 @@ namespace RWS
         
         public AxisControl TrimControl => trimControl;
 
-        public ButtonControl LaunchControl => launchControl;
+        public ButtonControl ViewControl => viewControl;
+        
+        public ButtonControl LaunchResetControl => launchResetControl;
 
-        public ButtonControl ResetControl => resetControl;
                 
         public bool AxesDisplay
         {
@@ -268,8 +274,8 @@ namespace RWS
             rollControl.Load( rollControlInfoKey );
             pitchControl.Load( pitchControlInfoKey );
             trimControl.Load( trimControlInfoKey );
-            launchControl.Load( launchControlInfoKey );
-            resetControl.Load( resetControlInfoKey );
+            viewControl.Load( viewControlInfoKey );
+            launchResetControl.Load( launchResetControlInfoKey );
         }
 
         public void SavePlayerPrefs()
@@ -278,8 +284,8 @@ namespace RWS
             rollControl.Save( rollControlInfoKey );
             pitchControl.Save( pitchControlInfoKey );
             trimControl.Save( trimControlInfoKey );
-            launchControl.Save( launchControlInfoKey );
-            resetControl.Save( resetControlInfoKey );
+            viewControl.Save( viewControlInfoKey );
+            launchResetControl.Save( launchResetControlInfoKey );
         }
 
         //----------------------------------------------------------------------------------------------------
@@ -288,16 +294,16 @@ namespace RWS
         readonly string rollControlInfoKey = "RollControlInfo";
         readonly string pitchControlInfoKey = "PitchControlInfo";
         readonly string trimControlInfoKey = "TrimControlInfo";
-        readonly string launchControlInfoKey = "LaunchControlInfo";
-        readonly string resetControlInfoKey = "ResetControlInfo";
+        readonly string viewControlInfoKey = "ViewControlInfo";
+        readonly string launchResetControlInfoKey = "LaunchResetControlInfo";
         readonly string axesDisplayKey = "AxesDisplay";
         
         AxisControl throttleControl;
         AxisControl rollControl;
         AxisControl pitchControl;
         AxisControl trimControl;
-        ButtonControl launchControl;
-        ButtonControl resetControl;
+        ButtonControl viewControl;
+        ButtonControl launchResetControl;
         InputAction listenButtonInputAction;
         bool axesDisplay;
         InputAction enterInputAction;
@@ -361,9 +367,9 @@ namespace RWS
             rollControl = new AxisControl();
             pitchControl = new AxisControl();
             trimControl = new AxisControl();
-            launchControl = new ButtonControl();
-            resetControl = new ButtonControl();
-            
+            viewControl = new ButtonControl();
+            launchResetControl = new ButtonControl();
+
             //PlayerPrefs.DeleteAll();
             LoadPlayerPrefs();
             
@@ -398,8 +404,8 @@ namespace RWS
             rollControl.Disable();
             pitchControl.Disable();
             trimControl.Disable();
-            launchControl.Disable();
-            resetControl.Disable();
+            viewControl.Disable();
+            launchResetControl.Disable();
         }
     }
 }

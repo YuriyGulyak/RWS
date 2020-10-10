@@ -20,6 +20,9 @@ public class OSDHome : MonoBehaviour
     public void Init( FlyingWing flyingWing )
     {
         this.flyingWing = flyingWing;
+        
+        wingTransform = flyingWing.Transform;
+        homePosition = wingTransform.position;
     }
     
     public bool IsActive => gameObject.activeSelf;
@@ -66,7 +69,7 @@ public class OSDHome : MonoBehaviour
 
         if( flyingWing )
         {
-            wingTransform = flyingWing.transform;
+            wingTransform = flyingWing.Transform;
             homePosition = wingTransform.position;
         }
     }

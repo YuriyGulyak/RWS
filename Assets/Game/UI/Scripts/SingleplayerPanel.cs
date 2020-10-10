@@ -1,4 +1,5 @@
 ﻿using System;
+using RWS;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -79,5 +80,13 @@ public class SingleplayerPanel : MonoBehaviour
                 SceneManager.LoadSceneAsync( 1 );
             } );
         } );
+
+        InputManager.Instance.OnEscapeButton += OnEscapeButton;
+    }
+
+    
+    void OnEscapeButton()
+    {
+        Hide();
     }
 }

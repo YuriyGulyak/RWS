@@ -1,4 +1,5 @@
 ﻿using System;
+using RWS;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,20 +19,27 @@ public class LoginPanel : MonoBehaviour
 
     public string Nickname => nickname;
     
-    public void Show( Action onLoginCallback = null )
+    public void Show( Action onBackCallback, Action onLoginCallback )
     {
+        this.onBackCallback = onBackCallback;
         this.onLoginCallback = onLoginCallback;
         gameObject.SetActive( true );
+        
+        InputManager.Instance.OnEscapeButton += OnEscapeButton;
     }
 
     public void Hide()
     {
         gameObject.SetActive( false );
+        onBackCallback = null;
         onLoginCallback = null;
+        
+        InputManager.Instance.OnEscapeButton -= OnEscapeButton;
     }
     
     //----------------------------------------------------------------------------------------------------
 
+    Action onBackCallback;
     Action onLoginCallback;
     string nickname;
     
@@ -69,6 +77,14 @@ public class LoginPanel : MonoBehaviour
             nickname = nameInputField.text.Trim();
             PlayerPrefs.SetString( "Nickname", nickname );
             onLoginCallback?.Invoke();
+        }
+    }
+
+    void OnEscapeButton()
+    {
+        if( !nameInputField.isFocused )
+        {
+            onBackCallback?.Invoke();
         }
     }
 }

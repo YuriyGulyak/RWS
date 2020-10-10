@@ -62,14 +62,10 @@ public class MultiplayerPanel : MonoBehaviourPunCallbacks
         }
         else
         {
-            loginPanel.Show( () =>
-            {
-                loginPanel.Hide();
-                stateText.gameObject.SetActive( true );
-                PhotonNetwork.NickName = loginPanel.Nickname;
-                PhotonNetwork.ConnectUsingSettings();
-            } );
+            loginPanel.Show( Hide, OnLoginButton );
         }
+        
+        InputManager.Instance.OnEscapeButton += OnEscapeButton;
     }
 
     public void Hide()
@@ -99,6 +95,8 @@ public class MultiplayerPanel : MonoBehaviourPunCallbacks
         
         gameObject.SetActive( false );
         panelRect.anchoredPosition = Vector2.zero;
+        
+        InputManager.Instance.OnEscapeButton -= OnEscapeButton;
     }
 
     //----------------------------------------------------------------------------------------------------
@@ -115,19 +113,13 @@ public class MultiplayerPanel : MonoBehaviourPunCallbacks
     public override void OnDisconnected( DisconnectCause cause )
     {
         print( "OnDisconnected: " + cause );
-        
-        loginPanel.Show( () =>
-        {
-            loginPanel.Hide();
-            stateText.gameObject.SetActive( true );
-            PhotonNetwork.NickName = loginPanel.Nickname;
-            PhotonNetwork.ConnectUsingSettings();
-        } );
+
+        loginPanel.Show( Hide, OnLoginButton );
     }
 
     public override void OnLeftLobby()
     {
-        print( "OnLeftLobby" );
+        //print( "OnLeftLobby" );
     }
 
     public override void OnJoinedRoom()
@@ -176,7 +168,8 @@ public class MultiplayerPanel : MonoBehaviourPunCallbacks
     //----------------------------------------------------------------------------------------------------
     
     ClientState prevState;
-
+    bool isNavigationPanel;
+    
     
     void Awake()
     {
@@ -198,14 +191,8 @@ public class MultiplayerPanel : MonoBehaviourPunCallbacks
 
         //PhotonNetwork.GameVersion = "";
         PhotonNetwork.AutomaticallySyncScene = true;
-
-        loginPanel.Show( () =>
-        {
-            loginPanel.Hide();
-            stateText.gameObject.SetActive( true );
-            PhotonNetwork.NickName = loginPanel.Nickname;
-            PhotonNetwork.ConnectUsingSettings();
-        } );
+        
+        loginPanel.Show( Hide, OnLoginButton );
     }
 
     void Update()
@@ -220,7 +207,15 @@ public class MultiplayerPanel : MonoBehaviourPunCallbacks
 
 
     // UI Callbacks
-    
+
+    void OnLoginButton()
+    {
+        loginPanel.Hide();
+        stateText.gameObject.SetActive( true );
+        PhotonNetwork.NickName = loginPanel.Nickname;
+        PhotonNetwork.ConnectUsingSettings();
+    }
+
     void OnCreateRoomButton()
     {
         errorText.gameObject.SetActive( false );
@@ -268,13 +263,15 @@ public class MultiplayerPanel : MonoBehaviourPunCallbacks
         PhotonNetwork.Disconnect();
     }
 
-
+    
     void ShowNavigationButtons()
     {
         createRoomButton.gameObject.SetActive( true );
         showRoomListButton.gameObject.SetActive( true );
         joinRandomRoomButton.gameObject.SetActive( true );
         logoutButton.gameObject.SetActive( true );
+
+        isNavigationPanel = true;
     }
     
     void HideNavigationButtons()
@@ -283,5 +280,16 @@ public class MultiplayerPanel : MonoBehaviourPunCallbacks
         showRoomListButton.gameObject.SetActive( false );
         joinRandomRoomButton.gameObject.SetActive( false );
         logoutButton.gameObject.SetActive( false );
+        
+        isNavigationPanel = false;
+    }
+    
+    
+    void OnEscapeButton()
+    {
+        if( isNavigationPanel )
+        {
+            Hide();
+        }
     }
 }

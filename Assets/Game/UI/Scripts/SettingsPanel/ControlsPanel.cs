@@ -18,10 +18,10 @@ public class ControlsPanel : MonoBehaviour
     ControlListEntry trimControlListEntry = null;
     
     [SerializeField]
-    ControlListEntry launchControlListEntry = null;
+    ControlListEntry viewControlListEntry = null;
 
     [SerializeField]
-    ControlListEntry resetControlListEntry = null;
+    ControlListEntry launchResetControlListEntry = null;
     
     [SerializeField]
     Button backButton = null;
@@ -55,9 +55,9 @@ public class ControlsPanel : MonoBehaviour
         trimControlListEntry.BindingName = inputManager.TrimControl.BindingName ?? notDefinedName;
         trimControlListEntry.Invert = inputManager.TrimControl.Invert;
 
-        launchControlListEntry.BindingName = inputManager.LaunchControl.BindingName ?? notDefinedName;
-        resetControlListEntry.BindingName = inputManager.ResetControl.BindingName ?? notDefinedName;
-        
+        viewControlListEntry.BindingName = inputManager.ViewControl.BindingName ?? notDefinedName;
+        launchResetControlListEntry.BindingName = inputManager.LaunchResetControl.BindingName ?? notDefinedName;
+
         scrollRect.normalizedPosition = new Vector2( 0f, 1f );
     }
 
@@ -70,8 +70,8 @@ public class ControlsPanel : MonoBehaviour
         rollControlListEntry.StopListening();
         pitchControlListEntry.StopListening();
         trimControlListEntry.StopListening();
-        launchControlListEntry.StopListening();
-        resetControlListEntry.StopListening();
+        viewControlListEntry.StopListening();
+        launchResetControlListEntry.StopListening();
     }
     
     //----------------------------------------------------------------------------------------------------
@@ -80,8 +80,9 @@ public class ControlsPanel : MonoBehaviour
     
     Action onBackButtonCallback;
     InputManager inputManager;
-
+    ControlListEntry[] allControls;
     
+
     void Awake()
     {
         inputManager = InputManager.Instance;
@@ -95,9 +96,9 @@ public class ControlsPanel : MonoBehaviour
             rollControlListEntry.StopListening();
             pitchControlListEntry.StopListening();
             trimControlListEntry.StopListening();
-            launchControlListEntry.StopListening();
-            resetControlListEntry.StopListening();
-            
+            viewControlListEntry.StopListening();
+            launchResetControlListEntry.StopListening();
+
             inputManager.ListenAxis( control =>
             {
                 throttleControlListEntry.BindingName = $"{control.device.displayName}: {control.displayName}";
@@ -124,9 +125,9 @@ public class ControlsPanel : MonoBehaviour
             throttleControlListEntry.StopListening();
             pitchControlListEntry.StopListening();
             trimControlListEntry.StopListening();
-            launchControlListEntry.StopListening();
-            resetControlListEntry.StopListening();
-            
+            viewControlListEntry.StopListening();
+            launchResetControlListEntry.StopListening();
+
             inputManager.ListenAxis( control =>
             {
                 rollControlListEntry.BindingName = $"{control.device.displayName}: {control.displayName}";
@@ -153,9 +154,9 @@ public class ControlsPanel : MonoBehaviour
             throttleControlListEntry.StopListening();
             rollControlListEntry.StopListening();
             trimControlListEntry.StopListening();
-            launchControlListEntry.StopListening();
-            resetControlListEntry.StopListening();
-            
+            viewControlListEntry.StopListening();
+            launchResetControlListEntry.StopListening();
+
             inputManager.ListenAxis( control =>
             {
                 pitchControlListEntry.BindingName = $"{control.device.displayName}: {control.displayName}";
@@ -182,9 +183,9 @@ public class ControlsPanel : MonoBehaviour
             throttleControlListEntry.StopListening();
             rollControlListEntry.StopListening();
             pitchControlListEntry.StopListening();
-            launchControlListEntry.StopListening();
-            resetControlListEntry.StopListening();
-            
+            viewControlListEntry.StopListening();
+            launchResetControlListEntry.StopListening();
+
             inputManager.ListenAxis( control =>
             {
                 trimControlListEntry.BindingName = $"{control.device.displayName}: {control.displayName}";
@@ -203,51 +204,51 @@ public class ControlsPanel : MonoBehaviour
         };
         
         
-        // Launch
+        // Change view
         
-        launchControlListEntry.BindingName = inputManager.LaunchControl.BindingName ?? notDefinedName;
-        launchControlListEntry.OnStartListening += () =>
+        viewControlListEntry.BindingName = inputManager.ViewControl.BindingName ?? notDefinedName;
+        viewControlListEntry.OnStartListening += () =>
         {
             throttleControlListEntry.StopListening();
             rollControlListEntry.StopListening();
             pitchControlListEntry.StopListening();
             trimControlListEntry.StopListening();
-            resetControlListEntry.StopListening();
-            
+            launchResetControlListEntry.StopListening();
+
             inputManager.ListenButton( control =>
             {
-                launchControlListEntry.BindingName = $"{control.device.displayName}: {control.displayName}";
-                launchControlListEntry.StopListening();
+                viewControlListEntry.BindingName = $"{control.device.displayName}: {control.displayName}";
+                viewControlListEntry.StopListening();
 
-                inputManager.LaunchControl.SetBinding( control );
+                inputManager.ViewControl.SetBinding( control );
                 saveButton.gameObject.SetActive( true );
             } );
         };
-        launchControlListEntry.OnStopListening += () => inputManager.StopButtonListening();
-
-
-        // Reset
+        viewControlListEntry.OnStopListening += () => inputManager.StopButtonListening();
         
-        resetControlListEntry.BindingName = inputManager.ResetControl.BindingName ?? notDefinedName;
-        resetControlListEntry.OnStartListening += () =>
+        
+        // Launch / Reset
+        
+        launchResetControlListEntry.BindingName = inputManager.LaunchResetControl.BindingName ?? notDefinedName;
+        launchResetControlListEntry.OnStartListening += () =>
         {
             throttleControlListEntry.StopListening();
             rollControlListEntry.StopListening();
             pitchControlListEntry.StopListening();
             trimControlListEntry.StopListening();
-            launchControlListEntry.StopListening();
-            
+            viewControlListEntry.StopListening();
+
             inputManager.ListenButton( control =>
             {
-                resetControlListEntry.BindingName = $"{control.device.displayName}: {control.displayName}";
-                resetControlListEntry.StopListening();
+                launchResetControlListEntry.BindingName = $"{control.device.displayName}: {control.displayName}";
+                launchResetControlListEntry.StopListening();
 
-                inputManager.ResetControl.SetBinding( control );
+                inputManager.LaunchResetControl.SetBinding( control );
                 saveButton.gameObject.SetActive( true );
             } );
         };
-        resetControlListEntry.OnStopListening += () => inputManager.StopButtonListening();
-        
+        launchResetControlListEntry.OnStopListening += () => inputManager.StopButtonListening();
+
         
         // . . .
         
@@ -258,6 +259,22 @@ public class ControlsPanel : MonoBehaviour
 
         axesDisplayToggle.isOn = inputManager.AxesDisplay;
         axesDisplayToggle.onValueChanged.AddListener( value => inputManager.AxesDisplay = value );
+
+
+        inputManager.OnEscapeButton += OnEscapeButton;
+
+
+        // For easy enumeration
+        
+        allControls = new[]
+        {
+            throttleControlListEntry, 
+            rollControlListEntry, 
+            pitchControlListEntry, 
+            trimControlListEntry, 
+            viewControlListEntry, 
+            launchResetControlListEntry
+        };
     }
     
 
@@ -272,5 +289,19 @@ public class ControlsPanel : MonoBehaviour
     {
         saveButton.gameObject.SetActive( false );
         inputManager.SavePlayerPrefs();
+    }
+
+    void OnEscapeButton()
+    {
+        foreach( var control in allControls )
+        {
+            if( control.IsListening )
+            {
+                control.StopListening();
+                return;
+            }
+        }
+
+        OnBackButton();
     }
 }

@@ -26,6 +26,8 @@ public class SliderWithInputField : MonoBehaviour
         set => slider.value = value;
     }
 
+    public bool IsFocused => inputField.isFocused;
+
 
     string valueFormat;
     

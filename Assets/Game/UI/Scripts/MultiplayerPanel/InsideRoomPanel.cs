@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Photon.Pun;
 using Photon.Realtime;
+using RWS;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -43,6 +44,8 @@ public class InsideRoomPanel : MonoBehaviourPunCallbacks
         UpdatePlayerCountText();
 
         startGameButton.gameObject.SetActive( PhotonNetwork.IsMasterClient );
+        
+        InputManager.Instance.OnEscapeButton += OnEscapeButton;
     }
 
     public void Hide()
@@ -50,6 +53,8 @@ public class InsideRoomPanel : MonoBehaviourPunCallbacks
         RemoveAllPlayerListEntries();
         gameObject.SetActive( false );
         onLeaveRoomCallback = null;
+        
+        InputManager.Instance.OnEscapeButton -= OnEscapeButton;
     }
 
     //----------------------------------------------------------------------------------------------------
@@ -106,6 +111,11 @@ public class InsideRoomPanel : MonoBehaviourPunCallbacks
         } );
     }
 
+    void OnEscapeButton()
+    {
+        OnLeaveRoomButton();
+    }
+    
     
     void UpdatePlayerCountText()
     {

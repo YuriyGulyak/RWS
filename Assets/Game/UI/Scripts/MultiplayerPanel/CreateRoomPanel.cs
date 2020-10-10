@@ -1,6 +1,7 @@
 ﻿using System;
 using Photon.Pun;
 using Photon.Realtime;
+using RWS;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -37,12 +38,16 @@ public class CreateRoomPanel : MonoBehaviour
     {
         this.onCancelCallback = onCancelCallback;
         gameObject.SetActive( true );
+        
+        InputManager.Instance.OnEscapeButton += OnEscapeButton;
     }
 
     public void Hide()
     {
         gameObject.SetActive( false );
         onCancelCallback = null;
+        
+        InputManager.Instance.OnEscapeButton -= OnEscapeButton;
     }
 
     //----------------------------------------------------------------------------------------------------
@@ -61,7 +66,7 @@ public class CreateRoomPanel : MonoBehaviour
         roomNameInputField.text = $"Room_{UnityEngine.Random.Range( 0, 10000 ):0000}";
     }
 
-    
+
     void OnCreateRoomButton()
     {
         var roomName = roomNameInputField.text;
@@ -80,5 +85,14 @@ public class CreateRoomPanel : MonoBehaviour
     void OnCancelButton()
     {
         onCancelCallback?.Invoke();
+    }
+
+    void OnEscapeButton()
+    {
+        if( roomNameInputField.isFocused || maxPlayersInputField.isFocused )
+        {
+            return;
+        }
+        OnCancelButton();
     }
 }

@@ -13,6 +13,8 @@ public class WingLauncher : MonoBehaviour
 
     //----------------------------------------------------------------------------------------------------
 
+    public bool Ready => state == State.Ready;
+    
     public void Launch()
     {
         if( wingRigidbody )

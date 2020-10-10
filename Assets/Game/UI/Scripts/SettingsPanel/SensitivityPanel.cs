@@ -1,4 +1,5 @@
 ﻿using System;
+using RWS;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UI.Extensions;
@@ -76,6 +77,8 @@ public class SensitivityPanel : MonoBehaviour
         backButton.onClick.AddListener( OnBackButton );
         saveButton.onClick.AddListener( OnSaveButton );
         saveButton.gameObject.SetActive( false );
+
+        InputManager.Instance.OnEscapeButton += OnEscapeButton;
     }
 
     
@@ -117,6 +120,15 @@ public class SensitivityPanel : MonoBehaviour
     {
         sensitivity.SavePlayerPrefs();
         saveButton.gameObject.SetActive( false );
+    }
+
+    void OnEscapeButton()
+    {
+        if( rollExpoSlider.IsFocused || rollSuperExpoSlider.IsFocused || pitchExpoSlider.IsFocused || pitchSuperExpoSlider.IsFocused )
+        {
+            return;
+        }
+        OnBackButton();
     }
 
 

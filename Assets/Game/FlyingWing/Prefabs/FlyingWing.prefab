@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 49081250}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LeadingEdgePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 71646144}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 147498109}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Center
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -254,7 +254,7 @@ GameObject:
   m_Component:
   - component: {fileID: 168690100}
   - component: {fileID: 168690101}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Line (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -304,7 +304,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 203711399}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -334,7 +334,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 275163544}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -424,7 +424,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 302327457}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TrailingEdgePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -547,7 +547,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 313583736}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -578,7 +578,7 @@ GameObject:
   m_Component:
   - component: {fileID: 316397033}
   - component: {fileID: 316397034}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TipChord
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -691,7 +691,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 351671015}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1222,7 +1222,7 @@ GameObject:
   m_Component:
   - component: {fileID: 619706983}
   - component: {fileID: 619706984}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RootChord (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1272,7 +1272,7 @@ GameObject:
   m_Component:
   - component: {fileID: 721130814}
   - component: {fileID: 721130815}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Line (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1416,7 +1416,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 754821349}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1446,7 +1446,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 818827253}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1476,7 +1476,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 838129882}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Guides
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1665,7 +1665,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 871658559}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Center
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1881,7 +1881,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 959512882}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Center
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2005,7 +2005,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1038021791}
   - component: {fileID: 1038021792}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Line (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2055,7 +2055,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1039177140}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2116,7 +2116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1070955416}
   - component: {fileID: 1070955417}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CenterLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2196,7 +2196,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1151461230}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2320,7 +2320,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1195528873}
   - component: {fileID: 1195528874}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DiagonalLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2621,7 +2621,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1289112396}
   - component: {fileID: 1289112397}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Line (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2993,7 +2993,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1334798312}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Center
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3086,7 +3086,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1407865586}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3548,7 +3548,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1470055340}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3578,7 +3578,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1473227686}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3710,7 +3710,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1553668752}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3740,7 +3740,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1562547172}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3770,7 +3770,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1571420793}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3830,7 +3830,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1633807181}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3891,7 +3891,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1693486037}
   - component: {fileID: 1693486038}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: AirfoilSection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4078,7 +4078,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1781754467}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4362,7 +4362,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1907203733}
   - component: {fileID: 1907203734}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Line (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4443,7 +4443,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1975377064}
   - component: {fileID: 1975377065}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RootChord
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4493,7 +4493,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1981430759}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Center
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4554,7 +4554,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2036912002}
   - component: {fileID: 2036912003}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MAC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4604,7 +4604,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2037131038}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4634,7 +4634,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2048917638}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4724,7 +4724,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2100291464}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Center
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4755,7 +4755,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2115315652}
   - component: {fileID: 2115315653}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TipChord (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4804,7 +4804,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2126848718}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MACHelper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4871,7 +4871,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5491595724672451556}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Center
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5695,7 +5695,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5898377763435245167}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5960,6 +5960,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.011
       objectReference: {fileID: 0}
+    - target: {fileID: -8486464846444105011, guid: 24ba10c133aeb20429e546695d92a53c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -8229190344338768238, guid: 24ba10c133aeb20429e546695d92a53c,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -6199,6 +6204,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.0000060122125
+      objectReference: {fileID: 0}
+    - target: {fileID: -5364346550796021614, guid: 24ba10c133aeb20429e546695d92a53c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -5312673989409784891, guid: 24ba10c133aeb20429e546695d92a53c,
         type: 3}
@@ -6696,6 +6706,11 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1547558359465731048, guid: 24ba10c133aeb20429e546695d92a53c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892517281635501317, guid: 24ba10c133aeb20429e546695d92a53c,
         type: 3}
       propertyPath: m_Layer
       value: 10

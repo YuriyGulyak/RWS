@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using RWS;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class SettingsPanel : MonoBehaviour
@@ -72,11 +73,13 @@ public class SettingsPanel : MonoBehaviour
     void Awake()
     {
         closeButton.onClick.AddListener( Hide );
-        
+
         graphicsButton.onClick.AddListener( OnGraphicsButton );
         soundButton.onClick.AddListener( OnSoundButton );
         controlsButton.onClick.AddListener( OnControlsButton );
         sensitivityButton.onClick.AddListener( OnSensitivityButton );
+        
+        InputManager.Instance.OnEscapeButton += OnEscapeButton;
         
         navigationPanelGameObject.SetActive( true );
         
@@ -124,5 +127,13 @@ public class SettingsPanel : MonoBehaviour
         {
             navigationPanelGameObject.SetActive( true );
         } );
+    }
+    
+    void OnEscapeButton()
+    {
+        if( navigationPanelGameObject.activeSelf )
+        {
+            Hide();
+        }
     }
 }

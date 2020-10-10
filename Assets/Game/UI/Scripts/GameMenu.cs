@@ -5,9 +5,6 @@ using UnityEngine.UI;
 public class GameMenu : MonoBehaviour
 {
     [SerializeField]
-    Button startButton = null;
-    
-    [SerializeField]
     Button resumeButton = null;
     
     [SerializeField]
@@ -18,7 +15,6 @@ public class GameMenu : MonoBehaviour
 
     //----------------------------------------------------------------------------------------------------
 
-    public Action OnStartButton;
     public Action OnResumeButton;
     public Action OnSettingsButton;
     public Action OnExitButton;
@@ -47,16 +43,6 @@ public class GameMenu : MonoBehaviour
     
     void Awake()
     {
-        startButton.gameObject.SetActive( true );
-        resumeButton.gameObject.SetActive( false );
-        
-        startButton.onClick.AddListener( () =>
-        {
-            startButton.gameObject.SetActive( false );
-            resumeButton.gameObject.SetActive( true );
-            OnStartButton?.Invoke();
-        } );
-        
         resumeButton.onClick.AddListener( () => OnResumeButton?.Invoke() );
         settingsButton.onClick.AddListener( () => OnSettingsButton?.Invoke() );
         exitButton.onClick.AddListener( () => OnExitButton?.Invoke() );

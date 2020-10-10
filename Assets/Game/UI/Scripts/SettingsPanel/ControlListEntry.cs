@@ -19,7 +19,9 @@ public class ControlListEntry : MonoBehaviour
     public Action OnStartListening;
     public Action OnStopListening;
     public Action<bool> OnInvertChanged;
-    
+
+    public bool IsListening { get; private set; }
+
     public void StopListening()
     {
         listenToggle.isOn = false;
@@ -57,6 +59,8 @@ public class ControlListEntry : MonoBehaviour
             {
                 OnStopListening?.Invoke();
             }
+            IsListening = value;
+            
         } );
 
         if( invertToggle != null )

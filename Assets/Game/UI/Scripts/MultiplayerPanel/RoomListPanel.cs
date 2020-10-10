@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Photon.Pun;
 using Photon.Realtime;
+using RWS;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -33,6 +34,8 @@ public class RoomListPanel : MonoBehaviourPunCallbacks
         {
             PhotonNetwork.JoinLobby();
         }
+        
+        InputManager.Instance.OnEscapeButton += OnEscapeButton;
     }
 
     public void Hide()
@@ -46,6 +49,8 @@ public class RoomListPanel : MonoBehaviourPunCallbacks
         }
         
         gameObject.SetActive( false );
+        
+        InputManager.Instance.OnEscapeButton -= OnEscapeButton;
     }
 
     //----------------------------------------------------------------------------------------------------
@@ -100,5 +105,10 @@ public class RoomListPanel : MonoBehaviourPunCallbacks
     void OnBackButton()
     {
         onBackCallback?.Invoke();
+    }
+
+    void OnEscapeButton()
+    {
+        OnBackButton();
     }
 }

@@ -71,6 +71,8 @@ public class SoundPanel : MonoBehaviour
 
         applyButton.onClick.AddListener( OnApplyButton );
         applyButton.gameObject.SetActive( false );
+
+        InputManager.Instance.OnEscapeButton += OnEscapeButton;
     }
     
     
@@ -110,5 +112,14 @@ public class SoundPanel : MonoBehaviour
         soundManager.SavePlayerPrefs();
         
         applyButton.gameObject.SetActive( false );
+    }
+    
+    void OnEscapeButton()
+    {
+        if( masterVolumeSlider.IsFocused || motorVolumeSlider.IsFocused || servoVolumeSlider.IsFocused || windVolumeSlider.IsFocused )
+        {
+            return;
+        }
+        OnBackButton();
     }
 }

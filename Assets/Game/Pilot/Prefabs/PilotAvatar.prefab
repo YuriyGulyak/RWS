@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 720075568134770375}
   - component: {fileID: 720075568134770373}
   - component: {fileID: 720075568134770369}
-  - component: {fileID: 720075568134770368}
   - component: {fileID: 1802422675}
+  - component: {fileID: 720075568134770368}
+  - component: {fileID: 4886994540395449225}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 720075568134770491}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -58,7 +59,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.01
+  near clip plane: 0.25
   far clip plane: 5000
   field of view: 50
   orthographic: 0
@@ -66,7 +67,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 3863
+    m_Bits: 3841
   m_RenderingPath: 3
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -96,21 +97,6 @@ AudioHighPassFilter:
   m_Enabled: 1
   m_CutoffFrequency: 200
   m_HighpassResonanceQ: 1
---- !u!114 &720075568134770368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 720075568134770491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d947636a9390f6a46a121124154e6e3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transform: {fileID: 720075568134770372}
-  swaySpeed: 0.3
-  swayAmount: 2
 --- !u!114 &1802422675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,6 +157,37 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &720075568134770368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720075568134770491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d947636a9390f6a46a121124154e6e3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transform: {fileID: 720075568134770372}
+  swaySpeed: 0.3
+  swayAmount: 2
+--- !u!114 &4886994540395449225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720075568134770491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 511b2af9da19ece4da549c80ed134132, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  camera: {fileID: 720075568134770375}
+  maxDistance: 300
+  maxZoom: 3
 --- !u!1 &720075568755094255
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,7 +331,7 @@ MonoBehaviour:
   target: {fileID: 0}
   pilotBase: {fileID: 720075569104032215}
   pilotEyes: {fileID: 720075569852431142}
-  smoothTime: 0.1
+  cameraFollowSpeed: 10
   trackingBias: 0
   targetOffset: {x: 0, y: 0, z: -0.2}
 --- !u!1 &720075569517898841

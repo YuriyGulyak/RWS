@@ -61,6 +61,8 @@ public class FlyingWing : MonoBehaviour
 
     //----------------------------------------------------------------------------------------------------
     
+    public Transform Transform => wingTransform;
+    
     public Rigidbody Rigidbody => wingRigidbody;
     
     public float RollSetpoint

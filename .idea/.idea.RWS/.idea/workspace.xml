@@ -12,10 +12,12 @@
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonRealtime/Code/Player.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@2.0.1/Scripts/Runtime/TMPro_UGUI_Private.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonRealtime/Code/LoadBalancingClient.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.mathematics@1.1.0/Unity.Mathematics/math.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Game/Pilot/Scripts/SwayEffect.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/Pilot/Scripts/PilotLook.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.mathematics@1.1.0/Unity.Mathematics/math.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/Input/Rates/RateProfile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/ServoSound.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4AC45C3B-3637-4C47-8D7D-505A0C3C6D40/c1/569d92fb/PressBehavior.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/AttitudeIndicator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/LoginPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/InsideRoomPanel.cs" root0="FORCE_HIGHLIGHTING" />
@@ -29,16 +31,18 @@
     <setting file="file://$PROJECT_DIR$/Assets/Utils/CurveEditor/Path.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Utils/CurveEditor/PathPlacer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/PlayerOverviewEntry.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Utils/CurveEditor/PathCreator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/PlayerOverviewEntry.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/RoomListEntry.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/RoomListPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Utils/Editor/MaximizeWindow.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/PlayerOverviewPanel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.3.0/PostProcessing/Runtime/PostProcessEffectSettings.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Utils/FpsLimit.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/WingSetupHelperEditor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Utils/Singleton.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Utils/GizmosLine.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/RoomChat/RoomChatMessage.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Utils/GizmosLine.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Skybox Creator/Scripts/Editor/SkyboxCreatorImageSkyInspector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Scripts/Game/PlayerOverviewPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/WindSound.cs" root0="FORCE_HIGHLIGHTING" />
@@ -72,20 +76,23 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0/InputSystem/Actions/InputAction.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/Managers/SingleplayerGameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@2.0.1/Scripts/Runtime/TextMeshProUGUI.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Utils/DisplayManger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/Managers/MultiplayerGameManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Utils/DisplayManger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@2.0.1/Scripts/Runtime/TMP_InputField.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/Altimeter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/Elevon.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Game/OrbitCamera/Scripts/OrbitCamera.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/FlyingWing.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Game/OrbitCamera/Scripts/OrbitCamera.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/ControlSensitivity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0/InputSystem/InputManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0/InputSystem/Actions/Interactions/PressInteraction.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/Managers/GraphicsManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/Managers/InputManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0/InputSystem/Actions/Interactions/HoldInteraction.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/SettingsPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/MotorSound.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0/InputSystem/Controls/InputControl.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://C:/Program Files/Unity 2019/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Selectable.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Game/Pilot/Scripts/PilotZoom.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/SensitivityPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/ControlsPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Scripts/AsteroidsGame.cs" root0="FORCE_HIGHLIGHTING" />
@@ -96,6 +103,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/BatteryTelemetry.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0/InputSystem/Actions/InputActionSetupExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/WingTelemetry.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/SingleplayerPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Utils/VersionDisplay.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/MainMenu.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/GameMenu.cs" root0="FORCE_HIGHLIGHTING" />
@@ -117,33 +125,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Game/OrbitCamera/Scripts/OrbitCamera.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/Pilot/Scripts/PilotLook.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/RoomListPanel.cs" />
-        <option value="$PROJECT_DIR$/../Form1.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/WingPhotonView.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/PlayerOverviewPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/MultiplayerPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/GameMenu.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/WingSpawner.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/Gyroscope.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/Orientation.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/Attitude.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/BlackScreen.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/LapTime.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/AttitudeIndicator.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/PingDisplay.cs" />
-        <option value="$PROJECT_DIR$/Assets/Skybox Creator/Scripts/Editor/SkyboxCreatorImageSkyInspector.cs" />
-        <option value="$PROJECT_DIR$/Assets/Skybox Creator/Scripts/SkyboxCreator.cs" />
-        <option value="$PROJECT_DIR$/Assets/Skybox Creator/Scripts/SkyboxCreatorImageSky.cs" />
-        <option value="$PROJECT_DIR$/Assets/Skybox Creator/Scripts/SkyboxCreatorRenderer.cs" />
-        <option value="$PROJECT_DIR$/Assets/Skybox Creator/Scripts/SkyboxCreatorProfile.cs" />
-        <option value="$PROJECT_DIR$/Assets/Skybox Creator/Scripts/Editor/SkyboxCreatorInspector.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/Managers/SingleplayerGameManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/@Tests/TestDecibels/TestDecibels.cs" />
-        <option value="$PROJECT_DIR$/Assets/Utils/MathUtils.cs" />
         <option value="$PROJECT_DIR$/Assets/@Tests/TestRSSI/TestRSSI.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/OSDHome.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/OSDTelemetry.cs" />
         <option value="$PROJECT_DIR$/Assets/@Tests/Pixelated.shader" />
         <option value="$PROJECT_DIR$/Assets/@Tests/OnRender.cs" />
@@ -151,7 +133,6 @@
         <option value="$PROJECT_DIR$/Assets/@Tests/Glitch/Shader/DigitalGlitch.shader" />
         <option value="$PROJECT_DIR$/Assets/@Tests/PixelateImageEffect/Pixelation.shader" />
         <option value="$PROJECT_DIR$/Assets/@Tests/Transceiver/Transceiver.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/FlyingWing.cs" />
         <option value="$PROJECT_DIR$/Assets/@Tests/PixelationCameraEffect/Pixelation.cs" />
         <option value="$PROJECT_DIR$/Assets/@Tests/PixelationEffect/Pixelation.cs" />
         <option value="$PROJECT_DIR$/Assets/@Tests/PixelateImageEffect/PixelateImageEffect.cs" />
@@ -160,14 +141,41 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/Transceiver.cs" />
         <option value="$PROJECT_DIR$/Assets/@Tests/TestGrass/Scripts/Editor/GrassCreator.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/ControlsPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/Managers/GraphicsManager.cs" />
         <option value="$PROJECT_DIR$/Assets/@Tests/TestGrass/Scripts/TerrainController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/GraphicsPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/Environment/Terrain/TerrainController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/Managers/InputManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/RoomChat/RoomChat.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/Managers/GraphicsManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/FlyingWing.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/Pilot/Scripts/PilotCameraZoom.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/Pilot/Scripts/SwayEffect.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/SettingsPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/GraphicsPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Utils/SliderWithInputField.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/SoundPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SingleplayerPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/SensitivityPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/ControlListEntry.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/LoginPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/CreateRoomPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/MultiplayerPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/RoomListPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/InsideRoomPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/PostProcessing/PostProcessingManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/PostProcessing/PostProcessManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/PostProcessing/BloorEffectController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/OSDHome.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/GameMenu.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/Pilot/Scripts/PilotLook.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/WingSetupHelperEditor.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/UIHelperEditor.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/UIHelper.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/WingLauncher.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/ControlsPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/Managers/SingleplayerGameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/Managers/MultiplayerGameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/Managers/InputManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/OrbitCamera/Scripts/OrbitCamera.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/Pilot/Scripts/PilotZoom.cs" />
       </list>
     </option>
   </component>
@@ -215,83 +223,21 @@
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state x="552" y="237" key="#Notifications/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1595883319590" />
-    <state width="1876" height="401" key="GridCell.Tab.0.bottom" timestamp="1592847760204">
-      <screen x="0" y="0" width="1920" height="1160" />
-    </state>
-    <state width="1876" height="401" key="GridCell.Tab.0.bottom/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1592847760204" />
-    <state width="1876" height="401" key="GridCell.Tab.0.center" timestamp="1592847760204">
-      <screen x="0" y="0" width="1920" height="1160" />
-    </state>
-    <state width="1876" height="401" key="GridCell.Tab.0.center/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1592847760204" />
-    <state width="1876" height="401" key="GridCell.Tab.0.left" timestamp="1592847760204">
-      <screen x="0" y="0" width="1920" height="1160" />
-    </state>
-    <state width="1876" height="401" key="GridCell.Tab.0.left/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1592847760204" />
-    <state width="1876" height="401" key="GridCell.Tab.0.right" timestamp="1592847760204">
-      <screen x="0" y="0" width="1920" height="1160" />
-    </state>
-    <state width="1876" height="401" key="GridCell.Tab.0.right/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1592847760204" />
-    <state width="1876" height="401" key="GridCell.Tab.1.bottom" timestamp="1592847760204">
-      <screen x="0" y="0" width="1920" height="1160" />
-    </state>
-    <state width="1876" height="401" key="GridCell.Tab.1.bottom/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1592847760204" />
-    <state width="1876" height="401" key="GridCell.Tab.1.center" timestamp="1592847760204">
-      <screen x="0" y="0" width="1920" height="1160" />
-    </state>
-    <state width="1876" height="401" key="GridCell.Tab.1.center/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1592847760204" />
-    <state width="1876" height="401" key="GridCell.Tab.1.left" timestamp="1592847760204">
-      <screen x="0" y="0" width="1920" height="1160" />
-    </state>
-    <state width="1876" height="401" key="GridCell.Tab.1.left/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1592847760204" />
-    <state width="1876" height="401" key="GridCell.Tab.1.right" timestamp="1592847760204">
-      <screen x="0" y="0" width="1920" height="1160" />
-    </state>
-    <state width="1876" height="401" key="GridCell.Tab.1.right/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1592847760204" />
-    <state width="1876" height="401" key="GridCell.Tab.2.bottom" timestamp="1592847760204">
-      <screen x="0" y="0" width="1920" height="1160" />
-    </state>
-    <state width="1876" height="401" key="GridCell.Tab.2.bottom/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1592847760204" />
-    <state width="1876" height="401" key="GridCell.Tab.2.center" timestamp="1592847760204">
-      <screen x="0" y="0" width="1920" height="1160" />
-    </state>
-    <state width="1876" height="401" key="GridCell.Tab.2.center/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1592847760204" />
-    <state width="1876" height="401" key="GridCell.Tab.2.left" timestamp="1592847760204">
-      <screen x="0" y="0" width="1920" height="1160" />
-    </state>
-    <state width="1876" height="401" key="GridCell.Tab.2.left/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1592847760204" />
-    <state width="1876" height="401" key="GridCell.Tab.2.right" timestamp="1592847760204">
-      <screen x="0" y="0" width="1920" height="1160" />
-    </state>
-    <state width="1876" height="401" key="GridCell.Tab.2.right/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1592847760204" />
-    <state width="1876" height="401" key="GridCell.Tab.3.bottom" timestamp="1592847760205">
-      <screen x="0" y="0" width="1920" height="1160" />
-    </state>
-    <state width="1876" height="401" key="GridCell.Tab.3.bottom/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1592847760205" />
-    <state width="1876" height="401" key="GridCell.Tab.3.center" timestamp="1592847760204">
-      <screen x="0" y="0" width="1920" height="1160" />
-    </state>
-    <state width="1876" height="401" key="GridCell.Tab.3.center/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1592847760204" />
-    <state width="1876" height="401" key="GridCell.Tab.3.left" timestamp="1592847760204">
-      <screen x="0" y="0" width="1920" height="1160" />
-    </state>
-    <state width="1876" height="401" key="GridCell.Tab.3.left/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1592847760204" />
-    <state width="1876" height="401" key="GridCell.Tab.3.right" timestamp="1592847760205">
-      <screen x="0" y="0" width="1920" height="1160" />
-    </state>
-    <state width="1876" height="401" key="GridCell.Tab.3.right/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1592847760205" />
-    <state x="845" y="302" key="RiderGenerateDialog" timestamp="1596295311406">
-      <screen x="0" y="0" width="1920" height="1160" />
+    <state x="1127" y="364" key="RiderGenerateDialog" timestamp="1602063618724">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="845" y="302" key="RiderGenerateDialog/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1596295311406" />
+    <state x="1127" y="364" key="RiderGenerateDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1602063618724" />
     <state x="615" y="255" key="SettingsEditor" timestamp="1600100840736">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="461" y="211" key="SettingsEditor/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1596632088099" />
     <state x="615" y="255" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1600100840736" />
-    <state x="616" y="222" width="672" height="676" key="search.everywhere.popup" timestamp="1595796133933">
-      <screen x="0" y="0" width="1920" height="1160" />
+    <state x="821" y="268" width="896" height="816" key="search.everywhere.popup" timestamp="1602000893598">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="616" y="222" width="672" height="676" key="search.everywhere.popup/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1595796133933" />
+    <state x="821" y="268" width="896" height="816" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1602000893598" />
     <state x="1002" y="611" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1600359170945">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
