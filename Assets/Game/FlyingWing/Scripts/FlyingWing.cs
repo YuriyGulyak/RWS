@@ -101,6 +101,8 @@ public class FlyingWing : MonoBehaviour
 
     public float RSSI => rssi;
 
+    public float Flytime => flytime;
+    
     public void Reset()
     {
         battery.Reset();
@@ -108,6 +110,7 @@ public class FlyingWing : MonoBehaviour
         velocity = Vector3.zero;
         velocityLocal = Vector3.zero;
         speed = 0f;
+        flytime = 0f;
     }
 
     //----------------------------------------------------------------------------------------------------
@@ -132,6 +135,7 @@ public class FlyingWing : MonoBehaviour
     float rightElevonAngleVelocity;
     Vector2 perlinOffset;
     float rssi;
+    float flytime;
     
     
     void OnValidate()
@@ -222,8 +226,13 @@ public class FlyingWing : MonoBehaviour
         pitchAngle = attitude.Pitch;
 
         rssi = transceiver.RSSI;
-        
-        
+
+        if( speed >= 0.1f )
+        {
+            flytime += deltaTime;
+        }
+
+
         // Turbulence imitation
         
         var speedNorm = ( speed * 3.6f ) / 200f;

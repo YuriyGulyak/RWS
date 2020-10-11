@@ -75,8 +75,6 @@ public class OSDTelemetry : MonoBehaviour
 
     public void Reset()
     {
-        flytime = 0f;
-        
         voltageText.text = 0f.ToString( voltageFormat, cultureInfo );
         cellVoltageText.text = 0f.ToString( voltageFormat, cultureInfo );
         mahUsedText.text = 0f.ToString( mahUsedFormat, cultureInfo );
@@ -101,8 +99,7 @@ public class OSDTelemetry : MonoBehaviour
     string rssiFormat;
     CultureInfo cultureInfo;
     float lastUpdateTime;
-    float flytime;
-    
+
 
     void Awake()
     {
@@ -124,11 +121,6 @@ public class OSDTelemetry : MonoBehaviour
         {
             lastUpdateTime = Time.time;
             UpdateUI();
-        }
-
-        if( flyingWing && flyingWing.TAS > 0.1f )
-        {
-            flytime += Time.deltaTime;
         }
     }
 
@@ -154,7 +146,7 @@ public class OSDTelemetry : MonoBehaviour
         {
             speedText.text = ( flyingWing.TAS * 3.6f ).ToString( speedFormat, cultureInfo );
             altitudeText.text = flyingWing.Altitude.ToString( altitudeFormat, cultureInfo );
-            flytimeText.text = TimeSpan.FromSeconds( flytime ).ToString( timeFormat, cultureInfo );
+            flytimeText.text = TimeSpan.FromSeconds( flyingWing.Flytime ).ToString( timeFormat, cultureInfo );
             throttleText.text = flyingWing.Throttle.ToString( throttleFormat, cultureInfo );
             rssiText.text = flyingWing.RSSI.ToString( rssiFormat, cultureInfo );
         }

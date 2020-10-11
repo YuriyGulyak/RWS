@@ -126,7 +126,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/@Tests/TestRSSI/TestRSSI.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/OSDTelemetry.cs" />
         <option value="$PROJECT_DIR$/Assets/@Tests/Pixelated.shader" />
         <option value="$PROJECT_DIR$/Assets/@Tests/OnRender.cs" />
         <option value="$PROJECT_DIR$/Assets/@Tests/TestRSSI/RSSI.cs" />
@@ -145,7 +144,6 @@
         <option value="$PROJECT_DIR$/Assets/Game/Environment/Terrain/TerrainController.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/RoomChat/RoomChat.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/Managers/GraphicsManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/FlyingWing.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/Pilot/Scripts/PilotCameraZoom.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/Pilot/Scripts/SwayEffect.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/SettingsPanel.cs" />
@@ -176,6 +174,8 @@
         <option value="$PROJECT_DIR$/Assets/Game/Pilot/Scripts/PilotZoom.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/ControlsPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/Managers/InputManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/FlyingWing.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/OSDTelemetry.cs" />
       </list>
     </option>
   </component>
