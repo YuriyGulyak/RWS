@@ -4,10 +4,10 @@
 <br/>
 
 #### Key features:
-– realistic physics<br/>
-– realistic flight mechanics<br/>
-– high performance<br/>
-– continuous development
+- realistic physics<br/>
+- realistic flight mechanics<br/>
+- high performance<br/>
+- continuous development
 
 <br/>
 
