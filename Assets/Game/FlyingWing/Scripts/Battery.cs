@@ -70,13 +70,19 @@ public class Battery : MonoBehaviour
     public float StateOfCharge => stateOfCharge;
 
     public VoltageStatus VoltageStatus => voltageStatus;
-    
-    
+
+    public bool InfiniteCapacity
+    {
+        get => infiniteCapacity;
+        set => infiniteCapacity = value;
+    }
+
+
     public void UpdateState( float currentDraw, float deltaTime )
     {
         capacityDrawn += currentDraw / 3600f * deltaTime;
         
-        if( infiniteCapacity == false )
+        if( !infiniteCapacity )
         {
             // 1...0
             stateOfCharge = Mathf.InverseLerp( maxCapacity, 0f, capacityDrawn );
@@ -115,9 +121,6 @@ public class Battery : MonoBehaviour
 
     //----------------------------------------------------------------------------------------------------
 
-    // TODO Temporary solution
-    readonly string infiniteBatteryKey = "InfiniteBattery";
-    
     float capacityDrawn;
     float stateOfCharge;
     float voltage;
@@ -133,11 +136,5 @@ public class Battery : MonoBehaviour
         averageCellVoltage = voltage / cellCount;
         smoothedCellVoltage = averageCellVoltage;
         voltageStatus = VoltageStatus.Ok;
-        
-        // TODO Temporary solution
-        if( PlayerPrefs.HasKey( infiniteBatteryKey ) )
-        {
-            infiniteCapacity = PlayerPrefs.GetInt( infiniteBatteryKey ) > 0;
-        }
     }
 }

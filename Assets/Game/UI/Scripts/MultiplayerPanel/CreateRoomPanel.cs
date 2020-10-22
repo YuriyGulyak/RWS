@@ -1,4 +1,5 @@
 ﻿using System;
+using ExitGames.Client.Photon;
 using Photon.Pun;
 using Photon.Realtime;
 using RWS;
@@ -11,14 +12,20 @@ public class CreateRoomPanel : MonoBehaviour
     [SerializeField]
     TMP_InputField roomNameInputField = null;
 
-    [SerializeField]
-    Toggle roomIsOpenToggle = null;
+    //[SerializeField]
+    //Toggle roomIsOpenToggle = null;
     
     //[SerializeField]
     //TMP_InputField passwordInputField = null;
     
     [SerializeField]
     TMP_InputField maxPlayersInputField = null;
+    
+    [SerializeField]
+    Toggle infiniteBatteryToggle = null; 
+    
+    [SerializeField]
+    Toggle infiniteRangeToggle = null;
     
     [SerializeField]
     Button createRoomButton = null;
@@ -57,6 +64,15 @@ public class CreateRoomPanel : MonoBehaviour
     
     void Awake()
     {
+        maxPlayersInputField.onEndEdit.AddListener( inputFieldValue =>
+        {
+            var inputValue = int.Parse( maxPlayersInputField.text );
+            inputValue = Mathf.Clamp( inputValue, minPlayers, maxPlayers );
+            maxPlayersInputField.text = inputValue.ToString();
+        } );
+        
+        //infiniteBatteryToggle.
+
         createRoomButton.onClick.AddListener( OnCreateRoomButton );
         cancelButton.onClick.AddListener( OnCancelButton );
     }
@@ -74,9 +90,15 @@ public class CreateRoomPanel : MonoBehaviour
 
         var roomOptions = new RoomOptions
         {
-            IsVisible = true,
-            IsOpen = roomIsOpenToggle.isOn,
-            MaxPlayers = maxPlayersInputValue
+            IsVisible = true, 
+            IsOpen = true, 
+            MaxPlayers = maxPlayersInputValue, 
+            
+            CustomRoomProperties = new Hashtable
+            {
+                { "InfiniteBattery", infiniteBatteryToggle.isOn }, 
+                { "InfiniteRange", infiniteRangeToggle.isOn }
+            }
         };
 
         PhotonNetwork.CreateRoom( roomName, roomOptions );

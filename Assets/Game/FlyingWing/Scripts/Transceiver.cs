@@ -46,6 +46,12 @@ public class Transceiver : MonoBehaviour
 
     public SignalStatus SignalStatus => signalStatus;
 
+    public bool InfiniteRange
+    {
+        get => infiniteRange;
+        set => infiniteRange = value;
+    }
+
     public void Init( Vector3 groundAntennaPosition )
     {
         this.groundAntennaPosition = groundAntennaPosition;
@@ -62,6 +68,7 @@ public class Transceiver : MonoBehaviour
 
     void Awake()
     {
+        rssiValue = 1f;
         targetPixelateIntensity = 0f;
         smoothedRssiValue = 1f;
         signalStatus = SignalStatus.Ok;
@@ -87,10 +94,16 @@ public class Transceiver : MonoBehaviour
     float targetPixelateIntensity;
     SignalStatus signalStatus;
     CustomUpdate customUpdate;
+    bool infiniteRange;
 
 
     void OnUpdate( float deltaTime )
     {
+        if( infiniteRange )
+        {
+            return;
+        }
+
         var positionA = craftAntennaTransform.position + new Vector3( 0f, 1f, 0f );
         var positionB = groundAntennaTransform ? groundAntennaTransform.position : groundAntennaPosition;
 

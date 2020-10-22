@@ -206,6 +206,16 @@ namespace RWS
                 batteryTelemetry.Init( localWing.Battery );
                 motorTelemetry.Init( localWing.Motor );
 
+                var roomCustomProperties = PhotonNetwork.CurrentRoom.CustomProperties;
+                if( roomCustomProperties.TryGetValue( "InfiniteBattery", out var infiniteCapacityObj ) )
+                {
+                    localWing.Battery.InfiniteCapacity = (bool)infiniteCapacityObj;
+                }
+                if( roomCustomProperties.TryGetValue( "InfiniteRange", out var infiniteRangeObj ) )
+                {
+                    localWing.Transceiver.InfiniteRange = (bool)infiniteRangeObj;
+                }
+
                 fpvCameraGameObject = localWingGameObject.GetComponentInChildren<Camera>( true ).gameObject;
                 fpvCameraGameObject.SetActive( false );
 

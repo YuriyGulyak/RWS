@@ -152,10 +152,8 @@
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/SensitivityPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/ControlListEntry.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/LoginPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/CreateRoomPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/MultiplayerPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/RoomListPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/InsideRoomPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/PostProcessing/PostProcessingManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/PostProcessing/PostProcessManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/PostProcessing/BloorEffectController.cs" />
@@ -171,8 +169,6 @@
         <option value="$PROJECT_DIR$/Assets/Game/Managers/InputManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/MotorModel.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/OSDHome.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/Managers/MultiplayerGameManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/Managers/SingleplayerGameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/AlarmSound.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/SoundPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/Managers/SoundManager.cs" />
@@ -180,16 +176,20 @@
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/Motor.cs" />
         <option value="$PROJECT_DIR$/Assets/Utils/CustomUpdate.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/OSDWarnings.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/Battery.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/WindSound.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/BuzzerSound.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/MotorSound.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/Transceiver.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/FlyingWing.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/OSDTelemetry.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/AttitudeIndicator.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/ServoSound.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/Transceiver.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/Battery.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/Managers/SingleplayerGameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SingleplayerPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/CreateRoomPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/InsideRoomPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/Managers/MultiplayerGameManager.cs" />
       </list>
     </option>
   </component>

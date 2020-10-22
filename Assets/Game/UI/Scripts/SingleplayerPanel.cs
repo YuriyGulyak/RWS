@@ -20,6 +20,9 @@ public class SingleplayerPanel : MonoBehaviour
     Toggle infiniteBatteryToggle = null; 
     
     [SerializeField]
+    Toggle infiniteRangeToggle = null;
+    
+    [SerializeField]
     Button startGameButton = null;
     
     //----------------------------------------------------------------------------------------------------
@@ -42,10 +45,8 @@ public class SingleplayerPanel : MonoBehaviour
             bestLapText.text = "N/A";
         }
 
-        if( PlayerPrefs.HasKey( infiniteBatteryKey ) )
-        {
-            infiniteBatteryToggle.isOn = PlayerPrefs.GetInt( infiniteBatteryKey ) > 0;
-        }
+        infiniteBatteryToggle.isOn = PlayerPrefs.GetInt( infiniteBatteryKey, 0 ) > 0;
+        infiniteRangeToggle.isOn = PlayerPrefs.GetInt( infiniteRangeKey, 0 ) > 0;
     }
 
     public void Hide()
@@ -63,6 +64,7 @@ public class SingleplayerPanel : MonoBehaviour
     // TODO Temporary solution
     readonly string bestLapKey = "BestLap";
     readonly string infiniteBatteryKey = "InfiniteBattery";
+    readonly string infiniteRangeKey = "InfiniteRange";
     
     string timeFormat = @"mm\:ss\.ff";
     
@@ -73,10 +75,13 @@ public class SingleplayerPanel : MonoBehaviour
         
         infiniteBatteryToggle.onValueChanged.AddListener( value =>
         {
-            // TODO Temporary solution
             PlayerPrefs.SetInt( infiniteBatteryKey, value ? 1 : 0 );
         } );
-        
+        infiniteRangeToggle.onValueChanged.AddListener( value =>
+        {
+            PlayerPrefs.SetInt( infiniteRangeKey, value ? 1 : 0 );
+        } );
+
         startGameButton.onClick.AddListener( () =>
         {
             BlackScreen.Instance.StartToBlackScreenAnimation( () =>

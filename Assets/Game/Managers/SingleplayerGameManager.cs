@@ -45,6 +45,11 @@ namespace RWS
 
         readonly string bestLapKey = "BestLap";
         
+        // TODO Temporary solution
+        readonly string infiniteBatteryKey = "InfiniteBattery";
+        readonly string infiniteRangeKey = "InfiniteRange";
+        
+        
         Vector3 spawnPosition;
         Quaternion spawnRotation;
         float lastLaunchTime;
@@ -78,6 +83,9 @@ namespace RWS
 
         void Start()
         {
+            flyingWing.Battery.InfiniteCapacity = PlayerPrefs.GetInt( infiniteBatteryKey, 0 ) > 0;
+            flyingWing.Transceiver.InfiniteRange = PlayerPrefs.GetInt( infiniteRangeKey, 0 ) > 0;
+            
             spawnPosition = wingLauncher.transform.position;
             spawnRotation = wingLauncher.transform.rotation;
             

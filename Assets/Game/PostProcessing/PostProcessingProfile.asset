@@ -156,7 +156,7 @@ MonoBehaviour:
     value: 0
   saturation:
     overrideState: 1
-    value: 20
+    value: 10
   brightness:
     overrideState: 0
     value: 0
