@@ -45,6 +45,8 @@ public class Propeller : MonoBehaviour
     public float lift; // N
     public float drag; // N
     public float torque; // Nm
+    public bool isBlocked;
+    
     
     public void UpdateState( float upstreamSpeed, float rpm )
     {
@@ -167,6 +169,24 @@ public class Propeller : MonoBehaviour
 
         Gizmos.matrix = gizmosMatrixTemp;
         Gizmos.color = gizmosColorTemp;
+    }
+    
+    void OnTriggerEnter( Collider other )
+    {
+        if( other.isTrigger )
+        {
+            return;
+        }
+        isBlocked = true;
+    }
+
+    void OnTriggerExit( Collider other )
+    {
+        if( other.isTrigger )
+        {
+            return;
+        }
+        isBlocked = false;
     }
     
     //----------------------------------------------------------------------------------------------------

@@ -59,11 +59,22 @@ public class FlyingWing : MonoBehaviour
     [SerializeField]
     float maxAngularVelocity = Mathf.Infinity;
 
+    const float warningCellVoltage = 3.4f;
+    const float criticalCellVoltage = 3.2f;
+    const float durationForWarningVoltage = 1.0f;
+    const float durationForCriticalVoltage = 0.5f;
+
     //----------------------------------------------------------------------------------------------------
     
     public Transform Transform => wingTransform;
     
     public Rigidbody Rigidbody => wingRigidbody;
+
+    public Battery Battery => battery;
+
+    public Motor Motor => motor;
+
+    public Transceiver Transceiver => transceiver;
     
     public float RollSetpoint
     {
@@ -102,15 +113,34 @@ public class FlyingWing : MonoBehaviour
     public float RSSI => rssi;
 
     public float Flytime => flytime;
+
+    public float Voltage => batteryVoltage;
     
-    public void Reset()
+    public float CellVoltage => batteryCellVoltage;
+    
+    public float CapacityDrawn => batteryCapacityDrawn; // mAh
+
+    public float CurrentDraw => currentDraw;
+    
+    public float RPM => rpm;
+
+    public void Reset( Vector3 position, Quaternion rotation )
     {
-        battery.Reset();
+        wingRigidbody.isKinematic = true;
+        wingRigidbody.position = position;
+        wingRigidbody.rotation = rotation;
+        
+        wingTransform.position = position;
+        wingTransform.rotation = rotation;
         
         velocity = Vector3.zero;
         velocityLocal = Vector3.zero;
         speed = 0f;
         flytime = 0f;
+
+        battery.Reset();
+        motor.Reset();
+        transceiver.Reset();
     }
 
     //----------------------------------------------------------------------------------------------------
@@ -136,7 +166,12 @@ public class FlyingWing : MonoBehaviour
     Vector2 perlinOffset;
     float rssi;
     float flytime;
-    
+    float batteryVoltage;
+    float batteryCellVoltage;
+    float batteryCapacityDrawn;
+    float currentDraw;
+    float rpm;
+
     
     void OnValidate()
     {
@@ -168,45 +203,6 @@ public class FlyingWing : MonoBehaviour
     }
 
     void FixedUpdate()
-    {
-        UpdateElevons();
-        UpdateState();
-    }
-
-    void OnDrawGizmos()
-    {
-        var gizmosMatrixTemp = Gizmos.matrix;
-        var gizmosColorTemp = Gizmos.color;
-        
-        
-        Gizmos.color = Color.red;
-        Gizmos.matrix = wingTransform.localToWorldMatrix;
-        
-        // GC point
-        Gizmos.DrawWireSphere( GC, 0.0025f );
-        
-       // Gravity vector
-       var downLocal = wingTransform.InverseTransformVector( Vector3.down );
-       Gizmos.DrawRay( GC, downLocal * 0.1f );
-        
-        // Velocity vector
-        Gizmos.DrawRay( GC, velocityLocal * ( wingRigidbody.velocity.magnitude * 0.01f ) );
-
-        // Wingspan
-        Gizmos.color = new Color( 0f, 0f, 0f, 0.25f );
-        var leftWingTip = Vector3.left * ( wingspan * 0.5f );
-        var rightWingTip = Vector3.right * ( wingspan * 0.5f );
-        Gizmos.DrawLine( leftWingTip, rightWingTip );
-        Gizmos.DrawRay( leftWingTip, Vector3.back * 0.05f );
-        Gizmos.DrawRay( rightWingTip, Vector3.back * 0.05f );
-
-        
-        Gizmos.matrix = gizmosMatrixTemp;
-        Gizmos.color = gizmosColorTemp;
-    }
-
-
-    void UpdateState()
     {
         var deltaTime = Time.fixedDeltaTime;
         
@@ -259,6 +255,8 @@ public class FlyingWing : MonoBehaviour
         
         // . . .
         
+        UpdateElevons();
+        
         foreach( var section in airfoilSections )
         {
             var pointVelocity = wingRigidbody.GetPointVelocity( section.cp );
@@ -268,18 +266,27 @@ public class FlyingWing : MonoBehaviour
             wingRigidbody.AddForceAtPosition( section.liftForce + section.dragForce, section.cp, ForceMode.Force );
         }
 
-
+        
         // . . .
         
-        motor.UpdateState( velocityLocal.z, battery.Voltage, throttle );
+        motor.UpdateState( velocityLocal.z, batteryVoltage, throttle );
+        rpm = motor.rpm;
+        currentDraw = motor.current;
+
+        
+        // Add motor forces
+        
         wingRigidbody.AddForce( wingTransform.forward * motor.thrust, ForceMode.Force );
         wingRigidbody.AddRelativeTorque( 0f, 0f, -motor.torque, ForceMode.Force );
-
+        
         
         // . . .
         
-        battery.UpdateState( motor.current, deltaTime );
-        
+        battery.UpdateState( currentDraw, deltaTime );
+        batteryVoltage = battery.Voltage;
+        batteryCellVoltage = battery.CellVoltage;
+        batteryCapacityDrawn = battery.CapacityDrawn * 1000f;
+
 
         // Linear drag
         
@@ -309,6 +316,39 @@ public class FlyingWing : MonoBehaviour
         rollSpeed = -localAngularVelocity.z * Mathf.Rad2Deg;
         pitchSpeed = -localAngularVelocity.x * Mathf.Rad2Deg;
     }
+
+    void OnDrawGizmos()
+    {
+        var gizmosMatrixTemp = Gizmos.matrix;
+        var gizmosColorTemp = Gizmos.color;
+        
+        
+        Gizmos.color = Color.red;
+        Gizmos.matrix = wingTransform.localToWorldMatrix;
+        
+        // GC point
+        Gizmos.DrawWireSphere( GC, 0.0025f );
+        
+       // Gravity vector
+       var downLocal = wingTransform.InverseTransformVector( Vector3.down );
+       Gizmos.DrawRay( GC, downLocal * 0.1f );
+        
+        // Velocity vector
+        Gizmos.DrawRay( GC, velocityLocal * ( wingRigidbody.velocity.magnitude * 0.01f ) );
+
+        // Wingspan
+        Gizmos.color = new Color( 0f, 0f, 0f, 0.25f );
+        var leftWingTip = Vector3.left * ( wingspan * 0.5f );
+        var rightWingTip = Vector3.right * ( wingspan * 0.5f );
+        Gizmos.DrawLine( leftWingTip, rightWingTip );
+        Gizmos.DrawRay( leftWingTip, Vector3.back * 0.05f );
+        Gizmos.DrawRay( rightWingTip, Vector3.back * 0.05f );
+
+        
+        Gizmos.matrix = gizmosMatrixTemp;
+        Gizmos.color = gizmosColorTemp;
+    }
+    
     
     void UpdateElevons()
     {

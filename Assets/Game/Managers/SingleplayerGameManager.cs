@@ -30,12 +30,6 @@ namespace RWS
         OSDTelemetry osdTelemetry = null;
 
         [SerializeField] 
-        OSDHome osdHome = null;
-
-        [SerializeField] 
-        AttitudeIndicator attitudeIndicator = null;
-
-        [SerializeField] 
         GameMenu gameMenu = null;
 
         [SerializeField] 
@@ -51,10 +45,12 @@ namespace RWS
 
         readonly string bestLapKey = "BestLap";
         
-        bool fpvMode;
+        Vector3 spawnPosition;
+        Quaternion spawnRotation;
         float lastLaunchTime;
-        
+        bool fpvMode;
 
+        
         void OnEnable()
         {
             SceneManager.sceneLoaded += OnSceneLoaded;
@@ -82,12 +78,13 @@ namespace RWS
 
         void Start()
         {
+            spawnPosition = wingLauncher.transform.position;
+            spawnRotation = wingLauncher.transform.rotation;
+            
             pilotCamera.SetActive( true );
             fpvCamera.SetActive( false );
 
             osdTelemetry.Hide();
-            osdHome.Hide();
-            attitudeIndicator.Hide();
 
             lapTime.Init( PlayerPrefs.GetFloat( bestLapKey, 0f ) );
             lapTime.OnNewBestTime += newBestTime => { PlayerPrefs.SetFloat( bestLapKey, newBestTime ); };
@@ -107,15 +104,19 @@ namespace RWS
         
         void OnResumeButton()
         {
-            if( fpvMode )
-            {
-                ShowOSD();
-            }
-
             gameMenu.Hide();
             settingsPanel.Hide();
             Cursor.visible = false;
             bloorEffect.BloorEffectEnabled = false;
+            
+            if( fpvMode )
+            {
+                osdTelemetry.Show();
+                if( lapTime.Started )
+                {
+                    lapTime.Show();
+                }
+            }
         }
 
         void OnSettingsButton()
@@ -145,8 +146,6 @@ namespace RWS
                     fpvCamera.SetActive( false );
 
                     osdTelemetry.Hide();
-                    osdHome.Hide();
-                    attitudeIndicator.Hide();
 
                     blackScreen.StartFromBlackScreenAnimation( () =>
                     {
@@ -166,8 +165,6 @@ namespace RWS
                     fpvCamera.SetActive( true );
 
                     osdTelemetry.Show();
-                    osdHome.Show();
-                    attitudeIndicator.Show();
 
                     blackScreen.StartFromBlackScreenAnimation( () =>
                     {
@@ -203,24 +200,10 @@ namespace RWS
             {
                 blackScreen.StartToBlackScreenAnimation( () =>
                 {
-                    var startPosition = wingLauncher.transform.position;
-                    var startRotation = wingLauncher.transform.rotation;
-                
-                    var wingRigibody = flyingWing.Rigidbody;
-                    wingRigibody.isKinematic = true;
-                    wingRigibody.position = startPosition;
-                    wingRigibody.rotation = startRotation;
-                
-                    var wingTransform = flyingWing.Transform;
-                    wingTransform.position = startPosition;
-                    wingTransform.rotation = startRotation;
-                
-                    flyingWing.Reset();
+                    flyingWing.Reset( spawnPosition, spawnRotation );
 
                     osdTelemetry.Reset();
-                    osdHome.Reset();
-                    attitudeIndicator.Reset();
-
+                    
                     lapTime.Reset();
                     lapTime.Hide();
                 
@@ -236,7 +219,8 @@ namespace RWS
         {
             if( !gameMenu.IsActive )
             {
-                HideOSD();
+                osdTelemetry.Hide();
+                lapTime.Hide();
                 gameMenu.Show();
                 Cursor.visible = true;
                 bloorEffect.BloorEffectEnabled = true;
@@ -245,27 +229,6 @@ namespace RWS
             {
                 OnResumeButton();
             }
-        }
-
-
-        void ShowOSD()
-        {
-            osdTelemetry.Show();
-            osdHome.Show();
-            attitudeIndicator.Show();
-
-            if( lapTime.Started )
-            {
-                lapTime.Show();
-            }
-        }
-
-        void HideOSD()
-        {
-            osdTelemetry.Hide();
-            osdHome.Hide();
-            attitudeIndicator.Hide();
-            lapTime.Hide();
         }
     }
 }

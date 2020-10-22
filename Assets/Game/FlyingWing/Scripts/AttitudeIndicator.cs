@@ -54,7 +54,7 @@ public class AttitudeIndicator : MonoBehaviour
     
     
     float pixelsInDegree;
-    float roll;
+    float roll; // For debug 
     float pitch;
     
 
@@ -75,11 +75,11 @@ public class AttitudeIndicator : MonoBehaviour
         pitch = flyingWing.PitchAngle;
 
         var horizonPosition = horizonTransform.anchoredPosition;
-        horizonPosition.y = pixelsInDegree * -pitch;
+        horizonPosition.y = pixelsInDegree * -flyingWing.PitchAngle;
         horizonTransform.anchoredPosition = horizonPosition;
 
         var aircraftSymbolAngles = aircraftSymbolTransform.eulerAngles;
-        aircraftSymbolAngles.z = roll;
+        aircraftSymbolAngles.z = flyingWing.RollAngle;
         aircraftSymbolTransform.eulerAngles = aircraftSymbolAngles;
     }
 }

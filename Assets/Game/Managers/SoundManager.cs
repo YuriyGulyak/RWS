@@ -7,6 +7,7 @@ namespace RWS
     {
         public Action<float, float> OnMotorVolumeChanged;
         public Action<float, float> OnServoVolumeChanged;
+        public Action<float, float> OnBuzzerVolumeChanged;
         public Action<float, float> OnWindVolumeChanged;
         
         public float MasterVolume
@@ -41,6 +42,16 @@ namespace RWS
             }
         }
         
+        public float BuzzerVolume
+        {
+            get => buzzerVolume;
+            set
+            {
+                buzzerVolume = Mathf.Clamp01( value );
+                OnBuzzerVolumeChanged?.Invoke( buzzerVolume, masterVolume );
+            }
+        }
+        
         public float WindVolume
         {
             get => windVolume;
@@ -57,6 +68,7 @@ namespace RWS
             MasterVolume = PlayerPrefs.GetFloat( masterVolumeKey, 1f );
             MotorVolume = PlayerPrefs.GetFloat( motorVolumeKey, 1f );
             ServoVolume = PlayerPrefs.GetFloat( servoVolumeKey, 1f );
+            BuzzerVolume = PlayerPrefs.GetFloat( buzzerVolumeKey, 1f );
             WindVolume = PlayerPrefs.GetFloat( windVolumeKey, 1f );
         }
 
@@ -65,6 +77,7 @@ namespace RWS
             PlayerPrefs.SetFloat( masterVolumeKey, masterVolume );
             PlayerPrefs.SetFloat( motorVolumeKey, motorVolume );
             PlayerPrefs.SetFloat( servoVolumeKey, servoVolume );
+            PlayerPrefs.SetFloat( buzzerVolumeKey, buzzerVolume );
             PlayerPrefs.SetFloat( windVolumeKey, windVolume );
         }
     
@@ -73,11 +86,13 @@ namespace RWS
         readonly string masterVolumeKey = "MasterVolume";
         readonly string motorVolumeKey = "MotorVolume";
         readonly string servoVolumeKey = "ServoVolume";
+        readonly string buzzerVolumeKey = "BuzzerVolume";
         readonly string windVolumeKey = "WindVolume";
     
         float masterVolume;
         float motorVolume;
         float servoVolume;
+        float buzzerVolume;
         float windVolume;
 
 

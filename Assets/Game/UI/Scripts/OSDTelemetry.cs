@@ -6,14 +6,17 @@ using UnityEngine;
 public class OSDTelemetry : MonoBehaviour
 {
     [SerializeField]
-    Battery battery = null;
-
-    [SerializeField]
-    Motor motor = null;
-
-    [SerializeField]
     FlyingWing flyingWing = null;
 
+    [SerializeField]
+    OSDHome osdHome = null;
+
+    [SerializeField]
+    AttitudeIndicator attitudeIndicator = null;
+
+    [SerializeField]
+    OSDWarnings osdWarnings = null;  
+    
     [SerializeField]
     TextMeshProUGUI voltageText = null;
     
@@ -47,12 +50,15 @@ public class OSDTelemetry : MonoBehaviour
     [SerializeField]
     float updateRate = 30f;
     
+    //----------------------------------------------------------------------------------------------------
     
-    public void Init( FlyingWing flyingWing, Motor motor, Battery battery )
+    public void Init( FlyingWing flyingWing )
     {
         this.flyingWing = flyingWing;
-        this.motor = motor;
-        this.battery = battery;
+        
+        osdHome.Init( flyingWing );
+        attitudeIndicator.Init( flyingWing );
+        osdWarnings.Init( flyingWing );
     }
     
     public bool IsActive => gameObject.activeSelf;
@@ -63,6 +69,7 @@ public class OSDTelemetry : MonoBehaviour
         {
             gameObject.SetActive( true );
         }
+        attitudeIndicator.Show();
     }
 
     public void Hide()
@@ -71,6 +78,7 @@ public class OSDTelemetry : MonoBehaviour
         {
             gameObject.SetActive( false );
         }
+        attitudeIndicator.Hide();
     }
 
     public void Reset()
@@ -84,8 +92,13 @@ public class OSDTelemetry : MonoBehaviour
         altitudeText.text = 0f.ToString( altitudeFormat, cultureInfo );
         flytimeText.text = TimeSpan.FromSeconds( 0f ).ToString( timeFormat, cultureInfo );
         rssiText.text = 0f.ToString( rssiFormat, cultureInfo );
+        
+        osdHome.Reset();
+        attitudeIndicator.Reset();
+        osdWarnings.Reset();
     }
 
+    //----------------------------------------------------------------------------------------------------
 
     readonly string timeFormat = @"m\:ss";
     
@@ -98,7 +111,7 @@ public class OSDTelemetry : MonoBehaviour
     string throttleFormat;
     string rssiFormat;
     CultureInfo cultureInfo;
-    float lastUpdateTime;
+    CustomUpdate customUpdate;
 
 
     void Awake()
@@ -111,44 +124,34 @@ public class OSDTelemetry : MonoBehaviour
         altitudeFormat = altitudeText.text;
         throttleFormat = throttleText.text;
         rssiFormat = rssiText.text;
-        
         cultureInfo = CultureInfo.InvariantCulture;
+        
+        customUpdate = new CustomUpdate( updateRate );
+        customUpdate.OnUpdate += OnUpdate;
     }
 
     void Update()
     {
-        if( Time.time - lastUpdateTime > 1f / updateRate )
-        {
-            lastUpdateTime = Time.time;
-            UpdateUI();
-        }
+        customUpdate.Update( Time.time );
     }
 
 
-    void UpdateUI()
+    void OnUpdate( float deltaTime )
     {
-        if( battery )
+        if( !flyingWing )
         {
-            voltageText.text = battery.Voltage.ToString( voltageFormat, cultureInfo );
-            cellVoltageText.text = ( battery.Voltage / battery.CellCount ).ToString( voltageFormat, cultureInfo );
-
-            var mahUsed = battery.CapacityDrawn * 1000f;
-            mahUsedText.text = mahUsed.ToString( mahUsedFormat, cultureInfo );
+            return;
         }
 
-        if( motor )
-        {
-            rpmText.text = motor.rpm.ToString( rpmFormat, cultureInfo );
-            currentText.text = motor.current.ToString( currentFormat, cultureInfo );
-        }
-
-        if( flyingWing )
-        {
-            speedText.text = ( flyingWing.TAS * 3.6f ).ToString( speedFormat, cultureInfo );
-            altitudeText.text = flyingWing.Altitude.ToString( altitudeFormat, cultureInfo );
-            flytimeText.text = TimeSpan.FromSeconds( flyingWing.Flytime ).ToString( timeFormat, cultureInfo );
-            throttleText.text = flyingWing.Throttle.ToString( throttleFormat, cultureInfo );
-            rssiText.text = flyingWing.RSSI.ToString( rssiFormat, cultureInfo );
-        }
+        speedText.text = ( flyingWing.TAS * 3.6f ).ToString( speedFormat, cultureInfo );
+        altitudeText.text = flyingWing.Altitude.ToString( altitudeFormat, cultureInfo );
+        flytimeText.text = TimeSpan.FromSeconds( flyingWing.Flytime ).ToString( timeFormat, cultureInfo );
+        throttleText.text = flyingWing.Throttle.ToString( throttleFormat, cultureInfo );
+        rssiText.text = flyingWing.RSSI.ToString( rssiFormat, cultureInfo );
+        voltageText.text = flyingWing.Voltage.ToString( voltageFormat, cultureInfo );
+        cellVoltageText.text = flyingWing.CellVoltage.ToString( voltageFormat, cultureInfo );
+        mahUsedText.text = flyingWing.CapacityDrawn.ToString( mahUsedFormat, cultureInfo );
+        currentText.text = flyingWing.CurrentDraw.ToString( currentFormat, cultureInfo );
+        rpmText.text = flyingWing.RPM.ToString( rpmFormat, cultureInfo );
     }
 }

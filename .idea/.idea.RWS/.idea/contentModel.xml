@@ -34,6 +34,7 @@
               <e p="Attitude.cs" t="Include" />
               <e p="AttitudeIndicator.cs" t="Include" />
               <e p="Battery.cs" t="Include" />
+              <e p="BuzzerSound.cs" t="Include" />
               <e p="ControlSensitivity.cs" t="Include" />
               <e p="Elevon.cs" t="Include" />
               <e p="FlyingWing.cs" t="Include" />
@@ -115,6 +116,7 @@
               </e>
               <e p="OSDHome.cs" t="Include" />
               <e p="OSDTelemetry.cs" t="Include" />
+              <e p="OSDWarnings.cs" t="Include" />
               <e p="PingDisplay.cs" t="Include" />
               <e p="PlayerOverviewEntry.cs" t="Include" />
               <e p="PlayerOverviewPanel.cs" t="Include" />
@@ -566,6 +568,7 @@
             <e p="PathCreator.cs" t="Include" />
             <e p="PathPlacer.cs" t="Include" />
           </e>
+          <e p="CustomUpdate.cs" t="Include" />
           <e p="DisplayManger.cs" t="Include" />
           <e p="DragRect.cs" t="Include" />
           <e p="Editor" t="Include">

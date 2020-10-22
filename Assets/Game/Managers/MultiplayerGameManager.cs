@@ -42,12 +42,6 @@ namespace RWS
         OSDTelemetry osdTelemetry = null;
 
         [SerializeField]
-        OSDHome osdHome = null;
-        
-        [SerializeField]
-        AttitudeIndicator attitudeIndicator = null;
-        
-        [SerializeField]
         GameMenu gameMenu = null;
 
         [SerializeField]
@@ -73,7 +67,7 @@ namespace RWS
         public void OnEvent( EventData photonEvent )
         {
             var eventCode = (RaiseEventCodes)photonEvent.Code;
-
+            
             if( eventCode == RaiseEventCodes.SpawnRemotePlayerWing )
             {
                 var data = (object[])photonEvent.CustomData;
@@ -105,15 +99,17 @@ namespace RWS
             SpawnRemotePlayerWing = 1
         }
 
-        FlyingWing localFlyingWing;
+        FlyingWing localWing;
         GameObject localWingGameObject;
         Dictionary<int, GameObject> remoteWingDictionary;
         int spawnPointIndex;
         PilotLook pilotLook;
         GameObject losCameraGameObject;
         GameObject fpvCameraGameObject;
-        bool fpvMode;
+        Vector3 spawnPosition;
+        Quaternion spawnRotation;
         float lastLaunchTime;
+        bool fpvMode;
         
 
         void OnEnable()
@@ -148,8 +144,6 @@ namespace RWS
         {
             gameMenu.Hide();
             osdTelemetry.Hide();
-            osdHome.Hide();
-            attitudeIndicator.Hide();
             playerOverviewPanel.Show();
             settingsPanel.Hide();
             roomChat.HideInput();
@@ -187,16 +181,17 @@ namespace RWS
             {
                 spawnPointIndex = PhotonNetwork.LocalPlayer.ActorNumber;
                 localWingGameObject = wingSpawner.SpawnLocalPlayerWing( spawnPointIndex );
-                localFlyingWing = localWingGameObject.GetComponent<FlyingWing>();
+                localWing = localWingGameObject.GetComponent<FlyingWing>();
 
-                var wingTransform = localFlyingWing.Transform;
-                var wingPosition = wingTransform.position;
-                var wingRotation = wingTransform.rotation;
+                var wingTransform = localWing.Transform;
+                spawnPosition = wingTransform.position;
+                spawnRotation = wingTransform.rotation;
 
-                var pilotPosition = wingPosition + new Vector3( -0.75f, 0f, 0.3f );
-                Physics.Raycast( pilotPosition, Vector3.down, out var hit );
-                pilotPosition.y = hit.point.y;
-                
+                var pilotPosition = spawnPosition + new Vector3( -0.75f, 0f, 0.3f );
+                if( Physics.Raycast( pilotPosition, Vector3.down, out var hit ) )
+                {
+                    pilotPosition.y = hit.point.y;
+                }
                 pilotAvatar.transform.position = pilotPosition;
 
                 pilotLook = pilotAvatar.GetComponentInChildren<PilotLook>( true );
@@ -204,25 +199,19 @@ namespace RWS
                 
                 pilotAvatar.GetComponentInChildren<PilotZoom>().SetTarget( wingTransform );
 
-                var motor = localWingGameObject.GetComponentInChildren<Motor>();
-                var battery = localWingGameObject.GetComponentInChildren<Battery>();
-                var transceiver = localWingGameObject.GetComponentInChildren<Transceiver>();
+                localWing.Transceiver.Init( pilotPosition + new Vector3( 0f, 2f, 0f ) );
                 
-                transceiver.Init( pilotPosition + new Vector3( 0f, 2f, 0f ) );
-                
-                osdTelemetry.Init( localFlyingWing, motor, battery );
-                osdHome.Init( localFlyingWing );
-                attitudeIndicator.Init( localFlyingWing );
-                wingTelemetry.Init( localFlyingWing );
-                batteryTelemetry.Init( battery );
-                motorTelemetry.Init( motor );
+                osdTelemetry.Init( localWing );
+                wingTelemetry.Init( localWing );
+                batteryTelemetry.Init( localWing.Battery );
+                motorTelemetry.Init( localWing.Motor );
 
                 fpvCameraGameObject = localWingGameObject.GetComponentInChildren<Camera>( true ).gameObject;
                 fpvCameraGameObject.SetActive( false );
 
                 var wingPhotonView = localWingGameObject.GetComponent<PhotonView>();
                 PhotonNetwork.AllocateViewID( wingPhotonView );
-                SendEventToSpawnRemotePlayerWing( wingPosition, wingRotation, wingPhotonView.ViewID );
+                SendEventToSpawnRemotePlayerWing( spawnPosition, spawnRotation, wingPhotonView.ViewID );
             }
         }
 
@@ -234,17 +223,22 @@ namespace RWS
 
         void OnResumeButton()
         {
-            if( fpvMode )
-            {
-                ShowOSD();
-            }
-            
             gameMenu.Hide();
             settingsPanel.Hide();
             playerOverviewPanel.Show();
             roomChat.HideInput();
             Cursor.visible = false;
             bloorEffect.BloorEffectEnabled = false;
+            
+            if( fpvMode )
+            {
+                osdTelemetry.Show();
+
+                if( lapTime.Started )
+                {
+                    lapTime.Show();
+                }
+            }
         }
 
         void OnSettingsButton()
@@ -277,13 +271,10 @@ namespace RWS
                     fpvCameraGameObject.SetActive( false );
 
                     osdTelemetry.Hide();
-                    osdHome.Hide();
-                    attitudeIndicator.Hide();
 
                     blackScreen.StartFromBlackScreenAnimation( () =>
                     {
                         fpvMode = false;
-                        
                     } );
 
                 } );
@@ -298,13 +289,10 @@ namespace RWS
                     fpvCameraGameObject.SetActive( true );
 
                     osdTelemetry.Show();
-                    osdHome.Show();
-                    attitudeIndicator.Show();
 
                     blackScreen.StartFromBlackScreenAnimation( () =>
                     {
                         fpvMode = true;
-                        
                     } );
 
                 } );
@@ -326,7 +314,7 @@ namespace RWS
             // Launch
             if( wingLauncher.Ready )
             {
-                wingLauncher.Launch( localFlyingWing.Rigidbody );
+                wingLauncher.Launch( localWing.Rigidbody );
                 lastLaunchTime = Time.time;
             }
 
@@ -335,24 +323,10 @@ namespace RWS
             {
                 blackScreen.StartToBlackScreenAnimation( () =>
                 {
-                    var startPosition = wingSpawner.GetSpawnPosition( spawnPointIndex );
-                    var startRotation = wingSpawner.GetSpawnRotation();
-                
-                    var localWingRigidbody = localFlyingWing.Rigidbody;
-                    localWingRigidbody.isKinematic = true;
-                    localWingRigidbody.position = startPosition;
-                    localWingRigidbody.rotation = startRotation;
-                
-                    var wingTransform = localFlyingWing.Transform;
-                    wingTransform.position = startPosition;
-                    wingTransform.rotation = startRotation;
-                
-                    localFlyingWing.Reset();
+                    localWing.Reset( spawnPosition, spawnRotation );
                 
                     osdTelemetry.Reset();
-                    osdHome.Reset();
-                    attitudeIndicator.Reset();
-                
+
                     lapTime.Reset();
                     lapTime.Hide();
                 
@@ -385,7 +359,8 @@ namespace RWS
         {
             if( !gameMenu.IsActive )
             {
-                HideOSD();
+                osdTelemetry.Hide();
+                lapTime.Hide();
                 playerOverviewPanel.Hide();
                 gameMenu.Show();
                 roomChat.ShowInput();
@@ -399,26 +374,6 @@ namespace RWS
         }
 
         
-        void ShowOSD()
-        {
-            osdTelemetry.Show();
-            osdHome.Show();
-            attitudeIndicator.Show();
-
-            if( lapTime.Started )
-            {
-                lapTime.Show();
-            }
-        }
-
-        void HideOSD()
-        {
-            osdTelemetry.Hide();
-            osdHome.Hide();
-            attitudeIndicator.Hide();
-            lapTime.Hide();
-        }
-
         IEnumerator ExitCoroutine()
         {
             Destroy( localWingGameObject );

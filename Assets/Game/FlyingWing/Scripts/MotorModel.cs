@@ -66,9 +66,7 @@ public class MotorModel
     }
     
     //----------------------------------------------------------------------------------------------------
-    
-    // PRIVATE
-    
+
     double Kt;    // Torque constant, Nm/A == V/(rad/s)
     double Ve;    // Back EMF, V
     double Vl;    // 

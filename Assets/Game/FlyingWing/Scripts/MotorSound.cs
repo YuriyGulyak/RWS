@@ -80,7 +80,7 @@ public class MotorSound : MonoBehaviour
     
     void Update()
     {
-        if( motor )
+        if( motor ) // Do not remove! Remote wing has no motor
         {
             SoundTransition = motor.rpm / motorRpmMax;
         }

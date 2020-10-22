@@ -18,6 +18,9 @@ public class SoundPanel : MonoBehaviour
     SliderWithInputField servoVolumeSlider = null;
     
     [SerializeField]
+    SliderWithInputField buzzerVolumeSlider = null;
+    
+    [SerializeField]
     SliderWithInputField windVolumeSlider = null;
     
     [SerializeField]
@@ -36,6 +39,7 @@ public class SoundPanel : MonoBehaviour
         masterVolumeSlider.Value = soundManager.MasterVolume;
         motorVolumeSlider.Value = soundManager.MotorVolume;
         servoVolumeSlider.Value = soundManager.ServoVolume;
+        buzzerVolumeSlider.Value = soundManager.BuzzerVolume;
         windVolumeSlider.Value = soundManager.WindVolume;
         
         applyButton.gameObject.SetActive( false );
@@ -65,6 +69,7 @@ public class SoundPanel : MonoBehaviour
         masterVolumeSlider.OnValueChanged.AddListener( OnMasterVolumeSliderChanged );
         motorVolumeSlider.OnValueChanged.AddListener( OnMotorVolumeSliderChanged );
         servoVolumeSlider.OnValueChanged.AddListener( OnServoVolumeSliderChanged );
+        buzzerVolumeSlider.OnValueChanged.AddListener( OnBuzzerVolumeSliderChanged );
         windVolumeSlider.OnValueChanged.AddListener( OnWindVolumeSliderChanged );
         
         backButton.onClick.AddListener( OnBackButton );
@@ -90,7 +95,12 @@ public class SoundPanel : MonoBehaviour
     {
         applyButton.gameObject.SetActive( true );
     }
-    
+
+    void OnBuzzerVolumeSliderChanged( float newValue )
+    {
+        applyButton.gameObject.SetActive( true );
+    }
+
     void OnWindVolumeSliderChanged( float newValue )
     {
         applyButton.gameObject.SetActive( true );
@@ -108,6 +118,7 @@ public class SoundPanel : MonoBehaviour
         soundManager.MasterVolume = masterVolumeSlider.Value;
         soundManager.MotorVolume = motorVolumeSlider.Value;
         soundManager.ServoVolume = servoVolumeSlider.Value;
+        soundManager.BuzzerVolume = buzzerVolumeSlider.Value;
         soundManager.WindVolume = windVolumeSlider.Value;
         soundManager.SavePlayerPrefs();
         
@@ -116,7 +127,7 @@ public class SoundPanel : MonoBehaviour
     
     void OnEscapeButton()
     {
-        if( masterVolumeSlider.IsFocused || motorVolumeSlider.IsFocused || servoVolumeSlider.IsFocused || windVolumeSlider.IsFocused )
+        if( masterVolumeSlider.IsFocused || motorVolumeSlider.IsFocused || servoVolumeSlider.IsFocused || buzzerVolumeSlider.IsFocused || windVolumeSlider.IsFocused )
         {
             return;
         }

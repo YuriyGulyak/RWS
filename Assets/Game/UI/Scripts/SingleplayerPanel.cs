@@ -37,6 +37,10 @@ public class SingleplayerPanel : MonoBehaviour
             var bestLapSeconds = PlayerPrefs.GetFloat( bestLapKey );
             bestLapText.text = TimeSpan.FromSeconds( bestLapSeconds ).ToString( timeFormat );
         }
+        else
+        {
+            bestLapText.text = "N/A";
+        }
 
         if( PlayerPrefs.HasKey( infiniteBatteryKey ) )
         {

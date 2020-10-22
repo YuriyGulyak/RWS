@@ -331,7 +331,7 @@ MonoBehaviour:
   target: {fileID: 0}
   pilotBase: {fileID: 720075569104032215}
   pilotEyes: {fileID: 720075569852431142}
-  cameraFollowSpeed: 10
+  smoothTime: 0.15
   trackingBias: 0
   targetOffset: {x: 0, y: 0, z: -0.2}
 --- !u!1 &720075569517898841

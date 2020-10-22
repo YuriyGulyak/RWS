@@ -23,6 +23,12 @@ public class Motor : MonoBehaviour
     
     public void UpdateState( float forwardSpeed, float voltage, float throttle )
     {
+        if( propeller.isBlocked )
+        {
+            voltage = 0f;
+            throttle = 0f;
+        }
+        
         this.voltage = voltage;
         this.throttle = throttle;
 
@@ -41,9 +47,18 @@ public class Motor : MonoBehaviour
         current = (float)motorModel.I;
         
         propeller.UpdateState( forwardSpeed, rpm );
-        
+
         thrust = propeller.lift;
         torque = propeller.torque;
+    }
+
+    public void Reset()
+    {
+        rpm = 0f;
+        current = 0f;
+        thrust = 0f;
+        torque = 0f;
+        propeller.isBlocked = false;
     }
 
     //----------------------------------------------------------------------------------------------------
@@ -67,7 +82,7 @@ public class Motor : MonoBehaviour
     //----------------------------------------------------------------------------------------------------
 
     Thread motorModelThread;
-    
+
     void StartMotorModel()
     {
         motorModel.Init();

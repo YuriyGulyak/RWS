@@ -21,6 +21,13 @@
 
 using UnityEngine;
 
+public enum VoltageStatus
+{
+    Ok,
+    Warning,
+    Critical
+}
+
 public class Battery : MonoBehaviour
 {
     [SerializeField]
@@ -40,7 +47,10 @@ public class Battery : MonoBehaviour
 
     [SerializeField]
     bool infiniteCapacity = false;
-    
+
+    const float warningCellVoltage = 3.4f;
+    const float criticalCellVoltage = 3.3f;
+
     //----------------------------------------------------------------------------------------------------
 
     public int CellCount => cellCount;
@@ -54,8 +64,13 @@ public class Battery : MonoBehaviour
     // Volts
     public float Voltage => voltage;
 
+    public float CellVoltage => averageCellVoltage;
+    
     // 1...0
     public float StateOfCharge => stateOfCharge;
+
+    public VoltageStatus VoltageStatus => voltageStatus;
+    
     
     public void UpdateState( float currentDraw, float deltaTime )
     {
@@ -70,6 +85,22 @@ public class Battery : MonoBehaviour
         var voltageDrop = currentDraw * internalResistance * cellCount;
         voltage = cellVoltage.Evaluate( 1f - stateOfCharge ) * cellCount - voltageDrop;
         voltage = Mathf.Max( minVoltage, voltage );
+        averageCellVoltage = voltage / cellCount;
+
+        smoothedCellVoltage = Mathf.Lerp( smoothedCellVoltage, averageCellVoltage, deltaTime * 5f );
+        
+        if( smoothedCellVoltage > warningCellVoltage )
+        {
+            voltageStatus = VoltageStatus.Ok;
+        }
+        else if( smoothedCellVoltage > criticalCellVoltage )
+        {
+            voltageStatus = VoltageStatus.Warning;
+        }
+        else
+        {
+            voltageStatus = VoltageStatus.Critical;
+        }
     }
 
     public void Reset()
@@ -77,6 +108,9 @@ public class Battery : MonoBehaviour
         capacityDrawn = 0f;
         stateOfCharge = 1f;
         voltage = cellVoltage.Evaluate( 0f ) * cellCount;
+        averageCellVoltage = voltage / cellCount;
+        smoothedCellVoltage = averageCellVoltage;
+        voltageStatus = VoltageStatus.Ok;
     }
 
     //----------------------------------------------------------------------------------------------------
@@ -87,13 +121,19 @@ public class Battery : MonoBehaviour
     float capacityDrawn;
     float stateOfCharge;
     float voltage;
-    
-    
+    float averageCellVoltage;
+    float smoothedCellVoltage;
+    VoltageStatus voltageStatus;
+
+
     void Awake()
     {
         stateOfCharge = 1f;
         voltage = cellVoltage.Evaluate( 0f ) * cellCount;
-
+        averageCellVoltage = voltage / cellCount;
+        smoothedCellVoltage = averageCellVoltage;
+        voltageStatus = VoltageStatus.Ok;
+        
         // TODO Temporary solution
         if( PlayerPrefs.HasKey( infiniteBatteryKey ) )
         {
