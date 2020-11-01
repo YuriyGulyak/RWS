@@ -24,7 +24,7 @@ public class LapTime : MonoBehaviour
 
         if( bestTime <= 0f )
         {
-            bestTimeText.text = $"Best: No Time";
+            bestTimeText.text = $"Best: N/A";
         }
         else
         {

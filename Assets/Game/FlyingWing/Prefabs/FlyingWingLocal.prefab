@@ -53,7 +53,12 @@ PrefabInstance:
     - target: {fileID: 5995597312740995132, guid: 2971e8838e6f4264e918cfa49b163f83,
         type: 3}
       propertyPath: m_Name
-      value: FlyingWingLocal2
+      value: FlyingWingLocal
+      objectReference: {fileID: 0}
+    - target: {fileID: 5995597312740995132, guid: 2971e8838e6f4264e918cfa49b163f83,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7309335759308210735, guid: 2971e8838e6f4264e918cfa49b163f83,
         type: 3}

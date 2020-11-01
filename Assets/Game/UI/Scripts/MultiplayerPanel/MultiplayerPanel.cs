@@ -12,10 +12,7 @@ public class MultiplayerPanel : MonoBehaviourPunCallbacks
     
     [SerializeField]
     Button closeButton = null;
-    
-    [SerializeField]
-    LoginPanel loginPanel = null;
-    
+
     [SerializeField]
     TextMeshProUGUI stateText = null;
    
@@ -27,10 +24,7 @@ public class MultiplayerPanel : MonoBehaviourPunCallbacks
     
     [SerializeField]
     Button joinRandomRoomButton = null;
-    
-    [SerializeField]
-    Button logoutButton = null;
-    
+
     [SerializeField]
     TextMeshProUGUI errorText = null;
     
@@ -58,13 +52,31 @@ public class MultiplayerPanel : MonoBehaviourPunCallbacks
 
         if( PhotonNetwork.IsConnected )
         {
-            ShowNavigationButtons();
+            var nicknameChanged = !PhotonNetwork.NickName.Equals( PlayerPrefs.GetString( "Nickname" ) );
+            if( nicknameChanged )
+            {
+                HideNavigationButtons();
+                stateText.gameObject.SetActive( true );
+
+                PhotonNetwork.Disconnect();
+                PhotonNetwork.NickName = PlayerPrefs.GetString( "Nickname" );
+                PhotonNetwork.ConnectUsingSettings();
+            }
+            else
+            {
+                ShowNavigationButtons();
+                stateText.gameObject.SetActive( false );
+            }
         }
         else
         {
-            loginPanel.Show( Hide, OnLoginButton );
+            HideNavigationButtons();
+            stateText.gameObject.SetActive( true );
+
+            PhotonNetwork.NickName = PlayerPrefs.GetString( "Nickname" );
+            PhotonNetwork.ConnectUsingSettings();
         }
-        
+
         InputManager.Instance.OnEscapeButton += OnEscapeButton;
     }
 
@@ -74,8 +86,7 @@ public class MultiplayerPanel : MonoBehaviourPunCallbacks
         {
             return;
         }
-
-        loginPanel.Hide();
+        
         createRoomPanel.Hide();
         insideRoomPanel.Hide();
         roomListPanel.Hide();
@@ -112,9 +123,7 @@ public class MultiplayerPanel : MonoBehaviourPunCallbacks
 
     public override void OnDisconnected( DisconnectCause cause )
     {
-        print( "OnDisconnected: " + cause );
-
-        loginPanel.Show( Hide, OnLoginButton );
+        //print( "OnDisconnected: " + cause );
     }
 
     public override void OnLeftLobby()
@@ -178,8 +187,7 @@ public class MultiplayerPanel : MonoBehaviourPunCallbacks
         createRoomButton.onClick.AddListener( OnCreateRoomButton );
         showRoomListButton.onClick.AddListener( OnShowRoomListButton );
         joinRandomRoomButton.onClick.AddListener( OnJoinRandomRoomButton );
-        logoutButton.onClick.AddListener( OnLogoutButton );
-        
+
         HideNavigationButtons();
         
         errorText.gameObject.SetActive( false );
@@ -189,10 +197,8 @@ public class MultiplayerPanel : MonoBehaviourPunCallbacks
         insideRoomPanel.Hide();
         roomListPanel.Hide();
 
-        //PhotonNetwork.GameVersion = "";
+        //PhotonNetwork.GameVersion = Application.version;
         PhotonNetwork.AutomaticallySyncScene = true;
-        
-        loginPanel.Show( Hide, OnLoginButton );
     }
 
     void Update()
@@ -207,14 +213,6 @@ public class MultiplayerPanel : MonoBehaviourPunCallbacks
 
 
     // UI Callbacks
-
-    void OnLoginButton()
-    {
-        loginPanel.Hide();
-        stateText.gameObject.SetActive( true );
-        PhotonNetwork.NickName = loginPanel.Nickname;
-        PhotonNetwork.ConnectUsingSettings();
-    }
 
     void OnCreateRoomButton()
     {
@@ -252,24 +250,13 @@ public class MultiplayerPanel : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.JoinRandomRoom();
     }
-    
-    void OnLogoutButton()
-    {
-        HideNavigationButtons();
-        
-        errorText.gameObject.SetActive( false );
-        stateText.gameObject.SetActive( false );
-        
-        PhotonNetwork.Disconnect();
-    }
 
-    
+
     void ShowNavigationButtons()
     {
         createRoomButton.gameObject.SetActive( true );
         showRoomListButton.gameObject.SetActive( true );
         joinRandomRoomButton.gameObject.SetActive( true );
-        logoutButton.gameObject.SetActive( true );
 
         isNavigationPanel = true;
     }
@@ -279,8 +266,7 @@ public class MultiplayerPanel : MonoBehaviourPunCallbacks
         createRoomButton.gameObject.SetActive( false );
         showRoomListButton.gameObject.SetActive( false );
         joinRandomRoomButton.gameObject.SetActive( false );
-        logoutButton.gameObject.SetActive( false );
-        
+
         isNavigationPanel = false;
     }
     

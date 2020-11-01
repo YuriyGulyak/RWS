@@ -7,6 +7,11 @@
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="@Tests" t="Include">
+          <e p="TestLeaderboard" t="Include">
+            <e p="TestLeaderboard.cs" t="Include" />
+          </e>
+        </e>
         <e p="Game" t="Include">
           <e p="Environment" t="Include">
             <e p="Grass" t="Include">
@@ -64,6 +69,9 @@
               <e p="Rates.cs" t="Include" />
             </e>
           </e>
+          <e p="Leaderboard" t="Include">
+            <e p="Leaderboard.cs" t="Include" />
+          </e>
           <e p="Managers" t="Include">
             <e p="GraphicsManager.cs" t="Include" />
             <e p="InputManager.cs" t="Include" />
@@ -102,6 +110,10 @@
               <e p="GameMenu.cs" t="Include" />
               <e p="InputTelemetry.cs" t="Include" />
               <e p="LapTime.cs" t="Include" />
+              <e p="LeaderboardPanel" t="Include">
+                <e p="LeaderboardEntry.cs" t="Include" />
+                <e p="LeaderboardPanel.cs" t="Include" />
+              </e>
               <e p="MainMenu.cs" t="Include" />
               <e p="MenuPanel.cs" t="Include" />
               <e p="MotorTelemetry.cs" t="Include" />
@@ -118,8 +130,15 @@
               <e p="OSDTelemetry.cs" t="Include" />
               <e p="OSDWarnings.cs" t="Include" />
               <e p="PingDisplay.cs" t="Include" />
-              <e p="PlayerOverviewEntry.cs" t="Include" />
-              <e p="PlayerOverviewPanel.cs" t="Include" />
+              <e p="PlayerOverviewPanel" t="Include">
+                <e p="PlayerOverviewEntry.cs" t="Include" />
+                <e p="PlayerOverviewPanel.cs" t="Include" />
+              </e>
+              <e p="PlayerProfilePanel" t="Include">
+                <e p="PlayerNamePanel.cs" t="Include" />
+                <e p="PlayerProfilePanel.cs" t="Include" />
+                <e p="PlayerStatsPanel.cs" t="Include" />
+              </e>
               <e p="RoomChat" t="Include">
                 <e p="RoomChat.cs" t="Include" />
                 <e p="RoomChatMessage.cs" t="Include" />
@@ -571,6 +590,10 @@
           <e p="CustomUpdate.cs" t="Include" />
           <e p="DisplayManger.cs" t="Include" />
           <e p="DragRect.cs" t="Include" />
+          <e p="DreamloLeaderboard" t="Include">
+            <e p="DreamloLeaderboard.cs" t="Include" />
+            <e p="TestDreamloLeaderboard.cs" t="Include" />
+          </e>
           <e p="Editor" t="Include">
             <e p="MaximizeWindow.cs" t="Include" />
           </e>

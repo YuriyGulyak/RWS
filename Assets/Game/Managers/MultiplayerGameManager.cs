@@ -37,7 +37,7 @@ namespace RWS
 
         [SerializeField]
         PlayerOverviewPanel playerOverviewPanel = null;
-        
+
         [SerializeField]
         OSDTelemetry osdTelemetry = null;
 
@@ -49,13 +49,13 @@ namespace RWS
 
         [SerializeField]
         RoomChat roomChat = null;
-        
+
         [SerializeField]
         BlackScreen blackScreen = null;
-        
+
         [SerializeField]
         BloorEffectController bloorEffect = null;
-        
+
         [SerializeField]
         int photonSendRate = 60; // Default 20
 
@@ -66,15 +66,15 @@ namespace RWS
 
         public void OnEvent( EventData photonEvent )
         {
-            var eventCode = (RaiseEventCodes)photonEvent.Code;
-            
+            var eventCode = (RaiseEventCodes) photonEvent.Code;
+
             if( eventCode == RaiseEventCodes.SpawnRemotePlayerWing )
             {
-                var data = (object[])photonEvent.CustomData;
+                var data = (object[]) photonEvent.CustomData;
 
-                var wingPosition = (Vector3)data[ 0 ];
-                var wingRotation = (Quaternion)data[ 1 ];
-                var viewID = (int)data[ 2 ];
+                var wingPosition = (Vector3) data[ 0 ];
+                var wingRotation = (Quaternion) data[ 1 ];
+                var viewID = (int) data[ 2 ];
 
                 var wingGameObject = wingSpawner.SpawnRemotePlayerWing( wingPosition, wingRotation );
 
@@ -85,6 +85,7 @@ namespace RWS
                 {
                     remoteWingDictionary = new Dictionary<int, GameObject>();
                 }
+
                 remoteWingDictionary.Add( viewID, wingGameObject );
             }
         }
@@ -93,6 +94,9 @@ namespace RWS
 
         readonly string bestLapPropertyKey = "BestLapProperty";
         readonly string playerTag = "Player";
+
+        readonly string bestLapKey = "BestLap";
+        readonly string dreamloPrivateCode = "ZbIxEmdjiU6we6WbZHRGZQp8S0j4TytEuwOlNrARz_Aw";
 
         enum RaiseEventCodes : byte
         {
@@ -110,7 +114,8 @@ namespace RWS
         Quaternion spawnRotation;
         float lastLaunchTime;
         bool fpvMode;
-        
+        Leaderboard leaderboard;
+
 
         void OnEnable()
         {
@@ -128,16 +133,18 @@ namespace RWS
         {
             PhotonNetwork.SendRate = photonSendRate;
             PhotonNetwork.SerializationRate = photonSerializationRate;
-            
+
             gameMenu.OnResumeButton += OnResumeButton;
             gameMenu.OnSettingsButton += OnSettingsButton;
             gameMenu.OnExitButton += OnExitButton;
-            
+
             var inputManager = InputManager.Instance;
             inputManager.LaunchResetControl.Performed += OnLaunchResetButton;
             inputManager.ViewControl.Performed += OnViewButton;
             inputManager.OnEnterButton += OnEnterButton;
             inputManager.OnEscapeButton += OnEscapeButton;
+
+            leaderboard = Leaderboard.Instance;
         }
 
         void Start()
@@ -150,15 +157,25 @@ namespace RWS
 
             losCameraGameObject = pilotAvatar.GetComponentInChildren<Camera>( true ).gameObject;
             losCameraGameObject.SetActive( true );
-            
+
             lapTime.Init( 0f );
             lapTime.OnNewBestTime += newBestTime =>
             {
+                // TODO
                 // Receiving in PlayerOverviewPanel
                 PhotonNetwork.LocalPlayer.SetCustomProperties( new Hashtable { { bestLapPropertyKey, newBestTime } } );
+
+
+                PlayerPrefs.SetFloat( bestLapKey, newBestTime );
+
+                var pilotName = PlayerPrefs.GetString( "Nickname", "" );
+                if( !string.IsNullOrEmpty( pilotName ) )
+                {
+                    leaderboard.AddRecord( dreamloPrivateCode, pilotName, "Mini Race Wing", newBestTime, null );
+                }
             };
             lapTime.Hide();
-                
+
             raceTrack.OnStart.AddListener( craft =>
             {
                 if( craft.CompareTag( playerTag ) )
@@ -173,10 +190,10 @@ namespace RWS
                     lapTime.CompareTime();
                 }
             } );
-            
+
             Cursor.visible = false;
-            
-            
+
+
             if( PhotonNetwork.IsConnected )
             {
                 spawnPointIndex = PhotonNetwork.LocalPlayer.ActorNumber;
@@ -192,15 +209,16 @@ namespace RWS
                 {
                     pilotPosition.y = hit.point.y;
                 }
+
                 pilotAvatar.transform.position = pilotPosition;
 
                 pilotLook = pilotAvatar.GetComponentInChildren<PilotLook>( true );
                 pilotLook.SetTarget( wingTransform );
-                
+
                 pilotAvatar.GetComponentInChildren<PilotZoom>().SetTarget( wingTransform );
 
                 localWing.Transceiver.Init( pilotPosition + new Vector3( 0f, 2f, 0f ) );
-                
+
                 osdTelemetry.Init( localWing );
                 wingTelemetry.Init( localWing );
                 batteryTelemetry.Init( localWing.Battery );
@@ -209,11 +227,12 @@ namespace RWS
                 var roomCustomProperties = PhotonNetwork.CurrentRoom.CustomProperties;
                 if( roomCustomProperties.TryGetValue( "InfiniteBattery", out var infiniteCapacityObj ) )
                 {
-                    localWing.Battery.InfiniteCapacity = (bool)infiniteCapacityObj;
+                    localWing.Battery.InfiniteCapacity = (bool) infiniteCapacityObj;
                 }
+
                 if( roomCustomProperties.TryGetValue( "InfiniteRange", out var infiniteRangeObj ) )
                 {
-                    localWing.Transceiver.InfiniteRange = (bool)infiniteRangeObj;
+                    localWing.Transceiver.InfiniteRange = (bool) infiniteRangeObj;
                 }
 
                 fpvCameraGameObject = localWingGameObject.GetComponentInChildren<Camera>( true ).gameObject;
@@ -229,7 +248,7 @@ namespace RWS
         {
             BlackScreen.Instance.StartFromBlackScreenAnimation();
         }
-        
+
 
         void OnResumeButton()
         {
@@ -239,7 +258,7 @@ namespace RWS
             roomChat.HideInput();
             Cursor.visible = false;
             bloorEffect.BloorEffectEnabled = false;
-            
+
             if( fpvMode )
             {
                 osdTelemetry.Show();
@@ -258,13 +277,10 @@ namespace RWS
 
         void OnExitButton()
         {
-            BlackScreen.Instance.StartToBlackScreenAnimation( () =>
-            {
-                StartCoroutine( ExitCoroutine() );
-            } );
+            BlackScreen.Instance.StartToBlackScreenAnimation( () => { StartCoroutine( ExitCoroutine() ); } );
         }
 
-        
+
         void OnViewButton()
         {
             if( gameMenu.IsActive )
@@ -282,14 +298,10 @@ namespace RWS
 
                     osdTelemetry.Hide();
 
-                    blackScreen.StartFromBlackScreenAnimation( () =>
-                    {
-                        fpvMode = false;
-                    } );
-
+                    blackScreen.StartFromBlackScreenAnimation( () => { fpvMode = false; } );
                 } );
             }
-            
+
             // LOS (line of sight)
             else
             {
@@ -300,27 +312,23 @@ namespace RWS
 
                     osdTelemetry.Show();
 
-                    blackScreen.StartFromBlackScreenAnimation( () =>
-                    {
-                        fpvMode = true;
-                    } );
-
+                    blackScreen.StartFromBlackScreenAnimation( () => { fpvMode = true; } );
                 } );
             }
         }
-        
+
         void OnLaunchResetButton()
         {
             if( gameMenu.IsActive )
             {
                 return;
             }
-            
+
             if( Time.time - lastLaunchTime < 2f )
             {
                 return;
             }
-            
+
             // Launch
             if( wingLauncher.Ready )
             {
@@ -334,16 +342,15 @@ namespace RWS
                 blackScreen.StartToBlackScreenAnimation( () =>
                 {
                     localWing.Reset( spawnPosition, spawnRotation );
-                
+
                     osdTelemetry.Reset();
 
                     lapTime.Reset();
                     lapTime.Hide();
-                
+
                     pilotLook.LookAtTarget();
-                
+
                     blackScreen.StartFromBlackScreenAnimation( wingLauncher.Reset );
-                
                 } );
             }
         }
@@ -354,7 +361,7 @@ namespace RWS
             {
                 return;
             }
-            
+
             if( roomChat.IsInputActive )
             {
                 roomChat.SendAndHideInput();
@@ -383,7 +390,7 @@ namespace RWS
             }
         }
 
-        
+
         IEnumerator ExitCoroutine()
         {
             Destroy( localWingGameObject );
@@ -398,7 +405,7 @@ namespace RWS
 
             PhotonNetwork.Disconnect();
             yield return new WaitWhile( () => PhotonNetwork.IsConnected );
-            
+
             SceneManager.LoadSceneAsync( 0 );
         }
 

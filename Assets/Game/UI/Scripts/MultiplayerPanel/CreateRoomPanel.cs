@@ -70,8 +70,6 @@ public class CreateRoomPanel : MonoBehaviour
             inputValue = Mathf.Clamp( inputValue, minPlayers, maxPlayers );
             maxPlayersInputField.text = inputValue.ToString();
         } );
-        
-        //infiniteBatteryToggle.
 
         createRoomButton.onClick.AddListener( OnCreateRoomButton );
         cancelButton.onClick.AddListener( OnCancelButton );
