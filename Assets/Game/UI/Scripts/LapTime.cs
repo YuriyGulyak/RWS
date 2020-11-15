@@ -11,6 +11,9 @@ public class LapTime : MonoBehaviour
     TextMeshProUGUI bestTimeText = null;
 
     [SerializeField]
+    GameObject bestTimeGameObject = null;
+    
+    [SerializeField]
     float maxTime = 120f;
     
     [SerializeField]
@@ -24,11 +27,11 @@ public class LapTime : MonoBehaviour
 
         if( bestTime <= 0f )
         {
-            bestTimeText.text = $"Best: N/A";
+            bestTimeText.text = $"N/A";
         }
         else
         {
-            bestTimeText.text = $"Best: {TimeSpan.FromSeconds( bestTime ).ToString( timeFormat )}";
+            bestTimeText.text = TimeSpan.FromSeconds( bestTime ).ToString( timeFormat );
         }
     }
 
@@ -52,7 +55,7 @@ public class LapTime : MonoBehaviour
         if( bestTime.Equals( 0f ) || lapTime < bestTime )
         {
             bestTime = lapTime;
-            bestTimeText.text = $"Best: {TimeSpan.FromSeconds( bestTime ).ToString( timeFormat )}";
+            bestTimeText.text = TimeSpan.FromSeconds( bestTime ).ToString( timeFormat );
             
             OnNewBestTime?.Invoke( bestTime );
         }
@@ -83,8 +86,8 @@ public class LapTime : MonoBehaviour
     float bestTime;
     float lastUpdateTime;
     bool timeVisible;
-
     
+
     void Update()
     {
         if( !lapStarted )
@@ -113,13 +116,13 @@ public class LapTime : MonoBehaviour
     {
         timeVisible = true;
         timeText.enabled = true;
-        bestTimeText.enabled = true;
+        bestTimeGameObject.SetActive( true );
     }
     
     void HideUI()
     {
         timeVisible = false;
         timeText.enabled = false;
-        bestTimeText.enabled = false;
+        bestTimeGameObject.SetActive( false );
     }
 }

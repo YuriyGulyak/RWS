@@ -26,6 +26,9 @@ public class SingleplayerPanel : MonoBehaviour
     Toggle infiniteRangeToggle;
 
     [SerializeField]
+    Toggle showGhostToggle;
+
+    [SerializeField]
     Button startGameButton;
 
     //----------------------------------------------------------------------------------------------------
@@ -39,9 +42,10 @@ public class SingleplayerPanel : MonoBehaviour
 
         gameObject.SetActive( true );
 
-        if( PlayerPrefs.HasKey( bestLapKey ) )
+        
+        if( PlayerPrefs.HasKey( localBestLapKey ) )
         {
-            var bestLapSeconds = PlayerPrefs.GetFloat( bestLapKey );
+            var bestLapSeconds = PlayerPrefs.GetFloat( localBestLapKey );
             localBestLapText.text = TimeSpan.FromSeconds( bestLapSeconds ).ToString( timeFormat );
         }
         else
@@ -49,9 +53,7 @@ public class SingleplayerPanel : MonoBehaviour
             localBestLapText.text = "N/A";
         }
 
-        infiniteBatteryToggle.isOn = PlayerPrefs.GetInt( infiniteBatteryKey, 0 ) > 0;
-        infiniteRangeToggle.isOn = PlayerPrefs.GetInt( infiniteRangeKey, 0 ) > 0;
-
+        
         leaderboard.GetRecords( dreamloPublicCode, 0, 1, records =>
         {
             if( records.Length == 0 )
@@ -63,6 +65,11 @@ public class SingleplayerPanel : MonoBehaviour
                 globalBestLapText.text = TimeSpan.FromSeconds( records[ 0 ].seconds ).ToString( timeFormat );
             }
         }, null );
+
+        
+        infiniteBatteryToggle.isOn = PlayerPrefs.GetInt( infiniteBatteryKey, 0 ) > 0;
+        infiniteRangeToggle.isOn = PlayerPrefs.GetInt( infiniteRangeKey, 0 ) > 0;
+        showGhostToggle.isOn = PlayerPrefs.GetInt( showGhostKey, 0 ) > 0;
     }
 
     public void Hide()
@@ -78,9 +85,10 @@ public class SingleplayerPanel : MonoBehaviour
 
     //----------------------------------------------------------------------------------------------------
 
-    readonly string bestLapKey = "BestLap";
+    readonly string localBestLapKey = "LocalBestLap";
     readonly string infiniteBatteryKey = "InfiniteBattery";
     readonly string infiniteRangeKey = "InfiniteRange";
+    readonly string showGhostKey = "ShowGhost";
 
     readonly string dreamloPublicCode = "5f9550d3eb371809c4a783ef";
     readonly string timeFormat = @"mm\:ss\.ff";
@@ -91,8 +99,9 @@ public class SingleplayerPanel : MonoBehaviour
     {
         closeButton.onClick.AddListener( Hide );
 
-        infiniteBatteryToggle.onValueChanged.AddListener( value => { PlayerPrefs.SetInt( infiniteBatteryKey, value ? 1 : 0 ); } );
-        infiniteRangeToggle.onValueChanged.AddListener( value => { PlayerPrefs.SetInt( infiniteRangeKey, value ? 1 : 0 ); } );
+        infiniteBatteryToggle.onValueChanged.AddListener( value => PlayerPrefs.SetInt( infiniteBatteryKey, value ? 1 : 0 ) );
+        infiniteRangeToggle.onValueChanged.AddListener( value => PlayerPrefs.SetInt( infiniteRangeKey, value ? 1 : 0 ) );
+        showGhostToggle.onValueChanged.AddListener( value => PlayerPrefs.SetInt( showGhostKey, value ? 1 : 0 ) );
 
         startGameButton.onClick.AddListener( () => { BlackScreen.Instance.StartToBlackScreenAnimation( () => { SceneManager.LoadSceneAsync( 1 ); } ); } );
 

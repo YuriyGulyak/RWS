@@ -1,4 +1,5 @@
-﻿using RWS;
+﻿using System;
+using RWS;
 using UnityEngine;
 
 public class WindSound : MonoBehaviour
@@ -46,9 +47,13 @@ public class WindSound : MonoBehaviour
         if( SoundManager )
         {
             volumeScale = SoundManager.WindVolume * SoundManager.MasterVolume;
+            UpdateAudioSource();
+
             SoundManager.OnWindVolumeChanged += OnManagerVolumeChanged;
         }
-    }    
+        
+        audioSource.Play();
+    }
 
     void OnDisable()
     {
@@ -56,6 +61,8 @@ public class WindSound : MonoBehaviour
         {
             SoundManager.OnWindVolumeChanged -= OnManagerVolumeChanged;
         }
+        
+        audioSource.Stop();
     }
 
     void Update()

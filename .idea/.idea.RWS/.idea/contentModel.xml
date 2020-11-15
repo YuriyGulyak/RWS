@@ -61,6 +61,10 @@
               <e p="WingSpawner.cs" t="Include" />
             </e>
           </e>
+          <e p="GhostReplaySystem" t="Include">
+            <e p="FlyingWingGhost.cs" t="Include" />
+            <e p="GhostReplaySystem.cs" t="Include" />
+          </e>
           <e p="Input" t="Include">
             <e p="ControllerNotes.txt" t="Include" />
             <e p="Rates" t="Include">

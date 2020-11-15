@@ -40,6 +40,9 @@ public class MultiplayerPanel : MonoBehaviourPunCallbacks
     [SerializeField]
     RoomChat roomChat = null;
     
+    [SerializeField]
+    TextMeshProUGUI regionText = null;
+    
     //----------------------------------------------------------------------------------------------------
 
     public void Show()
@@ -64,6 +67,7 @@ public class MultiplayerPanel : MonoBehaviourPunCallbacks
             }
             else
             {
+                regionText.gameObject.SetActive( true );
                 ShowNavigationButtons();
                 stateText.gameObject.SetActive( false );
             }
@@ -71,6 +75,7 @@ public class MultiplayerPanel : MonoBehaviourPunCallbacks
         else
         {
             HideNavigationButtons();
+            regionText.gameObject.SetActive( false );
             stateText.gameObject.SetActive( true );
 
             PhotonNetwork.NickName = PlayerPrefs.GetString( "Nickname" );
@@ -94,6 +99,7 @@ public class MultiplayerPanel : MonoBehaviourPunCallbacks
         roomChat.Hide();
         
         errorText.gameObject.SetActive( false );
+        regionText.gameObject.SetActive( false );
         stateText.gameObject.SetActive( false );
         
         HideNavigationButtons();
@@ -118,6 +124,9 @@ public class MultiplayerPanel : MonoBehaviourPunCallbacks
     {
         stateText.gameObject.SetActive( false );
         
+        regionText.gameObject.SetActive( true );
+        regionText.text = $"Region: {PhotonNetwork.CloudRegion.ToUpper()}";
+
         ShowNavigationButtons();
     }
 
@@ -135,6 +144,7 @@ public class MultiplayerPanel : MonoBehaviourPunCallbacks
     {
         //print( "OnJoinedRoom" );
 
+        regionText.gameObject.SetActive( false );
         HideNavigationButtons();
         createRoomPanel.Hide();
         roomListPanel.Hide();
@@ -142,6 +152,7 @@ public class MultiplayerPanel : MonoBehaviourPunCallbacks
         insideRoomPanel.Show( () =>
         {
             insideRoomPanel.Hide();
+            regionText.gameObject.SetActive( true );
             ShowNavigationButtons();
         } );
 
@@ -192,6 +203,7 @@ public class MultiplayerPanel : MonoBehaviourPunCallbacks
         
         errorText.gameObject.SetActive( false );
         stateText.gameObject.SetActive( false );
+        regionText.gameObject.SetActive( false );
         
         createRoomPanel.Hide();
         insideRoomPanel.Hide();
@@ -217,26 +229,29 @@ public class MultiplayerPanel : MonoBehaviourPunCallbacks
     void OnCreateRoomButton()
     {
         errorText.gameObject.SetActive( false );
+        regionText.gameObject.SetActive( false );
         
         HideNavigationButtons();
         
         createRoomPanel.Show( () =>
         {
             createRoomPanel.Hide();
+            regionText.gameObject.SetActive( true );
             ShowNavigationButtons();
-            
         } );
     }
     
     void OnShowRoomListButton()
     {
         errorText.gameObject.SetActive( false );
+        regionText.gameObject.SetActive( false );
         
         HideNavigationButtons();
 
         void onBackButton()
         {
             roomListPanel.Hide();
+            regionText.gameObject.SetActive( true );
             ShowNavigationButtons();
         }
         void onJoinButton( RoomInfo roomInfo )

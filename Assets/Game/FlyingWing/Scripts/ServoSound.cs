@@ -48,8 +48,12 @@ public class ServoSound : MonoBehaviour
         if( SoundManager )
         {
             volumeScale = SoundManager.ServoVolume * SoundManager.MasterVolume;
+            UpdateAudioSource();
+
             SoundManager.OnServoVolumeChanged += OnManagerVolumeChanged;
         }
+        
+        audioSource.Play();
     }
 
     void OnDisable()
@@ -58,6 +62,8 @@ public class ServoSound : MonoBehaviour
         {
             SoundManager.OnServoVolumeChanged -= OnManagerVolumeChanged;
         }
+        
+        audioSource.Stop();
     }
     
     void Update()

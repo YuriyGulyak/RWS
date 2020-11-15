@@ -44,7 +44,6 @@ public class LeaderboardPanel : MonoBehaviour
         panelRect.anchoredPosition = Vector2.zero;
 
         ClearLeaderboard();
-        ClearLeaderboard();
     }
 
     //----------------------------------------------------------------------------------------------------
@@ -52,8 +51,6 @@ public class LeaderboardPanel : MonoBehaviour
     void Awake()
     {
         closeButton.onClick.AddListener( Hide );
-
-        //
 
         InputManager.Instance.OnEscapeButton += OnEscapeButton;
 
@@ -70,7 +67,7 @@ public class LeaderboardPanel : MonoBehaviour
 
     Leaderboard leaderboard;
     IEnumerator instantiateLeaderboardEntries;
-    GameObject[] entries;
+    GameObject[] leaderboardEntries;
 
 
     void UpdateLeaderboard()
@@ -83,6 +80,11 @@ public class LeaderboardPanel : MonoBehaviour
 
     void OnDownloadSuccess( Leaderboard.Record[] records )
     {
+        if( !gameObject.activeSelf )
+        {
+            return;
+        }
+
         messageTextMesh.gameObject.SetActive( false );
 
         if( records.Length > 0 )
@@ -104,27 +106,27 @@ public class LeaderboardPanel : MonoBehaviour
 
     IEnumerator InstantiateLeaderboardEntries( Leaderboard.Record[] records )
     {
-        entries = new GameObject[ records.Length ];
+        leaderboardEntries = new GameObject[ records.Length ];
         var parent = leaderboardEntryTemplate.transform.parent;
 
         for( var i = 0; i < records.Length; i++ )
         {
             var leaderboardEntryGameObject = Instantiate( leaderboardEntryTemplate, parent );
-            entries[ i ] = leaderboardEntryGameObject;
+            leaderboardEntries[ i ] = leaderboardEntryGameObject;
 
             leaderboardEntryGameObject.SetActive( true );
             leaderboardEntryGameObject.name = $"{leaderboardEntryTemplate.name} ({i + 1})";
 
             var record = records[ i ];
 
-            var number = $"{i + 1}.";
+            var posNumber = $"{i + 1}.";
             var pilotName = record.pilot;
             var craftName = record.craft;
             var lapTime = TimeSpan.FromSeconds( record.seconds ).ToString( timeFormat );
             var postedDate = record.date.Split( ' ' )[ 0 ];
 
             var leaderboardEntry = leaderboardEntryGameObject.GetComponent<LeaderboardEntry>();
-            leaderboardEntry.Init( number, pilotName, craftName, lapTime, postedDate );
+            leaderboardEntry.Init( posNumber, pilotName, craftName, lapTime, postedDate );
 
             if( i % 10 == 0 )
             {
@@ -141,7 +143,6 @@ public class LeaderboardPanel : MonoBehaviour
         messageTextMesh.text = "Error: " + error;
     }
 
-
     void ClearLeaderboard()
     {
         if( instantiateLeaderboardEntries != null )
@@ -150,9 +151,9 @@ public class LeaderboardPanel : MonoBehaviour
             instantiateLeaderboardEntries = null;
         }
 
-        if( entries != null && entries.Length > 0 )
+        if( leaderboardEntries != null )
         {
-            foreach( var entry in entries )
+            foreach( var entry in leaderboardEntries )
             {
                 if( entry )
                 {
@@ -160,10 +161,9 @@ public class LeaderboardPanel : MonoBehaviour
                 }
             }
 
-            entries = null;
+            leaderboardEntries = null;
         }
     }
-
 
     void OnEscapeButton()
     {

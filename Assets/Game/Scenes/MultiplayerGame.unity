@@ -18944,7 +18944,6 @@ MonoBehaviour:
   bloorEffect: {fileID: 1288091308}
   photonSendRate: 120
   photonSerializationRate: 120
-  leaderboard: {fileID: 1597984737}
 --- !u!4 &583049561
 Transform:
   m_ObjectHideFlags: 0
@@ -22005,7 +22004,7 @@ PrefabInstance:
     - target: {fileID: 3345687541668664473, guid: a7f4ba8f64b1ca24bbe290d6b63d2332,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 70
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 3345687541668664473, guid: a7f4ba8f64b1ca24bbe290d6b63d2332,
         type: 3}
@@ -54524,18 +54523,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8660c49f18116f4095fae48e0d6ccb3, type: 3}
---- !u!114 &1597984737 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3550974054743666652, guid: d8660c49f18116f4095fae48e0d6ccb3,
-    type: 3}
-  m_PrefabInstance: {fileID: 1597984736}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 366890dbe15cc1e4c969df53efd11f76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1601641808
 GameObject:
   m_ObjectHideFlags: 0

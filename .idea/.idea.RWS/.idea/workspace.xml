@@ -8,6 +8,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/PlayerOverviewPanel/PlayerOverviewPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/UtilityScripts/Room/CountdownTimer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/PlayerProfilePanel/PlayerProfilePanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonRealtime/Code/Player.cs" root0="FORCE_HIGHLIGHTING" />
@@ -15,13 +16,12 @@
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonRealtime/Code/LoadBalancingClient.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/Pilot/Scripts/SwayEffect.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/Pilot/Scripts/PilotLook.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.mathematics@1.1.0/Unity.Mathematics/math.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/Input/Rates/RateProfile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/ServoSound.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/UIHelper.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Utils/DreamloLeaderboard/TestDreamloLeaderboard.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/AttitudeIndicator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Utils/DreamloLeaderboard/DreamloLeaderboard.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Game/GhostReplaySystem/GhostReplaySystem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/LoginPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/InsideRoomPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Utils/SliderWithInputField.cs" root0="FORCE_HIGHLIGHTING" />
@@ -107,6 +107,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/PlayerProfilePanel/PlayerNamePanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/SensitivityPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/ControlsPanel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Game/RaceKit/Scripts/RaceTrack.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Scripts/AsteroidsGame.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/GraphicsPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/SoundPanel.cs" root0="FORCE_HIGHLIGHTING" />
@@ -138,29 +139,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/UIHelperEditor.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/UIHelper.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/WingLauncher.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/OrbitCamera/Scripts/OrbitCamera.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/Pilot/Scripts/PilotZoom.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/ControlsPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/Managers/InputManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/MotorModel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/OSDHome.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/AlarmSound.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/SoundPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/Managers/SoundManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/Propeller.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/Motor.cs" />
         <option value="$PROJECT_DIR$/Assets/Utils/CustomUpdate.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/OSDWarnings.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/WindSound.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/BuzzerSound.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/MotorSound.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/FlyingWing.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/OSDTelemetry.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/AttitudeIndicator.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/ServoSound.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/Transceiver.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/Battery.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/InsideRoomPanel.cs" />
@@ -177,18 +161,35 @@
         <option value="$PROJECT_DIR$/Assets/Utils/Dreamlo/DreamloLeaderboard.cs" />
         <option value="$PROJECT_DIR$/Assets/Utils/Dreamlo/Leaderboard.cs" />
         <option value="$PROJECT_DIR$/Assets/Utils/Dreamlo/TestDreamloLeaderboard.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/Leaderboard/Leaderboard.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/Leaderboard/TestLeaderboard.cs" />
         <option value="$PROJECT_DIR$/Assets/Utils/DreamloLeaderboard/TestDreamloLeaderboard.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/PlayerProfilePanel/PlayerNamePanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/LoginPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/MultiplayerPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/LapTime.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SingleplayerPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/LeaderboardPanel/LeaderboardPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/PlayerProfilePanel/PlayerProfilePanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/LapTime.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/Managers/MultiplayerGameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/MultiplayerPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/LeaderboardPanel/LeaderboardPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/@Tests/Sharpen.shader" />
+        <option value="$PROJECT_DIR$/Assets/@Tests/TestSharpenEffect/TestSharpenEffect.cs" />
+        <option value="$PROJECT_DIR$/Assets/@Tests/TestGhostReplay/TestGhostReplay.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/OrbitCamera/Scripts/OrbitCamera.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/FlyingWing.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/WingPhotonView.cs" />
+        <option value="$PROJECT_DIR$/Assets/@Tests/TestGhostReplay/GhostRecorder.cs" />
+        <option value="$PROJECT_DIR$/Assets/Utils/DreamloLeaderboard/DreamloLeaderboard.cs" />
+        <option value="$PROJECT_DIR$/Assets/@Tests/TestGhostReplay/FlyingWingGhost.cs" />
+        <option value="$PROJECT_DIR$/Assets/@Tests/TestGhostReplay/GhostReplay.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/GhostReplaySystem/WingGhost.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/GhostReplaySystem/FlyingWingGhost.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SingleplayerPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/Managers/SingleplayerGameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/Leaderboard/Leaderboard.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/GhostReplaySystem/GhostReplaySystem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/Managers/SoundManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/WindSound.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/ServoSound.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/MotorSound.cs" />
       </list>
     </option>
   </component>
@@ -247,6 +248,10 @@
     </state>
     <state x="461" y="211" key="SettingsEditor/0.0.1920.1160/-1920.0.1920.1080@0.0.1920.1160" timestamp="1596632088099" />
     <state x="615" y="255" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1600100840736" />
+    <state x="552" y="125" width="815" height="789" key="find.popup" timestamp="1604236935830">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="125" width="815" height="789" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1604236935830" />
     <state x="616" y="199" width="672" height="607" key="search.everywhere.popup" timestamp="1604140706389">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

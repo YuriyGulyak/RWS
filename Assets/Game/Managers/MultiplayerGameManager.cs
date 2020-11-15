@@ -94,8 +94,7 @@ namespace RWS
 
         readonly string bestLapPropertyKey = "BestLapProperty";
         readonly string playerTag = "Player";
-
-        readonly string bestLapKey = "BestLap";
+        readonly string localBestLapKey = "LocalBestLap";
         readonly string dreamloPrivateCode = "ZbIxEmdjiU6we6WbZHRGZQp8S0j4TytEuwOlNrARz_Aw";
 
         enum RaiseEventCodes : byte
@@ -158,7 +157,7 @@ namespace RWS
             losCameraGameObject = pilotAvatar.GetComponentInChildren<Camera>( true ).gameObject;
             losCameraGameObject.SetActive( true );
 
-            lapTime.Init( 0f );
+            lapTime.Init( PlayerPrefs.GetFloat( localBestLapKey, 0f ) );
             lapTime.OnNewBestTime += newBestTime =>
             {
                 // TODO
@@ -166,7 +165,7 @@ namespace RWS
                 PhotonNetwork.LocalPlayer.SetCustomProperties( new Hashtable { { bestLapPropertyKey, newBestTime } } );
 
 
-                PlayerPrefs.SetFloat( bestLapKey, newBestTime );
+                PlayerPrefs.SetFloat( localBestLapKey, newBestTime );
 
                 var pilotName = PlayerPrefs.GetString( "Nickname", "" );
                 if( !string.IsNullOrEmpty( pilotName ) )

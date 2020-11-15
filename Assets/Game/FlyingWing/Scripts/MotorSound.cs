@@ -66,8 +66,13 @@ public class MotorSound : MonoBehaviour
         if( SoundManager )
         {
             volumeScale = SoundManager.MotorVolume * SoundManager.MasterVolume;
+            UpdateAudioSources();
+            
             SoundManager.OnMotorVolumeChanged += OnManagerVolumeChanged;
         }
+        
+        lowSoundSource.Play();
+        highSoundSource.Play();
     }
 
     void OnDisable()
@@ -76,6 +81,9 @@ public class MotorSound : MonoBehaviour
         {
             SoundManager.OnWindVolumeChanged -= OnManagerVolumeChanged;
         }
+        
+        lowSoundSource.Stop();
+        highSoundSource.Stop();
     }
     
     void Update()

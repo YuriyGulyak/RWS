@@ -75,6 +75,9 @@ public class FlyingWing : MonoBehaviour
     public Motor Motor => motor;
 
     public Transceiver Transceiver => transceiver;
+
+    public Elevon LeftElevon => leftElevon;
+    public Elevon RightElevon => rightElevon; 
     
     public float RollSetpoint
     {

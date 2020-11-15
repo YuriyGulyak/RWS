@@ -6,7 +6,6 @@ public class Leaderboard : Singleton<Leaderboard>
     [SerializeField]
     DreamloLeaderboard dreamloLeaderboard = null;
 
-
     void OnValidate()
     {
         if( !dreamloLeaderboard )
@@ -16,6 +15,8 @@ public class Leaderboard : Singleton<Leaderboard>
     }
 
 
+    const int maxTime = 10 * 60 * 1000;
+
     public struct Record
     {
         public string pilot;
@@ -23,10 +24,11 @@ public class Leaderboard : Singleton<Leaderboard>
         public float seconds;
         public string date;
     }
-    
+
+
     public void AddRecord( string privateCode, string pilot, string craft, float seconds, Action<string> onError )
     {
-        dreamloLeaderboard.AddScore( privateCode, pilot, int.MaxValue - Mathf.RoundToInt( seconds * 1000 ), 0, craft, onError );
+        dreamloLeaderboard.AddScore( privateCode, pilot, maxTime - Mathf.RoundToInt( seconds * 1000 ), 0, craft, onError );
     }
 
     public void DeleteRecord( string privateCode, string pilot, Action onSuccess, Action<string> onError )
@@ -43,7 +45,7 @@ public class Leaderboard : Singleton<Leaderboard>
                 {
                     pilot = score.player,
                     craft = score.text,
-                    seconds = ( int.MaxValue - score.score ) / 1000f,
+                    seconds = ( maxTime - score.score ) / 1000f,
                     date = score.date
                 };
                 onSuccess?.Invoke( record );
@@ -65,7 +67,7 @@ public class Leaderboard : Singleton<Leaderboard>
                     {
                         pilot = score.player,
                         craft = score.text,
-                        seconds = ( int.MaxValue - score.score ) / 1000f,
+                        seconds = ( maxTime - score.score ) / 1000f,
                         date = score.date
                     };
                     records[ i ] = record;

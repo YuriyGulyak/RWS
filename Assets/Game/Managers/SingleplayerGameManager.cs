@@ -41,11 +41,15 @@ namespace RWS
         [SerializeField]
         BloorEffectController bloorEffect = null;
 
+        [SerializeField]
+        GhostReplaySystem ghostReplay;
+        
         //----------------------------------------------------------------------------------------------------
 
-        readonly string bestLapKey = "BestLap";
         readonly string infiniteBatteryKey = "InfiniteBattery";
         readonly string infiniteRangeKey = "InfiniteRange";
+        readonly string localBestLapKey = "LocalBestLap";
+        readonly string showGhostKey = "ShowGhost";
         readonly string dreamloPrivateCode = "ZbIxEmdjiU6we6WbZHRGZQp8S0j4TytEuwOlNrARz_Aw";
 
         Vector3 spawnPosition;
@@ -53,6 +57,7 @@ namespace RWS
         float lastLaunchTime;
         bool fpvMode;
         Leaderboard leaderboard;
+        bool showGhost;
 
 
         void OnEnable()
@@ -76,9 +81,6 @@ namespace RWS
             inputManager.ViewControl.Performed += OnViewButton;
             inputManager.OnEscapeButton += OnEscapeButton;
 
-            raceTrack.OnStart.AddListener( _ => lapTime.StartNewTime() );
-            raceTrack.OnFinish.AddListener( _ => lapTime.CompareTime() );
-
             leaderboard = Leaderboard.Instance;
         }
 
@@ -95,21 +97,50 @@ namespace RWS
 
             osdTelemetry.Hide();
 
-            lapTime.Init( PlayerPrefs.GetFloat( bestLapKey, 0f ) );
+            settingsPanel.Hide();
+            gameMenu.Hide();
+
+            showGhost = PlayerPrefs.GetInt( showGhostKey, 0 ) > 0;
+
+            if( showGhost )
+            {
+                ghostReplay.LoadReplay();
+            }
+
+            raceTrack.OnStart.AddListener( _ =>
+            {
+                lapTime.StartNewTime();
+
+                ghostReplay.StartRecording();
+                
+                if( showGhost && ghostReplay.HasReplay )
+                {
+                    ghostReplay.StartReplaying();
+                }
+                
+            } );
+            raceTrack.OnFinish.AddListener( _ =>
+            {
+                lapTime.CompareTime();
+                
+            } );
+
+            lapTime.Init( PlayerPrefs.GetFloat( localBestLapKey, 0f ) );
             lapTime.OnNewBestTime += newBestTime =>
             {
-                PlayerPrefs.SetFloat( bestLapKey, newBestTime );
+                PlayerPrefs.SetFloat( localBestLapKey, newBestTime );
 
                 var pilotName = PlayerPrefs.GetString( "Nickname", "" );
                 if( !string.IsNullOrEmpty( pilotName ) )
                 {
                     leaderboard.AddRecord( dreamloPrivateCode, pilotName, "Mini Race Wing", newBestTime, null );
                 }
+                
+                //ghostReplay.StopReplaying();
+                ghostReplay.SaveReplay();
+                
             };
             lapTime.Hide();
-
-            settingsPanel.Hide();
-            gameMenu.Hide();
 
             Cursor.visible = false;
         }
@@ -215,10 +246,17 @@ namespace RWS
                     lapTime.Reset();
                     lapTime.Hide();
 
+                    ghostReplay.StopRecording();
+                    if( ghostReplay.IsReplaying )
+                    {
+                        ghostReplay.StopReplaying();
+                    }
+                    
                     pilotLook.LookAtTarget();
 
                     blackScreen.StartFromBlackScreenAnimation( wingLauncher.Reset );
                 } );
+                
             }
         }
 

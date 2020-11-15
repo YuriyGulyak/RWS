@@ -59,7 +59,7 @@ public class PlayerProfilePanel : MonoBehaviour
 
         InputManager.Instance.OnEscapeButton += OnEscapeButton;
 
-        nameInputField.onEndEdit.AddListener( OnNameInputFieldChanged );
+        nameInputField.onEndEdit.AddListener( OnNameInput );
 
         infoText.gameObject.SetActive( true );
         infoText.text = "";
@@ -83,7 +83,7 @@ public class PlayerProfilePanel : MonoBehaviour
     }
 
 
-    void OnNameInputFieldChanged( string newName )
+    void OnNameInput( string newName )
     {
         newName = newName.Trim();
 
