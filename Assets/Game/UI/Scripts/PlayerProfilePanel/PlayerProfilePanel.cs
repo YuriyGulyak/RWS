@@ -22,6 +22,8 @@ public class PlayerProfilePanel : MonoBehaviour
 
     //----------------------------------------------------------------------------------------------------
 
+    public bool IsOpen => gameObject.activeSelf;
+    
     public void Show()
     {
         if( gameObject.activeSelf )

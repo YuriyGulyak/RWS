@@ -7,14 +7,15 @@
     <explicitIncludes>
       <Path>$USER_HOME$/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.test-framework@1.1.1</Path>
       <Path>Library/PackageCache/com.unity.ext.nunit@1.0.0</Path>
-      <Path>Library/PackageCache/com.unity.ide.rider@1.1.4</Path>
+      <Path>Library/PackageCache/com.unity.ide.rider@1.2.1</Path>
+      <Path>Library/PackageCache/com.unity.ide.visualstudio@2.0.2</Path>
       <Path>Library/PackageCache/com.unity.inputsystem@1.0.0</Path>
       <Path>Library/PackageCache/com.unity.mathematics@1.2.1</Path>
       <Path>Library/PackageCache/com.unity.postprocessing@2.3.0</Path>
       <Path>Library/PackageCache/com.unity.progrids@3.0.3-preview.6</Path>
       <Path>Library/PackageCache/com.unity.settings-manager@1.0.2</Path>
       <Path>Library/PackageCache/com.unity.terrain-tools@3.0.1-preview</Path>
-      <Path>Library/PackageCache/com.unity.textmeshpro@2.0.1</Path>
+      <Path>Library/PackageCache/com.unity.textmeshpro@3.0.1</Path>
       <Path>Library/PackageCache/com.unity.vectorgraphics@2.0.0-preview.12</Path>
       <Path>Packages</Path>
       <Path>ProjectSettings</Path>
@@ -26,6 +27,7 @@
       <Path>Library</Path>
       <Path>Logs</Path>
       <Path>Temp</Path>
+      <Path>UserSettings</Path>
       <Path>obj</Path>
     </explicitExcludes>
   </component>
