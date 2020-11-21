@@ -21,6 +21,8 @@ public class LeaderboardPanel : MonoBehaviour
 
     //----------------------------------------------------------------------------------------------------
 
+    public bool IsOpen => gameObject.activeSelf;
+    
     public void Show()
     {
         if( gameObject.activeSelf )

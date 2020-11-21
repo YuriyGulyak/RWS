@@ -7,12 +7,23 @@ public class RaceTrack : MonoBehaviour
 {
     [SerializeField]
     RaceGate[] gates = null;
+    
 
     [Serializable]
     public class GameObjectEvent : UnityEvent<GameObject> { }
     public GameObjectEvent OnStart = new GameObjectEvent();
     public GameObjectEvent OnFinish = new GameObjectEvent();
-    
+
+    public void ResetProgressFor( GameObject craft )
+    {
+        var craftID = craft.GetInstanceID();
+        
+        if( trackProgressDictionary.ContainsKey( craftID ) )
+        {
+            trackProgressDictionary[ craftID ] = new TrackProgress();
+        }
+    }
+
 
     struct TrackProgress
     {
@@ -20,6 +31,8 @@ public class RaceTrack : MonoBehaviour
         public int prevGateIndex;
     }
     Dictionary<int, TrackProgress> trackProgressDictionary;
+    
+    int gateCount;
     
     
     void OnValidate()
@@ -30,11 +43,13 @@ public class RaceTrack : MonoBehaviour
         }
     }
 
-    void Start()
+    void Awake()
     {
         trackProgressDictionary = new Dictionary<int,TrackProgress>();
+
+        gateCount = gates.Length;
         
-        for( var i = 0; i < gates.Length; i++ )
+        for( var i = 0; i < gateCount; i++ )
         {
             var gateIndex = i;
             var gate = gates[ gateIndex ];
@@ -44,32 +59,32 @@ public class RaceTrack : MonoBehaviour
     }
 
 
-    void OnGateSuccess( int gateIndex, GameObject craft )
+    void OnGateSuccess( int gateIndex, GameObject target )
     {
-        var craftID = craft.GetInstanceID();
+        var targetID = target.GetInstanceID();
 
-        if( !trackProgressDictionary.ContainsKey( craftID ) )
+        if( !trackProgressDictionary.ContainsKey( targetID ) )
         {
-            trackProgressDictionary.Add( craftID, new TrackProgress() );
+            trackProgressDictionary.Add( targetID, new TrackProgress() );
         }
-        var trackProgress = trackProgressDictionary[ craftID ];
+        var trackProgress = trackProgressDictionary[ targetID ];
 
         if( gateIndex == trackProgress.nextGateIndex )
         {
-            if( trackProgress.nextGateIndex == 0 && trackProgress.prevGateIndex == gates.Length - 1 )
+            if( trackProgress.nextGateIndex == 0 && trackProgress.prevGateIndex == gateCount - 1 )
             {
-                OnFinish.Invoke( craft );
+                OnFinish.Invoke( target );
             }
 
             trackProgress.prevGateIndex = trackProgress.nextGateIndex;
-            trackProgress.nextGateIndex = ++trackProgress.nextGateIndex % gates.Length;
+            trackProgress.nextGateIndex = ++trackProgress.nextGateIndex % gateCount;
 
-            trackProgressDictionary[ craftID ] = trackProgress;
+            trackProgressDictionary[ targetID ] = trackProgress;
         }
         
         if( gateIndex == 0 )
         {
-            OnStart.Invoke( craft );
+            OnStart.Invoke( target );
         }
     }
 }

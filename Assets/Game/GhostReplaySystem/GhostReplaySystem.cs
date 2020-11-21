@@ -129,7 +129,7 @@ public class GhostReplaySystem : MonoBehaviour
             ghost.gameObject.SetActive( false );
         }
 
-        replayFilePath = Application.dataPath + "/GhostReplay.dat";
+        replayFilePath = Application.persistentDataPath + "/GhostReplay.dat";
     }
 
     void OnDisable()

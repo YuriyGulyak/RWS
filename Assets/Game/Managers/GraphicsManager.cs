@@ -1,7 +1,7 @@
 ﻿// !! Need set execution order before default time fot this script !!
 
 using System;
-using Boo.Lang;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 

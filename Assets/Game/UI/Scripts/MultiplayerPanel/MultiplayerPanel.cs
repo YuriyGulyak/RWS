@@ -45,6 +45,8 @@ public class MultiplayerPanel : MonoBehaviourPunCallbacks
     
     //----------------------------------------------------------------------------------------------------
 
+    public bool IsOpen => gameObject.activeSelf;
+    
     public void Show()
     {
         if( gameObject.activeSelf )

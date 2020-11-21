@@ -79,6 +79,7 @@
           <e p="Managers" t="Include">
             <e p="GraphicsManager.cs" t="Include" />
             <e p="InputManager.cs" t="Include" />
+            <e p="MainMenuManager.cs" t="Include" />
             <e p="MultiplayerGameManager.cs" t="Include" />
             <e p="SingleplayerGameManager.cs" t="Include" />
             <e p="SoundManager.cs" t="Include" />
@@ -111,6 +112,7 @@
             <e p="Scripts" t="Include">
               <e p="BatteryTelemetry.cs" t="Include" />
               <e p="BlackScreen.cs" t="Include" />
+              <e p="CraftPanel.cs" t="Include" />
               <e p="GameMenu.cs" t="Include" />
               <e p="InputTelemetry.cs" t="Include" />
               <e p="LapTime.cs" t="Include" />

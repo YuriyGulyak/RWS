@@ -25,7 +25,7 @@ public class LapTime : MonoBehaviour
     {
         this.bestTime = bestTime;
 
-        if( bestTime <= 0f )
+        if( bestTime < 0f )
         {
             bestTimeText.text = $"N/A";
         }
@@ -36,7 +36,8 @@ public class LapTime : MonoBehaviour
     }
 
     public Action<float> OnNewBestTime;
-
+    public Action OnTimeOut;
+    
     public bool Started => lapStarted;
     
     public void StartNewTime()
@@ -52,7 +53,7 @@ public class LapTime : MonoBehaviour
     
     public void CompareTime()
     {
-        if( bestTime.Equals( 0f ) || lapTime < bestTime )
+        if( bestTime < 0f || lapTime < bestTime )
         {
             bestTime = lapTime;
             bestTimeText.text = TimeSpan.FromSeconds( bestTime ).ToString( timeFormat );
@@ -108,6 +109,8 @@ public class LapTime : MonoBehaviour
             lapTime = 0f;
             lapStarted = false;
             HideUI();
+            
+            OnTimeOut?.Invoke();
         }
     }
 

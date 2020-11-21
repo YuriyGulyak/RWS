@@ -157,13 +157,12 @@ namespace RWS
             losCameraGameObject = pilotAvatar.GetComponentInChildren<Camera>( true ).gameObject;
             losCameraGameObject.SetActive( true );
 
-            lapTime.Init( PlayerPrefs.GetFloat( localBestLapKey, 0f ) );
+            lapTime.Init( PlayerPrefs.GetFloat( localBestLapKey, -1f ) );
             lapTime.OnNewBestTime += newBestTime =>
             {
                 // TODO
                 // Receiving in PlayerOverviewPanel
                 PhotonNetwork.LocalPlayer.SetCustomProperties( new Hashtable { { bestLapPropertyKey, newBestTime } } );
-
 
                 PlayerPrefs.SetFloat( localBestLapKey, newBestTime );
 
@@ -172,6 +171,10 @@ namespace RWS
                 {
                     leaderboard.AddRecord( dreamloPrivateCode, pilotName, "Mini Race Wing", newBestTime, null );
                 }
+            };
+            lapTime.OnTimeOut += () =>
+            {
+                raceTrack.ResetProgressFor( localWingGameObject );
             };
             lapTime.Hide();
 
@@ -343,10 +346,12 @@ namespace RWS
                     localWing.Reset( spawnPosition, spawnRotation );
 
                     osdTelemetry.Reset();
-
+                    
                     lapTime.Reset();
                     lapTime.Hide();
 
+                    raceTrack.ResetProgressFor( localWingGameObject );
+                    
                     pilotLook.LookAtTarget();
 
                     blackScreen.StartFromBlackScreenAnimation( wingLauncher.Reset );

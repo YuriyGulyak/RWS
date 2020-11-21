@@ -1,5 +1,5 @@
 ﻿// How to use dreamlo - http://dreamlo.com/developer
-// Use for watching leaderboard in browser -     
+// Use for watching leaderboard in browser - http://dreamlo.com/lb/privateCode
 
 using System;
 using System.Collections;

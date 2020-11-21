@@ -51,7 +51,7 @@ namespace RWS
         readonly string localBestLapKey = "LocalBestLap";
         readonly string showGhostKey = "ShowGhost";
         readonly string dreamloPrivateCode = "ZbIxEmdjiU6we6WbZHRGZQp8S0j4TytEuwOlNrARz_Aw";
-
+        
         Vector3 spawnPosition;
         Quaternion spawnRotation;
         float lastLaunchTime;
@@ -96,7 +96,6 @@ namespace RWS
             fpvCamera.SetActive( false );
 
             osdTelemetry.Hide();
-
             settingsPanel.Hide();
             gameMenu.Hide();
 
@@ -125,7 +124,7 @@ namespace RWS
                 
             } );
 
-            lapTime.Init( PlayerPrefs.GetFloat( localBestLapKey, 0f ) );
+            lapTime.Init( PlayerPrefs.GetFloat( localBestLapKey, -1f ) );
             lapTime.OnNewBestTime += newBestTime =>
             {
                 PlayerPrefs.SetFloat( localBestLapKey, newBestTime );
@@ -139,6 +138,10 @@ namespace RWS
                 //ghostReplay.StopReplaying();
                 ghostReplay.SaveReplay();
                 
+            };
+            lapTime.OnTimeOut += () =>
+            {
+                raceTrack.ResetProgressFor( flyingWing.gameObject );
             };
             lapTime.Hide();
 
@@ -246,6 +249,8 @@ namespace RWS
                     lapTime.Reset();
                     lapTime.Hide();
 
+                    raceTrack.ResetProgressFor( flyingWing.gameObject );
+                    
                     ghostReplay.StopRecording();
                     if( ghostReplay.IsReplaying )
                     {
