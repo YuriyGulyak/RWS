@@ -59479,46 +59479,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5286113092403905328, guid: daa45d74f61d3924e98f48aabbec5e06,
-        type: 3}
-      propertyPath: fog.excludeSkybox
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5286113092403905328, guid: daa45d74f61d3924e98f48aabbec5e06,
-        type: 3}
-      propertyPath: fog.enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5286113092403905328, guid: daa45d74f61d3924e98f48aabbec5e06,
-        type: 3}
-      propertyPath: finalBlitToCameraTarget
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5286113092403905328, guid: daa45d74f61d3924e98f48aabbec5e06,
-        type: 3}
-      propertyPath: stopNaNPropagation
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5286113092403905328, guid: daa45d74f61d3924e98f48aabbec5e06,
-        type: 3}
-      propertyPath: subpixelMorphologicalAntialiasing.quality
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5286113092403905331, guid: daa45d74f61d3924e98f48aabbec5e06,
-        type: 3}
-      propertyPath: far clip plane
-      value: 5000
-      objectReference: {fileID: 0}
-    - target: {fileID: 5286113092403905331, guid: daa45d74f61d3924e98f48aabbec5e06,
-        type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 3863
-      objectReference: {fileID: 0}
-    - target: {fileID: 5286113092403905335, guid: daa45d74f61d3924e98f48aabbec5e06,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5286113093125880768, guid: daa45d74f61d3924e98f48aabbec5e06,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -59578,11 +59538,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: OrbitCamera
-      objectReference: {fileID: 0}
-    - target: {fileID: 5286113093125880774, guid: daa45d74f61d3924e98f48aabbec5e06,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: daa45d74f61d3924e98f48aabbec5e06, type: 3}

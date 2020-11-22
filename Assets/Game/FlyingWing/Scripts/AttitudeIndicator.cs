@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Unity.Mathematics;
+using UnityEngine;
 
 public class AttitudeIndicator : MonoBehaviour
 {
@@ -64,7 +65,7 @@ public class AttitudeIndicator : MonoBehaviour
         pixelsInDegree = Screen.height / cameraVerticalFOV;
     }
 
-    void LateUpdate()
+    void Update()
     {
         if( !flyingWing )
         {
@@ -75,11 +76,11 @@ public class AttitudeIndicator : MonoBehaviour
         pitch = flyingWing.PitchAngle;
 
         var horizonPosition = horizonTransform.anchoredPosition;
-        horizonPosition.y = pixelsInDegree * -flyingWing.PitchAngle;
+        horizonPosition.y = pixelsInDegree * math.clamp( -pitch, -60f, 60f );
         horizonTransform.anchoredPosition = horizonPosition;
 
         var aircraftSymbolAngles = aircraftSymbolTransform.eulerAngles;
-        aircraftSymbolAngles.z = flyingWing.RollAngle;
+        aircraftSymbolAngles.z = roll;
         aircraftSymbolTransform.eulerAngles = aircraftSymbolAngles;
     }
 }
