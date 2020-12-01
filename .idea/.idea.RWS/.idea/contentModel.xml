@@ -32,12 +32,11 @@
           </e>
           <e p="FlyingWing" t="Include">
             <e p="Scripts" t="Include">
-              <e p="AerodynamicsFormulas.cs" t="Include" />
+              <e p="Aerodynamics.cs" t="Include" />
               <e p="AirfoilConfig.cs" t="Include" />
               <e p="AirfoilSection.cs" t="Include" />
               <e p="Altimeter.cs" t="Include" />
               <e p="Attitude.cs" t="Include" />
-              <e p="AttitudeIndicator.cs" t="Include" />
               <e p="Battery.cs" t="Include" />
               <e p="BuzzerSound.cs" t="Include" />
               <e p="ControlSensitivity.cs" t="Include" />
@@ -110,6 +109,7 @@
           </e>
           <e p="UI" t="Include">
             <e p="Scripts" t="Include">
+              <e p="AttitudeIndicator.cs" t="Include" />
               <e p="BatteryTelemetry.cs" t="Include" />
               <e p="BlackScreen.cs" t="Include" />
               <e p="CraftPanel.cs" t="Include" />

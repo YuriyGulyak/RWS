@@ -11,4 +11,7 @@ public class AirfoilConfig : ScriptableObject
 
     // Center Of Pressure vs Angle of attack
     public AnimationCurve CpVsAlpha;
+
+    // Reflex coefficient vs Angle of attack
+    public AnimationCurve ReflexVsAlpha;
 }

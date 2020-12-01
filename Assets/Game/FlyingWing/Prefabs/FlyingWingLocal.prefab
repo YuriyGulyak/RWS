@@ -50,6 +50,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1807102494, guid: 2971e8838e6f4264e918cfa49b163f83, type: 3}
+      propertyPath: alignSections
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5995597312740995132, guid: 2971e8838e6f4264e918cfa49b163f83,
         type: 3}
       propertyPath: m_Name

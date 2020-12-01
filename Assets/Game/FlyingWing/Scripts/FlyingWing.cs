@@ -184,14 +184,14 @@ public class FlyingWing : MonoBehaviour
         wingSurface = 0f;
         for( var i = 0; i < airfoilSections.Length; i++ )
         {
-            wingSurface += airfoilSections[ i ].surfaceArea;
+            wingSurface += airfoilSections[ i ].SurfaceArea;
         }
 
-        aspectRatio = AerodynamicsFormulas.AR( wingspan, wingSurface );
-        foreach( var airfoilSection in airfoilSections )
-        {
-            airfoilSection.aspectRatio = aspectRatio;
-        }
+        //aspectRatio = Aerodynamics.AR( wingspan, wingSurface );
+        //foreach( var airfoilSection in airfoilSections )
+        //{
+        //    airfoilSection.aspectRatio = aspectRatio;
+        //}
         
         //var CDi = AerodynamicsFormulas.CDi( 1f, aspectRatio, 0.85f );
         //var Di = AerodynamicsFormulas.L( 1.225f, 40f, wingSurface, CDi );
@@ -262,11 +262,11 @@ public class FlyingWing : MonoBehaviour
         
         foreach( var section in airfoilSections )
         {
-            var pointVelocity = wingRigidbody.GetPointVelocity( section.cp );
+            var pointVelocity = wingRigidbody.GetPointVelocity( section.Position );
             pointVelocity = turbulenceRotation * pointVelocity;
 
             section.UpdateState( pointVelocity );
-            wingRigidbody.AddForceAtPosition( section.liftForce + section.dragForce, section.cp, ForceMode.Force );
+            section.ApplyForces( wingRigidbody );
         }
 
         

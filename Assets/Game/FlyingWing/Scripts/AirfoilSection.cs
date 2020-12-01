@@ -22,32 +22,48 @@ public class AirfoilSection : MonoBehaviour
 
     [SerializeField]
     float velocityDebugScale = 0.01f;
+    
+    [SerializeField]
+    Vector3 scale = new Vector3( 1f, 1f, 1f );
+    
+    [SerializeField]
+    Vector3 center = new Vector3( 0f, 0f, 0f );
+    
+    [SerializeField]
+    float sweepAngle = 0f;
+
+    [SerializeField]
+    AirfoilConfig airfoilConfig;
+
+    [SerializeField]
+    float liftScale = 1f;
+    
+    [SerializeField]
+    float dragScale = 1f;
 
     //----------------------------------------------------------------------------------------------------
     
-    public Vector3 scale = new Vector3( 1f, 1f, 1f );
-    public Vector3 center = new Vector3( 0f, 0f, 0f );
-    
-    public float surfaceArea;
-    
-    public float sweepAngle;
+    public Vector3 Position => sectionTransform.position;
 
-    public float aspectRatio;
+    public Vector3 Scale => scale;
     
-    public AirfoilConfig airfoilConfig;
-    
-    public float liftScale = 1f;
-    public float dragScale = 1f;
+    public float SweepAngle => sweepAngle;
 
-    [Range( 0f, 1f )]
-    public float centerOfPressurePosition;
+    public float SurfaceArea => surfaceArea;
 
-    public Vector3 cp; // Center Of Pressure
+    public float LiftScale
+    {
+        get => liftScale;
+        set => liftScale = value;
+    }
     
-    public Vector3 liftForce;
-    public Vector3 dragForce;
+    public float DragScale
+    {
+        get => dragScale;
+        set => dragScale = value;
+    }
     
-    
+
     public void UpdateState( Vector3 pointVelocity )
     {
         velocity = pointVelocity;
@@ -65,20 +81,33 @@ public class AirfoilSection : MonoBehaviour
         sideslipAngle = Vector3.SignedAngle( Vector3.forward, new Vector3( velocityLocal.x, 0f, velocityLocal.z ).normalized, Vector3.up );
         sideslipAngle = MathUtils.WrapAngle90( sideslipAngle );
         sideslipCoef = Mathf.Cos( ( sideslipAngle - sweepAngle ) * Mathf.Deg2Rad );
-        //sideslipCoef = 1f;
-        
+
         centerOfPressurePosition = airfoilConfig.CpVsAlpha.Evaluate( aoa );
         cp = Vector3.Lerp( leadingEdgePoint.position, trailingEdgePoint.position, centerOfPressurePosition );
         
         var speedMs = velocity.magnitude;
+        var liftNorm = Vector3.Cross( velocityNorm, sectionTransform.right );
 
+        // Lift
         liftCoef = airfoilConfig.CyVsAlpha.Evaluate( aoa );
-        lift = AerodynamicsFormulas.L( speedMs, surfaceArea, liftCoef ) * sideslipCoef * liftScale;
-        liftForce = Vector3.Cross( velocityNorm, sectionTransform.right ) * lift;
+        lift = Aerodynamics.L( speedMs, surfaceArea, liftCoef ) * sideslipCoef * liftScale;
+        liftForce = liftNorm * lift;
 
+        // Reflex
+        reflexCp = trailingEdgePoint.position;
+        var reflex = airfoilConfig.ReflexVsAlpha.Evaluate( aoa ) * ( 0.5f * Aerodynamics.p * ( speedMs * speedMs ) * surfaceArea ) * sideslipCoef * liftScale;
+        reflexForce = -liftNorm * reflex;
+
+        // Drag
         dragCoef = airfoilConfig.CxVsAlpha.Evaluate( aoa );
-        drag = AerodynamicsFormulas.D( speedMs, surfaceArea, dragCoef ) * sideslipCoef * dragScale;
+        drag = Aerodynamics.D( speedMs, surfaceArea, dragCoef ) * sideslipCoef * dragScale;
         dragForce = -velocityNorm * drag;
+    }
+
+    public void ApplyForces( Rigidbody rigidbody )
+    {
+        rigidbody.AddForceAtPosition( liftForce + dragForce, cp, ForceMode.Force );
+        rigidbody.AddForceAtPosition( reflexForce, reflexCp, ForceMode.Force );
     }
 
     //----------------------------------------------------------------------------------------------------
@@ -145,8 +174,7 @@ public class AirfoilSection : MonoBehaviour
         
         Gizmos.color = gizmosColorTemp;
     }
-    
-    //---------------------------------------------------------------------------------------------------
+
 
     Vector3 velocity;
     float aoa;
@@ -158,6 +186,14 @@ public class AirfoilSection : MonoBehaviour
     float lift;
     float dragCoef;
     float drag;
+    Vector3 cp; // Center Of Pressure
+    Vector3 liftForce;
+    Vector3 dragForce;
+    Vector3 reflexCp;
+    Vector3 reflexForce;
+    float surfaceArea;
+    float centerOfPressurePosition;
+    
 
     void Init()
     {

@@ -31,21 +31,21 @@ public class WingSetupHelper : MonoBehaviour
         for( var i = 0; i < sections.Length; i++ )
         {
             var section = sections[ i ];
-            var sectionWidth = section.scale.x;
-            var sweepAngle = section.sweepAngle;
-
-            var sectionPosition = section.transform.localPosition;
-
+            var sectionWidth = section.Scale.x;
+            var sweepAngle = section.SweepAngle;
+            
+            var sectionLocalPosition = transform.InverseTransformPoint( section.Position );
+            
             if( alignSections )
             {
-                sectionPosition.x = ( sectionWidth * i + sectionWidth / 2f ) * wingDirection;
-                sectionPosition.z = Mathf.Tan( Mathf.Abs( sweepAngle ) * -1f * Mathf.Deg2Rad ) * ( sectionWidth / 2f + sectionWidth * i );
+                sectionLocalPosition.x = ( sectionWidth * i + sectionWidth / 2f ) * wingDirection;
+                sectionLocalPosition.z = Mathf.Tan( Mathf.Abs( sweepAngle ) * -1f * Mathf.Deg2Rad ) * ( sectionWidth / 2f + sectionWidth * i );
                 
-                section.transform.localPosition = sectionPosition;
+                section.transform.localPosition = sectionLocalPosition;
             }
             
-            section.liftScale = liftScaleVsPosition.Evaluate( Mathf.Abs( sectionPosition.x ) );
-            section.dragScale = dragScaleVsPosition.Evaluate( Mathf.Abs( sectionPosition.x ) );
+            section.LiftScale = liftScaleVsPosition.Evaluate( Mathf.Abs( sectionLocalPosition.x ) );
+            section.DragScale = dragScaleVsPosition.Evaluate( Mathf.Abs( sectionLocalPosition.x ) );
         }
     }
 }

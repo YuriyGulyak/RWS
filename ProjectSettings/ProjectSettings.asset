@@ -621,7 +621,7 @@ PlayerSettings:
   scriptingBackend: {}
   il2cppCompilerConfiguration: {}
   managedStrippingLevel:
-    Standalone: 3
+    Standalone: 2
   incrementalIl2cppBuild: {}
   allowUnsafeCode: 0
   useDeterministicCompilation: 1

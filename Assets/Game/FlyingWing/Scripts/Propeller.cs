@@ -63,11 +63,11 @@ public class Propeller : MonoBehaviour
         angleOfAttack = Mathf.Atan2( forwardSpeed, tangentialSpeed ) * Mathf.Rad2Deg;
 
         liftCoef = cyVsAlpha.Evaluate( angleOfAttack );
-        lift = AerodynamicsFormulas.L( tangentialSpeed, surfaceArea, liftCoef );
+        lift = Aerodynamics.L( tangentialSpeed, surfaceArea, liftCoef );
         liftKg = lift / 9.8f;
 
         dragCoef = cxVsAlpha.Evaluate( angleOfAttack );
-        drag = AerodynamicsFormulas.D( tangentialSpeed, surfaceArea, dragCoef );
+        drag = Aerodynamics.D( tangentialSpeed, surfaceArea, dragCoef );
         dragKg = drag / 9.8f;
         
         torque = ( lift + drag ) * ( radiusInMeteers * 0.5f );

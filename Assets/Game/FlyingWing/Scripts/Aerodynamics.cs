@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public static class AerodynamicsFormulas
+public static class Aerodynamics
 {
     // b - Wing span
     // p - Air density. (kg/m3)
