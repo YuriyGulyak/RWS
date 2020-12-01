@@ -5,11 +5,12 @@
 
 <br/>
 
-#### Key features:
-- Realistic physics<br/>
-- Realistic flight mechanics<br/>
-- High performance<br/>
-- Continuous development
+#### Features:
+- 10x10 Terrain 
+- Racing wing with realistic physics
+- Racing track with lap timer
+- Multiplayer
+- Global leaderboard
 
 <br/>
 
