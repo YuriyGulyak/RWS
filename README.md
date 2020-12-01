@@ -9,6 +9,7 @@
 - 10x10km terrain 
 - Race wing with realistic physics
 - Race track with lap timer
+- Singleplayer with ghost
 - Multiplayer
 - Global leaderboard
 - Support all controllers (HID)
