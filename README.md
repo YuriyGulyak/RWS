@@ -6,7 +6,7 @@
 <br/>
 
 #### Features:
-- 10x10 terrain 
+- 10x10km terrain 
 - Race wing with realistic physics
 - Race track with lap timer
 - Multiplayer
