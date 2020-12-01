@@ -11,6 +11,7 @@
 - Race track with lap timer
 - Multiplayer
 - Global leaderboard
+- Support all controllers (HID)
 
 <br/>
 
