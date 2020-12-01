@@ -6,9 +6,9 @@
 <br/>
 
 #### Features:
-- 10x10 Terrain 
-- Racing wing with realistic physics
-- Racing track with lap timer
+- 10x10 terrain 
+- Race wing with realistic physics
+- Race track with lap timer
 - Multiplayer
 - Global leaderboard
 
@@ -23,4 +23,4 @@ https://drive.google.com/drive/folders/1WZ7At-vYQ0r-TgMWKdWQR0NhTYU28hzB?usp=sha
 <br/>
 
 #### Requirements:
-Unity 2019+
+Unity 2020
