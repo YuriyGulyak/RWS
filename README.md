@@ -12,6 +12,7 @@
 - Singleplayer with ghost
 - Multiplayer
 - Online leaderboard
+- Available FPV and LOS flying
 - Support all controllers (HID)
 
 <br/>
