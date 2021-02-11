@@ -12,7 +12,9 @@
             <e p="TestLeaderboard.cs" t="Include" />
           </e>
         </e>
-        <e p="Dreamlo.txt" t="Include" />
+        <e p="DirToIgnore" t="Include">
+          <e p="Dreamlo.txt" t="Include" />
+        </e>
         <e p="Game" t="Include">
           <e p="Environment" t="Include">
             <e p="Grass" t="Include">

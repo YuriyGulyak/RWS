@@ -19,6 +19,9 @@
 # Tests
 [Aa]ssets/@Tests*
 
+# Ignore folder
+[Aa]ssets/@GitIgnore*
+
 # Not free content
 [Aa]ssets/Skybox Creator*
 
