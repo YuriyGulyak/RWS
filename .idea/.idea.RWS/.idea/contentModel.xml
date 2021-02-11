@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\noname\.Rider2019.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\noname\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_RWS.-447840903.00" t="ExcludeRecursive" />
+    <e p="C:\Users\YG\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\YG\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_RWS.-447840903.00" t="ExcludeRecursive" />
     <e p="D:\Repos\RWS" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
@@ -12,6 +12,7 @@
             <e p="TestLeaderboard.cs" t="Include" />
           </e>
         </e>
+        <e p="Dreamlo.txt" t="Include" />
         <e p="Game" t="Include">
           <e p="Environment" t="Include">
             <e p="Grass" t="Include">
@@ -112,6 +113,7 @@
               <e p="AttitudeIndicator.cs" t="Include" />
               <e p="BatteryTelemetry.cs" t="Include" />
               <e p="BlackScreen.cs" t="Include" />
+              <e p="ButtonWithCanvasGroup.cs" t="Include" />
               <e p="CraftPanel.cs" t="Include" />
               <e p="GameMenu.cs" t="Include" />
               <e p="InputTelemetry.cs" t="Include" />
@@ -157,7 +159,10 @@
                 <e p="SettingsPanel.cs" t="Include" />
                 <e p="SoundPanel.cs" t="Include" />
               </e>
-              <e p="SingleplayerPanel.cs" t="Include" />
+              <e p="SingleplayerPanel" t="Include">
+                <e p="SingleplayerPanel.cs" t="Include" />
+                <e p="TrackPanel.cs" t="Include" />
+              </e>
               <e p="StickDisplay.cs" t="Include" />
               <e p="UIHelper.cs" t="Include" />
               <e p="UIHelperEditor.cs" t="Include" />

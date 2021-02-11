@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace RWS
+namespace Game
 {
     public class MainMenuManager : MonoBehaviour
     {
@@ -37,6 +37,11 @@ namespace RWS
             mainMenu.OnExitButton.AddListener( OnExitButton );
 
             HideAllPanels();
+            
+            if( string.IsNullOrEmpty( PlayerPrefs.GetString( "Nickname" ) ) )
+            {
+                profilePanel.Show();
+            }
         }
         
         

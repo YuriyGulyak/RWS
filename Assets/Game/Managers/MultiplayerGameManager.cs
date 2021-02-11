@@ -62,6 +62,12 @@ namespace RWS
         [SerializeField]
         int photonSerializationRate = 60; // Default 10
 
+        [SerializeField]
+        string localBestLapKey;
+        
+        [SerializeField]
+        string dreamloPrivateCode;
+        
         //----------------------------------------------------------------------------------------------------
 
         public void OnEvent( EventData photonEvent )
@@ -94,8 +100,6 @@ namespace RWS
 
         readonly string bestLapPropertyKey = "BestLapProperty";
         readonly string playerTag = "Player";
-        readonly string localBestLapKey = "LocalBestLap";
-        readonly string dreamloPrivateCode = "ZbIxEmdjiU6we6WbZHRGZQp8S0j4TytEuwOlNrARz_Aw";
 
         enum RaiseEventCodes : byte
         {
@@ -226,13 +230,12 @@ namespace RWS
                 batteryTelemetry.Init( localWing.Battery );
                 motorTelemetry.Init( localWing.Motor );
 
-                var roomCustomProperties = PhotonNetwork.CurrentRoom.CustomProperties;
-                if( roomCustomProperties.TryGetValue( "InfiniteBattery", out var infiniteCapacityObj ) )
+                var roomProperties = PhotonNetwork.CurrentRoom.CustomProperties;
+                if( roomProperties.TryGetValue( "InfiniteBattery", out var infiniteCapacityObj ) )
                 {
                     localWing.Battery.InfiniteCapacity = (bool) infiniteCapacityObj;
                 }
-
-                if( roomCustomProperties.TryGetValue( "InfiniteRange", out var infiniteRangeObj ) )
+                if( roomProperties.TryGetValue( "InfiniteRange", out var infiniteRangeObj ) )
                 {
                     localWing.Transceiver.InfiniteRange = (bool) infiniteRangeObj;
                 }

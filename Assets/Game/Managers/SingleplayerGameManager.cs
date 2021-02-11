@@ -44,14 +44,18 @@ namespace RWS
         [SerializeField]
         GhostReplaySystem ghostReplay;
         
+        [SerializeField]
+        string localBestLapKey;
+        
+        [SerializeField]
+        string dreamloPrivateCode;
+        
         //----------------------------------------------------------------------------------------------------
 
         readonly string infiniteBatteryKey = "InfiniteBattery";
         readonly string infiniteRangeKey = "InfiniteRange";
-        readonly string localBestLapKey = "LocalBestLap";
         readonly string showGhostKey = "ShowGhost";
-        readonly string dreamloPrivateCode = "ZbIxEmdjiU6we6WbZHRGZQp8S0j4TytEuwOlNrARz_Aw";
-        
+
         Vector3 spawnPosition;
         Quaternion spawnRotation;
         float lastLaunchTime;

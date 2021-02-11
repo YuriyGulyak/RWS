@@ -10,7 +10,7 @@ using UnityEngine.UI;
 public class CreateRoomPanel : MonoBehaviour
 {
     [SerializeField]
-    TMP_InputField roomNameInputField = null;
+    TMP_InputField roomNameInputField;
 
     //[SerializeField]
     //Toggle roomIsOpenToggle = null;
@@ -19,19 +19,22 @@ public class CreateRoomPanel : MonoBehaviour
     //TMP_InputField passwordInputField = null;
     
     [SerializeField]
-    TMP_InputField maxPlayersInputField = null;
+    TMP_InputField maxPlayersInputField;
     
     [SerializeField]
-    Toggle infiniteBatteryToggle = null; 
+    TMP_Dropdown trackDropdown;
+
+    [SerializeField]
+    Toggle infiniteBatteryToggle; 
     
     [SerializeField]
-    Toggle infiniteRangeToggle = null;
+    Toggle infiniteRangeToggle;
     
     [SerializeField]
-    Button createRoomButton = null;
+    Button createRoomButton;
     
     [SerializeField]
-    Button cancelButton = null;
+    Button cancelButton;
 
     [SerializeField]
     int minPlayers = 2;
@@ -45,7 +48,9 @@ public class CreateRoomPanel : MonoBehaviour
     {
         this.onCancelCallback = onCancelCallback;
         gameObject.SetActive( true );
-        
+
+        roomNameInputField.text = $"Room_{UnityEngine.Random.Range( 0, 10000 ):0000}";
+
         InputManager.Instance.OnEscapeButton += OnEscapeButton;
     }
 
@@ -64,6 +69,8 @@ public class CreateRoomPanel : MonoBehaviour
     
     void Awake()
     {
+        roomNameInputField.text = "";
+        
         maxPlayersInputField.onEndEdit.AddListener( inputFieldValue =>
         {
             var inputValue = int.Parse( maxPlayersInputField.text );
@@ -71,21 +78,24 @@ public class CreateRoomPanel : MonoBehaviour
             maxPlayersInputField.text = inputValue.ToString();
         } );
 
+        trackDropdown.onValueChanged.AddListener( trackIndex =>
+        {
+            
+        } );
+        
         createRoomButton.onClick.AddListener( OnCreateRoomButton );
         cancelButton.onClick.AddListener( OnCancelButton );
-    }
-
-    void OnEnable()
-    {
-        roomNameInputField.text = $"Room_{UnityEngine.Random.Range( 0, 10000 ):0000}";
     }
 
 
     void OnCreateRoomButton()
     {
         var roomName = roomNameInputField.text;
+        var trackIndex = trackDropdown.value;
         var maxPlayersInputValue = (byte)Mathf.Clamp( int.Parse( maxPlayersInputField.text ), minPlayers, maxPlayers );
 
+        var trackName = $"Racing Track {trackIndex + 1}";
+        
         var roomOptions = new RoomOptions
         {
             IsVisible = true, 
@@ -94,6 +104,8 @@ public class CreateRoomPanel : MonoBehaviour
             
             CustomRoomProperties = new Hashtable
             {
+                { "TrackIndex", trackIndex },
+                { "TrackName", trackName },
                 { "InfiniteBattery", infiniteBatteryToggle.isOn }, 
                 { "InfiniteRange", infiniteRangeToggle.isOn }
             }

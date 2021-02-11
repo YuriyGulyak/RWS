@@ -53,7 +53,8 @@ public class PlayerProfilePanel : MonoBehaviour
     //----------------------------------------------------------------------------------------------------
 
     string pilotName;
-
+    string pilotNameKey = "Nickname";
+    
 
     void Awake()
     {
@@ -69,13 +70,14 @@ public class PlayerProfilePanel : MonoBehaviour
         applyButton.onClick.AddListener( OnApplyButton );
         applyButton.gameObject.SetActive( false );
 
-        if( PlayerPrefs.HasKey( "Nickname" ) )
+        if( PlayerPrefs.HasKey( pilotNameKey ) )
         {
-            pilotName = PlayerPrefs.GetString( "Nickname" );
+            pilotName = PlayerPrefs.GetString( pilotNameKey );
         }
         else
         {
-            pilotName = $"Pilot{UnityEngine.Random.Range( 0, 10000 ):0000}";
+            pilotName = $"Pilot{Random.Range( 0, 10000 ):0000}";
+            PlayerPrefs.SetString( pilotNameKey, pilotName );
         }
     }
 
@@ -113,7 +115,7 @@ public class PlayerProfilePanel : MonoBehaviour
         pilotName = nameInputField.text.Trim();
         nameInputField.text = pilotName;
 
-        PlayerPrefs.SetString( "Nickname", pilotName );
+        PlayerPrefs.SetString( pilotNameKey, pilotName );
 
         applyButton.gameObject.SetActive( false );
     }

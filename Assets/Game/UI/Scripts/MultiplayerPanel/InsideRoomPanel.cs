@@ -13,6 +13,9 @@ public class InsideRoomPanel : MonoBehaviourPunCallbacks
     TextMeshProUGUI roomNameText = null;
     
     [SerializeField]
+    TextMeshProUGUI roomSettingsText = null;
+    
+    [SerializeField]
     TextMeshProUGUI playerCountText = null;
     
     [SerializeField]
@@ -34,15 +37,15 @@ public class InsideRoomPanel : MonoBehaviourPunCallbacks
         this.onLeaveRoomCallback = onLeaveRoomCallback;
         
         gameObject.SetActive( true );
-        roomNameText.text = PhotonNetwork.CurrentRoom.Name;
 
+        UpdateRoomInfoText();
+        UpdatePlayerCountText();
+        
         foreach( var entry in PhotonNetwork.CurrentRoom.Players )
         {
             AddPlayerListEntry( entry.Value );
         }
-
-        UpdatePlayerCountText();
-
+        
         startGameButton.gameObject.SetActive( PhotonNetwork.IsMasterClient );
         
         InputManager.Instance.OnEscapeButton += OnEscapeButton;
@@ -105,9 +108,12 @@ public class InsideRoomPanel : MonoBehaviourPunCallbacks
         //PhotonNetwork.CurrentRoom.IsOpen = false;
         //PhotonNetwork.CurrentRoom.IsVisible = false;
 
+        var trackIndex = (int)PhotonNetwork.CurrentRoom.CustomProperties[ "TrackIndex" ];
+        var sceneIndex = 3 + trackIndex;
+
         BlackScreen.Instance.StartToBlackScreenAnimation( () =>
         {
-            PhotonNetwork.LoadLevel( 2 );
+            PhotonNetwork.LoadLevel( sceneIndex );
         } );
     }
 
@@ -115,8 +121,28 @@ public class InsideRoomPanel : MonoBehaviourPunCallbacks
     {
         OnLeaveRoomButton();
     }
-    
-    
+
+
+    void UpdateRoomInfoText()
+    {
+        roomNameText.text = PhotonNetwork.CurrentRoom.Name;
+
+        var roomProperties = PhotonNetwork.CurrentRoom.CustomProperties;
+        var trackName = (string)roomProperties[ "TrackName" ];
+        var infiniteBattery = (bool)roomProperties[ "InfiniteBattery" ];
+        var infiniteRange = (bool)roomProperties[ "InfiniteRange" ];
+
+        roomSettingsText.text = trackName;
+        if( infiniteBattery )
+        {
+            roomSettingsText.text += "     |     Infinite Battery";
+        }
+        if( infiniteRange )
+        {
+            roomSettingsText.text += "     |     Infinite Range";
+        }
+    }
+
     void UpdatePlayerCountText()
     {
         playerCountText.text = $"Players: {PhotonNetwork.CurrentRoom.PlayerCount}/{PhotonNetwork.CurrentRoom.MaxPlayers}";

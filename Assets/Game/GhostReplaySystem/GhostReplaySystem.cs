@@ -12,6 +12,9 @@ public class GhostReplaySystem : MonoBehaviour
     [SerializeField]
     FlyingWingGhost ghost;
 
+    [SerializeField]
+    string replayFileName;
+    
     //----------------------------------------------------------------------------------------------------
     
     public bool IsRecording => isRecording;
@@ -129,7 +132,7 @@ public class GhostReplaySystem : MonoBehaviour
             ghost.gameObject.SetActive( false );
         }
 
-        replayFilePath = Application.persistentDataPath + "/GhostReplay.dat";
+        replayFilePath = Application.persistentDataPath + "/" + replayFileName; // "/GhostReplay.dat";
     }
 
     void OnDisable()
