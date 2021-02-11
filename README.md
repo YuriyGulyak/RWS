@@ -8,7 +8,7 @@
 #### Features:
 - 10x10km terrain 
 - Race wing with realistic physics
-- Race track with lap timer
+- 2 race tracks
 - Singleplayer with ghost
 - Multiplayer
 - Online leaderboard
