@@ -13,8 +13,11 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/PingDisplay.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/BlackScreen.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Game/GameLogic/SingleplayerGameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Utils/CurveEditor/Path.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Utils/CurveEditor/PathPlacer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Game/GameLogic/MainMenuManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Game/GameLogic/MultiplayerGameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/RoomChat/RoomChatMessage.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/RoomChat/RoomChat.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/ControlListEntry.cs" root0="FORCE_HIGHLIGHTING" />
@@ -77,6 +80,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/ServoSound.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Skybox Creator/Scripts/SkyboxCreatorProfile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0/InputSystem/Devices/InputDeviceDescription.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Utils/DreamloLeaderboard/TestDreamloLeaderboard.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Skybox Creator/Scripts/SkyboxCreatorImageSky.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Skybox Creator/Scripts/SkyboxCreatorRenderer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonChat/Demos/DemoChat/ChatGui.cs" root0="FORCE_HIGHLIGHTING" />
@@ -92,16 +96,14 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0/InputSystem/Actions/InputAction.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/Managers/GraphicsManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/Attitude.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Game/Managers/SingleplayerGameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/Managers/SoundManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Game/Managers/MainMenuManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/OSDTelemetry.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Game/Managers/MultiplayerGameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/LeaderboardPanel/LeaderboardEntry.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/MenuPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/LeaderboardPanel/LeaderboardPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/CraftPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/RoomListPanel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Game/BestLapKeyStorage/BestLapKeyStorage.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/RoomListEntry.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/Altimeter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/UI/Scripts/GameMenu.cs" root0="FORCE_HIGHLIGHTING" />
@@ -144,13 +146,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Utils/Dreamlo/DreamloLeaderboard.cs" />
-        <option value="$PROJECT_DIR$/Assets/Utils/Dreamlo/Leaderboard.cs" />
-        <option value="$PROJECT_DIR$/Assets/Utils/Dreamlo/TestDreamloLeaderboard.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/Leaderboard/TestLeaderboard.cs" />
-        <option value="$PROJECT_DIR$/Assets/Utils/DreamloLeaderboard/TestDreamloLeaderboard.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/PlayerProfilePanel/PlayerNamePanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/LoginPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/@Tests/Sharpen.shader" />
         <option value="$PROJECT_DIR$/Assets/@Tests/TestSharpenEffect/TestSharpenEffect.cs" />
         <option value="$PROJECT_DIR$/Assets/@Tests/TestGhostReplay/TestGhostReplay.cs" />
@@ -182,19 +177,26 @@
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/Motor.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/AirfoilSection.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SingleplayerPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SingleplayerPanel/TrackPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Dreamlo.txt" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/ButtonExtended.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/PlayerProfilePanel/PlayerProfilePanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/ButtonWithCanvasGroup.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/Managers/MainMenuManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/LeaderboardPanel/LeaderboardPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SingleplayerPanel/SingleplayerPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/CreateRoomPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/GhostReplaySystem/GhostReplaySystem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/Managers/MultiplayerGameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/Managers/SingleplayerGameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/InsideRoomPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Utils/DreamloLeaderboard/DreamloCodeStorage.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/Leaderboard/LeaderboardKeyStorage.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/Managers/MultiplayerGameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Utils/Singleton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/BestLapKeyStorage/BestLapKeyManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/BestLapKeyStorage/BestLapKeyStorage.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/LeaderboardPanel/LeaderboardPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/GameLogic/SingleplayerGameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SingleplayerPanel/TrackPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/GameLogic/MultiplayerGameManager.cs" />
       </list>
     </option>
   </component>
@@ -252,25 +254,17 @@
     </ignored-roots>
   </component>
   <component name="WindowStateProjectService">
-    <state x="845" y="270" key="RiderGenerateDialog" timestamp="1603195179905">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="845" y="270" key="RiderGenerateDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1603195179905" />
     <state x="562" y="202" key="SettingsEditor" timestamp="1610814199780">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="562" y="202" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1610814199780" />
-    <state x="552" y="125" width="815" height="789" key="find.popup" timestamp="1604236935830">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="552" y="125" width="815" height="789" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1604236935830" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1611059328437">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1611059328437" />
-    <state x="616" y="199" width="672" height="607" key="search.everywhere.popup" timestamp="1610982268066">
+    <state x="616" y="199" width="672" height="607" key="search.everywhere.popup" timestamp="1617040144850">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="199" width="672" height="607" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1610982268066" />
+    <state x="616" y="199" width="672" height="607" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1617040144850" />
   </component>
 </project>

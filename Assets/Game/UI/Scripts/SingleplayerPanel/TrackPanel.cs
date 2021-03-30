@@ -9,26 +9,29 @@ public class TrackPanel : MonoBehaviour
 
     [SerializeField]
     TextMeshProUGUI globalBestLapText;
-    
-    [SerializeField]
-    string localBestLapKey;
-    
-    [SerializeField]
-    string dreamloPublicCode;
 
+    [SerializeField]
+    BestLapKeyStorage bestLapKeyStorage;
+    
+    [SerializeField]
+    int trackIndex;
+    
     //----------------------------------------------------------------------------------------------------
     
     readonly string timeFormat = @"mm\:ss\.ff";
     Leaderboard leaderboard;
 
-    
+
     void Awake()
     {
-        leaderboard = Leaderboard.Instance;   
+        leaderboard = Leaderboard.Instance;
     }
 
     void OnEnable()
     {
+        var bestLapKeyItem = bestLapKeyStorage.items[ trackIndex ];
+
+        var localBestLapKey = bestLapKeyItem.playerPrefsKey;
         if( PlayerPrefs.HasKey( localBestLapKey ) )
         {
             var bestLapSeconds = PlayerPrefs.GetFloat( localBestLapKey );
@@ -39,6 +42,7 @@ public class TrackPanel : MonoBehaviour
             localBestLapText.text = "N/A";
         }
 
+        var dreamloPublicCode = bestLapKeyItem.dreamloPublicCode;      
         leaderboard.GetRecords( dreamloPublicCode, 0, 1, records =>
         {
             if( records.Length == 0 )

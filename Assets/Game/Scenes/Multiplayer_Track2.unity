@@ -18671,7 +18671,7 @@ GameObject:
   - component: {fileID: 583049561}
   - component: {fileID: 583049560}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: MultiplayerGameLogic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18706,8 +18706,8 @@ MonoBehaviour:
   bloorEffect: {fileID: 1288091308}
   photonSendRate: 120
   photonSerializationRate: 120
-  localBestLapKey: LocalBestLap2
-  dreamloPrivateCode: AaDeKj1tuUGNB19y-LXm1A4Fs1zH8FHkirGEKYiTKT4w
+  bestLapKeyStorage: {fileID: 11400000, guid: 105a6becd5838864d862a9426d671b04, type: 2}
+  trackIndex: 1
 --- !u!4 &583049561
 Transform:
   m_ObjectHideFlags: 0

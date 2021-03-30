@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22b9ce26cbfbe384ea1a63d4918a556a, type: 3}
+  m_Name: BestLapKeyStorage
+  m_EditorClassIdentifier: 
+  items:
+  - playerPrefsKey: LocalBestLap1
+    dreamloPublicCode: 6002e9e68f4160102020ea24
+    dreamloPrivateCode: zhDA30xU4U-G3p572KfrtwyGeSPTpGeUuWHJAZwF427w
+  - playerPrefsKey: LocalBestLap2
+    dreamloPublicCode: 6024028d8f40bb58044a066b
+    dreamloPrivateCode: AaDeKj1tuUGNB19y-LXm1A4Fs1zH8FHkirGEKYiTKT4w

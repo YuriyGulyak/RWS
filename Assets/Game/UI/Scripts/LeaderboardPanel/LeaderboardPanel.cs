@@ -25,7 +25,7 @@ namespace Game
         TextMeshProUGUI messageTextMesh;
 
         [SerializeField]
-        string[] dreamloPublicCodes;
+        BestLapKeyStorage bestLapKeyStorage;
         
         //----------------------------------------------------------------------------------------------------
 
@@ -83,7 +83,10 @@ namespace Game
 
         void UpdateLeaderboard()
         {
-            leaderboard.GetRecords( dreamloPublicCodes[ trackDropdown.value ], 0, 100, OnDownloadSuccess, OnDownloadError );
+            var bestLapKeyItem = bestLapKeyStorage.items[ trackDropdown.value ];
+            var dreamloPublicCode = bestLapKeyItem.dreamloPublicCode;
+            
+            leaderboard.GetRecords( dreamloPublicCode, 0, 100, OnDownloadSuccess, OnDownloadError );
 
             messageTextMesh.gameObject.SetActive( true );
             messageTextMesh.text = "Loading . . .";

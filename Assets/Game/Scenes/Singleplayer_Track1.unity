@@ -17183,7 +17183,7 @@ GameObject:
   - component: {fileID: 583049561}
   - component: {fileID: 583049560}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: SingleplayerGameLogic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17214,8 +17214,8 @@ MonoBehaviour:
   settingsPanel: {fileID: 1435119844}
   bloorEffect: {fileID: 1288091308}
   ghostReplay: {fileID: 382917630}
-  localBestLapKey: LocalBestLap1
-  dreamloPrivateCode: zhDA30xU4U-G3p572KfrtwyGeSPTpGeUuWHJAZwF427w
+  bestLapKeyStorage: {fileID: 11400000, guid: 105a6becd5838864d862a9426d671b04, type: 2}
+  trackIndex: 0
 --- !u!4 &583049561
 Transform:
   m_ObjectHideFlags: 0

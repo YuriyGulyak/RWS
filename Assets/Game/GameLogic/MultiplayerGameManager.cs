@@ -63,10 +63,10 @@ namespace RWS
         int photonSerializationRate = 60; // Default 10
 
         [SerializeField]
-        string localBestLapKey;
-        
+        BestLapKeyStorage bestLapKeyStorage;
+
         [SerializeField]
-        string dreamloPrivateCode;
+        int trackIndex;
         
         //----------------------------------------------------------------------------------------------------
 
@@ -160,14 +160,18 @@ namespace RWS
 
             losCameraGameObject = pilotAvatar.GetComponentInChildren<Camera>( true ).gameObject;
             losCameraGameObject.SetActive( true );
-
+            
+            var bestLapKeyItem = bestLapKeyStorage.items[ trackIndex ];
+            var localBestLapKey = bestLapKeyItem.playerPrefsKey; 
+            var dreamloPrivateCode = bestLapKeyItem.dreamloPrivateCode; 
+            
             lapTime.Init( PlayerPrefs.GetFloat( localBestLapKey, -1f ) );
             lapTime.OnNewBestTime += newBestTime =>
             {
-                // TODO
+                // TODO Need refactoring
                 // Receiving in PlayerOverviewPanel
                 PhotonNetwork.LocalPlayer.SetCustomProperties( new Hashtable { { bestLapPropertyKey, newBestTime } } );
-
+                
                 PlayerPrefs.SetFloat( localBestLapKey, newBestTime );
 
                 var pilotName = PlayerPrefs.GetString( "Nickname", "" );

@@ -43,12 +43,12 @@ namespace RWS
 
         [SerializeField]
         GhostReplaySystem ghostReplay;
-        
+
         [SerializeField]
-        string localBestLapKey;
-        
+        BestLapKeyStorage bestLapKeyStorage;
+
         [SerializeField]
-        string dreamloPrivateCode;
+        int trackIndex;
         
         //----------------------------------------------------------------------------------------------------
 
@@ -128,6 +128,10 @@ namespace RWS
                 
             } );
 
+            var bestLapKeyItem = bestLapKeyStorage.items[ trackIndex ];
+            var localBestLapKey = bestLapKeyItem.playerPrefsKey; 
+            var dreamloPrivateCode = bestLapKeyItem.dreamloPrivateCode; 
+            
             lapTime.Init( PlayerPrefs.GetFloat( localBestLapKey, -1f ) );
             lapTime.OnNewBestTime += newBestTime =>
             {

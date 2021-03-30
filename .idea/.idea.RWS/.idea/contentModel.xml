@@ -7,15 +7,18 @@
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="@GitIgnore" t="Include">
+          <e p="Dreamlo.txt" t="Include" />
+        </e>
         <e p="@Tests" t="Include">
           <e p="TestLeaderboard" t="Include">
             <e p="TestLeaderboard.cs" t="Include" />
           </e>
         </e>
-        <e p="DirToIgnore" t="Include">
-          <e p="Dreamlo.txt" t="Include" />
-        </e>
         <e p="Game" t="Include">
+          <e p="BestLapKeyStorage" t="Include">
+            <e p="BestLapKeyStorage.cs" t="Include" />
+          </e>
           <e p="Environment" t="Include">
             <e p="Grass" t="Include">
               <e p="Scripts" t="Include">
@@ -63,6 +66,11 @@
               <e p="WingSpawner.cs" t="Include" />
             </e>
           </e>
+          <e p="GameLogic" t="Include">
+            <e p="MainMenuManager.cs" t="Include" />
+            <e p="MultiplayerGameManager.cs" t="Include" />
+            <e p="SingleplayerGameManager.cs" t="Include" />
+          </e>
           <e p="GhostReplaySystem" t="Include">
             <e p="FlyingWingGhost.cs" t="Include" />
             <e p="GhostReplaySystem.cs" t="Include" />
@@ -81,9 +89,6 @@
           <e p="Managers" t="Include">
             <e p="GraphicsManager.cs" t="Include" />
             <e p="InputManager.cs" t="Include" />
-            <e p="MainMenuManager.cs" t="Include" />
-            <e p="MultiplayerGameManager.cs" t="Include" />
-            <e p="SingleplayerGameManager.cs" t="Include" />
             <e p="SoundManager.cs" t="Include" />
           </e>
           <e p="OrbitCamera" t="Include">
