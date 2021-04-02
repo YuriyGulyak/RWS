@@ -3,72 +3,73 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ControlListEntry : MonoBehaviour
+namespace RWS
 {
-    [SerializeField]
-    TextMeshProUGUI bindingName = null;
-
-    [SerializeField]
-    Toggle listenToggle = null;
-    
-    [SerializeField]
-    Toggle invertToggle = null;
-
-    //----------------------------------------------------------------------------------------------------
-
-    public Action OnStartListening;
-    public Action OnStopListening;
-    public Action<bool> OnInvertChanged;
-
-    public bool IsListening { get; private set; }
-
-    public void StopListening()
+    public class ControlListEntry : MonoBehaviour
     {
-        listenToggle.isOn = false;
-    }
+        [SerializeField]
+        TextMeshProUGUI bindingName = null;
 
-    public string BindingName
-    {
-        get => bindingName.text;
-        set => bindingName.text = value;
-    }
+        [SerializeField]
+        Toggle listenToggle = null;
 
-    public bool Invert
-    {
-        get => invertToggle && invertToggle.isOn;
-        set
+        [SerializeField]
+        Toggle invertToggle = null;
+
+        //----------------------------------------------------------------------------------------------------
+
+        public Action OnStartListening;
+        public Action OnStopListening;
+        public Action<bool> OnInvertChanged;
+
+        public bool IsListening { get; private set; }
+
+        public void StopListening()
         {
-            if( invertToggle )
+            listenToggle.isOn = false;
+        }
+
+        public string BindingName
+        {
+            get => bindingName.text;
+            set => bindingName.text = value;
+        }
+
+        public bool Invert
+        {
+            get => invertToggle && invertToggle.isOn;
+            set
             {
-                invertToggle.isOn = value;
+                if( invertToggle )
+                {
+                    invertToggle.isOn = value;
+                }
             }
         }
-    }
 
-    //----------------------------------------------------------------------------------------------------
-    
-    void Awake()
-    {
-        listenToggle.onValueChanged.AddListener( value =>
-        {
-            if( value )
-            {
-                OnStartListening?.Invoke();
-            }
-            else
-            {
-                OnStopListening?.Invoke();
-            }
-            IsListening = value;
-            
-        } );
+        //----------------------------------------------------------------------------------------------------
 
-        if( invertToggle != null )
+        void Awake()
         {
-            invertToggle.onValueChanged.AddListener( value =>
+            listenToggle.onValueChanged.AddListener( value =>
             {
-                OnInvertChanged?.Invoke( value );
+                if( value )
+                {
+                    OnStartListening?.Invoke();
+                }
+                else
+                {
+                    OnStopListening?.Invoke();
+                }
+
+                IsListening = value;
+
             } );
+
+            if( invertToggle != null )
+            {
+                invertToggle.onValueChanged.AddListener( value => { OnInvertChanged?.Invoke( value ); } );
+            }
         }
     }
 }

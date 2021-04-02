@@ -1,81 +1,83 @@
-﻿using RWS;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class BuzzerSound : MonoBehaviour
+namespace RWS
 {
-    [SerializeField]
-    FlyingWing flyingWing = null;
-
-    [SerializeField]
-    AudioSource audioSource = null;
-
-    [SerializeField]
-    float volumeScale = 1f;
-
-    [SerializeField]
-    float updateRate = 10f;
-
-    //--------------------------------------------------------------------------------------------------------------
-
-    void OnValidate()
+    public class BuzzerSound : MonoBehaviour
     {
-        audioSource.volume = volumeScale;
-    }
+        [SerializeField]
+        FlyingWing flyingWing = null;
 
-    void OnEnable()
-    {
-        if( SoundManager )
+        [SerializeField]
+        AudioSource audioSource = null;
+
+        [SerializeField]
+        float volumeScale = 1f;
+
+        [SerializeField]
+        float updateRate = 10f;
+
+        //--------------------------------------------------------------------------------------------------------------
+
+        void OnValidate()
         {
-            volumeScale = SoundManager.BuzzerVolume * SoundManager.MasterVolume;
-            SoundManager.OnBuzzerVolumeChanged += OnManagerVolumeChanged;
+            audioSource.volume = volumeScale;
         }
-    }
 
-    void OnDisable()
-    {
-        if( SoundManager )
+        void OnEnable()
         {
-            SoundManager.OnBuzzerVolumeChanged -= OnManagerVolumeChanged;
-        }
-    }
-
-    void Awake()
-    {
-        customUpdate = new CustomUpdate( updateRate );
-        customUpdate.OnUpdate += OnUpdate;
-    }
-
-    void Update()
-    {
-        customUpdate.Update( Time.time );
-    }
-
-    //--------------------------------------------------------------------------------------------------------------
-
-    CustomUpdate customUpdate;
-
-    SoundManager SoundManager => SoundManager.Instance;
-
-    void OnManagerVolumeChanged( float newBuzzerVolume, float masterVolume )
-    {
-        volumeScale = newBuzzerVolume * masterVolume;
-        audioSource.volume = volumeScale;
-    }
-    
-    void OnUpdate( float deltaTime )
-    {
-        if( flyingWing.Battery.VoltageStatus == VoltageStatus.Critical )
-        {
-            if( !audioSource.isPlaying )
+            if( SoundManager )
             {
-                audioSource.Play();
+                volumeScale = SoundManager.BuzzerVolume * SoundManager.MasterVolume;
+                SoundManager.OnBuzzerVolumeChanged += OnManagerVolumeChanged;
             }
         }
-        else
+
+        void OnDisable()
         {
-            if( audioSource.isPlaying )
+            if( SoundManager )
             {
-                audioSource.Stop();
+                SoundManager.OnBuzzerVolumeChanged -= OnManagerVolumeChanged;
+            }
+        }
+
+        void Awake()
+        {
+            customUpdate = new CustomUpdate( updateRate );
+            customUpdate.OnUpdate += OnUpdate;
+        }
+
+        void Update()
+        {
+            customUpdate.Update( Time.time );
+        }
+
+        //--------------------------------------------------------------------------------------------------------------
+
+        CustomUpdate customUpdate;
+
+        SoundManager SoundManager => SoundManager.Instance;
+
+        void OnManagerVolumeChanged( float newBuzzerVolume, float masterVolume )
+        {
+            volumeScale = newBuzzerVolume * masterVolume;
+            audioSource.volume = volumeScale;
+        }
+
+        void OnUpdate( float deltaTime )
+        {
+            if( flyingWing.Battery.VoltageStatus == VoltageStatus.Critical )
+            {
+                if( !audioSource.isPlaying )
+                {
+                    audioSource.Play();
+                }
+            }
+            else
+            {
+                if( audioSource.isPlaying )
+                {
+                    audioSource.Stop();
+                }
             }
         }
     }

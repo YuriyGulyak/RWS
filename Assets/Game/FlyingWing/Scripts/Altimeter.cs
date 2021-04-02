@@ -1,32 +1,36 @@
 ﻿using UnityEngine;
 
-public class Altimeter : MonoBehaviour
+namespace RWS
 {
-    [SerializeField]
-    Transform craftTransform = null;
-
-    [SerializeField]
-    LayerMask terrainLayer = default;
-
-
-    public float Altitude => craftTransform.position.y - terrainHeight;
-
-    float terrainHeight;
-
-    
-    void OnValidate()
+    public class Altimeter : MonoBehaviour
     {
-        if( !craftTransform )
+        [SerializeField] 
+        Transform craftTransform = null;
+
+        [SerializeField] 
+        LayerMask terrainLayer = default;
+
+
+        public float Altitude => craftTransform.position.y - terrainHeight;
+
+        float terrainHeight;
+
+
+        void OnValidate()
         {
-            craftTransform = GetComponent<Transform>();
+            if( !craftTransform )
+            {
+                craftTransform = GetComponent<Transform>();
+            }
         }
-    }
 
-    void Start()
-    {
-        if( Physics.Raycast( craftTransform.position, Vector3.down, out var hit, 100f, terrainLayer, QueryTriggerInteraction.Ignore ) )
+        void Start()
         {
-            terrainHeight = hit.point.y;
+            if( Physics.Raycast( craftTransform.position, Vector3.down, out var hit, 100f, terrainLayer,
+                QueryTriggerInteraction.Ignore ) )
+            {
+                terrainHeight = hit.point.y;
+            }
         }
     }
 }

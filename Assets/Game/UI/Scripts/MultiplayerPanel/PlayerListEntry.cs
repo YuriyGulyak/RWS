@@ -1,18 +1,21 @@
 ﻿using TMPro;
 using UnityEngine;
 
-public class PlayerListEntry : MonoBehaviour
+namespace RWS
 {
-    [SerializeField]
-    TextMeshProUGUI numberText = null;
-    
-    [SerializeField]
-    TextMeshProUGUI nameText = null;
-
-
-    public void Init( int number, string name )
+    public class PlayerListEntry : MonoBehaviour
     {
-        numberText.text = $"{number}.";
-        nameText.text = name;
+        [SerializeField]
+        TextMeshProUGUI numberText = null;
+
+        [SerializeField]
+        TextMeshProUGUI nameText = null;
+
+
+        public void Init( int number, string name )
+        {
+            numberText.text = $"{number}.";
+            nameText.text = name;
+        }
     }
 }

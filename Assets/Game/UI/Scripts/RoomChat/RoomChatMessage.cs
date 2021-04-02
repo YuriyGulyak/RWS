@@ -2,39 +2,42 @@
 using TMPro;
 using UnityEngine;
 
-public class RoomChatMessage : MonoBehaviour
+namespace RWS
 {
-    [SerializeField]
-    TextMeshProUGUI textMesh = null;
-
-    [SerializeField]
-    float lifeTime = 10f;
-
-
-    public void Init( string text )
+    public class RoomChatMessage : MonoBehaviour
     {
-        textMesh.text = text;
-    }
+        [SerializeField]
+        TextMeshProUGUI textMesh = null;
+
+        [SerializeField]
+        float lifeTime = 10f;
 
 
-    IEnumerator Start()
-    {
-        yield return new WaitForSeconds( lifeTime );
-
-        var startTextColor = textMesh.color;
-        var endTextColor = startTextColor;
-        endTextColor.a = 0f;
-
-        var transitionSpeed = 1f;
-        var transition = 0f;
-
-        while( transition < 1f )
+        public void Init( string text )
         {
-            transition += transitionSpeed * Time.deltaTime;
-            textMesh.color = Color.Lerp( startTextColor, endTextColor, transition );
-            yield return null;
+            textMesh.text = text;
         }
-       
-        Destroy( gameObject );
+
+
+        IEnumerator Start()
+        {
+            yield return new WaitForSeconds( lifeTime );
+
+            var startTextColor = textMesh.color;
+            var endTextColor = startTextColor;
+            endTextColor.a = 0f;
+
+            var transitionSpeed = 1f;
+            var transition = 0f;
+
+            while( transition < 1f )
+            {
+                transition += transitionSpeed * Time.deltaTime;
+                textMesh.color = Color.Lerp( startTextColor, endTextColor, transition );
+                yield return null;
+            }
+
+            Destroy( gameObject );
+        }
     }
 }

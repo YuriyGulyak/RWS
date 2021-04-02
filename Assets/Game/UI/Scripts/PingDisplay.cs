@@ -3,40 +3,43 @@ using Photon.Pun;
 using TMPro;
 using UnityEngine;
 
-public class PingDisplay : MonoBehaviour
+namespace RWS
 {
-    [SerializeField]
-    TextMeshProUGUI textMesh = null;
-
-    [SerializeField]
-    float updateRate = 30f;
-
-
-    float lastUpdateTime;
-    string pingFormat;
-    CultureInfo invariantCulture;
-
-
-    void Awake()
+    public class PingDisplay : MonoBehaviour
     {
-        pingFormat = textMesh.text;
-        invariantCulture = CultureInfo.InvariantCulture;
-    }
+        [SerializeField]
+        TextMeshProUGUI textMesh = null;
 
-    void Update()
-    {
-        if( Time.timeScale.Equals( 0f ) )
+        [SerializeField]
+        float updateRate = 30f;
+
+
+        float lastUpdateTime;
+        string pingFormat;
+        CultureInfo invariantCulture;
+
+
+        void Awake()
         {
-            return;
+            pingFormat = textMesh.text;
+            invariantCulture = CultureInfo.InvariantCulture;
         }
 
-        var time = Time.time;
-        if( time - lastUpdateTime > 1f / updateRate )
+        void Update()
         {
-            lastUpdateTime = time;
+            if( Time.timeScale.Equals( 0f ) )
+            {
+                return;
+            }
 
-            var ping = PhotonNetwork.GetPing();
-            textMesh.text = ping.ToString( pingFormat, invariantCulture );
+            var time = Time.time;
+            if( time - lastUpdateTime > 1f / updateRate )
+            {
+                lastUpdateTime = time;
+
+                var ping = PhotonNetwork.GetPing();
+                textMesh.text = ping.ToString( pingFormat, invariantCulture );
+            }
         }
     }
 }

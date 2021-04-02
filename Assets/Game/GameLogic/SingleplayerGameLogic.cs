@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 namespace RWS
 {
-    public class SingleplayerGameManager : MonoBehaviour
+    public class SingleplayerGameLogic : MonoBehaviour
     {
         [SerializeField]
         GameObject pilotCamera = null;

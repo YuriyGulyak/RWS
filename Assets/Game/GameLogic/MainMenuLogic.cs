@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace Game
+namespace RWS
 {
-    public class MainMenuManager : MonoBehaviour
+    public class MainMenuLogic : MonoBehaviour
     {
         [SerializeField]
         MainMenu mainMenu;

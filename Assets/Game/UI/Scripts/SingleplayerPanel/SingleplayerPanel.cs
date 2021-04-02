@@ -1,9 +1,8 @@
-﻿using RWS;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace Game
+namespace RWS
 {
     public class SingleplayerPanel : MonoBehaviour
     {

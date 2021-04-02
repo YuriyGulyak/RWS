@@ -1,59 +1,62 @@
 ﻿using UnityEngine;
 
-public class PilotZoom : MonoBehaviour
+namespace RWS
 {
-    [SerializeField]
-    Transform target = null;
-
-    [SerializeField]
-    new Camera camera = null;
-
-    [SerializeField]
-    float maxDistance = 300f;
-
-    [SerializeField]
-    float maxZoom = 3f;
-
-
-    public void SetTarget( Transform target )
+    public class PilotZoom : MonoBehaviour
     {
-        this.target = target;
-        UpdateZoom();
-    }
+        [SerializeField]
+        Transform target = null;
+
+        [SerializeField]
+        new Camera camera = null;
+
+        [SerializeField]
+        float maxDistance = 300f;
+
+        [SerializeField]
+        float maxZoom = 3f;
 
 
-    Transform cameraTransform;
-    float initFov;
-
-
-    void OnValidate()
-    {
-        if( !camera )
+        public void SetTarget( Transform target )
         {
-            camera = GetComponentInChildren<Camera>();
+            this.target = target;
+            UpdateZoom();
         }
-    }
 
-    void Awake()
-    {
-        cameraTransform = camera.transform;
-        initFov = camera.fieldOfView;
-    }
 
-    void FixedUpdate()
-    {
-        if( !target )
+        Transform cameraTransform;
+        float initFov;
+
+
+        void OnValidate()
         {
-            return;
+            if( !camera )
+            {
+                camera = GetComponentInChildren<Camera>();
+            }
         }
-        
-        UpdateZoom();
-    }
 
-    
-    void UpdateZoom()
-    {
-        var distance = Vector3.Distance( target.position, cameraTransform.position );
-        camera.fieldOfView = initFov / Mathf.Lerp( 1f, maxZoom, distance / maxDistance );
+        void Awake()
+        {
+            cameraTransform = camera.transform;
+            initFov = camera.fieldOfView;
+        }
+
+        void FixedUpdate()
+        {
+            if( !target )
+            {
+                return;
+            }
+
+            UpdateZoom();
+        }
+
+
+        void UpdateZoom()
+        {
+            var distance = Vector3.Distance( target.position, cameraTransform.position );
+            camera.fieldOfView = initFov / Mathf.Lerp( 1f, maxZoom, distance / maxDistance );
+        }
     }
 }

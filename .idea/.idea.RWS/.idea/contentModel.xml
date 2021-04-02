@@ -67,9 +67,9 @@
             </e>
           </e>
           <e p="GameLogic" t="Include">
-            <e p="MainMenuManager.cs" t="Include" />
-            <e p="MultiplayerGameManager.cs" t="Include" />
-            <e p="SingleplayerGameManager.cs" t="Include" />
+            <e p="MainMenuLogic.cs" t="Include" />
+            <e p="MultiplayerGameLogic.cs" t="Include" />
+            <e p="SingleplayerGameLogic.cs" t="Include" />
           </e>
           <e p="GhostReplaySystem" t="Include">
             <e p="FlyingWingGhost.cs" t="Include" />

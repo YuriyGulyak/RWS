@@ -1,89 +1,90 @@
-﻿using System;
-using RWS;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class WindSound : MonoBehaviour
+namespace RWS
 {
-    [SerializeField] 
-    FlyingWing flyingWing = null;
-    
-    [SerializeField]
-    AudioSource audioSource = null;
-    
-    [SerializeField]
-    AnimationCurve volumeCurve = AnimationCurve.Linear( 0f, 0.1f, 1f, 1f );
-    
-    [SerializeField]
-    AnimationCurve pitchCurve = AnimationCurve.Linear( 0f, 0.75f, 1f, 3.5f );
-
-    // Serialized for sound debug
-    [SerializeField, Range( 0f, 1f )]
-    float soundTransition = 0f;
-
-    [SerializeField]
-    float volumeScale = 1f;
-    
-    //--------------------------------------------------------------------------------------------------------------
-    
-    public float SoundTransition
+    public class WindSound : MonoBehaviour
     {
-        get => soundTransition;
-        set
+        [SerializeField]
+        FlyingWing flyingWing = null;
+
+        [SerializeField]
+        AudioSource audioSource = null;
+
+        [SerializeField]
+        AnimationCurve volumeCurve = AnimationCurve.Linear( 0f, 0.1f, 1f, 1f );
+
+        [SerializeField]
+        AnimationCurve pitchCurve = AnimationCurve.Linear( 0f, 0.75f, 1f, 3.5f );
+
+        // Serialized for sound debug
+        [SerializeField, Range( 0f, 1f )]
+        float soundTransition = 0f;
+
+        [SerializeField]
+        float volumeScale = 1f;
+
+        //--------------------------------------------------------------------------------------------------------------
+
+        public float SoundTransition
         {
-            soundTransition = Mathf.Clamp01( value );
+            get => soundTransition;
+            set
+            {
+                soundTransition = Mathf.Clamp01( value );
+                UpdateAudioSource();
+            }
+        }
+
+        //--------------------------------------------------------------------------------------------------------------
+
+        void OnValidate()
+        {
             UpdateAudioSource();
         }
-    }
-    
-    //--------------------------------------------------------------------------------------------------------------
 
-    void OnValidate()
-    {
-        UpdateAudioSource();
-    }
-
-    void OnEnable()
-    {
-        if( SoundManager )
+        void OnEnable()
         {
-            volumeScale = SoundManager.WindVolume * SoundManager.MasterVolume;
+            if( SoundManager )
+            {
+                volumeScale = SoundManager.WindVolume * SoundManager.MasterVolume;
+                UpdateAudioSource();
+
+                SoundManager.OnWindVolumeChanged += OnManagerVolumeChanged;
+            }
+
+            audioSource.Play();
+        }
+
+        void OnDisable()
+        {
+            if( SoundManager )
+            {
+                SoundManager.OnWindVolumeChanged -= OnManagerVolumeChanged;
+            }
+
+            audioSource.Stop();
+        }
+
+        void Update()
+        {
+            SoundTransition = flyingWing.TAS / 160f;
+        }
+
+        //--------------------------------------------------------------------------------------------------------------
+
+        SoundManager SoundManager => SoundManager.Instance;
+
+        void OnManagerVolumeChanged( float newWindVolume, float masterVolume )
+        {
+            volumeScale = newWindVolume * masterVolume;
             UpdateAudioSource();
-
-            SoundManager.OnWindVolumeChanged += OnManagerVolumeChanged;
         }
-        
-        audioSource.Play();
-    }
 
-    void OnDisable()
-    {
-        if( SoundManager )
+
+        void UpdateAudioSource()
         {
-            SoundManager.OnWindVolumeChanged -= OnManagerVolumeChanged;
+            audioSource.volume = volumeCurve.Evaluate( soundTransition ) * volumeScale;
+            audioSource.pitch = pitchCurve.Evaluate( soundTransition );
         }
-        
-        audioSource.Stop();
-    }
-
-    void Update()
-    {
-        SoundTransition = flyingWing.TAS / 160f;
-    }
-    
-    //--------------------------------------------------------------------------------------------------------------
-
-    SoundManager SoundManager => SoundManager.Instance;
-    
-    void OnManagerVolumeChanged( float newWindVolume, float masterVolume )
-    {
-        volumeScale = newWindVolume * masterVolume;
-        UpdateAudioSource();
-    }
-
-
-    void UpdateAudioSource()
-    {
-        audioSource.volume = volumeCurve.Evaluate( soundTransition ) * volumeScale;
-        audioSource.pitch = pitchCurve.Evaluate( soundTransition );
     }
 }

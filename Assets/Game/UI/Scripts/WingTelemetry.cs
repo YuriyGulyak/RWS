@@ -2,83 +2,86 @@
 using TMPro;
 using UnityEngine;
 
-public class WingTelemetry : MonoBehaviour
+namespace RWS
 {
-    [SerializeField]
-    FlyingWing flyingWing = null;
-
-    [SerializeField]
-    TextMeshProUGUI speedText = null;
-
-    [SerializeField]
-    TextMeshProUGUI altitudeText = null;
-    
-    [SerializeField]
-    TextMeshProUGUI angleOfAttackText = null;
-    
-    [SerializeField]
-    TextMeshProUGUI rollSpeedText = null;
-    
-    [SerializeField]
-    TextMeshProUGUI pitchSpeedText = null;
-    
-    [SerializeField]
-    TextMeshProUGUI sideslipAngleText = null;
-
-    [SerializeField]
-    float updateRate = 30f;
-    
-
-    public void Init( FlyingWing flyingWing )
+    public class WingTelemetry : MonoBehaviour
     {
-        this.flyingWing = flyingWing;
-    }
+        [SerializeField]
+        FlyingWing flyingWing = null;
+
+        [SerializeField]
+        TextMeshProUGUI speedText = null;
+
+        [SerializeField]
+        TextMeshProUGUI altitudeText = null;
+
+        [SerializeField]
+        TextMeshProUGUI angleOfAttackText = null;
+
+        [SerializeField]
+        TextMeshProUGUI rollSpeedText = null;
+
+        [SerializeField]
+        TextMeshProUGUI pitchSpeedText = null;
+
+        [SerializeField]
+        TextMeshProUGUI sideslipAngleText = null;
+
+        [SerializeField]
+        float updateRate = 30f;
 
 
-    string speedFormat;
-    string altitudeFormat;
-    string angleOfAttackFormat;
-    string rollSpeedFormat;
-    string pitchSpeedFormat;
-    string sideslipAngleFormat;
-    CultureInfo cultureInfo;
-    float lastUpdateTime;
-
-
-    void Awake()
-    {
-        speedFormat = speedText.text;
-        altitudeFormat = altitudeText.text;
-        angleOfAttackFormat = angleOfAttackText.text;
-        rollSpeedFormat = rollSpeedText.text;
-        pitchSpeedFormat = pitchSpeedText.text;
-        sideslipAngleFormat = sideslipAngleText.text;
-
-        cultureInfo = CultureInfo.InvariantCulture;
-    }
-
-    void Update()
-    {
-        if( !flyingWing )
+        public void Init( FlyingWing flyingWing )
         {
-            return;
+            this.flyingWing = flyingWing;
         }
 
-        if( Time.time - lastUpdateTime > 1f / updateRate )
+
+        string speedFormat;
+        string altitudeFormat;
+        string angleOfAttackFormat;
+        string rollSpeedFormat;
+        string pitchSpeedFormat;
+        string sideslipAngleFormat;
+        CultureInfo cultureInfo;
+        float lastUpdateTime;
+
+
+        void Awake()
         {
-            lastUpdateTime = Time.time;
-            UpdateUI();
+            speedFormat = speedText.text;
+            altitudeFormat = altitudeText.text;
+            angleOfAttackFormat = angleOfAttackText.text;
+            rollSpeedFormat = rollSpeedText.text;
+            pitchSpeedFormat = pitchSpeedText.text;
+            sideslipAngleFormat = sideslipAngleText.text;
+
+            cultureInfo = CultureInfo.InvariantCulture;
         }
-    }
+
+        void Update()
+        {
+            if( !flyingWing )
+            {
+                return;
+            }
+
+            if( Time.time - lastUpdateTime > 1f / updateRate )
+            {
+                lastUpdateTime = Time.time;
+                UpdateUI();
+            }
+        }
 
 
-    void UpdateUI()
-    {
-        speedText.text = ( flyingWing.TAS * 3.6f ).ToString( speedFormat, cultureInfo );
-        altitudeText.text = flyingWing.Altitude.ToString( altitudeFormat, cultureInfo );
-        angleOfAttackText.text = flyingWing.AngleOfAttack.ToString( angleOfAttackFormat, cultureInfo );
-        rollSpeedText.text = flyingWing.RollSpeed.ToString( rollSpeedFormat, cultureInfo );
-        pitchSpeedText.text = flyingWing.PitchSpeed.ToString( pitchSpeedFormat, cultureInfo );
-        sideslipAngleText.text = flyingWing.SideslipAngle.ToString( sideslipAngleFormat, cultureInfo );
+        void UpdateUI()
+        {
+            speedText.text = ( flyingWing.TAS * 3.6f ).ToString( speedFormat, cultureInfo );
+            altitudeText.text = flyingWing.Altitude.ToString( altitudeFormat, cultureInfo );
+            angleOfAttackText.text = flyingWing.AngleOfAttack.ToString( angleOfAttackFormat, cultureInfo );
+            rollSpeedText.text = flyingWing.RollSpeed.ToString( rollSpeedFormat, cultureInfo );
+            pitchSpeedText.text = flyingWing.PitchSpeed.ToString( pitchSpeedFormat, cultureInfo );
+            sideslipAngleText.text = flyingWing.SideslipAngle.ToString( sideslipAngleFormat, cultureInfo );
+        }
     }
 }

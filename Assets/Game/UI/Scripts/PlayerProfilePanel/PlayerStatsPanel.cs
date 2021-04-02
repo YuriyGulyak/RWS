@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 
-public class PlayerStatsPanel : MonoBehaviour
+namespace RWS
 {
-    
+    public class PlayerStatsPanel : MonoBehaviour
+    {
+
+    }
 }

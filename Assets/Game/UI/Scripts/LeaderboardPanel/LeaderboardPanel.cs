@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections;
-using RWS;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Game
+namespace RWS
 {
     public class LeaderboardPanel : MonoBehaviour
     {

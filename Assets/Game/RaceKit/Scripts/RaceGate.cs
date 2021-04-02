@@ -2,84 +2,92 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class RaceGate : MonoBehaviour
+namespace RWS
 {
-    [SerializeField]
-    Transform gateTransform = null;
-    
-    [SerializeField]
-    bool reverse = false;
-
-    //----------------------------------------------------------------------------------------------------
-    
-    [System.Serializable]
-    public class GameObjectEvent : UnityEvent<GameObject> { }
-    public GameObjectEvent OnSuccess = new GameObjectEvent();
-
-    //----------------------------------------------------------------------------------------------------
-    
-    int craftLayerIndex;
-    List<Rigidbody> entered = new List<Rigidbody>();
-    //Vector3 enterPoint;
-    //Vector3 exitPoint;
-
-    void OnValidate()
+    public class RaceGate : MonoBehaviour
     {
-        if( !gateTransform )
+        [SerializeField]
+        Transform gateTransform = null;
+
+        [SerializeField]
+        bool reverse = false;
+
+        //----------------------------------------------------------------------------------------------------
+
+        [System.Serializable]
+        public class GameObjectEvent : UnityEvent<GameObject>
         {
-            gateTransform = transform;
         }
-    }
 
-    void OnTriggerEnter( Collider other )
-    {
-        var attachedRigidbody = other.attachedRigidbody;
-        if( attachedRigidbody && !entered.Contains( attachedRigidbody ) )
+        public GameObjectEvent OnSuccess = new GameObjectEvent();
+
+        //----------------------------------------------------------------------------------------------------
+
+        int craftLayerIndex;
+
+        List<Rigidbody> entered = new List<Rigidbody>();
+        //Vector3 enterPoint;
+        //Vector3 exitPoint;
+
+        void OnValidate()
         {
-            //enterPoint = attachedRigidbody.position;
-            
-            var targetLocalPosZ = gateTransform.InverseTransformPoint( attachedRigidbody.position ).z;
-            var isValid = reverse ? targetLocalPosZ > 0f : targetLocalPosZ < 0f;
-            if( isValid )
+            if( !gateTransform )
             {
-                entered.Add( attachedRigidbody );
+                gateTransform = transform;
             }
         }
-    }
 
-    void OnTriggerExit( Collider other )
-    {
-        var attachedRigidbody = other.attachedRigidbody;
-        if( attachedRigidbody && entered.Contains( attachedRigidbody ) )
+        void OnTriggerEnter( Collider other )
         {
-            //exitPoint = attachedRigidbody.position;
-            
-            var targetLocalPosZ = gateTransform.InverseTransformPoint( attachedRigidbody.position ).z;
-            var isValid = reverse ? targetLocalPosZ < 0f : targetLocalPosZ > 0f;
-            if( isValid )
+            var attachedRigidbody = other.attachedRigidbody;
+            if( attachedRigidbody && !entered.Contains( attachedRigidbody ) )
             {
-                OnSuccess.Invoke( attachedRigidbody.gameObject );
+                //enterPoint = attachedRigidbody.position;
+
+                var targetLocalPosZ = gateTransform.InverseTransformPoint( attachedRigidbody.position ).z;
+                var isValid = reverse ? targetLocalPosZ > 0f : targetLocalPosZ < 0f;
+                if( isValid )
+                {
+                    entered.Add( attachedRigidbody );
+                }
             }
-            entered.Remove( attachedRigidbody );
         }
+
+        void OnTriggerExit( Collider other )
+        {
+            var attachedRigidbody = other.attachedRigidbody;
+            if( attachedRigidbody && entered.Contains( attachedRigidbody ) )
+            {
+                //exitPoint = attachedRigidbody.position;
+
+                var targetLocalPosZ = gateTransform.InverseTransformPoint( attachedRigidbody.position ).z;
+                var isValid = reverse ? targetLocalPosZ < 0f : targetLocalPosZ > 0f;
+                if( isValid )
+                {
+                    OnSuccess.Invoke( attachedRigidbody.gameObject );
+                }
+
+                entered.Remove( attachedRigidbody );
+            }
+        }
+
+        //#if UNITY_EDITOR
+        void OnDrawGizmos()
+        {
+            var colorBackup = Gizmos.color;
+
+            Gizmos.color = Color.white;
+            Gizmos.DrawRay( transform.position, transform.forward * ( reverse ? -5f : 5f ) );
+            Gizmos.DrawWireSphere( transform.position, 0.05f );
+
+            //Gizmos.color = Color.green;
+            //Gizmos.DrawWireSphere( enterPoint, 0.5f );
+
+            //Gizmos.color = Color.red;
+            //Gizmos.DrawWireSphere( exitPoint, 0.5f );
+
+            Gizmos.color = colorBackup;
+        }
+        //#endif
     }
-    
-    //#if UNITY_EDITOR
-    void OnDrawGizmos()
-    {
-        var colorBackup = Gizmos.color;
-        
-        Gizmos.color = Color.white;
-        Gizmos.DrawRay( transform.position, transform.forward * ( reverse ? -5f : 5f ) );
-        Gizmos.DrawWireSphere( transform.position, 0.05f );
-        
-        //Gizmos.color = Color.green;
-        //Gizmos.DrawWireSphere( enterPoint, 0.5f );
-        
-        //Gizmos.color = Color.red;
-        //Gizmos.DrawWireSphere( exitPoint, 0.5f );
-        
-        Gizmos.color = colorBackup;
-    }
-    //#endif
 }

@@ -1,28 +1,33 @@
 ﻿#if UNITY_EDITOR
+
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(MarkerPlacer))]
-public class MarkerPlacerEditor : Editor
+namespace RWS
 {
-    public override void OnInspectorGUI()
+    [CustomEditor( typeof( MarkerPlacer ) )]
+    public class MarkerPlacerEditor : Editor
     {
-        base.OnInspectorGUI();
-
-        EditorGUILayout.Separator();
-        if( GUILayout.Button( "Place" ) )
+        public override void OnInspectorGUI()
         {
-            markerPlacer.PlaceMarkers();
+            base.OnInspectorGUI();
+
+            EditorGUILayout.Separator();
+            if( GUILayout.Button( "Place" ) )
+            {
+                markerPlacer.PlaceMarkers();
+            }
+        }
+
+
+        MarkerPlacer markerPlacer;
+
+        void OnEnable()
+        {
+            markerPlacer = (MarkerPlacer)target;
+            EditorUtility.SetDirty( markerPlacer );
         }
     }
-    
-    
-    MarkerPlacer markerPlacer;
-
-    void OnEnable()
-    {
-        markerPlacer = (MarkerPlacer)target;
-        EditorUtility.SetDirty( markerPlacer );
-    }
 }
+
 #endif

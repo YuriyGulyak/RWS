@@ -1,57 +1,58 @@
-﻿using RWS;
-using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class CraftPanel : MonoBehaviour
+namespace RWS
 {
-    [SerializeField]
-    RectTransform panelRect;
-
-    [SerializeField]
-    Button closeButton;
-
-    //----------------------------------------------------------------------------------------------------
-
-    public bool IsOpen => gameObject.activeSelf;
-    
-    public void Show()
+    public class CraftPanel : MonoBehaviour
     {
-        if( gameObject.activeSelf )
+        [SerializeField]
+        RectTransform panelRect;
+
+        [SerializeField]
+        Button closeButton;
+
+        //----------------------------------------------------------------------------------------------------
+
+        public bool IsOpen => gameObject.activeSelf;
+
+        public void Show()
         {
-            return;
+            if( gameObject.activeSelf )
+            {
+                return;
+            }
+
+            gameObject.SetActive( true );
+
+
+            //
         }
 
-        gameObject.SetActive( true );
-        
-        
-        //
-    }
-
-    public void Hide()
-    {
-        if( !gameObject.activeSelf )
+        public void Hide()
         {
-            return;
+            if( !gameObject.activeSelf )
+            {
+                return;
+            }
+
+            gameObject.SetActive( false );
+            panelRect.anchoredPosition = Vector2.zero;
         }
 
-        gameObject.SetActive( false );
-        panelRect.anchoredPosition = Vector2.zero;
-    }
-
-    //----------------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------
 
 
-    void Awake()
-    {
-        closeButton.onClick.AddListener( Hide );
-        
-        InputManager.Instance.OnEscapeButton += OnEscapeButton;
-    }
+        void Awake()
+        {
+            closeButton.onClick.AddListener( Hide );
+
+            InputManager.Instance.OnEscapeButton += OnEscapeButton;
+        }
 
 
-    void OnEscapeButton()
-    {
-        Hide();
+        void OnEscapeButton()
+        {
+            Hide();
+        }
     }
 }

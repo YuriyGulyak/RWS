@@ -1,24 +1,27 @@
 ﻿using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
-public class BloorEffectController : MonoBehaviour
+namespace RWS
 {
-    [SerializeField]
-    PostProcessVolume postProcessVolume = null;
-
-    public bool BloorEffectEnabled
+    public class BloorEffectController : MonoBehaviour
     {
-        get
+        [SerializeField]
+        PostProcessVolume postProcessVolume = null;
+
+        public bool BloorEffectEnabled
         {
-            postProcessVolume.profile.TryGetSettings( out DepthOfField depthOfField );
-            return depthOfField && depthOfField.active;
-        }
-        set
-        {
-            postProcessVolume.profile.TryGetSettings( out DepthOfField depthOfField );
-            if( depthOfField )
+            get
             {
-                depthOfField.active = value;
+                postProcessVolume.profile.TryGetSettings( out DepthOfField depthOfField );
+                return depthOfField && depthOfField.active;
+            }
+            set
+            {
+                postProcessVolume.profile.TryGetSettings( out DepthOfField depthOfField );
+                if( depthOfField )
+                {
+                    depthOfField.active = value;
+                }
             }
         }
     }

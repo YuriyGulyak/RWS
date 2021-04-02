@@ -1,18 +1,21 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class ButtonWithCanvasGroup : Button
+namespace RWS
 {
-    [SerializeField]
-    CanvasGroup canvasGroup;
-
-    public bool Interactable
+    public class ButtonWithCanvasGroup : Button
     {
-        get => !canvasGroup.enabled;
-        set
+        [SerializeField]
+        CanvasGroup canvasGroup;
+
+        public bool Interactable
         {
-            canvasGroup.interactable = value;
-            canvasGroup.enabled = !value;
+            get => !canvasGroup.enabled;
+            set
+            {
+                canvasGroup.interactable = value;
+                canvasGroup.enabled = !value;
+            }
         }
     }
 }

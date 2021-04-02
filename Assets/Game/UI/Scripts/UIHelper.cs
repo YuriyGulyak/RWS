@@ -1,19 +1,22 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class UIHelper : MonoBehaviour
+namespace RWS
 {
-    public float scrollSensitivity = 2f;
-
-
-    public void Apply()
+    public class UIHelper : MonoBehaviour
     {
-        var scrollRects = GetComponentsInChildren<ScrollRect>( true );
+        public float scrollSensitivity = 2f;
 
-        foreach( var scrollRect in scrollRects )
+
+        public void Apply()
         {
-            //print( scrollRect.transform.parent.name );
-            scrollRect.scrollSensitivity = scrollSensitivity;
+            var scrollRects = GetComponentsInChildren<ScrollRect>( true );
+
+            foreach( var scrollRect in scrollRects )
+            {
+                //print( scrollRect.transform.parent.name );
+                scrollRect.scrollSensitivity = scrollSensitivity;
+            }
         }
     }
 }

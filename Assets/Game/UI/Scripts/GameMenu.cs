@@ -2,49 +2,54 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameMenu : MonoBehaviour
+namespace RWS
 {
-    [SerializeField]
-    Button resumeButton = null;
-    
-    [SerializeField]
-    Button settingsButton = null;
-    
-    [SerializeField]
-    Button exitButton = null;
-
-    //----------------------------------------------------------------------------------------------------
-
-    public Action OnResumeButton;
-    public Action OnSettingsButton;
-    public Action OnExitButton;
-    
-    public bool IsActive => gameObject.activeSelf;
-    
-    public void Show()
+    public class GameMenu : MonoBehaviour
     {
-        if( IsActive )
+        [SerializeField]
+        Button resumeButton = null;
+
+        [SerializeField]
+        Button settingsButton = null;
+
+        [SerializeField]
+        Button exitButton = null;
+
+        //----------------------------------------------------------------------------------------------------
+
+        public Action OnResumeButton;
+        public Action OnSettingsButton;
+        public Action OnExitButton;
+
+        public bool IsActive => gameObject.activeSelf;
+
+        public void Show()
         {
-            return;
-        }
-        gameObject.SetActive( true );
-    }
+            if( IsActive )
+            {
+                return;
+            }
 
-    public void Hide()
-    {
-        if( !IsActive )
+            gameObject.SetActive( true );
+        }
+
+        public void Hide()
         {
-            return;
-        }
-        gameObject.SetActive( false );
-    }
+            if( !IsActive )
+            {
+                return;
+            }
 
-    //----------------------------------------------------------------------------------------------------
-    
-    void Awake()
-    {
-        resumeButton.onClick.AddListener( () => OnResumeButton?.Invoke() );
-        settingsButton.onClick.AddListener( () => OnSettingsButton?.Invoke() );
-        exitButton.onClick.AddListener( () => OnExitButton?.Invoke() );
+            gameObject.SetActive( false );
+        }
+
+        //----------------------------------------------------------------------------------------------------
+
+        void Awake()
+        {
+            resumeButton.onClick.AddListener( () => OnResumeButton?.Invoke() );
+            settingsButton.onClick.AddListener( () => OnSettingsButton?.Invoke() );
+            exitButton.onClick.AddListener( () => OnExitButton?.Invoke() );
+        }
     }
 }

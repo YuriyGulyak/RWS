@@ -1,132 +1,134 @@
-﻿using RWS;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerProfilePanel : MonoBehaviour
+namespace RWS
 {
-    [SerializeField]
-    RectTransform panelRect;
-
-    [SerializeField]
-    Button closeButton;
-
-    [SerializeField]
-    TMP_InputField nameInputField;
-
-    [SerializeField]
-    TextMeshProUGUI infoText;
-
-    [SerializeField]
-    Button applyButton;
-
-    //----------------------------------------------------------------------------------------------------
-
-    public bool IsOpen => gameObject.activeSelf;
-    
-    public void Show()
+    public class PlayerProfilePanel : MonoBehaviour
     {
-        if( gameObject.activeSelf )
+        [SerializeField]
+        RectTransform panelRect;
+
+        [SerializeField]
+        Button closeButton;
+
+        [SerializeField]
+        TMP_InputField nameInputField;
+
+        [SerializeField]
+        TextMeshProUGUI infoText;
+
+        [SerializeField]
+        Button applyButton;
+
+        //----------------------------------------------------------------------------------------------------
+
+        public bool IsOpen => gameObject.activeSelf;
+
+        public void Show()
         {
-            return;
+            if( gameObject.activeSelf )
+            {
+                return;
+            }
+
+            gameObject.SetActive( true );
+
+            //
         }
 
-        gameObject.SetActive( true );
-
-        //
-    }
-
-    public void Hide()
-    {
-        if( !gameObject.activeSelf )
+        public void Hide()
         {
-            return;
-        }
+            if( !gameObject.activeSelf )
+            {
+                return;
+            }
 
-        gameObject.SetActive( false );
-        panelRect.anchoredPosition = Vector2.zero;
+            gameObject.SetActive( false );
+            panelRect.anchoredPosition = Vector2.zero;
 
-        infoText.text = "";
-        applyButton.gameObject.SetActive( false );
-    }
-
-    //----------------------------------------------------------------------------------------------------
-
-    string pilotName;
-    string pilotNameKey = "Nickname";
-    
-
-    void Awake()
-    {
-        closeButton.onClick.AddListener( Hide );
-
-        InputManager.Instance.OnEscapeButton += OnEscapeButton;
-
-        nameInputField.onEndEdit.AddListener( OnNameInput );
-
-        infoText.gameObject.SetActive( true );
-        infoText.text = "";
-
-        applyButton.onClick.AddListener( OnApplyButton );
-        applyButton.gameObject.SetActive( false );
-
-        if( PlayerPrefs.HasKey( pilotNameKey ) )
-        {
-            pilotName = PlayerPrefs.GetString( pilotNameKey );
-        }
-        else
-        {
-            pilotName = $"Pilot{Random.Range( 0, 10000 ):0000}";
-            PlayerPrefs.SetString( pilotNameKey, pilotName );
-        }
-    }
-
-    void OnEnable()
-    {
-        nameInputField.text = pilotName;
-    }
-
-
-    void OnNameInput( string newName )
-    {
-        newName = newName.Trim();
-
-        if( newName.Equals( pilotName ) )
-        {
-            return;
-        }
-
-        if( newName.Length < 4 )
-        {
-            infoText.text = "Name must be minimum 4 characters";
-            nameInputField.ActivateInputField();
-        }
-        else
-        {
             infoText.text = "";
-            applyButton.gameObject.SetActive( true );
+            applyButton.gameObject.SetActive( false );
         }
-    }
 
-    void OnApplyButton()
-    {
-        infoText.text = "Name changed";
+        //----------------------------------------------------------------------------------------------------
 
-        pilotName = nameInputField.text.Trim();
-        nameInputField.text = pilotName;
+        string pilotName;
+        string pilotNameKey = "Nickname";
 
-        PlayerPrefs.SetString( pilotNameKey, pilotName );
 
-        applyButton.gameObject.SetActive( false );
-    }
-
-    void OnEscapeButton()
-    {
-        if( nameInputField.isFocused )
+        void Awake()
         {
-            return;
+            closeButton.onClick.AddListener( Hide );
+
+            InputManager.Instance.OnEscapeButton += OnEscapeButton;
+
+            nameInputField.onEndEdit.AddListener( OnNameInput );
+
+            infoText.gameObject.SetActive( true );
+            infoText.text = "";
+
+            applyButton.onClick.AddListener( OnApplyButton );
+            applyButton.gameObject.SetActive( false );
+
+            if( PlayerPrefs.HasKey( pilotNameKey ) )
+            {
+                pilotName = PlayerPrefs.GetString( pilotNameKey );
+            }
+            else
+            {
+                pilotName = $"Pilot{Random.Range( 0, 10000 ):0000}";
+                PlayerPrefs.SetString( pilotNameKey, pilotName );
+            }
         }
 
-        Hide();
+        void OnEnable()
+        {
+            nameInputField.text = pilotName;
+        }
+
+
+        void OnNameInput( string newName )
+        {
+            newName = newName.Trim();
+
+            if( newName.Equals( pilotName ) )
+            {
+                return;
+            }
+
+            if( newName.Length < 4 )
+            {
+                infoText.text = "Name must be minimum 4 characters";
+                nameInputField.ActivateInputField();
+            }
+            else
+            {
+                infoText.text = "";
+                applyButton.gameObject.SetActive( true );
+            }
+        }
+
+        void OnApplyButton()
+        {
+            infoText.text = "Name changed";
+
+            pilotName = nameInputField.text.Trim();
+            nameInputField.text = pilotName;
+
+            PlayerPrefs.SetString( pilotNameKey, pilotName );
+
+            applyButton.gameObject.SetActive( false );
+        }
+
+        void OnEscapeButton()
+        {
+            if( nameInputField.isFocused )
+            {
+                return;
+            }
+
+            Hide();
+        }
     }
 }

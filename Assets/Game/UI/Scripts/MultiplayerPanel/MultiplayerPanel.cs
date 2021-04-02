@@ -1,298 +1,304 @@
 ﻿using Photon.Pun;
 using Photon.Realtime;
-using RWS;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MultiplayerPanel : MonoBehaviourPunCallbacks
+namespace RWS
 {
-    [SerializeField]
-    RectTransform panelRect = null;
-    
-    [SerializeField]
-    Button closeButton = null;
-
-    [SerializeField]
-    TextMeshProUGUI stateText = null;
-   
-    [SerializeField]
-    Button createRoomButton = null;
-    
-    [SerializeField]
-    Button showRoomListButton = null;
-    
-    [SerializeField]
-    Button joinRandomRoomButton = null;
-
-    [SerializeField]
-    TextMeshProUGUI errorText = null;
-    
-    [SerializeField]
-    CreateRoomPanel createRoomPanel = null;
-
-    [SerializeField]
-    InsideRoomPanel insideRoomPanel = null;
-
-    [SerializeField]
-    RoomListPanel roomListPanel = null;
-
-    [SerializeField]
-    RoomChat roomChat = null;
-    
-    [SerializeField]
-    TextMeshProUGUI regionText = null;
-    
-    //----------------------------------------------------------------------------------------------------
-
-    public bool IsOpen => gameObject.activeSelf;
-    
-    public void Show()
+    public class MultiplayerPanel : MonoBehaviourPunCallbacks
     {
-        if( gameObject.activeSelf )
-        {
-            return;
-        }
-        gameObject.SetActive( true );
+        [SerializeField]
+        RectTransform panelRect = null;
 
-        if( PhotonNetwork.IsConnected )
+        [SerializeField]
+        Button closeButton = null;
+
+        [SerializeField]
+        TextMeshProUGUI stateText = null;
+
+        [SerializeField]
+        Button createRoomButton = null;
+
+        [SerializeField]
+        Button showRoomListButton = null;
+
+        [SerializeField]
+        Button joinRandomRoomButton = null;
+
+        [SerializeField]
+        TextMeshProUGUI errorText = null;
+
+        [SerializeField]
+        CreateRoomPanel createRoomPanel = null;
+
+        [SerializeField]
+        InsideRoomPanel insideRoomPanel = null;
+
+        [SerializeField]
+        RoomListPanel roomListPanel = null;
+
+        [SerializeField]
+        RoomChat roomChat = null;
+
+        [SerializeField]
+        TextMeshProUGUI regionText = null;
+
+        //----------------------------------------------------------------------------------------------------
+
+        public bool IsOpen => gameObject.activeSelf;
+
+        public void Show()
         {
-            var nicknameChanged = !PhotonNetwork.NickName.Equals( PlayerPrefs.GetString( "Nickname" ) );
-            if( nicknameChanged )
+            if( gameObject.activeSelf )
             {
-                HideNavigationButtons();
-                stateText.gameObject.SetActive( true );
+                return;
+            }
 
-                PhotonNetwork.Disconnect();
-                PhotonNetwork.NickName = PlayerPrefs.GetString( "Nickname" );
-                PhotonNetwork.ConnectUsingSettings();
+            gameObject.SetActive( true );
+
+            if( PhotonNetwork.IsConnected )
+            {
+                var nicknameChanged = !PhotonNetwork.NickName.Equals( PlayerPrefs.GetString( "Nickname" ) );
+                if( nicknameChanged )
+                {
+                    HideNavigationButtons();
+                    stateText.gameObject.SetActive( true );
+
+                    PhotonNetwork.Disconnect();
+                    PhotonNetwork.NickName = PlayerPrefs.GetString( "Nickname" );
+                    PhotonNetwork.ConnectUsingSettings();
+                }
+                else
+                {
+                    regionText.gameObject.SetActive( true );
+                    ShowNavigationButtons();
+                    stateText.gameObject.SetActive( false );
+                }
             }
             else
             {
+                HideNavigationButtons();
+                regionText.gameObject.SetActive( false );
+                stateText.gameObject.SetActive( true );
+
+                PhotonNetwork.NickName = PlayerPrefs.GetString( "Nickname" );
+                PhotonNetwork.ConnectUsingSettings();
+            }
+
+            InputManager.Instance.OnEscapeButton += OnEscapeButton;
+        }
+
+        public void Hide()
+        {
+            if( !gameObject.activeSelf )
+            {
+                return;
+            }
+
+            createRoomPanel.Hide();
+            insideRoomPanel.Hide();
+            roomListPanel.Hide();
+
+            roomChat.Hide();
+
+            errorText.gameObject.SetActive( false );
+            regionText.gameObject.SetActive( false );
+            stateText.gameObject.SetActive( false );
+
+            HideNavigationButtons();
+
+            if( PhotonNetwork.InRoom )
+            {
+                PhotonNetwork.LeaveRoom();
+            }
+            //PhotonNetwork.Disconnect();
+
+            gameObject.SetActive( false );
+            panelRect.anchoredPosition = Vector2.zero;
+
+            InputManager.Instance.OnEscapeButton -= OnEscapeButton;
+        }
+
+        //----------------------------------------------------------------------------------------------------
+
+        // PUN Callbacks
+
+        public override void OnConnectedToMaster()
+        {
+            stateText.gameObject.SetActive( false );
+
+            regionText.gameObject.SetActive( true );
+            regionText.text = $"Region: {PhotonNetwork.CloudRegion.ToUpper()}";
+
+            ShowNavigationButtons();
+        }
+
+        public override void OnDisconnected( DisconnectCause cause )
+        {
+            //print( "OnDisconnected: " + cause );
+        }
+
+        public override void OnLeftLobby()
+        {
+            //print( "OnLeftLobby" );
+        }
+
+        public override void OnJoinedRoom()
+        {
+            //print( "OnJoinedRoom" );
+
+            regionText.gameObject.SetActive( false );
+            HideNavigationButtons();
+            createRoomPanel.Hide();
+            roomListPanel.Hide();
+
+            insideRoomPanel.Show( () =>
+            {
+                insideRoomPanel.Hide();
                 regionText.gameObject.SetActive( true );
                 ShowNavigationButtons();
-                stateText.gameObject.SetActive( false );
-            }
-        }
-        else
-        {
-            HideNavigationButtons();
-            regionText.gameObject.SetActive( false );
-            stateText.gameObject.SetActive( true );
+            } );
 
-            PhotonNetwork.NickName = PlayerPrefs.GetString( "Nickname" );
-            PhotonNetwork.ConnectUsingSettings();
+            roomChat.Show();
+
+            //leaveRoomButton.gameObject.SetActive( true );
         }
 
-        InputManager.Instance.OnEscapeButton += OnEscapeButton;
-    }
-
-    public void Hide()
-    {
-        if( !gameObject.activeSelf )
+        public override void OnJoinRandomFailed( short returnCode, string message )
         {
-            return;
+            errorText.gameObject.SetActive( true );
+            errorText.text = $"Error: {message}";
         }
-        
-        createRoomPanel.Hide();
-        insideRoomPanel.Hide();
-        roomListPanel.Hide();
 
-        roomChat.Hide();
-        
-        errorText.gameObject.SetActive( false );
-        regionText.gameObject.SetActive( false );
-        stateText.gameObject.SetActive( false );
-        
-        HideNavigationButtons();
-
-        if( PhotonNetwork.InRoom )
+        public override void OnCreatedRoom()
         {
-            PhotonNetwork.LeaveRoom();
+            //print( "OnCreatedRoom" );
         }
-        //PhotonNetwork.Disconnect();
-        
-        gameObject.SetActive( false );
-        panelRect.anchoredPosition = Vector2.zero;
-        
-        InputManager.Instance.OnEscapeButton -= OnEscapeButton;
-    }
 
-    //----------------------------------------------------------------------------------------------------
-
-    // PUN Callbacks
-    
-    public override void OnConnectedToMaster()
-    {
-        stateText.gameObject.SetActive( false );
-        
-        regionText.gameObject.SetActive( true );
-        regionText.text = $"Region: {PhotonNetwork.CloudRegion.ToUpper()}";
-
-        ShowNavigationButtons();
-    }
-
-    public override void OnDisconnected( DisconnectCause cause )
-    {
-        //print( "OnDisconnected: " + cause );
-    }
-
-    public override void OnLeftLobby()
-    {
-        //print( "OnLeftLobby" );
-    }
-
-    public override void OnJoinedRoom()
-    {
-        //print( "OnJoinedRoom" );
-
-        regionText.gameObject.SetActive( false );
-        HideNavigationButtons();
-        createRoomPanel.Hide();
-        roomListPanel.Hide();
-        
-        insideRoomPanel.Show( () =>
-        {
-            insideRoomPanel.Hide();
-            regionText.gameObject.SetActive( true );
-            ShowNavigationButtons();
-        } );
-
-        roomChat.Show();
-        
-        //leaveRoomButton.gameObject.SetActive( true );
-    }
-
-    public override void OnJoinRandomFailed( short returnCode, string message )
-    {
-        errorText.gameObject.SetActive( true );
-        errorText.text = $"Error: {message}";
-    }
-
-    public override void OnCreatedRoom()
-    {
-        //print( "OnCreatedRoom" );
-    }
-
-    public override void OnCreateRoomFailed( short returnCode, string message )
-    {
-        createRoomPanel.Hide();
-
-        errorText.gameObject.SetActive( true );
-        errorText.text = $"Error: {message}";
-    }
-
-    public override void OnLeftRoom()
-    {
-        roomChat.Hide();
-    }
-    
-    //----------------------------------------------------------------------------------------------------
-    
-    ClientState prevState;
-    bool isNavigationPanel;
-    
-    
-    void Awake()
-    {
-        closeButton.onClick.AddListener( Hide );
-        
-        createRoomButton.onClick.AddListener( OnCreateRoomButton );
-        showRoomListButton.onClick.AddListener( OnShowRoomListButton );
-        joinRandomRoomButton.onClick.AddListener( OnJoinRandomRoomButton );
-
-        HideNavigationButtons();
-        
-        errorText.gameObject.SetActive( false );
-        stateText.gameObject.SetActive( false );
-        regionText.gameObject.SetActive( false );
-        
-        createRoomPanel.Hide();
-        insideRoomPanel.Hide();
-        roomListPanel.Hide();
-
-        //PhotonNetwork.GameVersion = Application.version;
-        PhotonNetwork.AutomaticallySyncScene = true;
-    }
-
-    void Update()
-    {
-        var curState = PhotonNetwork.NetworkClientState;
-        if( curState != prevState )
-        {
-            stateText.text = curState.ToString();
-        }
-        prevState = curState;
-    }
-
-
-    // UI Callbacks
-
-    void OnCreateRoomButton()
-    {
-        errorText.gameObject.SetActive( false );
-        regionText.gameObject.SetActive( false );
-        
-        HideNavigationButtons();
-        
-        createRoomPanel.Show( () =>
+        public override void OnCreateRoomFailed( short returnCode, string message )
         {
             createRoomPanel.Hide();
-            regionText.gameObject.SetActive( true );
-            ShowNavigationButtons();
-        } );
-    }
-    
-    void OnShowRoomListButton()
-    {
-        errorText.gameObject.SetActive( false );
-        regionText.gameObject.SetActive( false );
-        
-        HideNavigationButtons();
 
-        void onBackButton()
+            errorText.gameObject.SetActive( true );
+            errorText.text = $"Error: {message}";
+        }
+
+        public override void OnLeftRoom()
         {
+            roomChat.Hide();
+        }
+
+        //----------------------------------------------------------------------------------------------------
+
+        ClientState prevState;
+        bool isNavigationPanel;
+
+
+        void Awake()
+        {
+            closeButton.onClick.AddListener( Hide );
+
+            createRoomButton.onClick.AddListener( OnCreateRoomButton );
+            showRoomListButton.onClick.AddListener( OnShowRoomListButton );
+            joinRandomRoomButton.onClick.AddListener( OnJoinRandomRoomButton );
+
+            HideNavigationButtons();
+
+            errorText.gameObject.SetActive( false );
+            stateText.gameObject.SetActive( false );
+            regionText.gameObject.SetActive( false );
+
+            createRoomPanel.Hide();
+            insideRoomPanel.Hide();
             roomListPanel.Hide();
-            regionText.gameObject.SetActive( true );
-            ShowNavigationButtons();
+
+            //PhotonNetwork.GameVersion = Application.version;
+            PhotonNetwork.AutomaticallySyncScene = true;
         }
-        void onJoinButton( RoomInfo roomInfo )
+
+        void Update()
         {
-            PhotonNetwork.JoinRoom( roomInfo.Name );
+            var curState = PhotonNetwork.NetworkClientState;
+            if( curState != prevState )
+            {
+                stateText.text = curState.ToString();
+            }
+
+            prevState = curState;
         }
-        roomListPanel.Show( onBackButton, onJoinButton );
-    }
-
-    void OnJoinRandomRoomButton()
-    {
-        PhotonNetwork.JoinRandomRoom();
-    }
 
 
-    void ShowNavigationButtons()
-    {
-        createRoomButton.gameObject.SetActive( true );
-        showRoomListButton.gameObject.SetActive( true );
-        joinRandomRoomButton.gameObject.SetActive( true );
+        // UI Callbacks
 
-        isNavigationPanel = true;
-    }
-    
-    void HideNavigationButtons()
-    {
-        createRoomButton.gameObject.SetActive( false );
-        showRoomListButton.gameObject.SetActive( false );
-        joinRandomRoomButton.gameObject.SetActive( false );
-
-        isNavigationPanel = false;
-    }
-    
-    
-    void OnEscapeButton()
-    {
-        if( isNavigationPanel )
+        void OnCreateRoomButton()
         {
-            Hide();
+            errorText.gameObject.SetActive( false );
+            regionText.gameObject.SetActive( false );
+
+            HideNavigationButtons();
+
+            createRoomPanel.Show( () =>
+            {
+                createRoomPanel.Hide();
+                regionText.gameObject.SetActive( true );
+                ShowNavigationButtons();
+            } );
+        }
+
+        void OnShowRoomListButton()
+        {
+            errorText.gameObject.SetActive( false );
+            regionText.gameObject.SetActive( false );
+
+            HideNavigationButtons();
+
+            void onBackButton()
+            {
+                roomListPanel.Hide();
+                regionText.gameObject.SetActive( true );
+                ShowNavigationButtons();
+            }
+
+            void onJoinButton( RoomInfo roomInfo )
+            {
+                PhotonNetwork.JoinRoom( roomInfo.Name );
+            }
+
+            roomListPanel.Show( onBackButton, onJoinButton );
+        }
+
+        void OnJoinRandomRoomButton()
+        {
+            PhotonNetwork.JoinRandomRoom();
+        }
+
+
+        void ShowNavigationButtons()
+        {
+            createRoomButton.gameObject.SetActive( true );
+            showRoomListButton.gameObject.SetActive( true );
+            joinRandomRoomButton.gameObject.SetActive( true );
+
+            isNavigationPanel = true;
+        }
+
+        void HideNavigationButtons()
+        {
+            createRoomButton.gameObject.SetActive( false );
+            showRoomListButton.gameObject.SetActive( false );
+            joinRandomRoomButton.gameObject.SetActive( false );
+
+            isNavigationPanel = false;
+        }
+
+
+        void OnEscapeButton()
+        {
+            if( isNavigationPanel )
+            {
+                Hide();
+            }
         }
     }
 }

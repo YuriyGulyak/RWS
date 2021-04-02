@@ -9,7 +9,7 @@ using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 namespace RWS
 {
-    public class MultiplayerGameManager : MonoBehaviour, IOnEventCallback
+    public class MultiplayerGameLogic : MonoBehaviour, IOnEventCallback
     {
         [SerializeField]
         GameObject pilotAvatar = null;
@@ -72,7 +72,7 @@ namespace RWS
 
         public void OnEvent( EventData photonEvent )
         {
-            var eventCode = (RaiseEventCodes) photonEvent.Code;
+            var eventCode = (RaiseEventCodes)photonEvent.Code;
 
             if( eventCode == RaiseEventCodes.SpawnRemotePlayerWing )
             {

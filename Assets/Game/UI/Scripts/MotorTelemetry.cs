@@ -2,70 +2,73 @@
 using TMPro;
 using UnityEngine;
 
-public class MotorTelemetry : MonoBehaviour
+namespace RWS
 {
-    [SerializeField]
-    Motor motor = null;
-
-    [SerializeField]
-    TextMeshProUGUI throttleText = null;
-    
-    [SerializeField]
-    TextMeshProUGUI rpmText = null;
-
-    [SerializeField]
-    TextMeshProUGUI currentText = null;
-    
-    [SerializeField]
-    TextMeshProUGUI thrustText = null;
-    
-    [SerializeField]
-    float updateRate = 30f;
-    
-    
-    public void Init( Motor motor )
+    public class MotorTelemetry : MonoBehaviour
     {
-        this.motor = motor;
-    }
-    
-    
-    string throttleFormat;
-    string rpmFormat;
-    string currentFormat;
-    string thrustFormat;
-    CultureInfo cultureInfo;
-    float lastUpdateTime;
-    
+        [SerializeField]
+        Motor motor = null;
 
-    void Awake()
-    {
-        throttleFormat = throttleText.text;
-        rpmFormat = rpmText.text;
-        currentFormat = currentText.text;
-        thrustFormat = thrustText.text;
-        cultureInfo = CultureInfo.InvariantCulture;
-    }
+        [SerializeField]
+        TextMeshProUGUI throttleText = null;
 
-    void Update()
-    {
-        if( !motor )
+        [SerializeField]
+        TextMeshProUGUI rpmText = null;
+
+        [SerializeField]
+        TextMeshProUGUI currentText = null;
+
+        [SerializeField]
+        TextMeshProUGUI thrustText = null;
+
+        [SerializeField]
+        float updateRate = 30f;
+
+
+        public void Init( Motor motor )
         {
-            return;
+            this.motor = motor;
         }
-        
-        if( Time.time - lastUpdateTime > 1f / updateRate )
+
+
+        string throttleFormat;
+        string rpmFormat;
+        string currentFormat;
+        string thrustFormat;
+        CultureInfo cultureInfo;
+        float lastUpdateTime;
+
+
+        void Awake()
         {
-            lastUpdateTime = Time.time;
-            UpdateUI();
+            throttleFormat = throttleText.text;
+            rpmFormat = rpmText.text;
+            currentFormat = currentText.text;
+            thrustFormat = thrustText.text;
+            cultureInfo = CultureInfo.InvariantCulture;
         }
-    }
+
+        void Update()
+        {
+            if( !motor )
+            {
+                return;
+            }
+
+            if( Time.time - lastUpdateTime > 1f / updateRate )
+            {
+                lastUpdateTime = Time.time;
+                UpdateUI();
+            }
+        }
 
 
-    void UpdateUI()
-    {
-        throttleText.text = motor.throttle.ToString( throttleFormat, cultureInfo );
-        rpmText.text = motor.rpm.ToString( rpmFormat, cultureInfo );
-        currentText.text = motor.current.ToString( currentFormat, cultureInfo );
-        thrustText.text = ( motor.thrust / 9.8f ).ToString( thrustFormat, cultureInfo );
+        void UpdateUI()
+        {
+            throttleText.text = motor.throttle.ToString( throttleFormat, cultureInfo );
+            rpmText.text = motor.rpm.ToString( rpmFormat, cultureInfo );
+            currentText.text = motor.current.ToString( currentFormat, cultureInfo );
+            thrustText.text = ( motor.thrust / 9.8f ).ToString( thrustFormat, cultureInfo );
+        }
     }
 }

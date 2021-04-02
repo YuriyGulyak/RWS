@@ -1,29 +1,32 @@
 ﻿using UnityEngine;
 
-public static class Rates
+namespace RWS
 {
-    // BetaFlight Rates. Return angular velocity, deg/s
-    // https://apocolipse.github.io/RotorPirates/ - from page js code
-    public static float BfCalc( float rcCommand, float rcRate, float expo, float superRate )
+    public static class Rates
     {
-        if( rcRate > 2f )
+        // BetaFlight Rates. Return angular velocity, deg/s
+        // https://apocolipse.github.io/RotorPirates/ - from page js code
+        public static float BfCalc( float rcCommand, float rcRate, float expo, float superRate )
         {
-            rcRate = rcRate + ( 14.54f * ( rcRate - 2f ) );
+            if( rcRate > 2f )
+            {
+                rcRate = rcRate + ( 14.54f * ( rcRate - 2f ) );
+            }
+
+            if( !expo.Equals( 0f ) )
+            {
+                rcCommand = rcCommand * Mathf.Pow( Mathf.Abs( rcCommand ), 3f ) * expo + rcCommand * ( 1f - expo );
+            }
+
+            var angleRate = 200f * rcRate * rcCommand;
+
+            if( !superRate.Equals( 0f ) )
+            {
+                var rcSuperFactor = 1f / ( Mathf.Clamp( 1f - ( Mathf.Abs( rcCommand ) * superRate ), 0.01f, 1f ) );
+                angleRate *= rcSuperFactor;
+            }
+
+            return angleRate;
         }
-
-        if( !expo.Equals( 0f ) )
-        {
-            rcCommand = rcCommand * Mathf.Pow( Mathf.Abs( rcCommand ), 3f ) * expo + rcCommand * ( 1f - expo );
-        }
-
-        var angleRate = 200f * rcRate * rcCommand;
-
-        if( !superRate.Equals( 0f ) )
-        {
-            var rcSuperFactor = 1f / ( Mathf.Clamp( 1f - ( Mathf.Abs( rcCommand ) * superRate ), 0.01f, 1f ) );
-            angleRate *= rcSuperFactor;
-        }
-
-        return angleRate;
     }
 }

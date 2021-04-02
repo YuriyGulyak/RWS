@@ -1,16 +1,19 @@
 ﻿using System;
 using UnityEngine;
 
-[Serializable]
-public class BestLapKeyStorageItem
+namespace RWS
 {
-    public string playerPrefsKey;
-    public string dreamloPublicCode;
-    public string dreamloPrivateCode;
-}
+    [Serializable]
+    public class BestLapKeyStorageItem
+    {
+        public string playerPrefsKey;
+        public string dreamloPublicCode;
+        public string dreamloPrivateCode;
+    }
 
-[CreateAssetMenu]
-public class BestLapKeyStorage : ScriptableObject
-{
-    public BestLapKeyStorageItem[] items;
+    [CreateAssetMenu]
+    public class BestLapKeyStorage : ScriptableObject
+    {
+        public BestLapKeyStorageItem[] items;
+    }
 }

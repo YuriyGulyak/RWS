@@ -1,51 +1,54 @@
 ﻿using UnityEngine;
 
-public class StickDisplay : MonoBehaviour
+namespace RWS
 {
-    [SerializeField]
-    RectTransform handleTransform = null;
-
-    [SerializeField]
-    Vector2 areaHalfSize = new Vector2( 100f, 100f );
-    
-    [SerializeField, Range( -1f, 1f )]
-    float x = 0f;
-    
-    [SerializeField, Range( -1f, 1f )]
-    float y = 0f;
-
-    //----------------------------------------------------------------------------------------------------
-
-    public float X
+    public class StickDisplay : MonoBehaviour
     {
-        get => x;
-        set
+        [SerializeField]
+        RectTransform handleTransform = null;
+
+        [SerializeField]
+        Vector2 areaHalfSize = new Vector2( 100f, 100f );
+
+        [SerializeField, Range( -1f, 1f )]
+        float x = 0f;
+
+        [SerializeField, Range( -1f, 1f )]
+        float y = 0f;
+
+        //----------------------------------------------------------------------------------------------------
+
+        public float X
         {
-            x = Mathf.Clamp( value, -1f, 1f );
-            handleTransform.anchoredPosition = new Vector2( areaHalfSize.x * x, areaHalfSize.y * y );
+            get => x;
+            set
+            {
+                x = Mathf.Clamp( value, -1f, 1f );
+                handleTransform.anchoredPosition = new Vector2( areaHalfSize.x * x, areaHalfSize.y * y );
+            }
         }
-    }
-    
-    public float Y
-    {
-        get => y;
-        set
+
+        public float Y
         {
-            y = Mathf.Clamp( value, -1f, 1f );
+            get => y;
+            set
+            {
+                y = Mathf.Clamp( value, -1f, 1f );
+                UpdateHandlePosition();
+            }
+        }
+
+        //----------------------------------------------------------------------------------------------------
+
+        void OnValidate()
+        {
             UpdateHandlePosition();
         }
-    }
 
-    //----------------------------------------------------------------------------------------------------
-    
-    void OnValidate()
-    {
-        UpdateHandlePosition();
-    }
 
-    
-    void UpdateHandlePosition()
-    {
-        handleTransform.anchoredPosition = new Vector2( areaHalfSize.x * x, areaHalfSize.y * y );
+        void UpdateHandlePosition()
+        {
+            handleTransform.anchoredPosition = new Vector2( areaHalfSize.x * x, areaHalfSize.y * y );
+        }
     }
 }

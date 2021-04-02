@@ -1,17 +1,20 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu]
-public class AirfoilConfig : ScriptableObject
+namespace RWS
 {
-    // Drag coefficient vs Angle of attack
-    public AnimationCurve CxVsAlpha;
+    [CreateAssetMenu]
+    public class AirfoilConfig : ScriptableObject
+    {
+        // Drag coefficient vs Angle of attack
+        public AnimationCurve CxVsAlpha;
 
-    // Lift coefficient vs Angle of attack
-    public AnimationCurve CyVsAlpha;
+        // Lift coefficient vs Angle of attack
+        public AnimationCurve CyVsAlpha;
 
-    // Center Of Pressure vs Angle of attack
-    public AnimationCurve CpVsAlpha;
+        // Center Of Pressure vs Angle of attack
+        public AnimationCurve CpVsAlpha;
 
-    // Reflex coefficient vs Angle of attack
-    public AnimationCurve ReflexVsAlpha;
+        // Reflex coefficient vs Angle of attack
+        public AnimationCurve ReflexVsAlpha;
+    }
 }

@@ -2,32 +2,35 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerNamePanel : MonoBehaviour
+namespace RWS
 {
-    [SerializeField] 
-    TMP_InputField nameInputField = null;
-    
-    [SerializeField] 
-    Button applyNameButton = null;
-    
-    [SerializeField] 
-    TextMeshProUGUI errorText = null;
-    
-    
-    string nickname;
-    
-    
-    void OnEnable()
+    public class PlayerNamePanel : MonoBehaviour
     {
-        if( PlayerPrefs.HasKey( "Nickname" ) )
+        [SerializeField]
+        TMP_InputField nameInputField = null;
+
+        [SerializeField]
+        Button applyNameButton = null;
+
+        [SerializeField]
+        TextMeshProUGUI errorText = null;
+
+
+        string nickname;
+
+
+        void OnEnable()
         {
-            nickname = PlayerPrefs.GetString( "Nickname" );
+            if( PlayerPrefs.HasKey( "Nickname" ) )
+            {
+                nickname = PlayerPrefs.GetString( "Nickname" );
+            }
+            else
+            {
+                nickname = $"Player{UnityEngine.Random.Range( 0, 10000 ):0000}";
+            }
+
+            nameInputField.text = nickname;
         }
-        else
-        {
-            nickname = $"Player{UnityEngine.Random.Range( 0, 10000 ):0000}";
-        }
-        
-        nameInputField.text = nickname;
     }
 }

@@ -1,86 +1,89 @@
 ﻿using Unity.Mathematics;
 using UnityEngine;
 
-public class AttitudeIndicator : MonoBehaviour
+namespace RWS
 {
-    [SerializeField]
-    RectTransform horizonTransform = null;
-
-    [SerializeField]
-    RectTransform aircraftSymbolTransform = null;
-
-    [SerializeField]
-    float cameraVerticalFOV = 90f;
-    
-    [SerializeField]
-    FlyingWing flyingWing = null;
-    
-    
-    public void Init( FlyingWing flyingWing )
+    public class AttitudeIndicator : MonoBehaviour
     {
-        this.flyingWing = flyingWing;
-    }
+        [SerializeField]
+        RectTransform horizonTransform = null;
 
-    public bool IsActive => gameObject.activeSelf;
-    
-    public void Show()
-    {
-        if( !IsActive )
+        [SerializeField]
+        RectTransform aircraftSymbolTransform = null;
+
+        [SerializeField]
+        float cameraVerticalFOV = 90f;
+
+        [SerializeField]
+        FlyingWing flyingWing = null;
+
+
+        public void Init( FlyingWing flyingWing )
         {
-            gameObject.SetActive( true );
-        }
-    }
-
-    public void Hide()
-    {
-        if( IsActive )
-        {
-            gameObject.SetActive( false );
-        }
-    }
-
-    public void Reset()
-    {
-        roll = 0f;
-        pitch = 0f;
-
-        var horizonPosition = horizonTransform.anchoredPosition;
-        horizonPosition.y = 0f;
-        horizonTransform.anchoredPosition = horizonPosition;
-
-        var aircraftSymbolAngles = aircraftSymbolTransform.eulerAngles;
-        aircraftSymbolAngles.z = 0f;
-        aircraftSymbolTransform.eulerAngles = aircraftSymbolAngles;
-    }
-    
-    
-    float pixelsInDegree;
-    float roll; // For debug 
-    float pitch;
-    
-
-    void Awake()
-    {
-        // TODO There will be problems if change the resolution during the game
-        pixelsInDegree = Screen.height / cameraVerticalFOV;
-    }
-
-    void Update()
-    {
-        if( !flyingWing )
-        {
-            return;
+            this.flyingWing = flyingWing;
         }
 
-        roll = flyingWing.RollAngle;
-        pitch = flyingWing.PitchAngle;
+        public bool IsActive => gameObject.activeSelf;
 
-        var horizonPosition = horizonTransform.anchoredPosition;
-        horizonPosition.y = pixelsInDegree * math.clamp( -pitch, -60f, 60f );
-        horizonTransform.anchoredPosition = horizonPosition;
+        public void Show()
+        {
+            if( !IsActive )
+            {
+                gameObject.SetActive( true );
+            }
+        }
 
-        var aircraftSymbolAngles = aircraftSymbolTransform.eulerAngles;
-        aircraftSymbolAngles.z = roll;
-        aircraftSymbolTransform.eulerAngles = aircraftSymbolAngles;
+        public void Hide()
+        {
+            if( IsActive )
+            {
+                gameObject.SetActive( false );
+            }
+        }
+
+        public void Reset()
+        {
+            roll = 0f;
+            pitch = 0f;
+
+            var horizonPosition = horizonTransform.anchoredPosition;
+            horizonPosition.y = 0f;
+            horizonTransform.anchoredPosition = horizonPosition;
+
+            var aircraftSymbolAngles = aircraftSymbolTransform.eulerAngles;
+            aircraftSymbolAngles.z = 0f;
+            aircraftSymbolTransform.eulerAngles = aircraftSymbolAngles;
+        }
+
+
+        float pixelsInDegree;
+        float roll; // For debug 
+        float pitch;
+
+
+        void Awake()
+        {
+            // TODO There will be problems if change the resolution during the game
+            pixelsInDegree = Screen.height / cameraVerticalFOV;
+        }
+
+        void Update()
+        {
+            if( !flyingWing )
+            {
+                return;
+            }
+
+            roll = flyingWing.RollAngle;
+            pitch = flyingWing.PitchAngle;
+
+            var horizonPosition = horizonTransform.anchoredPosition;
+            horizonPosition.y = pixelsInDegree * math.clamp( -pitch, -60f, 60f );
+            horizonTransform.anchoredPosition = horizonPosition;
+
+            var aircraftSymbolAngles = aircraftSymbolTransform.eulerAngles;
+            aircraftSymbolAngles.z = roll;
+            aircraftSymbolTransform.eulerAngles = aircraftSymbolAngles;
+        }
     }
 }

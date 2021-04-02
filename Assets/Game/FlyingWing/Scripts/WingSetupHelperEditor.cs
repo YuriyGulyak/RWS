@@ -3,31 +3,34 @@
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor( typeof( WingSetupHelper ) )]
-public class WingSetupHelperEditor : Editor
+namespace RWS
 {
-    public override void OnInspectorGUI()
+    [CustomEditor( typeof( WingSetupHelper ) )]
+    public class WingSetupHelperEditor : Editor
     {
-        base.OnInspectorGUI();
-
-        EditorGUILayout.Separator();
-        if( GUILayout.Button( "Update" ) )
+        public override void OnInspectorGUI()
         {
-            wingSetupHelper.UpdateSections();
+            base.OnInspectorGUI();
+
+            EditorGUILayout.Separator();
+            if( GUILayout.Button( "Update" ) )
+            {
+                wingSetupHelper.UpdateSections();
+            }
         }
+
+        //----------------------------------------------------------------------------------------------------
+
+        void OnEnable()
+        {
+            wingSetupHelper = (WingSetupHelper)target;
+            //wingSetupHelper.UpdateSections();
+        }
+
+        //----------------------------------------------------------------------------------------------------
+
+        WingSetupHelper wingSetupHelper;
     }
-
-    //----------------------------------------------------------------------------------------------------
-
-    void OnEnable()
-    {
-        wingSetupHelper = (WingSetupHelper)target;
-        //wingSetupHelper.UpdateSections();
-    }
-
-    //----------------------------------------------------------------------------------------------------
-
-    WingSetupHelper wingSetupHelper;
 }
 
 #endif

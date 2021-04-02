@@ -3,28 +3,31 @@
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor( typeof( UIHelper ) )]
-public class UIHelperEditor : Editor
+namespace RWS
 {
-    public float scrollSensitivity = 2f;
-
-    
-    UIHelper uiHelper;
-    
-
-    void OnEnable()
+    [CustomEditor( typeof( UIHelper ) )]
+    public class UIHelperEditor : Editor
     {
-        uiHelper = (UIHelper)target;
-    }
+        public float scrollSensitivity = 2f;
 
-    public override void OnInspectorGUI()
-    {
-        base.OnInspectorGUI();
 
-        EditorGUILayout.Separator();
-        if( GUILayout.Button( "Apply" ) )
+        UIHelper uiHelper;
+
+
+        void OnEnable()
         {
-            uiHelper.Apply();
+            uiHelper = (UIHelper)target;
+        }
+
+        public override void OnInspectorGUI()
+        {
+            base.OnInspectorGUI();
+
+            EditorGUILayout.Separator();
+            if( GUILayout.Button( "Apply" ) )
+            {
+                uiHelper.Apply();
+            }
         }
     }
 }

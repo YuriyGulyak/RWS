@@ -2,57 +2,60 @@
 using TMPro;
 using UnityEngine;
 
-public class TrackPanel : MonoBehaviour
+namespace RWS
 {
-    [SerializeField]
-    TextMeshProUGUI localBestLapText;
-
-    [SerializeField]
-    TextMeshProUGUI globalBestLapText;
-
-    [SerializeField]
-    BestLapKeyStorage bestLapKeyStorage;
-    
-    [SerializeField]
-    int trackIndex;
-    
-    //----------------------------------------------------------------------------------------------------
-    
-    readonly string timeFormat = @"mm\:ss\.ff";
-    Leaderboard leaderboard;
-
-
-    void Awake()
+    public class TrackPanel : MonoBehaviour
     {
-        leaderboard = Leaderboard.Instance;
-    }
+        [SerializeField]
+        TextMeshProUGUI localBestLapText;
 
-    void OnEnable()
-    {
-        var bestLapKeyItem = bestLapKeyStorage.items[ trackIndex ];
+        [SerializeField]
+        TextMeshProUGUI globalBestLapText;
 
-        var localBestLapKey = bestLapKeyItem.playerPrefsKey;
-        if( PlayerPrefs.HasKey( localBestLapKey ) )
+        [SerializeField]
+        BestLapKeyStorage bestLapKeyStorage;
+
+        [SerializeField]
+        int trackIndex;
+
+        //----------------------------------------------------------------------------------------------------
+
+        readonly string timeFormat = @"mm\:ss\.ff";
+        Leaderboard leaderboard;
+
+
+        void Awake()
         {
-            var bestLapSeconds = PlayerPrefs.GetFloat( localBestLapKey );
-            localBestLapText.text = TimeSpan.FromSeconds( bestLapSeconds ).ToString( timeFormat );
-        }
-        else
-        {
-            localBestLapText.text = "N/A";
+            leaderboard = Leaderboard.Instance;
         }
 
-        var dreamloPublicCode = bestLapKeyItem.dreamloPublicCode;      
-        leaderboard.GetRecords( dreamloPublicCode, 0, 1, records =>
+        void OnEnable()
         {
-            if( records.Length == 0 )
+            var bestLapKeyItem = bestLapKeyStorage.items[ trackIndex ];
+
+            var localBestLapKey = bestLapKeyItem.playerPrefsKey;
+            if( PlayerPrefs.HasKey( localBestLapKey ) )
             {
-                globalBestLapText.text = "N/A";
+                var bestLapSeconds = PlayerPrefs.GetFloat( localBestLapKey );
+                localBestLapText.text = TimeSpan.FromSeconds( bestLapSeconds ).ToString( timeFormat );
             }
             else
             {
-                globalBestLapText.text = TimeSpan.FromSeconds( records[ 0 ].seconds ).ToString( timeFormat );
+                localBestLapText.text = "N/A";
             }
-        }, null );
+
+            var dreamloPublicCode = bestLapKeyItem.dreamloPublicCode;
+            leaderboard.GetRecords( dreamloPublicCode, 0, 1, records =>
+            {
+                if( records.Length == 0 )
+                {
+                    globalBestLapText.text = "N/A";
+                }
+                else
+                {
+                    globalBestLapText.text = TimeSpan.FromSeconds( records[ 0 ].seconds ).ToString( timeFormat );
+                }
+            }, null );
+        }
     }
 }
