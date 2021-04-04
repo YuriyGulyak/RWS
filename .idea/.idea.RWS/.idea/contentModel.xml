@@ -87,9 +87,11 @@
             <e p="Leaderboard.cs" t="Include" />
           </e>
           <e p="Managers" t="Include">
-            <e p="GraphicsManager.cs" t="Include" />
-            <e p="InputManager.cs" t="Include" />
-            <e p="SoundManager.cs" t="Include" />
+            <e p="Scripts" t="Include">
+              <e p="GraphicsManager.cs" t="Include" />
+              <e p="InputManager.cs" t="Include" />
+              <e p="SoundManager.cs" t="Include" />
+            </e>
           </e>
           <e p="OrbitCamera" t="Include">
             <e p="Scripts" t="Include">

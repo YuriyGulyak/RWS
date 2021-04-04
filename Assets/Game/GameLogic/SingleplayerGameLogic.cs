@@ -12,11 +12,11 @@ namespace RWS
         PilotLook pilotLook = null;
 
         [SerializeField]
-        GameObject fpvCamera = null;
-
-        [SerializeField]
         FlyingWing flyingWing = null;
 
+        [SerializeField]
+        GameObject fpvCamera = null;
+        
         [SerializeField]
         WingLauncher wingLauncher = null;
 

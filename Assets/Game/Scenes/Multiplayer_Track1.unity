@@ -56377,9 +56377,9 @@ MonoBehaviour:
   - {fileID: 1203711963}
   - {fileID: 1908678245}
   - {fileID: 817757649}
-  localPlayerWingPrefab: {fileID: 3313566716125876229, guid: 51928c1581921914cbb2d0d905ffe744,
+  localPlayerWingPrefab: {fileID: 2030780351097199835, guid: f5d5f8ce0f100e240a0100710d5e1311,
     type: 3}
-  remotePlayerWingPrefab: {fileID: 6845670327748925151, guid: 2f1604317eaa25f4095065455eaa8461,
+  remotePlayerWingPrefab: {fileID: 858474618119878348, guid: 709732497f7d60d46a7c9d8be3666559,
     type: 3}
   terrainLayer:
     serializedVersion: 2
