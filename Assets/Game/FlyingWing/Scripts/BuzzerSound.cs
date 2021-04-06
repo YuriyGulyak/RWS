@@ -23,20 +23,22 @@ namespace RWS
             audioSource.volume = volumeScale;
         }
 
-        void OnEnable()
+        void Start()
         {
-            if( SoundManager )
+            soundManager = SoundManager.Instance;
+            
+            if( soundManager )
             {
-                volumeScale = SoundManager.BuzzerVolume * SoundManager.MasterVolume;
-                SoundManager.OnBuzzerVolumeChanged += OnManagerVolumeChanged;
+                volumeScale = soundManager.BuzzerVolume * soundManager.MasterVolume;
+                soundManager.OnBuzzerVolumeChanged += OnManagerVolumeChanged;
             }
         }
 
         void OnDisable()
         {
-            if( SoundManager )
+            if( soundManager )
             {
-                SoundManager.OnBuzzerVolumeChanged -= OnManagerVolumeChanged;
+                soundManager.OnBuzzerVolumeChanged -= OnManagerVolumeChanged;
             }
         }
 
@@ -54,8 +56,7 @@ namespace RWS
         //--------------------------------------------------------------------------------------------------------------
 
         CustomUpdate customUpdate;
-
-        SoundManager SoundManager => SoundManager.Instance;
+        SoundManager soundManager;
 
         void OnManagerVolumeChanged( float newBuzzerVolume, float masterVolume )
         {

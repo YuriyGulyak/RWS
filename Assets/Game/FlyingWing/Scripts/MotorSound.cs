@@ -62,14 +62,16 @@ namespace RWS
             UpdateAudioSources();
         }
 
-        void OnEnable()
+        void Start()
         {
-            if( SoundManager )
+            soundManager = SoundManager.Instance;
+            
+            if( soundManager )
             {
-                volumeScale = SoundManager.MotorVolume * SoundManager.MasterVolume;
+                volumeScale = soundManager.MotorVolume * soundManager.MasterVolume;
                 UpdateAudioSources();
 
-                SoundManager.OnMotorVolumeChanged += OnManagerVolumeChanged;
+                soundManager.OnMotorVolumeChanged += OnManagerVolumeChanged;
             }
 
             lowSoundSource.Play();
@@ -78,9 +80,9 @@ namespace RWS
 
         void OnDisable()
         {
-            if( SoundManager )
+            if( soundManager )
             {
-                SoundManager.OnWindVolumeChanged -= OnManagerVolumeChanged;
+                soundManager.OnWindVolumeChanged -= OnManagerVolumeChanged;
             }
 
             lowSoundSource.Stop();
@@ -97,14 +99,13 @@ namespace RWS
 
         //--------------------------------------------------------------------------------------------------------------
 
-        SoundManager SoundManager => SoundManager.Instance;
+        SoundManager soundManager;
 
         void OnManagerVolumeChanged( float newMotorVolume, float masterVolume )
         {
             volumeScale = newMotorVolume * masterVolume;
             UpdateAudioSources();
         }
-
 
         void UpdateAudioSources()
         {

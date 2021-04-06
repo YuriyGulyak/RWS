@@ -55,7 +55,7 @@ namespace RWS
             customUpdate = new CustomUpdate( blinkFrequency );
             customUpdate.OnUpdate += OnUpdate;
         }
-
+        
         void Update()
         {
             customUpdate.Update( Time.time );

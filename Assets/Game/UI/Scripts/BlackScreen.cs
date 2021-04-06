@@ -51,8 +51,10 @@ namespace RWS
 
             image.enabled = true;
 
-            blackScreenAnimationCoroutine = ImageColorLerpCoroutine( colorCurrent, colorBlack, 1f,
-                () => { onAnimationFinished?.Invoke(); } );
+            blackScreenAnimationCoroutine = ImageColorLerpCoroutine( colorCurrent, colorBlack, 1f, () =>
+                {
+                    onAnimationFinished?.Invoke();
+                } );
             StartCoroutine( blackScreenAnimationCoroutine );
         }
 

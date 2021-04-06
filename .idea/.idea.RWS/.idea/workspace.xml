@@ -39,6 +39,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Game/Input/Rates/Rates.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/Input/Rates/RateProfileEditor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/Input/Rates/RateProfile.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Game/Managers/Scripts/SoundManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/Pilot/Scripts/SwayEffect.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/Pilot/Scripts/PilotLook.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/Pilot/Scripts/PilotZoom.cs" root0="FORCE_HIGHLIGHTING" />
@@ -159,9 +160,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Game/PostProcessing/BloorEffectController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/RaceKit/Scripts/MarkerPlacer.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/RaceKit/Scripts/MarkerPlacerEditor.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/AttitudeIndicator.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/BatteryTelemetry.cs" />
         <option value="$PROJECT_DIR$/Assets/@Tests/TestLeaderboard/TestLeaderboard.cs" />
@@ -170,7 +168,6 @@
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/UIHelper.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/StickDisplay.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/PingDisplay.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/OSDWarnings.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/OSDTelemetry.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/OSDHome.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MotorTelemetry.cs" />
@@ -178,7 +175,6 @@
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/LapTime.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/GameMenu.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/ButtonWithCanvasGroup.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/BlackScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SingleplayerPanel/TrackPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/ControlListEntry.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/ControlsPanel.cs" />
@@ -195,7 +191,6 @@
         <option value="$PROJECT_DIR$/Assets/Skybox Creator/Scripts/Editor/SkyboxCreatorImageSkyInspector.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/RoomListPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/LeaderboardPanel/LeaderboardPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/BuzzerSound.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/WingSetupHelper.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/Leaderboard/Leaderboard.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/RaceKit/Scripts/RaceGate.cs" />
@@ -210,6 +205,12 @@
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/CraftPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/InputTelemetry.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/GameLogic/SingleplayerGameLogic.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/BlackScreen.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/ServoSound.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/WindSound.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/MotorSound.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/BuzzerSound.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/OSDWarnings.cs" />
       </list>
     </option>
   </component>

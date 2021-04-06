@@ -11455,7 +11455,7 @@ PrefabInstance:
         type: 3}
       propertyPath: flyingWing
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2081956273}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d376060dd3a7404a8b5ffc7a0abcc35, type: 3}
 --- !u!224 &360626725 stripped
@@ -11610,7 +11610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f98cdd7d35afff84b8e15a95dce72827, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  motor: {fileID: 0}
+  motor: {fileID: 2081956278}
   throttleText: {fileID: 837804261}
   rpmText: {fileID: 1208514350}
   currentText: {fileID: 435991574}
@@ -12373,7 +12373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b12ed20addc1aa49b53955945356d39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flyingWing: {fileID: 0}
+  flyingWing: {fileID: 2081956273}
   speedText: {fileID: 845381156}
   altitudeText: {fileID: 1553436205}
   angleOfAttackText: {fileID: 865048992}
@@ -19441,7 +19441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 390822c1d67fbbd46bd34abb4ee40325, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  battery: {fileID: 0}
+  battery: {fileID: 2081956277}
   socText: {fileID: 852746594}
   voltageText: {fileID: 1325098554}
   mahUsedText: {fileID: 719726297}
@@ -54761,7 +54761,7 @@ PrefabInstance:
         type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2081956275}
     - target: {fileID: 720075569104032214, guid: 01bf3d5341e1f7b42b64b4247547f4ec,
         type: 3}
       propertyPath: m_Name
@@ -54831,7 +54831,7 @@ PrefabInstance:
         type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2081956275}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01bf3d5341e1f7b42b64b4247547f4ec, type: 3}
 --- !u!114 &1663117270 stripped
@@ -56231,7 +56231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fa8dd343ec2e0e44b160a456f47ae8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wingRigidbody: {fileID: 0}
+  wingRigidbody: {fileID: 2081956276}
   launchDistance: 0.7
   launchForce: 4
 --- !u!1 &1704645443
@@ -69500,6 +69500,42 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2081956272}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &2081956275 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8625455569264246421, guid: da3af7f892b053147bb131ad0a6de461,
+    type: 3}
+  m_PrefabInstance: {fileID: 2081956272}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &2081956276 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 1359027184328412837, guid: da3af7f892b053147bb131ad0a6de461,
+    type: 3}
+  m_PrefabInstance: {fileID: 2081956272}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2081956277 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1359027184477364762, guid: da3af7f892b053147bb131ad0a6de461,
+    type: 3}
+  m_PrefabInstance: {fileID: 2081956272}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01a57745ff4b6cd45bed5a3e47272626, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2081956278 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1359027186013095798, guid: da3af7f892b053147bb131ad0a6de461,
+    type: 3}
+  m_PrefabInstance: {fileID: 2081956272}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c198aed0bef4f0d4fae5f64816a0fa2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2088098679
 GameObject:
   m_ObjectHideFlags: 0
@@ -71384,7 +71420,7 @@ PrefabInstance:
     - target: {fileID: 2055569496, guid: 5b61183eef8c7194ea8244d39d57df1f, type: 3}
       propertyPath: flyingWing
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2081956273}
     - target: {fileID: 3040130980264827625, guid: 5b61183eef8c7194ea8244d39d57df1f,
         type: 3}
       propertyPath: flyingWing
@@ -71394,7 +71430,7 @@ PrefabInstance:
         type: 3}
       propertyPath: flyingWing
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2081956273}
     - target: {fileID: 6879937208340993766, guid: 5b61183eef8c7194ea8244d39d57df1f,
         type: 3}
       propertyPath: attitudeIndicator
@@ -71634,7 +71670,7 @@ PrefabInstance:
         type: 3}
       propertyPath: flyingWing
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2081956273}
     - target: {fileID: 7858552050563222236, guid: 5b61183eef8c7194ea8244d39d57df1f,
         type: 3}
       propertyPath: m_AnchorMin.y
