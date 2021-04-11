@@ -33717,6 +33717,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d3bcf3412266e40aa7d96e02f79671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1663117271 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 417815475215287534, guid: 01bf3d5341e1f7b42b64b4247547f4ec,
+    type: 3}
+  m_PrefabInstance: {fileID: 1663117269}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1665592410
 GameObject:
   m_ObjectHideFlags: 0
@@ -42211,6 +42217,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlyingWingSingleplayer
       objectReference: {fileID: 0}
+    - target: {fileID: 6423237760949825752, guid: da3af7f892b053147bb131ad0a6de461,
+        type: 3}
+      propertyPath: groundAntennaTransform
+      value: 
+      objectReference: {fileID: 1663117271}
     - target: {fileID: 8625455569264246421, guid: da3af7f892b053147bb131ad0a6de461,
         type: 3}
       propertyPath: m_LocalPosition.x

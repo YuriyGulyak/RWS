@@ -118,6 +118,8 @@ namespace RWS
         float lastLaunchTime;
         bool fpvMode;
         Leaderboard leaderboard;
+        float currentSessionLapStartTime;
+        float currentSessionBestLap;
 
         
         void Awake()
@@ -168,10 +170,6 @@ namespace RWS
             lapTime.Init( PlayerPrefs.GetFloat( localBestLapKey, -1f ) );
             lapTime.OnNewBestTime += newBestTime =>
             {
-                // TODO Need refactoring
-                // Receiving in PlayerOverviewPanel
-                PhotonNetwork.LocalPlayer.SetCustomProperties( new Hashtable { { bestLapPropertyKey, newBestTime } } );
-                
                 PlayerPrefs.SetFloat( localBestLapKey, newBestTime );
 
                 var pilotName = PlayerPrefs.GetString( "Nickname", "" );
@@ -191,6 +189,9 @@ namespace RWS
                 if( craft.CompareTag( playerTag ) )
                 {
                     lapTime.StartNewTime();
+                    
+                    // Temp solution
+                    currentSessionLapStartTime = Time.time;
                 }
             } );
             raceTrack.OnFinish.AddListener( craft =>
@@ -198,6 +199,16 @@ namespace RWS
                 if( craft.CompareTag( playerTag ) )
                 {
                     lapTime.CompareTime();
+                    
+                    // Temp solution
+                    var newLapTime = Time.time - currentSessionLapStartTime;
+                    if( currentSessionBestLap <= 0f || newLapTime < currentSessionBestLap )
+                    {
+                        currentSessionBestLap = newLapTime;
+                        
+                        // Receiving in PlayerOverviewPanel. Need refactoring
+                        PhotonNetwork.LocalPlayer.SetCustomProperties( new Hashtable { { bestLapPropertyKey, newLapTime } } );
+                    }
                 }
             } );
 

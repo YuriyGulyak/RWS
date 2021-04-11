@@ -196,7 +196,6 @@
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/BlackScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/GameLogic/MainMenuLogic.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/GameLogic/SingleplayerGameLogic.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/GameLogic/MultiplayerGameLogic.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SingleplayerPanel/SingleplayerPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Utils/Singleton.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/SettingsPanel.cs" />
@@ -213,6 +212,7 @@
         <option value="$PROJECT_DIR$/Assets/Utils/SliderWithInputField.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/SoundPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/SensitivityPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/GameLogic/MultiplayerGameLogic.cs" />
       </list>
     </option>
   </component>
@@ -278,10 +278,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="164" y="39" width="1411" height="943" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1618147423085" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1611059328437">
+    <state x="616" y="240" key="run.anything.popup" timestamp="1618160942366">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1611059328437" />
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1618160942366" />
     <state x="616" y="199" width="672" height="607" key="search.everywhere.popup" timestamp="1618145856403">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
