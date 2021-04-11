@@ -7813,7 +7813,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 814bf068b7c8d5842b5347282f5e92cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  craft: {fileID: 0}
+  craft: {fileID: 2081956273}
   ghost: {fileID: 933541895}
   replayFileName: GhostReplay_Track2.dat
 --- !u!1 &384496554

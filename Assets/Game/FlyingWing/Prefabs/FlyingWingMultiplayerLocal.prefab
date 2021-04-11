@@ -55,6 +55,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlyingWingMultiplayerLocal
       objectReference: {fileID: 0}
+    - target: {fileID: 4749221707724491910, guid: da3af7f892b053147bb131ad0a6de461,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 8625455569264246421, guid: da3af7f892b053147bb131ad0a6de461,
         type: 3}
       propertyPath: m_LocalPosition.x
