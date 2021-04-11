@@ -61,16 +61,25 @@ namespace RWS
         {
             closeButton.onClick.AddListener( Hide );
 
-            InputManager.Instance.OnEscapeButton += OnEscapeButton;
-
             leaderboardEntryTemplate.SetActive( false );
             messageTextMesh.gameObject.SetActive( false );
 
             trackDropdown.onValueChanged.AddListener( OnTrackDropdownValueChanged );
             
             leaderboard = Leaderboard.Instance;
+            inputManager = InputManager.Instance;
         }
 
+        void OnEnable()
+        {
+            inputManager.OnEscapeButton += OnEscapeButton;
+        }
+
+        void OnDisable()
+        {
+            inputManager.OnEscapeButton -= OnEscapeButton;
+        }
+        
         //----------------------------------------------------------------------------------------------------
 
         string timeFormat = @"mm\:ss\.ff";
@@ -78,7 +87,8 @@ namespace RWS
         Leaderboard leaderboard;
         IEnumerator instantiateLeaderboardEntries;
         GameObject[] leaderboardEntries;
-
+        InputManager inputManager;
+        
 
         void UpdateLeaderboard()
         {

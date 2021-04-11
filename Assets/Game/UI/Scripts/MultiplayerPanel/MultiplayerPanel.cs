@@ -85,8 +85,6 @@ namespace RWS
                 PhotonNetwork.NickName = PlayerPrefs.GetString( "Nickname" );
                 PhotonNetwork.ConnectUsingSettings();
             }
-
-            InputManager.Instance.OnEscapeButton += OnEscapeButton;
         }
 
         public void Hide()
@@ -116,8 +114,6 @@ namespace RWS
 
             gameObject.SetActive( false );
             panelRect.anchoredPosition = Vector2.zero;
-
-            InputManager.Instance.OnEscapeButton -= OnEscapeButton;
         }
 
         //----------------------------------------------------------------------------------------------------
@@ -193,8 +189,9 @@ namespace RWS
 
         ClientState prevState;
         bool isNavigationPanel;
+        InputManager inputManager;
 
-
+        
         void Awake()
         {
             closeButton.onClick.AddListener( Hide );
@@ -215,8 +212,25 @@ namespace RWS
 
             //PhotonNetwork.GameVersion = Application.version;
             PhotonNetwork.AutomaticallySyncScene = true;
+
+            inputManager = InputManager.Instance;
         }
 
+
+        public override void OnEnable()
+        {
+            base.OnEnable();
+            
+            inputManager.OnEscapeButton += OnEscapeButton;
+        }
+
+        public override void OnDisable()
+        {
+            base.OnDisable();
+            
+            inputManager.OnEscapeButton -= OnEscapeButton;
+        }
+        
         void Update()
         {
             var curState = PhotonNetwork.NetworkClientState;

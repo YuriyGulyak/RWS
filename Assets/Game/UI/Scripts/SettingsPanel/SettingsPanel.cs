@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace RWS
@@ -72,6 +73,9 @@ namespace RWS
 
         //----------------------------------------------------------------------------------------------------
 
+        InputManager inputManager;
+            
+        
         void Awake()
         {
             closeButton.onClick.AddListener( Hide );
@@ -81,15 +85,26 @@ namespace RWS
             controlsButton.onClick.AddListener( OnControlsButton );
             sensitivityButton.onClick.AddListener( OnSensitivityButton );
 
-            InputManager.Instance.OnEscapeButton += OnEscapeButton;
-
             navigationPanelGameObject.SetActive( true );
 
             graphicsPanel.Hide();
             soundPanel.Hide();
             controlsPanel.Hide();
             sensitivityPanel.Hide();
+
+            inputManager = InputManager.Instance;
         }
+
+        void OnEnable()
+        {
+            inputManager.OnEscapeButton += OnEscapeButton;
+        }
+
+        void OnDisable()
+        {
+            inputManager.OnEscapeButton -= OnEscapeButton;
+        }
+
 
         void OnGraphicsButton()
         {

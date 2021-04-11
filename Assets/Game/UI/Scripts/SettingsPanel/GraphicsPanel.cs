@@ -85,7 +85,8 @@ namespace RWS
         Action onBackButtonCallback;
         int targetDisplay;
         int fpsLimit;
-
+        InputManager inputManager;
+        
 
         void OnValidate()
         {
@@ -103,14 +104,11 @@ namespace RWS
                 var currentResolution = graphicsManager.GetResolution();
 
                 resolutionDropdown.ClearOptions();
-                resolutionDropdown.AddOptions(
-                    new List<string>(
-                        allResolutions.Select( resolution => $"{resolution.width} x {resolution.height}" ) ) );
+                resolutionDropdown.AddOptions( new List<string>( allResolutions.Select( resolution => $"{resolution.width} x {resolution.height}" ) ) );
                 resolutionDropdown.value = allResolutions.IndexOf( currentResolution );
                 resolutionDropdown.onValueChanged.AddListener( OnResolutionDropdownChanged );
             }
-
-            ;
+            
             updateResolutionDropdown();
             graphicsManager.OnTargetDisplayChenged += newDisplay => { updateResolutionDropdown(); };
 
@@ -151,9 +149,19 @@ namespace RWS
             applyButton.onClick.AddListener( OnApplyButton );
             applyButton.gameObject.SetActive( false );
 
-            InputManager.Instance.OnEscapeButton += OnEscapeButton;
+            inputManager = InputManager.Instance;
         }
 
+        void OnEnable()
+        {
+            inputManager.OnEscapeButton += OnEscapeButton;
+        }
+
+        void OnDisable()
+        {
+            inputManager.OnEscapeButton -= OnEscapeButton;
+        }
+        
 
         void OnResolutionDropdownChanged( int value )
         {

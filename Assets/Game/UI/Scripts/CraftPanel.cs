@@ -23,9 +23,6 @@ namespace RWS
             }
 
             gameObject.SetActive( true );
-
-
-            //
         }
 
         public void Hide()
@@ -41,14 +38,26 @@ namespace RWS
 
         //----------------------------------------------------------------------------------------------------
 
-
+        InputManager inputManager;
+        
+        
         void Awake()
         {
             closeButton.onClick.AddListener( Hide );
 
-            InputManager.Instance.OnEscapeButton += OnEscapeButton;
+            inputManager = InputManager.Instance;
         }
 
+        void OnEnable()
+        {
+            inputManager.OnEscapeButton += OnEscapeButton;
+        }
+
+        void OnDisable()
+        {
+            inputManager.OnEscapeButton -= OnEscapeButton;
+        }
+        
 
         void OnEscapeButton()
         {

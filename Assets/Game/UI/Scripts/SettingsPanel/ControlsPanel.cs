@@ -262,9 +262,6 @@ namespace RWS
             axesDisplayToggle.onValueChanged.AddListener( value => inputManager.AxesDisplay = value );
 
 
-            inputManager.OnEscapeButton += OnEscapeButton;
-
-
             // For easy enumeration
 
             allControls = new[]
@@ -278,6 +275,16 @@ namespace RWS
             };
         }
 
+        void OnEnable()
+        {
+            inputManager.OnEscapeButton += OnEscapeButton;
+        }
+
+        void OnDisable()
+        {
+            inputManager.OnEscapeButton -= OnEscapeButton;
+        }
+        
 
         void OnBackButton()
         {

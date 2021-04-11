@@ -37,11 +37,11 @@ namespace RWS
             this.onBackButtonCallback = onBackButtonCallback;
             gameObject.SetActive( true );
 
-            masterVolumeSlider.Value = soundManager.MasterVolume;
-            motorVolumeSlider.Value = soundManager.MotorVolume;
-            servoVolumeSlider.Value = soundManager.ServoVolume;
-            buzzerVolumeSlider.Value = soundManager.BuzzerVolume;
-            windVolumeSlider.Value = soundManager.WindVolume;
+            masterVolumeSlider.Value = soundManager.MasterVolume * 100f;
+            motorVolumeSlider.Value = soundManager.MotorVolume * 100f;
+            servoVolumeSlider.Value = soundManager.ServoVolume * 100f;
+            buzzerVolumeSlider.Value = soundManager.BuzzerVolume * 100f;
+            windVolumeSlider.Value = soundManager.WindVolume * 100f;
 
             applyButton.gameObject.SetActive( false );
         }
@@ -55,7 +55,8 @@ namespace RWS
         //----------------------------------------------------------------------------------------------------
 
         Action onBackButtonCallback;
-
+        InputManager inputManager;
+        
 
         void OnValidate()
         {
@@ -78,7 +79,17 @@ namespace RWS
             applyButton.onClick.AddListener( OnApplyButton );
             applyButton.gameObject.SetActive( false );
 
-            InputManager.Instance.OnEscapeButton += OnEscapeButton;
+            inputManager = InputManager.Instance;
+        }
+        
+        void OnEnable()
+        {
+            inputManager.OnEscapeButton += OnEscapeButton;
+        }
+
+        void OnDisable()
+        {
+            inputManager.OnEscapeButton -= OnEscapeButton;
         }
 
 
@@ -116,11 +127,11 @@ namespace RWS
 
         void OnApplyButton()
         {
-            soundManager.MasterVolume = masterVolumeSlider.Value;
-            soundManager.MotorVolume = motorVolumeSlider.Value;
-            soundManager.ServoVolume = servoVolumeSlider.Value;
-            soundManager.BuzzerVolume = buzzerVolumeSlider.Value;
-            soundManager.WindVolume = windVolumeSlider.Value;
+            soundManager.MasterVolume = masterVolumeSlider.Value / 100f;
+            soundManager.MotorVolume = motorVolumeSlider.Value / 100f;
+            soundManager.ServoVolume = servoVolumeSlider.Value / 100f;
+            soundManager.BuzzerVolume = buzzerVolumeSlider.Value / 100f;
+            soundManager.WindVolume = windVolumeSlider.Value / 100f;
             soundManager.SavePlayerPrefs();
 
             applyButton.gameObject.SetActive( false );
@@ -128,8 +139,7 @@ namespace RWS
 
         void OnEscapeButton()
         {
-            if( masterVolumeSlider.IsFocused || motorVolumeSlider.IsFocused || servoVolumeSlider.IsFocused ||
-                buzzerVolumeSlider.IsFocused || windVolumeSlider.IsFocused )
+            if( masterVolumeSlider.IsFocused || motorVolumeSlider.IsFocused || servoVolumeSlider.IsFocused || buzzerVolumeSlider.IsFocused || windVolumeSlider.IsFocused )
             {
                 return;
             }

@@ -35,8 +35,6 @@ namespace RWS
             {
                 PhotonNetwork.JoinLobby();
             }
-
-            InputManager.Instance.OnEscapeButton += OnEscapeButton;
         }
 
         public void Hide()
@@ -50,8 +48,6 @@ namespace RWS
             }
 
             gameObject.SetActive( false );
-
-            InputManager.Instance.OnEscapeButton -= OnEscapeButton;
         }
 
         //----------------------------------------------------------------------------------------------------
@@ -95,14 +91,27 @@ namespace RWS
         Action onBackCallback;
         Action<RoomInfo> onJoinCallback;
         List<GameObject> roomGameObjectList;
+        InputManager inputManager;
 
-
+        
         void Awake()
         {
             roomGameObjectList = new List<GameObject>();
             backButton.onClick.AddListener( OnBackButton );
+
+            inputManager = InputManager.Instance;
         }
 
+        void OnEnable()
+        {
+            inputManager.OnEscapeButton += OnEscapeButton;
+        }
+
+        void OnDisable()
+        {
+            inputManager.OnEscapeButton -= OnEscapeButton;
+        }
+        
 
         void OnBackButton()
         {

@@ -42,10 +42,11 @@ namespace RWS
             gameObject.SetActive( true );
 
             sensitivity.LoadPlayerPrefs();
-            rollExpoSlider.Value = sensitivity.RollExpo;
-            rollSuperExpoSlider.Value = sensitivity.RollSuperExpo;
-            pitchExpoSlider.Value = sensitivity.PitchExpo;
-            pitchSuperExpoSlider.Value = sensitivity.PitchSuperExpo;
+            
+            rollExpoSlider.Value = sensitivity.RollExpo * 100f;
+            rollSuperExpoSlider.Value = sensitivity.RollSuperExpo * 100f;
+            pitchExpoSlider.Value = sensitivity.PitchExpo * 100f;
+            pitchSuperExpoSlider.Value = sensitivity.PitchSuperExpo * 100f;
 
             saveButton.gameObject.SetActive( false );
         }
@@ -60,53 +61,68 @@ namespace RWS
 
         ControlSensitivity sensitivity;
         Action onBackButtonCallback;
+        InputManager inputManager;
 
 
         void Awake()
         {
+            sensitivity = new ControlSensitivity( true );
+
             rollExpoSlider.OnValueChanged.AddListener( OnRollExpoSliderChanged );
             rollSuperExpoSlider.OnValueChanged.AddListener( OnRollSuperExpoSliderChanged );
             pitchExpoSlider.OnValueChanged.AddListener( OnPitchExpoSliderChanged );
             pitchSuperExpoSlider.OnValueChanged.AddListener( OnPitchSuperExpoSliderChanged );
 
-            sensitivity = new ControlSensitivity( true );
-            rollExpoSlider.Value = sensitivity.RollExpo;
-            rollSuperExpoSlider.Value = sensitivity.RollSuperExpo;
-            pitchExpoSlider.Value = sensitivity.PitchExpo;
-            pitchSuperExpoSlider.Value = sensitivity.PitchSuperExpo;
-
             backButton.onClick.AddListener( OnBackButton );
             saveButton.onClick.AddListener( OnSaveButton );
             saveButton.gameObject.SetActive( false );
 
-            InputManager.Instance.OnEscapeButton += OnEscapeButton;
+            inputManager = InputManager.Instance;
+        }
+
+        void Start()
+        {
+            rollExpoSlider.Value = sensitivity.RollExpo * 100f;
+            rollSuperExpoSlider.Value = sensitivity.RollSuperExpo * 100f;
+            pitchExpoSlider.Value = sensitivity.PitchExpo * 100f;
+            pitchSuperExpoSlider.Value = sensitivity.PitchSuperExpo * 100f;
+        }
+
+        void OnEnable()
+        {
+            inputManager.OnEscapeButton += OnEscapeButton;
+        }
+
+        void OnDisable()
+        {
+            inputManager.OnEscapeButton -= OnEscapeButton;
         }
 
 
         void OnRollExpoSliderChanged( float newValue )
         {
-            sensitivity.RollExpo = newValue;
+            sensitivity.RollExpo = newValue / 100f;
             UpdateCurve( rollLineRenderer, ( value ) => sensitivity.EvaluateRoll( value ) );
             saveButton.gameObject.SetActive( true );
         }
 
         void OnRollSuperExpoSliderChanged( float newValue )
         {
-            sensitivity.RollSuperExpo = newValue;
+            sensitivity.RollSuperExpo = newValue / 100f;
             UpdateCurve( rollLineRenderer, ( value ) => sensitivity.EvaluateRoll( value ) );
             saveButton.gameObject.SetActive( true );
         }
 
         void OnPitchExpoSliderChanged( float newValue )
         {
-            sensitivity.PitchExpo = newValue;
+            sensitivity.PitchExpo = newValue / 100f;
             UpdateCurve( pitchLineRenderer, ( value ) => sensitivity.EvaluatePitch( value ) );
             saveButton.gameObject.SetActive( true );
         }
 
         void OnPitchSuperExpoSliderChanged( float newValue )
         {
-            sensitivity.PitchSuperExpo = newValue;
+            sensitivity.PitchSuperExpo = newValue / 100f;
             UpdateCurve( pitchLineRenderer, ( value ) => sensitivity.EvaluatePitch( value ) );
             saveButton.gameObject.SetActive( true );
         }
@@ -139,7 +155,7 @@ namespace RWS
         {
             var rectSize = curvesPanelRect.sizeDelta;
             var curveResolution = 50;
-            var newCurvePoints = new Vector2[curveResolution];
+            var newCurvePoints = new Vector2[ curveResolution ];
 
             for( var i = 0; i < newCurvePoints.Length; i++ )
             {

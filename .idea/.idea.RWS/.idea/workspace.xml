@@ -39,6 +39,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Game/Input/Rates/Rates.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/Input/Rates/RateProfileEditor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/Input/Rates/RateProfile.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Game/Managers/Scripts/InputManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/Managers/Scripts/SoundManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/Pilot/Scripts/SwayEffect.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/Pilot/Scripts/PilotLook.cs" root0="FORCE_HIGHLIGHTING" />
@@ -94,6 +95,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Utils/DreamloLeaderboard/TestDreamloLeaderboard.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Skybox Creator/Scripts/SkyboxCreatorImageSky.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Skybox Creator/Scripts/SkyboxCreatorRenderer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Utils/PixelateImageEffect/Pixelation.shader" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Photon/PhotonChat/Demos/DemoChat/ChatGui.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Skybox Creator/Scripts/SkyboxCreator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/Environment/Terrain/TerrainController.cs" root0="FORCE_HIGHLIGHTING" />
@@ -160,11 +162,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/AttitudeIndicator.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/BatteryTelemetry.cs" />
-        <option value="$PROJECT_DIR$/Assets/@Tests/TestLeaderboard/TestLeaderboard.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/WingTelemetry.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/UIHelperEditor.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/UIHelper.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/StickDisplay.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/PingDisplay.cs" />
@@ -177,8 +174,6 @@
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/ButtonWithCanvasGroup.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SingleplayerPanel/TrackPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/ControlListEntry.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/ControlsPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/GraphicsPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/RoomChat/RoomChatMessage.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/PlayerProfilePanel/PlayerNamePanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/PlayerProfilePanel/PlayerStatsPanel.cs" />
@@ -189,28 +184,35 @@
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/LeaderboardPanel/LeaderboardEntry.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/RaceKit/Scripts/RaceTrack.cs" />
         <option value="$PROJECT_DIR$/Assets/Skybox Creator/Scripts/Editor/SkyboxCreatorImageSkyInspector.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/RoomListPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/LeaderboardPanel/LeaderboardPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/WingSetupHelper.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/Leaderboard/Leaderboard.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/RaceKit/Scripts/RaceGate.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/CreateRoomPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/InsideRoomPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/MultiplayerPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/PlayerProfilePanel/PlayerProfilePanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/SensitivityPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/SettingsPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/SoundPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SingleplayerPanel/SingleplayerPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/CraftPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/InputTelemetry.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/GameLogic/SingleplayerGameLogic.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/BlackScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/ServoSound.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/WindSound.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/MotorSound.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/BuzzerSound.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/OSDWarnings.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/BlackScreen.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/GameLogic/MainMenuLogic.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/GameLogic/SingleplayerGameLogic.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/GameLogic/MultiplayerGameLogic.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SingleplayerPanel/SingleplayerPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Utils/Singleton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/SettingsPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/GraphicsPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/ControlsPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/RoomListPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/PlayerProfilePanel/PlayerProfilePanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/CreateRoomPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/CraftPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/LeaderboardPanel/LeaderboardPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/Managers/Scripts/InputManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/InsideRoomPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/MultiplayerPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Utils/SliderWithInputField.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/SoundPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/SensitivityPanel.cs" />
       </list>
     </option>
   </component>
@@ -226,7 +228,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TWShift.4" value="true" />
     <property name="ignore.virus.scanning.warn.message" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C#" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -268,17 +270,21 @@
     </ignored-roots>
   </component>
   <component name="WindowStateProjectService">
-    <state x="562" y="202" key="SettingsEditor" timestamp="1617388915413">
+    <state x="562" y="202" key="SettingsEditor" timestamp="1618145124501">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="562" y="202" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1617388915413" />
+    <state x="562" y="202" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1618145124501" />
+    <state x="164" y="39" width="1411" height="943" key="find.popup" timestamp="1618147423085">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="164" y="39" width="1411" height="943" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1618147423085" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1611059328437">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1611059328437" />
-    <state x="616" y="199" width="672" height="607" key="search.everywhere.popup" timestamp="1617040144850">
+    <state x="616" y="199" width="672" height="607" key="search.everywhere.popup" timestamp="1618145856403">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="199" width="672" height="607" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1617040144850" />
+    <state x="616" y="199" width="672" height="607" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1618145856403" />
   </component>
 </project>

@@ -64,16 +64,6 @@ namespace RWS
         bool showGhost;
 
 
-        void OnEnable()
-        {
-            SceneManager.sceneLoaded += OnSceneLoaded;
-        }
-
-        void OnDisable()
-        {
-            SceneManager.sceneLoaded -= OnSceneLoaded;
-        }
-
         void Awake()
         {
             gameMenu.OnResumeButton += OnResumeButton;
@@ -84,8 +74,18 @@ namespace RWS
             inputManager.LaunchResetControl.Performed += OnLaunchResetButton;
             inputManager.ViewControl.Performed += OnViewButton;
             inputManager.OnEscapeButton += OnEscapeButton;
-
+            
             leaderboard = Leaderboard.Instance;
+        }
+        
+        void OnEnable()
+        {
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
+        void OnDisable()
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
         }
 
         void Start()

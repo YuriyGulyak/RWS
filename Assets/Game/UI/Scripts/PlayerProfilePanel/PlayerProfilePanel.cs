@@ -1,6 +1,8 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 namespace RWS
 {
@@ -33,8 +35,6 @@ namespace RWS
             }
 
             gameObject.SetActive( true );
-
-            //
         }
 
         public void Hide()
@@ -55,13 +55,12 @@ namespace RWS
 
         string pilotName;
         string pilotNameKey = "Nickname";
-
+        InputManager inputManager;
+        
 
         void Awake()
         {
             closeButton.onClick.AddListener( Hide );
-
-            InputManager.Instance.OnEscapeButton += OnEscapeButton;
 
             nameInputField.onEndEdit.AddListener( OnNameInput );
 
@@ -80,11 +79,20 @@ namespace RWS
                 pilotName = $"Pilot{Random.Range( 0, 10000 ):0000}";
                 PlayerPrefs.SetString( pilotNameKey, pilotName );
             }
+
+            inputManager = InputManager.Instance;
         }
 
         void OnEnable()
         {
             nameInputField.text = pilotName;
+            
+            inputManager.OnEscapeButton += OnEscapeButton;
+        }
+
+        void OnDisable()
+        {
+            inputManager.OnEscapeButton -= OnEscapeButton;
         }
 
 

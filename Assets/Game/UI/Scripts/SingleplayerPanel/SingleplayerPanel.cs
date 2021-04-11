@@ -69,7 +69,8 @@ namespace RWS
         readonly string showGhostKey = "ShowGhost";
 
         int currentTrackSelected;
-
+        InputManager inputManager;
+        
 
         void Awake()
         {
@@ -137,11 +138,21 @@ namespace RWS
 
                 } );
             } );
-
-            InputManager.Instance.OnEscapeButton += OnEscapeButton;
+            
+            inputManager = InputManager.Instance;
         }
 
+        void OnEnable()
+        {
+            inputManager.OnEscapeButton += OnEscapeButton;
+        }
 
+        void OnDisable()
+        {
+            inputManager.OnEscapeButton -= OnEscapeButton;
+        }
+
+        
         void OnEscapeButton()
         {
             Hide();

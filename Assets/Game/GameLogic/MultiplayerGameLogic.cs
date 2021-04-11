@@ -119,19 +119,7 @@ namespace RWS
         bool fpvMode;
         Leaderboard leaderboard;
 
-
-        void OnEnable()
-        {
-            PhotonNetwork.AddCallbackTarget( this );
-            SceneManager.sceneLoaded += OnSceneLoaded;
-        }
-
-        void OnDisable()
-        {
-            PhotonNetwork.RemoveCallbackTarget( this );
-            SceneManager.sceneLoaded -= OnSceneLoaded;
-        }
-
+        
         void Awake()
         {
             PhotonNetwork.SendRate = photonSendRate;
@@ -146,8 +134,20 @@ namespace RWS
             inputManager.ViewControl.Performed += OnViewButton;
             inputManager.OnEnterButton += OnEnterButton;
             inputManager.OnEscapeButton += OnEscapeButton;
-
+            
             leaderboard = Leaderboard.Instance;
+        }
+
+        void OnEnable()
+        {
+            PhotonNetwork.AddCallbackTarget( this );
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
+        void OnDisable()
+        {
+            PhotonNetwork.RemoveCallbackTarget( this );
+            SceneManager.sceneLoaded -= OnSceneLoaded;
         }
 
         void Start()

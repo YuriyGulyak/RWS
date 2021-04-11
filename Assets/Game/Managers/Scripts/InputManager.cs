@@ -416,6 +416,9 @@ namespace RWS
             trimControl.Disable();
             viewControl.Disable();
             launchResetControl.Disable();
+
+            OnEnterButton = null;
+            OnEscapeButton = null;
         }
     }
 }

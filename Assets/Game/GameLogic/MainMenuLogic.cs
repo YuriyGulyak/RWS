@@ -37,14 +37,17 @@ namespace RWS
             mainMenu.OnExitButton.AddListener( OnExitButton );
 
             HideAllPanels();
-            
-            if( string.IsNullOrEmpty( PlayerPrefs.GetString( "Nickname" ) ) )
+        }
+
+        void Start()
+        {
+            if( !PlayerPrefs.HasKey( "Nickname" ) )
             {
                 profilePanel.Show();
             }
         }
-        
-        
+
+
         void OnSingleplayerButton()
         {
             if( singleplayerPanel.IsOpen )

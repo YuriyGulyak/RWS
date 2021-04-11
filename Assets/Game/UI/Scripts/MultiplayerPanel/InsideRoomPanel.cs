@@ -48,8 +48,6 @@ namespace RWS
             }
 
             startGameButton.gameObject.SetActive( PhotonNetwork.IsMasterClient );
-
-            InputManager.Instance.OnEscapeButton += OnEscapeButton;
         }
 
         public void Hide()
@@ -57,8 +55,6 @@ namespace RWS
             RemoveAllPlayerListEntries();
             gameObject.SetActive( false );
             onLeaveRoomCallback = null;
-
-            InputManager.Instance.OnEscapeButton -= OnEscapeButton;
         }
 
         //----------------------------------------------------------------------------------------------------
@@ -81,15 +77,28 @@ namespace RWS
 
         Action onLeaveRoomCallback;
         Dictionary<int, GameObject> playerDictionary;
-
+        InputManager inputManager;
+        
 
         void Awake()
         {
             playerDictionary = new Dictionary<int, GameObject>();
             leaveRoomButton.onClick.AddListener( OnLeaveRoomButton );
             startGameButton.onClick.AddListener( OnStartGameButton );
+
+            inputManager = InputManager.Instance;
         }
 
+        void OnEnable()
+        {
+            inputManager.OnEscapeButton += OnEscapeButton;
+        }
+
+        void OnDisable()
+        {
+            inputManager.OnEscapeButton -= OnEscapeButton;
+        }
+        
 
         void OnLeaveRoomButton()
         {

@@ -51,22 +51,19 @@ namespace RWS
             gameObject.SetActive( true );
 
             roomNameInputField.text = $"Room_{UnityEngine.Random.Range( 0, 10000 ):0000}";
-
-            InputManager.Instance.OnEscapeButton += OnEscapeButton;
         }
 
         public void Hide()
         {
             gameObject.SetActive( false );
             onCancelCallback = null;
-
-            InputManager.Instance.OnEscapeButton -= OnEscapeButton;
         }
 
         //----------------------------------------------------------------------------------------------------
 
         Action onCancelCallback;
-
+        InputManager inputManager;
+        
 
         void Awake()
         {
@@ -83,6 +80,18 @@ namespace RWS
 
             createRoomButton.onClick.AddListener( OnCreateRoomButton );
             cancelButton.onClick.AddListener( OnCancelButton );
+
+            inputManager = InputManager.Instance;
+        }
+        
+        void OnEnable()
+        {
+            inputManager.OnEscapeButton += OnEscapeButton;
+        }
+
+        void OnDisable()
+        {
+            inputManager.OnEscapeButton -= OnEscapeButton;
         }
 
 
