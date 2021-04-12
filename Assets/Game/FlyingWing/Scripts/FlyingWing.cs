@@ -216,12 +216,10 @@ namespace RWS
             speed = velocity.magnitude;
             altitude = altimeter.Altitude;
 
-            angleOfAttack = Vector3.SignedAngle( Vector3.forward,
-                new Vector3( 0f, velocityLocal.y, velocityLocal.z ).normalized, Vector3.right );
+            angleOfAttack = Vector3.SignedAngle( Vector3.forward, new Vector3( 0f, velocityLocal.y, velocityLocal.z ).normalized, Vector3.right );
             angleOfAttack = MathUtils.WrapAngle90( angleOfAttack );
 
-            sideslipAngle = Vector3.SignedAngle( Vector3.forward,
-                new Vector3( velocityLocal.x, 0f, velocityLocal.z ).normalized, Vector3.up );
+            sideslipAngle = Vector3.SignedAngle( Vector3.forward, new Vector3( velocityLocal.x, 0f, velocityLocal.z ).normalized, Vector3.up );
             sideslipAngle = MathUtils.WrapAngle90( sideslipAngle );
 
             attitude.UpdateState();
@@ -367,15 +365,11 @@ namespace RWS
             var leftElevonValue = pitchSetpoint - rollSetpoint;
             var rightElevonValue = pitchSetpoint + rollSetpoint;
 
-            var leftElevonAngleTarget =
-                Mathf.Lerp( elevonRange.x, elevonRange.y, Mathf.InverseLerp( -1f, 1f, leftElevonValue ) );
-            var rightElevonAngleTarget = Mathf.Lerp( elevonRange.x, elevonRange.y,
-                Mathf.InverseLerp( -1f, 1f, rightElevonValue ) );
+            var leftElevonAngleTarget = Mathf.Lerp( elevonRange.x, elevonRange.y, Mathf.InverseLerp( -1f, 1f, leftElevonValue ) );
+            var rightElevonAngleTarget = Mathf.Lerp( elevonRange.x, elevonRange.y, Mathf.InverseLerp( -1f, 1f, rightElevonValue ) );
 
-            leftElevon.Angle = Mathf.SmoothDampAngle( leftElevon.Angle, leftElevonAngleTarget,
-                ref leftElevonAngleVelocity, elevonSmoothTime, elevonMaxSpeed );
-            rightElevon.Angle = Mathf.SmoothDampAngle( rightElevon.Angle, rightElevonAngleTarget,
-                ref rightElevonAngleVelocity, elevonSmoothTime, elevonMaxSpeed );
+            leftElevon.Angle = Mathf.SmoothDampAngle( leftElevon.Angle, leftElevonAngleTarget, ref leftElevonAngleVelocity, elevonSmoothTime, elevonMaxSpeed );
+            rightElevon.Angle = Mathf.SmoothDampAngle( rightElevon.Angle, rightElevonAngleTarget, ref rightElevonAngleVelocity, elevonSmoothTime, elevonMaxSpeed );
         }
     }
 }

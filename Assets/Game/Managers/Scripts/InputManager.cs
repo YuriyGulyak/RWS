@@ -20,7 +20,7 @@ namespace RWS
 
         //----------------------------------------------------------------------------------------------------
         
-        public Action<float> Performed;
+        public event Action<float> Performed;
 
         public bool Invert
         {
@@ -121,7 +121,7 @@ namespace RWS
         
         //----------------------------------------------------------------------------------------------------
         
-        public Action Performed;
+        public event Action Performed;
 
         public string BindingPath
         {
@@ -274,8 +274,8 @@ namespace RWS
             }
         }
         
-        public Action OnEnterButton;
-        public Action OnEscapeButton;
+        public event Action OnEnterButton;
+        public event Action OnEscapeButton;
         
         
         public void LoadPlayerPrefs()

@@ -2,6 +2,7 @@
 
 public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
+    static T instance;
     public static T Instance
     {
         get
@@ -9,7 +10,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
             if( instance == null )
             {
                 instance = FindObjectOfType<T>();
-
+                
                 if( instance == null )
                 {
                     Debug.LogWarning( typeof( T ).Name + " not found" );
@@ -19,8 +20,8 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                     Debug.LogWarning( typeof( T ).Name + " instances > 1" );
                 }
             }
+            
             return instance;
         }
     }
-    static T instance;
 }

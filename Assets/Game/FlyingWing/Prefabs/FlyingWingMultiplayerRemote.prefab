@@ -15,7 +15,7 @@ PrefabInstance:
     - target: {fileID: 2030780351097199835, guid: f5d5f8ce0f100e240a0100710d5e1311,
         type: 3}
       propertyPath: m_Name
-      value: FlyingWingMultiplayerRemote Variant
+      value: FlyingWingMultiplayerRemote
       objectReference: {fileID: 0}
     - target: {fileID: 3059525385036967624, guid: f5d5f8ce0f100e240a0100710d5e1311,
         type: 3}
@@ -82,6 +82,16 @@ PrefabInstance:
       propertyPath: flyingWing
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5699978252730665779, guid: f5d5f8ce0f100e240a0100710d5e1311,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5699978253030935945, guid: f5d5f8ce0f100e240a0100710d5e1311,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5699978253030935958, guid: f5d5f8ce0f100e240a0100710d5e1311,
         type: 3}
       propertyPath: flyingWing
@@ -91,17 +101,28 @@ PrefabInstance:
         type: 3}
       propertyPath: motor
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 6403355473821547836}
     - target: {fileID: 8281669443235075637, guid: f5d5f8ce0f100e240a0100710d5e1311,
         type: 3}
       propertyPath: motor
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 6403355473821547836}
     m_RemovedComponents:
     - {fileID: 5699978252143910595, guid: f5d5f8ce0f100e240a0100710d5e1311, type: 3}
     - {fileID: 8279560110300642384, guid: f5d5f8ce0f100e240a0100710d5e1311, type: 3}
     - {fileID: 2661165179159629045, guid: f5d5f8ce0f100e240a0100710d5e1311, type: 3}
     - {fileID: 2410419871685124896, guid: f5d5f8ce0f100e240a0100710d5e1311, type: 3}
-    - {fileID: 5699978251664561963, guid: f5d5f8ce0f100e240a0100710d5e1311, type: 3}
     - {fileID: 5699978252259209799, guid: f5d5f8ce0f100e240a0100710d5e1311, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f5d5f8ce0f100e240a0100710d5e1311, type: 3}
+--- !u!114 &6403355473821547836 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5699978251664561963, guid: f5d5f8ce0f100e240a0100710d5e1311,
+    type: 3}
+  m_PrefabInstance: {fileID: 1713388647598041623}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c198aed0bef4f0d4fae5f64816a0fa2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

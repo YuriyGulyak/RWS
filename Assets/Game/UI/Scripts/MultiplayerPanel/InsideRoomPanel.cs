@@ -89,13 +89,17 @@ namespace RWS
             inputManager = InputManager.Instance;
         }
 
-        void OnEnable()
+        public override void OnEnable()
         {
+            base.OnEnable();
+            
             inputManager.OnEscapeButton += OnEscapeButton;
         }
 
-        void OnDisable()
+        public override void OnDisable()
         {
+            base.OnDisable();
+            
             inputManager.OnEscapeButton -= OnEscapeButton;
         }
         

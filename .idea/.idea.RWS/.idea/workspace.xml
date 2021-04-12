@@ -162,9 +162,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/UIHelper.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/StickDisplay.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/PingDisplay.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/OSDTelemetry.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/OSDHome.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MotorTelemetry.cs" />
@@ -187,32 +184,35 @@
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/WingSetupHelper.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/Leaderboard/Leaderboard.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/RaceKit/Scripts/RaceGate.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/InputTelemetry.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/ServoSound.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/WindSound.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/MotorSound.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/BuzzerSound.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/OSDWarnings.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/BlackScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/GameLogic/MainMenuLogic.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/GameLogic/SingleplayerGameLogic.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SingleplayerPanel/SingleplayerPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Utils/Singleton.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/SettingsPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/GraphicsPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/ControlsPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/RoomListPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/PlayerProfilePanel/PlayerProfilePanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/CreateRoomPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/CraftPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/LeaderboardPanel/LeaderboardPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/Managers/Scripts/InputManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/InsideRoomPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/MultiplayerPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Utils/SliderWithInputField.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/SoundPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/SettingsPanel/SensitivityPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/Game/GameLogic/MultiplayerGameLogic.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/RoomListPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/MultiplayerPanel/InsideRoomPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/Utils/Singleton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/Managers/Scripts/SoundManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/Managers/Scripts/GraphicsManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/BlackScreen.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/UI/Scripts/InputTelemetry.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/Managers/Scripts/InputManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game/FlyingWing/Scripts/FlyingWing.cs" />
       </list>
     </option>
   </component>
