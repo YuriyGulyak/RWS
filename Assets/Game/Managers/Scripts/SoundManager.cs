@@ -1,24 +1,21 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Audio;
 
 namespace RWS
 {
     public class SoundManager : Singleton<SoundManager>
     {
-        public Action<float, float> OnMotorVolumeChanged;
-        public Action<float, float> OnServoVolumeChanged;
-        public Action<float, float> OnBuzzerVolumeChanged;
-        public Action<float, float> OnWindVolumeChanged;
-        
+        [SerializeField]
+        AudioMixer audioMixer;
+
+
         public float MasterVolume
         {
             get => masterVolume;
             set
             {
                 masterVolume = Mathf.Clamp01( value );
-                OnMotorVolumeChanged?.Invoke( motorVolume, masterVolume );
-                OnServoVolumeChanged?.Invoke( servoVolume, masterVolume );
-                OnWindVolumeChanged?.Invoke( windVolume, masterVolume );
+                audioMixer.SetFloat( MASTER_VOLUME_KEY, LinearToLogarithmicScale( masterVolume ) );
             }
         }
 
@@ -28,7 +25,7 @@ namespace RWS
             set
             {
                 motorVolume = Mathf.Clamp01( value );
-                OnMotorVolumeChanged?.Invoke( motorVolume, masterVolume );
+                audioMixer.SetFloat( MOTOR_VOLUME_KEY, LinearToLogarithmicScale( motorVolume ) );
             }
         }
 
@@ -38,7 +35,7 @@ namespace RWS
             set
             {
                 servoVolume = Mathf.Clamp01( value );
-                OnServoVolumeChanged?.Invoke( servoVolume, masterVolume );
+                audioMixer.SetFloat( SERVO_VOLUME_KEY, LinearToLogarithmicScale( servoVolume ) );
             }
         }
         
@@ -48,7 +45,7 @@ namespace RWS
             set
             {
                 buzzerVolume = Mathf.Clamp01( value );
-                OnBuzzerVolumeChanged?.Invoke( buzzerVolume, masterVolume );
+                audioMixer.SetFloat( BUZZER_VOLUME_KEY, LinearToLogarithmicScale( buzzerVolume ) );
             }
         }
         
@@ -58,37 +55,36 @@ namespace RWS
             set
             {
                 windVolume = Mathf.Clamp01( value );
-                OnWindVolumeChanged?.Invoke( windVolume, masterVolume );
+                audioMixer.SetFloat( WIND_VOLUME_KEY, LinearToLogarithmicScale( windVolume ) );
             }
         }
 
 
         public void LoadPlayerPrefs()
         {
-            MasterVolume = PlayerPrefs.GetFloat( masterVolumeKey, 1f );
-            MotorVolume = PlayerPrefs.GetFloat( motorVolumeKey, 1f );
-            ServoVolume = PlayerPrefs.GetFloat( servoVolumeKey, 1f );
-            BuzzerVolume = PlayerPrefs.GetFloat( buzzerVolumeKey, 1f );
-            WindVolume = PlayerPrefs.GetFloat( windVolumeKey, 1f );
+            MasterVolume = PlayerPrefs.GetFloat( MASTER_VOLUME_KEY, 1f );
+            MotorVolume = PlayerPrefs.GetFloat( MOTOR_VOLUME_KEY, 1f );
+            ServoVolume = PlayerPrefs.GetFloat( SERVO_VOLUME_KEY, 1f );
+            BuzzerVolume = PlayerPrefs.GetFloat( BUZZER_VOLUME_KEY, 1f );
+            WindVolume = PlayerPrefs.GetFloat( WIND_VOLUME_KEY, 1f );
         }
 
         public void SavePlayerPrefs()
         {
-            PlayerPrefs.SetFloat( masterVolumeKey, masterVolume );
-            PlayerPrefs.SetFloat( motorVolumeKey, motorVolume );
-            PlayerPrefs.SetFloat( servoVolumeKey, servoVolume );
-            PlayerPrefs.SetFloat( buzzerVolumeKey, buzzerVolume );
-            PlayerPrefs.SetFloat( windVolumeKey, windVolume );
+            PlayerPrefs.SetFloat( MASTER_VOLUME_KEY, masterVolume );
+            PlayerPrefs.SetFloat( MOTOR_VOLUME_KEY, motorVolume );
+            PlayerPrefs.SetFloat( SERVO_VOLUME_KEY, servoVolume );
+            PlayerPrefs.SetFloat( BUZZER_VOLUME_KEY, buzzerVolume );
+            PlayerPrefs.SetFloat( WIND_VOLUME_KEY, windVolume );
         }
-    
-        //--------------------------------------------------------------------------------------------------------------
-    
-        readonly string masterVolumeKey = "MasterVolume";
-        readonly string motorVolumeKey = "MotorVolume";
-        readonly string servoVolumeKey = "ServoVolume";
-        readonly string buzzerVolumeKey = "BuzzerVolume";
-        readonly string windVolumeKey = "WindVolume";
-    
+
+
+        const string MASTER_VOLUME_KEY = "MasterVolume";
+        const string MOTOR_VOLUME_KEY = "MotorVolume";
+        const string SERVO_VOLUME_KEY = "ServoVolume";
+        const string BUZZER_VOLUME_KEY = "BuzzerVolume";
+        const string WIND_VOLUME_KEY = "WindVolume";
+        
         float masterVolume;
         float motorVolume;
         float servoVolume;
@@ -96,9 +92,17 @@ namespace RWS
         float windVolume;
 
 
-        void Awake()
+        void Start()
         {
             LoadPlayerPrefs();
+        }
+
+
+        static float LinearToLogarithmicScale( float linearScale )
+        {
+            linearScale = Mathf.Clamp( linearScale, 0.0001f, 1f );
+            //return Mathf.Log( linearScale ) * 20f;
+            return Mathf.Log10( linearScale ) * 20f;
         }
     }
 }

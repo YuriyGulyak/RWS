@@ -1762,7 +1762,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flyingWing: {fileID: 8986317438905119613}
   audioSource: {fileID: 1359027184645152202}
-  volumeScale: 1
   updateRate: 10
 --- !u!1 &1359027184677922357
 GameObject:
@@ -2338,7 +2337,6 @@ MonoBehaviour:
   soundTransition: 0
   motorRpmMax: 30000
   deadzoneMin: 0.01
-  volumeScale: 1
 --- !u!1 &1359027184818099790
 GameObject:
   m_ObjectHideFlags: 0
@@ -2530,7 +2528,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 6747165154438039569, guid: 9da9c15e3a31b1c48a8a41e71f7b7bce,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: ed6861ef413909c4d9b23684d069543a, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 0
   m_Pitch: 0.5
   Loop: 1
@@ -2740,7 +2738,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 9017126072714126231, guid: 9da9c15e3a31b1c48a8a41e71f7b7bce,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 7b2f9e2298bebd64e8e1f311bab74849, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 0.025
   m_Pitch: 0.75
   Loop: 1
@@ -2888,7 +2886,6 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   soundTransition: 0
-  volumeScale: 1
 --- !u!1 &1359027184949966673
 GameObject:
   m_ObjectHideFlags: 0
@@ -2933,7 +2930,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 3253511128818935621, guid: 9da9c15e3a31b1c48a8a41e71f7b7bce,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: e959945a77db9df409a569b0f3329c76, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 0
   m_Pitch: 1
   Loop: 1
@@ -3082,7 +3079,6 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   soundTransition: 0
-  volumeScale: 1
 --- !u!1 &1359027184976478468
 GameObject:
   m_ObjectHideFlags: 0
@@ -4443,7 +4439,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 6747165154438039569, guid: 9da9c15e3a31b1c48a8a41e71f7b7bce,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 8098e52ca26ac1a41b56e61665644cc5, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 0
   m_Pitch: 0.8
   Loop: 1

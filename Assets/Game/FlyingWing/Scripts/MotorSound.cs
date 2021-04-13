@@ -40,9 +40,6 @@ namespace RWS
         [SerializeField]
         float deadzoneMin = 0.01f;
 
-        [SerializeField]
-        float volumeScale = 1f;
-
         //--------------------------------------------------------------------------------------------------------------
 
         public float SoundTransition
@@ -62,33 +59,6 @@ namespace RWS
             UpdateAudioSources();
         }
 
-        void Start()
-        {
-            soundManager = SoundManager.Instance;
-            
-            if( soundManager )
-            {
-                volumeScale = soundManager.MotorVolume * soundManager.MasterVolume;
-                UpdateAudioSources();
-
-                soundManager.OnMotorVolumeChanged += OnManagerVolumeChanged;
-            }
-
-            lowSoundSource.Play();
-            highSoundSource.Play();
-        }
-
-        void OnDisable()
-        {
-            if( soundManager )
-            {
-                soundManager.OnWindVolumeChanged -= OnManagerVolumeChanged;
-            }
-
-            lowSoundSource.Stop();
-            highSoundSource.Stop();
-        }
-
         void Update()
         {
             if( motor ) // Do not remove! Remote wing has no motor
@@ -99,20 +69,12 @@ namespace RWS
 
         //--------------------------------------------------------------------------------------------------------------
 
-        SoundManager soundManager;
-
-        void OnManagerVolumeChanged( float newMotorVolume, float masterVolume )
-        {
-            volumeScale = newMotorVolume * masterVolume;
-            UpdateAudioSources();
-        }
-
         void UpdateAudioSources()
         {
             if( soundTransition > deadzoneMin )
             {
-                lowSoundSource.volume = lowSoundVolumeCurve.Evaluate( soundTransition ) * volumeScale;
-                highSoundSource.volume = highSoundVolumeCurve.Evaluate( soundTransition ) * volumeScale;
+                lowSoundSource.volume = lowSoundVolumeCurve.Evaluate( soundTransition );
+                highSoundSource.volume = highSoundVolumeCurve.Evaluate( soundTransition );
 
                 lowSoundSource.pitch = lowSoundPitchCurve.Evaluate( soundTransition );
                 highSoundSource.pitch = highSoundPitchCurve.Evaluate( soundTransition );

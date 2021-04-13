@@ -22,9 +22,6 @@ namespace RWS
         [SerializeField, Range( 0f, 1f )]
         float soundTransition = 0f;
 
-        [SerializeField]
-        float volumeScale = 1f;
-
         //--------------------------------------------------------------------------------------------------------------
 
         public float SoundTransition
@@ -42,31 +39,6 @@ namespace RWS
         void OnValidate()
         {
             UpdateAudioSource();
-        }
-
-        void Start()
-        {
-            soundManager = SoundManager.Instance;
-            
-            if( soundManager )
-            {
-                volumeScale = soundManager.ServoVolume * soundManager.MasterVolume;
-                UpdateAudioSource();
-
-                soundManager.OnServoVolumeChanged += OnManagerVolumeChanged;
-            }
-
-            audioSource.Play();
-        }
-
-        void OnDisable()
-        {
-            if( soundManager )
-            {
-                soundManager.OnServoVolumeChanged -= OnManagerVolumeChanged;
-            }
-
-            audioSource.Stop();
         }
 
         void Update()
@@ -95,20 +67,13 @@ namespace RWS
 
         //--------------------------------------------------------------------------------------------------------------
 
-        SoundManager soundManager;
         float leftElevonAngleLast;
         float rightElevonAngleLast;
         
 
-        void OnManagerVolumeChanged( float newServoVolume, float masterVolume )
-        {
-            volumeScale = newServoVolume * masterVolume;
-            UpdateAudioSource();
-        }
-
         void UpdateAudioSource()
         {
-            audioSource.volume = volumeCurve.Evaluate( soundTransition ) * volumeScale;
+            audioSource.volume = volumeCurve.Evaluate( soundTransition );
             audioSource.pitch = pitchCurve.Evaluate( soundTransition );
         }
     }
