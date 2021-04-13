@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 namespace RWS
@@ -274,8 +275,8 @@ namespace RWS
             }
         }
         
-        public event Action OnEnterButton;
-        public event Action OnEscapeButton;
+        public UnityAction OnEnterButton;
+        public UnityAction OnEscapeButton;
         
         
         public void LoadPlayerPrefs()

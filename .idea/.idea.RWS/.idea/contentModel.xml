@@ -621,11 +621,13 @@
           <e p="FpsLimit.cs" t="Include" />
           <e p="GizmosLine.cs" t="Include" />
           <e p="MathUtils.cs" t="Include" />
+          <e p="Patterns" t="Include">
+            <e p="Singleton.cs" t="Include" />
+          </e>
           <e p="PixelateImageEffect" t="Include">
             <e p="PixelateImageEffect.cs" t="Include" />
             <e p="Pixelation.shader" t="Include" />
           </e>
-          <e p="Singleton.cs" t="Include" />
           <e p="SliderWithInputField.cs" t="Include" />
           <e p="UILineRenderer.cs" t="Include" />
           <e p="VersionDisplay.cs" t="Include" />
