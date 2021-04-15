@@ -42,13 +42,13 @@ namespace RWS
         BloorEffectController bloorEffect = null;
 
         [SerializeField]
-        GhostReplaySystem ghostReplay;
+        GhostReplaySystem ghostReplay = null;
 
         [SerializeField]
-        BestLapKeyStorage bestLapKeyStorage;
+        BestLapKeyStorage bestLapKeyStorage = null;
 
         [SerializeField]
-        int trackIndex;
+        int trackIndex = 0;
         
         //----------------------------------------------------------------------------------------------------
 

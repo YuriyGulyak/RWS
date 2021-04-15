@@ -36,9 +36,10 @@ namespace RWS
 
         //--------------------------------------------------------------------------------------------------------------
 
-        public void Show( Action onBackButtonCallback = null )
+        public Action OnBackButtonClicked;
+        
+        public void Show()
         {
-            this.onBackButtonCallback = onBackButtonCallback;
             gameObject.SetActive( true );
 
             sensitivity.LoadPlayerPrefs();
@@ -54,13 +55,11 @@ namespace RWS
         public void Hide()
         {
             gameObject.SetActive( false );
-            onBackButtonCallback = null;
         }
 
         //--------------------------------------------------------------------------------------------------------------
 
         ControlSensitivity sensitivity;
-        Action onBackButtonCallback;
         InputManager inputManager;
 
 
@@ -129,8 +128,7 @@ namespace RWS
 
         void OnBackButton()
         {
-            onBackButtonCallback?.Invoke();
-            Hide();
+            OnBackButtonClicked?.Invoke();
         }
 
         void OnSaveButton()
@@ -141,8 +139,7 @@ namespace RWS
 
         void OnEscapeButton()
         {
-            if( rollExpoSlider.IsFocused || rollSuperExpoSlider.IsFocused || pitchExpoSlider.IsFocused ||
-                pitchSuperExpoSlider.IsFocused )
+            if( rollExpoSlider.IsFocused || rollSuperExpoSlider.IsFocused || pitchExpoSlider.IsFocused || pitchSuperExpoSlider.IsFocused )
             {
                 return;
             }

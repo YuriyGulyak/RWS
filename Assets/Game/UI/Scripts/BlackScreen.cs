@@ -21,7 +21,7 @@ namespace RWS
                 return;
             }
 
-            image.transform.SetAsLastSibling();
+            //image.transform.SetAsLastSibling();
 
             var colorBlack = new Color( 0f, 0f, 0f, 1f );
             var colorBlackTransparent = new Color( 0f, 0f, 0f, 0f );
@@ -44,7 +44,7 @@ namespace RWS
                 return;
             }
 
-            image.transform.SetAsLastSibling();
+            //image.transform.SetAsLastSibling();
 
             var colorCurrent = image.color;
             var colorBlack = new Color( 0f, 0f, 0f, 1f );

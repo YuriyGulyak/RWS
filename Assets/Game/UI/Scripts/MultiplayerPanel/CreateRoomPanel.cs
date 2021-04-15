@@ -11,7 +11,7 @@ namespace RWS
     public class CreateRoomPanel : MonoBehaviour
     {
         [SerializeField]
-        TMP_InputField roomNameInputField;
+        TMP_InputField roomNameInputField = null;
 
         //[SerializeField]
         //Toggle roomIsOpenToggle = null;
@@ -20,22 +20,22 @@ namespace RWS
         //TMP_InputField passwordInputField = null;
 
         [SerializeField]
-        TMP_InputField maxPlayersInputField;
+        TMP_InputField maxPlayersInputField = null;
 
         [SerializeField]
-        TMP_Dropdown trackDropdown;
+        TMP_Dropdown trackDropdown = null;
 
         [SerializeField]
-        Toggle infiniteBatteryToggle;
+        Toggle infiniteBatteryToggle = null;
 
         [SerializeField]
-        Toggle infiniteRangeToggle;
+        Toggle infiniteRangeToggle = null;
 
         [SerializeField]
-        Button createRoomButton;
+        Button createRoomButton = null;
 
         [SerializeField]
-        Button cancelButton;
+        Button cancelButton = null;
 
         [SerializeField]
         int minPlayers = 2;

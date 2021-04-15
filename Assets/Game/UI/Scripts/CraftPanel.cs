@@ -6,10 +6,10 @@ namespace RWS
     public class CraftPanel : MonoBehaviour
     {
         [SerializeField]
-        RectTransform panelRect;
+        RectTransform panelRect = null;
 
         [SerializeField]
-        Button closeButton;
+        Button closeButton = null;
 
         //----------------------------------------------------------------------------------------------------
 

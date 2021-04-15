@@ -5,27 +5,27 @@ namespace RWS
     public class MainMenuLogic : MonoBehaviour
     {
         [SerializeField]
-        MainMenu mainMenu;
+        MainMenu mainMenu = null;
     
         [SerializeField]
-        SingleplayerPanel singleplayerPanel;
+        SingleplayerPanel singleplayerPanel = null;
 
         [SerializeField]
-        MultiplayerPanel multiplayerPanel;
+        MultiplayerPanel multiplayerPanel = null;
 
         [SerializeField]
-        CraftPanel craftPanel;
+        CraftPanel craftPanel = null;
     
         [SerializeField]
-        LeaderboardPanel leaderboardPanel;
+        LeaderboardPanel leaderboardPanel = null;
     
         [SerializeField]
-        PlayerProfilePanel profilePanel;
+        PlayerProfilePanel profilePanel = null;
 
         [SerializeField]
-        SettingsPanel settingsPanel;
-        
-        
+        SettingsPanel settingsPanel = null;
+
+
         void Awake()
         {
             mainMenu.OnSingleplayerButton.AddListener( OnSingleplayerButton );
@@ -105,12 +105,18 @@ namespace RWS
     
         void OnSettingsButton()
         {
+            //if( settingsPanel.activeSelf )
+            //{
+            //    return;
+            //}
+
             if( settingsPanel.IsOpen )
             {
                 return;
             }
             
             HideAllPanels();
+            //settingsPanel.SetActive( true );
             settingsPanel.Show();
         }
 
@@ -132,6 +138,7 @@ namespace RWS
             leaderboardPanel.Hide();
             profilePanel.Hide();
             settingsPanel.Hide();
+            //settingsPanel.SetActive( false );
         }
     }
 }

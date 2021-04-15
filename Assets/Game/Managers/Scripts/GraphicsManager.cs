@@ -1,5 +1,4 @@
 ﻿// !! Need set execution order before default time fot this script !!
-
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +6,7 @@ using UnityEngine.Rendering.PostProcessing;
 
 namespace RWS
 {
+    [RequireComponent( typeof( DisplayManger ) )]
     public class GraphicsManager : Singleton<GraphicsManager>
     {
         [SerializeField]
@@ -127,16 +127,23 @@ namespace RWS
 
         //----------------------------------------------------------------------------------------------------
 
-        readonly string qualityLevelKey = "QualityLevel";
-        readonly string grassQualityLevelKey = "GrassQualityLevel";
-        readonly string postProcessKey = "PostProcess";
-        readonly string targetDisplayKey = "TargetDisplay";
-        readonly string vSyncKey = "VSync";
-        readonly string fpsLimitKey = "FpsLimit";
+        const string qualityLevelKey = "QualityLevel";
+        const string grassQualityLevelKey = "GrassQualityLevel";
+        const string postProcessKey = "PostProcess";
+        const string targetDisplayKey = "TargetDisplay";
+        const string vSyncKey = "VSync";
+        const string fpsLimitKey = "FpsLimit";
 
         int targetDisplay;
         int fpsLimit;
 
+
+        void OnValidate()
+        {
+            displayManger = GetComponent<DisplayManger>();
+            postProcessVolume = FindObjectOfType<PostProcessVolume>();
+            terrainController = FindObjectOfType<TerrainController>();
+        }
 
         void Awake()
         {

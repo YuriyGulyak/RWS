@@ -1,5 +1,4 @@
-﻿using System;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -9,19 +8,19 @@ namespace RWS
     public class PlayerProfilePanel : MonoBehaviour
     {
         [SerializeField]
-        RectTransform panelRect;
+        RectTransform panelRect = null;
 
         [SerializeField]
-        Button closeButton;
+        Button closeButton = null;
 
         [SerializeField]
-        TMP_InputField nameInputField;
+        TMP_InputField nameInputField = null;
 
         [SerializeField]
-        TextMeshProUGUI infoText;
+        TextMeshProUGUI infoText = null;
 
         [SerializeField]
-        Button applyButton;
+        Button applyButton = null;
 
         //----------------------------------------------------------------------------------------------------
 
@@ -54,7 +53,7 @@ namespace RWS
         //----------------------------------------------------------------------------------------------------
 
         string pilotName;
-        string pilotNameKey = "Nickname";
+        const string pilotNameKey = "Nickname";
         InputManager inputManager;
         
 

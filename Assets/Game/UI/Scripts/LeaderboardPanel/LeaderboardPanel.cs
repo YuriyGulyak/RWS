@@ -9,22 +9,22 @@ namespace RWS
     public class LeaderboardPanel : MonoBehaviour
     {
         [SerializeField]
-        RectTransform panelRect;
+        RectTransform panelRect = null;
 
         [SerializeField]
-        Button closeButton;
+        Button closeButton = null;
 
         [SerializeField]
-        TMP_Dropdown trackDropdown;
+        TMP_Dropdown trackDropdown = null;
         
         [SerializeField]
-        GameObject leaderboardEntryTemplate;
+        GameObject leaderboardEntryTemplate = null;
 
         [SerializeField]
-        TextMeshProUGUI messageTextMesh;
+        TextMeshProUGUI messageTextMesh = null;
 
         [SerializeField]
-        BestLapKeyStorage bestLapKeyStorage;
+        BestLapKeyStorage bestLapKeyStorage = null;
         
         //----------------------------------------------------------------------------------------------------
 
@@ -32,27 +32,12 @@ namespace RWS
         
         public void Show()
         {
-            if( gameObject.activeSelf )
-            {
-                return;
-            }
-
             gameObject.SetActive( true );
-
-            UpdateLeaderboard();
         }
 
         public void Hide()
         {
-            if( !gameObject.activeSelf )
-            {
-                return;
-            }
-
             gameObject.SetActive( false );
-            panelRect.anchoredPosition = Vector2.zero;
-
-            ClearLeaderboard();
         }
 
         //----------------------------------------------------------------------------------------------------
@@ -60,24 +45,27 @@ namespace RWS
         void Awake()
         {
             closeButton.onClick.AddListener( Hide );
-
-            leaderboardEntryTemplate.SetActive( false );
-            messageTextMesh.gameObject.SetActive( false );
-
             trackDropdown.onValueChanged.AddListener( OnTrackDropdownValueChanged );
             
-            leaderboard = Leaderboard.Instance;
-            inputManager = InputManager.Instance;
+            leaderboardEntryTemplate.SetActive( false );
+            messageTextMesh.gameObject.SetActive( false );
         }
 
         void OnEnable()
         {
+            inputManager = InputManager.Instance;
             inputManager.OnEscapeButton += OnEscapeButton;
+            
+            leaderboard = Leaderboard.Instance;
+            UpdateLeaderboard();
         }
 
         void OnDisable()
         {
             inputManager.OnEscapeButton -= OnEscapeButton;
+
+            panelRect.anchoredPosition = Vector2.zero;
+            ClearLeaderboard();
         }
         
         //----------------------------------------------------------------------------------------------------

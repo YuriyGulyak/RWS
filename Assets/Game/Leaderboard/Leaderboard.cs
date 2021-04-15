@@ -12,8 +12,7 @@ namespace RWS
         {
             if( !dreamloLeaderboard )
             {
-                dreamloLeaderboard =
-                    GetComponent<DreamloLeaderboard>() ?? gameObject.AddComponent<DreamloLeaderboard>();
+                dreamloLeaderboard = GetComponent<DreamloLeaderboard>() ?? gameObject.AddComponent<DreamloLeaderboard>();
             }
         }
 
@@ -31,8 +30,7 @@ namespace RWS
 
         public void AddRecord( string privateCode, string pilot, string craft, float seconds, Action<string> onError )
         {
-            dreamloLeaderboard.AddScore( privateCode, pilot, maxTime - Mathf.RoundToInt( seconds * 1000 ), 0, craft,
-                onError );
+            dreamloLeaderboard.AddScore( privateCode, pilot, maxTime - Mathf.RoundToInt( seconds * 1000 ), 0, craft, onError );
         }
 
         public void DeleteRecord( string privateCode, string pilot, Action onSuccess, Action<string> onError )
@@ -42,8 +40,7 @@ namespace RWS
 
         public void GetRecord( string publicCode, string pilot, Action<Record> onSuccess, Action<string> onError )
         {
-            dreamloLeaderboard.GetScore( publicCode, pilot,
-                score =>
+            dreamloLeaderboard.GetScore( publicCode, pilot, score =>
                 {
                     var record = new Record
                     {
@@ -59,8 +56,7 @@ namespace RWS
 
         public void GetRecords( string publicCode, int offset, int count, Action<Record[]> onSuccess, Action<string> onError )
         {
-            dreamloLeaderboard.GetScores( publicCode, offset, count,
-                scores =>
+            dreamloLeaderboard.GetScores( publicCode, offset, count, scores =>
                 {
                     var records = new Record[scores.Length];
 

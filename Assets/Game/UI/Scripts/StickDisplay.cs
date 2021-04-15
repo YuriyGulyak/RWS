@@ -24,7 +24,7 @@ namespace RWS
             set
             {
                 x = Mathf.Clamp( value, -1f, 1f );
-                handleTransform.anchoredPosition = new Vector2( areaHalfSize.x * x, areaHalfSize.y * y );
+                UpdateHandlePosition();
             }
         }
 

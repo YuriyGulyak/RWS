@@ -7,9 +7,6 @@ namespace RWS
     public class SoundPanel : MonoBehaviour
     {
         [SerializeField]
-        SoundManager soundManager = null;
-
-        [SerializeField]
         SliderWithInputField masterVolumeSlider = null;
 
         [SerializeField]
@@ -32,39 +29,23 @@ namespace RWS
 
         //----------------------------------------------------------------------------------------------------
 
-        public void Show( Action onBackButtonCallback = null )
+        public Action OnBackButtonClicked;
+        
+        public void Show()
         {
-            this.onBackButtonCallback = onBackButtonCallback;
             gameObject.SetActive( true );
-
-            masterVolumeSlider.Value = soundManager.MasterVolume * 100f;
-            motorVolumeSlider.Value = soundManager.MotorVolume * 100f;
-            servoVolumeSlider.Value = soundManager.ServoVolume * 100f;
-            buzzerVolumeSlider.Value = soundManager.BuzzerVolume * 100f;
-            windVolumeSlider.Value = soundManager.WindVolume * 100f;
-
-            applyButton.gameObject.SetActive( false );
         }
 
         public void Hide()
         {
             gameObject.SetActive( false );
-            onBackButtonCallback = null;
         }
 
         //----------------------------------------------------------------------------------------------------
-
-        Action onBackButtonCallback;
-        InputManager inputManager;
         
-
-        void OnValidate()
-        {
-            if( !soundManager )
-            {
-                soundManager = SoundManager.Instance;
-            }
-        }
+        InputManager inputManager;
+        SoundManager soundManager;
+        
 
         void Awake()
         {
@@ -78,13 +59,22 @@ namespace RWS
 
             applyButton.onClick.AddListener( OnApplyButton );
             applyButton.gameObject.SetActive( false );
-
-            inputManager = InputManager.Instance;
         }
         
         void OnEnable()
         {
+            inputManager = InputManager.Instance;
             inputManager.OnEscapeButton += OnEscapeButton;
+
+            soundManager = SoundManager.Instance;
+            
+            masterVolumeSlider.Value = soundManager.MasterVolume * 100f;
+            motorVolumeSlider.Value = soundManager.MotorVolume * 100f;
+            servoVolumeSlider.Value = soundManager.ServoVolume * 100f;
+            buzzerVolumeSlider.Value = soundManager.BuzzerVolume * 100f;
+            windVolumeSlider.Value = soundManager.WindVolume * 100f;
+
+            applyButton.gameObject.SetActive( false );
         }
 
         void OnDisable()
@@ -121,8 +111,7 @@ namespace RWS
 
         void OnBackButton()
         {
-            onBackButtonCallback?.Invoke();
-            Hide();
+            OnBackButtonClicked?.Invoke();
         }
 
         void OnApplyButton()

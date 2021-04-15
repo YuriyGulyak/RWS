@@ -9,13 +9,13 @@ namespace RWS
     public class GhostReplaySystem : MonoBehaviour
     {
         [SerializeField]
-        FlyingWing craft;
+        FlyingWing craft = null;
 
         [SerializeField]
-        FlyingWingGhost ghost;
+        FlyingWingGhost ghost = null;
 
         [SerializeField]
-        string replayFileName;
+        string replayFileName = null;
 
         //----------------------------------------------------------------------------------------------------
 

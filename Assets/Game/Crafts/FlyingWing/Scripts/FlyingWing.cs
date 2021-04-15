@@ -16,8 +16,8 @@ namespace RWS
         [SerializeField]
         float wingspan = 0f;
 
-        [SerializeField]
-        float aspectRatio = 0f;
+        //[SerializeField]
+        //float aspectRatio = 0f;
 
         [SerializeField]
         Elevon leftElevon = null;
@@ -150,7 +150,7 @@ namespace RWS
 
         //----------------------------------------------------------------------------------------------------
 
-        float wingSurface;
+        //float wingSurface;
         float rollSetpoint;
         float pitchSetpoint;
         float throttle;
@@ -183,11 +183,11 @@ namespace RWS
             airfoilSections = GetComponentsInChildren<AirfoilSection>( false );
 
             // Total surface area
-            wingSurface = 0f;
-            for( var i = 0; i < airfoilSections.Length; i++ )
-            {
-                wingSurface += airfoilSections[ i ].SurfaceArea;
-            }
+            //wingSurface = 0f;
+            //for( var i = 0; i < airfoilSections.Length; i++ )
+            //{
+            //    wingSurface += airfoilSections[ i ].SurfaceArea;
+            //}
 
             //aspectRatio = Aerodynamics.AR( wingspan, wingSurface );
             //foreach( var airfoilSection in airfoilSections )
@@ -254,13 +254,8 @@ namespace RWS
             var perlinNoiseValue = Mathf.PerlinNoise( perlinOffset.x, perlinOffset.y );
             var turbulenceAmplitude = new Vector2( 0.6f, 3f );
 
-            var turbulenceRotation =
-                Quaternion.AngleAxis(
-                    Mathf.Lerp( -turbulenceAmplitude.x, turbulenceAmplitude.x, perlinNoiseValue ) * speedNorm,
-                    wingTransform.right ) *
-                Quaternion.AngleAxis(
-                    Mathf.Lerp( -turbulenceAmplitude.y, turbulenceAmplitude.y, perlinNoiseValue ) * speedNorm,
-                    wingTransform.up );
+            var turbulenceRotation = Quaternion.AngleAxis( Mathf.Lerp( -turbulenceAmplitude.x, turbulenceAmplitude.x, perlinNoiseValue ) * speedNorm, wingTransform.right ) *
+                                     Quaternion.AngleAxis( Mathf.Lerp( -turbulenceAmplitude.y, turbulenceAmplitude.y, perlinNoiseValue ) * speedNorm, wingTransform.up );
 
 
             // . . .

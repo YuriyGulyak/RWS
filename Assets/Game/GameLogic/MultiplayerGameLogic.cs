@@ -63,10 +63,10 @@ namespace RWS
         int photonSerializationRate = 60; // Default 10
 
         [SerializeField]
-        BestLapKeyStorage bestLapKeyStorage;
+        BestLapKeyStorage bestLapKeyStorage = null;
 
         [SerializeField]
-        int trackIndex;
+        int trackIndex = 0;
         
         //----------------------------------------------------------------------------------------------------
 

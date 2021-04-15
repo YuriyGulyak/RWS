@@ -41,18 +41,15 @@ namespace RWS
 
         //----------------------------------------------------------------------------------------------------
 
-        public void Show( Action onBackButtonCallback = null )
+        public Action OnBackButtonClicked;
+        
+        public void Show()
         {
-            this.onBackButtonCallback = onBackButtonCallback;
             gameObject.SetActive( true );
 
-
             resolutionDropdown.value = graphicsManager.GetResolutions().IndexOf( graphicsManager.GetResolution() );
-
             qualityDropdown.value = graphicsManager.QualityLevel;
-
             grassDropdown.value = graphicsManager.GrassQualityLevel;
-
             postProcessToggle.isOn = graphicsManager.PostProcess;
 
             if( graphicsManager.DisplayCount > 1 )
@@ -77,12 +74,10 @@ namespace RWS
         public void Hide()
         {
             gameObject.SetActive( false );
-            onBackButtonCallback = null;
         }
 
         //----------------------------------------------------------------------------------------------------
-
-        Action onBackButtonCallback;
+        
         int targetDisplay;
         int fpsLimit;
         InputManager inputManager;
@@ -224,8 +219,7 @@ namespace RWS
 
         void OnBackButton()
         {
-            onBackButtonCallback?.Invoke();
-            Hide();
+            OnBackButtonClicked?.Invoke();
         }
 
         void OnApplyButton()
@@ -244,8 +238,7 @@ namespace RWS
 
         void OnEscapeButton()
         {
-            if( resolutionDropdown.IsExpanded || qualityDropdown.IsExpanded || grassDropdown.IsExpanded ||
-                displayInputField.isFocused || fpsLimitInputField.isFocused )
+            if( resolutionDropdown.IsExpanded || qualityDropdown.IsExpanded || grassDropdown.IsExpanded || displayInputField.isFocused || fpsLimitInputField.isFocused )
             {
                 return;
             }

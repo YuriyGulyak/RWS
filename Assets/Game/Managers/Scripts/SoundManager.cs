@@ -6,7 +6,7 @@ namespace RWS
     public class SoundManager : Singleton<SoundManager>
     {
         [SerializeField]
-        AudioMixer audioMixer;
+        AudioMixer audioMixer = null;
 
 
         public float MasterVolume
@@ -18,7 +18,6 @@ namespace RWS
                 audioMixer.SetFloat( MASTER_VOLUME_KEY, LinearToLogarithmicScale( masterVolume ) );
             }
         }
-
         public float MotorVolume
         {
             get => motorVolume;
@@ -28,7 +27,6 @@ namespace RWS
                 audioMixer.SetFloat( MOTOR_VOLUME_KEY, LinearToLogarithmicScale( motorVolume ) );
             }
         }
-
         public float ServoVolume
         {
             get => servoVolume;
@@ -38,7 +36,6 @@ namespace RWS
                 audioMixer.SetFloat( SERVO_VOLUME_KEY, LinearToLogarithmicScale( servoVolume ) );
             }
         }
-        
         public float BuzzerVolume
         {
             get => buzzerVolume;
@@ -48,7 +45,6 @@ namespace RWS
                 audioMixer.SetFloat( BUZZER_VOLUME_KEY, LinearToLogarithmicScale( buzzerVolume ) );
             }
         }
-        
         public float WindVolume
         {
             get => windVolume;
@@ -58,7 +54,6 @@ namespace RWS
                 audioMixer.SetFloat( WIND_VOLUME_KEY, LinearToLogarithmicScale( windVolume ) );
             }
         }
-
 
         public void LoadPlayerPrefs()
         {
@@ -92,7 +87,7 @@ namespace RWS
         float windVolume;
 
 
-        void Start()
+        void Awake()
         {
             LoadPlayerPrefs();
         }

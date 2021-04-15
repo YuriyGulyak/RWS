@@ -19,6 +19,38 @@
           <e p="BestLapKeyStorage" t="Include">
             <e p="BestLapKeyStorage.cs" t="Include" />
           </e>
+          <e p="Crafts" t="Include">
+            <e p="FlyingWing" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="Aerodynamics.cs" t="Include" />
+                <e p="AirfoilConfig.cs" t="Include" />
+                <e p="AirfoilSection.cs" t="Include" />
+                <e p="Altimeter.cs" t="Include" />
+                <e p="Attitude.cs" t="Include" />
+                <e p="Battery.cs" t="Include" />
+                <e p="BuzzerSound.cs" t="Include" />
+                <e p="ControlSensitivity.cs" t="Include" />
+                <e p="Elevon.cs" t="Include" />
+                <e p="FlyingWing.cs" t="Include" />
+                <e p="Motor.cs" t="Include" />
+                <e p="MotorModel.cs" t="Include" />
+                <e p="MotorSound.cs" t="Include" />
+                <e p="Orientation.cs" t="Include" />
+                <e p="PIDController.cs" t="Include" />
+                <e p="Propeller.cs" t="Include" />
+                <e p="ServoSound.cs" t="Include" />
+                <e p="Transceiver.cs" t="Include" />
+                <e p="WindSound.cs" t="Include" />
+                <e p="WingAutoControl.cs" t="Include" />
+                <e p="WingLauncher.cs" t="Include" />
+                <e p="WingPhotonView.cs" t="Include" />
+                <e p="WingPlayerControl.cs" t="Include" />
+                <e p="WingSetupHelper.cs" t="Include" />
+                <e p="WingSetupHelperEditor.cs" t="Include" />
+                <e p="WingSpawner.cs" t="Include" />
+              </e>
+            </e>
+          </e>
           <e p="Environment" t="Include">
             <e p="Grass" t="Include">
               <e p="Scripts" t="Include">
@@ -34,36 +66,6 @@
             </e>
             <e p="Terrain" t="Include">
               <e p="TerrainController.cs" t="Include" />
-            </e>
-          </e>
-          <e p="FlyingWing" t="Include">
-            <e p="Scripts" t="Include">
-              <e p="Aerodynamics.cs" t="Include" />
-              <e p="AirfoilConfig.cs" t="Include" />
-              <e p="AirfoilSection.cs" t="Include" />
-              <e p="Altimeter.cs" t="Include" />
-              <e p="Attitude.cs" t="Include" />
-              <e p="Battery.cs" t="Include" />
-              <e p="BuzzerSound.cs" t="Include" />
-              <e p="ControlSensitivity.cs" t="Include" />
-              <e p="Elevon.cs" t="Include" />
-              <e p="FlyingWing.cs" t="Include" />
-              <e p="Motor.cs" t="Include" />
-              <e p="MotorModel.cs" t="Include" />
-              <e p="MotorSound.cs" t="Include" />
-              <e p="Orientation.cs" t="Include" />
-              <e p="PIDController.cs" t="Include" />
-              <e p="Propeller.cs" t="Include" />
-              <e p="ServoSound.cs" t="Include" />
-              <e p="Transceiver.cs" t="Include" />
-              <e p="WindSound.cs" t="Include" />
-              <e p="WingAutoControl.cs" t="Include" />
-              <e p="WingLauncher.cs" t="Include" />
-              <e p="WingPhotonView.cs" t="Include" />
-              <e p="WingPlayerControl.cs" t="Include" />
-              <e p="WingSetupHelper.cs" t="Include" />
-              <e p="WingSetupHelperEditor.cs" t="Include" />
-              <e p="WingSpawner.cs" t="Include" />
             </e>
           </e>
           <e p="GameLogic" t="Include">
@@ -164,9 +166,18 @@
                 <e p="ControlListEntry.cs" t="Include" />
                 <e p="ControlsPanel.cs" t="Include" />
                 <e p="GraphicsPanel.cs" t="Include" />
+                <e p="NavigationPanel.cs" t="Include" />
                 <e p="SensitivityPanel.cs" t="Include" />
                 <e p="SettingsPanel.cs" t="Include" />
+                <e p="SettingsPanelOld.cs" t="Include" />
                 <e p="SoundPanel.cs" t="Include" />
+                <e p="States" t="Include">
+                  <e p="ControlsTabState.cs" t="Include" />
+                  <e p="GraphicsTabState.cs" t="Include" />
+                  <e p="NavigationTabState.cs" t="Include" />
+                  <e p="SensitivityTabState.cs" t="Include" />
+                  <e p="SoundTabState.cs" t="Include" />
+                </e>
               </e>
               <e p="SingleplayerPanel" t="Include">
                 <e p="SingleplayerPanel.cs" t="Include" />
@@ -175,6 +186,7 @@
               <e p="StickDisplay.cs" t="Include" />
               <e p="UIHelper.cs" t="Include" />
               <e p="UIHelperEditor.cs" t="Include" />
+              <e p="UIView.cs" t="Include" />
               <e p="WingTelemetry.cs" t="Include" />
             </e>
           </e>
@@ -622,6 +634,8 @@
           <e p="GizmosLine.cs" t="Include" />
           <e p="MathUtils.cs" t="Include" />
           <e p="Patterns" t="Include">
+            <e p="BaseState.cs" t="Include" />
+            <e p="ServiceLocator.cs" t="Include" />
             <e p="Singleton.cs" t="Include" />
           </e>
           <e p="PixelateImageEffect" t="Include">

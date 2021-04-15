@@ -26,6 +26,10 @@ public class SliderWithInputField : MonoBehaviour
         set => slider.value = value;
     }
 
+    public float MinValue { get; private set; }
+    
+    public float MaxValue { get; private set; }
+    
     public bool IsFocused => inputField.isFocused;
 
 
@@ -34,20 +38,14 @@ public class SliderWithInputField : MonoBehaviour
     
     void Awake()
     {
+        MinValue = slider.minValue;
+        MaxValue = slider.maxValue;
+        
         valueFormat = inputField.text;
         inputField.text = RoundValue( slider.value, fractionalDigits ).ToString( valueFormat, CultureInfo.InvariantCulture );
-    }
-
-    void OnEnable()
-    {
+        
         slider.onValueChanged.AddListener( OnSliderChanged );
         inputField.onEndEdit.AddListener( OnInputFieldChanged );
-    }
-
-    void OnDisable()
-    {
-        slider.onValueChanged.RemoveListener( OnSliderChanged );
-        inputField.onEndEdit.RemoveListener( OnInputFieldChanged );
     }
 
 

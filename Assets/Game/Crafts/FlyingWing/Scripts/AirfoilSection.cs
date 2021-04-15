@@ -35,7 +35,7 @@ namespace RWS
         float sweepAngle = 0f;
 
         [SerializeField] 
-        AirfoilConfig airfoilConfig;
+        AirfoilConfig airfoilConfig = null;
 
         [SerializeField] 
         float liftScale = 1f;

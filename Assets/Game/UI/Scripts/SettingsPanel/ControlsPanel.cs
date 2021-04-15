@@ -38,9 +38,10 @@ namespace RWS
 
         //----------------------------------------------------------------------------------------------------
 
-        public void Show( Action onBackButtonCallback = null )
+        public Action OnBackButtonClicked;
+        
+        public void Show()
         {
-            this.onBackButtonCallback = onBackButtonCallback;
             gameObject.SetActive( true );
             saveButton.gameObject.SetActive( false );
 
@@ -65,7 +66,6 @@ namespace RWS
         public void Hide()
         {
             gameObject.SetActive( false );
-            onBackButtonCallback = null;
 
             throttleControlListEntry.StopListening();
             rollControlListEntry.StopListening();
@@ -78,8 +78,7 @@ namespace RWS
         //----------------------------------------------------------------------------------------------------
 
         readonly string notDefinedName = "Not defined";
-
-        Action onBackButtonCallback;
+        
         InputManager inputManager;
         ControlListEntry[] allControls;
 
@@ -289,8 +288,7 @@ namespace RWS
         void OnBackButton()
         {
             inputManager.LoadPlayerPrefs();
-            onBackButtonCallback?.Invoke();
-            Hide();
+            OnBackButtonClicked?.Invoke();
         }
 
         void OnSaveButton()

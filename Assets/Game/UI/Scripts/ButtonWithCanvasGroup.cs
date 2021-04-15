@@ -6,7 +6,7 @@ namespace RWS
     public class ButtonWithCanvasGroup : Button
     {
         [SerializeField]
-        CanvasGroup canvasGroup;
+        CanvasGroup canvasGroup = null;
 
         public bool Interactable
         {

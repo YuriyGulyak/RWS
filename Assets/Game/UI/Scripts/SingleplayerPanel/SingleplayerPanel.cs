@@ -7,31 +7,31 @@ namespace RWS
     public class SingleplayerPanel : MonoBehaviour
     {
         [SerializeField] 
-        RectTransform panelRect;
+        RectTransform panelRect = null;
 
         [SerializeField] 
-        Button closeButton;
+        Button closeButton = null;
 
         [SerializeField] 
-        Toggle infiniteBatteryToggle;
+        Toggle infiniteBatteryToggle = null;
 
         [SerializeField] 
-        Toggle infiniteRangeToggle;
+        Toggle infiniteRangeToggle = null;
 
         [SerializeField] 
-        Toggle showGhostToggle;
+        Toggle showGhostToggle = null;
 
         [SerializeField] 
-        Button startGameButton;
+        Button startGameButton = null;
 
         [SerializeField] 
-        ButtonWithCanvasGroup prevTrackButton;
+        ButtonWithCanvasGroup prevTrackButton = null;
 
         [SerializeField] 
-        ButtonWithCanvasGroup nextTrackButton;
+        ButtonWithCanvasGroup nextTrackButton = null;
 
         [SerializeField] 
-        GameObject[] trackPanels;
+        GameObject[] trackPanels = null;
 
         //----------------------------------------------------------------------------------------------------
 
@@ -43,7 +43,6 @@ namespace RWS
             {
                 return;
             }
-
             gameObject.SetActive( true );
 
             infiniteBatteryToggle.isOn = PlayerPrefs.GetInt( infiniteBatteryKey, 0 ) > 0;
@@ -57,16 +56,15 @@ namespace RWS
             {
                 return;
             }
-
             gameObject.SetActive( false );
             panelRect.anchoredPosition = Vector2.zero;
         }
 
         //----------------------------------------------------------------------------------------------------
 
-        readonly string infiniteBatteryKey = "InfiniteBattery";
-        readonly string infiniteRangeKey = "InfiniteRange";
-        readonly string showGhostKey = "ShowGhost";
+        const string infiniteBatteryKey = "InfiniteBattery";
+        const string infiniteRangeKey = "InfiniteRange";
+        const string showGhostKey = "ShowGhost";
 
         int currentTrackSelected;
         InputManager inputManager;
@@ -117,10 +115,8 @@ namespace RWS
 
             } );
 
-            infiniteBatteryToggle.onValueChanged.AddListener( value =>
-                PlayerPrefs.SetInt( infiniteBatteryKey, value ? 1 : 0 ) );
-            infiniteRangeToggle.onValueChanged.AddListener( value =>
-                PlayerPrefs.SetInt( infiniteRangeKey, value ? 1 : 0 ) );
+            infiniteBatteryToggle.onValueChanged.AddListener( value => PlayerPrefs.SetInt( infiniteBatteryKey, value ? 1 : 0 ) );
+            infiniteRangeToggle.onValueChanged.AddListener( value => PlayerPrefs.SetInt( infiniteRangeKey, value ? 1 : 0 ) );
             showGhostToggle.onValueChanged.AddListener( value => PlayerPrefs.SetInt( showGhostKey, value ? 1 : 0 ) );
 
             startGameButton.onClick.AddListener( () =>

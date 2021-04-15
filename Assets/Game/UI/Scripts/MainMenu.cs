@@ -48,7 +48,7 @@ namespace RWS
 
         [HideInInspector]
         public UnityEvent OnExitButton;
-
+        
 
         void Awake()
         {
@@ -59,7 +59,6 @@ namespace RWS
             profileButton.onClick.AddListener( OnProfileButton.Invoke );
             settingsButton.onClick.AddListener( OnSettingsButton.Invoke );
             exitButton.onClick.AddListener( OnExitButton.Invoke );
-            ;
         }
     }
 }

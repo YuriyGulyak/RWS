@@ -7,16 +7,16 @@ namespace RWS
     public class TrackPanel : MonoBehaviour
     {
         [SerializeField]
-        TextMeshProUGUI localBestLapText;
+        TextMeshProUGUI localBestLapText = null;
 
         [SerializeField]
-        TextMeshProUGUI globalBestLapText;
+        TextMeshProUGUI globalBestLapText = null;
 
         [SerializeField]
-        BestLapKeyStorage bestLapKeyStorage;
+        BestLapKeyStorage bestLapKeyStorage = null;
 
         [SerializeField]
-        int trackIndex;
+        int trackIndex = 0;
 
         //----------------------------------------------------------------------------------------------------
 
