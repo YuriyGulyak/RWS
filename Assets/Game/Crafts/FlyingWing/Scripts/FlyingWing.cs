@@ -14,10 +14,7 @@ namespace RWS
         AirfoilSection[] airfoilSections = null;
 
         [SerializeField]
-        float wingspan = 0f;
-
-        //[SerializeField]
-        //float aspectRatio = 0f;
+        CenterOfMass centerOfMass = null;
 
         [SerializeField]
         Elevon leftElevon = null;
@@ -50,21 +47,7 @@ namespace RWS
         Transceiver transceiver = null;
 
         [SerializeField]
-        Vector3 GC = Vector3.zero;
-
-        [SerializeField]
-        Vector3 drag = Vector3.zero;
-
-        [SerializeField]
-        Vector3 agularDrag = Vector3.zero;
-
-        [SerializeField]
         float maxAngularVelocity = Mathf.Infinity;
-
-        const float warningCellVoltage = 3.4f;
-        const float criticalCellVoltage = 3.2f;
-        const float durationForWarningVoltage = 1.0f;
-        const float durationForCriticalVoltage = 0.5f;
 
         //----------------------------------------------------------------------------------------------------
 
@@ -105,7 +88,7 @@ namespace RWS
 
         public float PitchAngle => pitchAngle;
 
-        public float TAS => speed; // True airspeed
+        public float TAS => speed; // True airspeed, ms
 
         public float RollSpeed => rollSpeed;
 
@@ -135,10 +118,11 @@ namespace RWS
             wingRigidbody.position = position;
             wingRigidbody.rotation = rotation;
 
+            // ??
             wingTransform.position = position;
             wingTransform.rotation = rotation;
 
-            velocity = Vector3.zero;
+            //velocity = Vector3.zero;
             velocityLocal = Vector3.zero;
             speed = 0f;
             flytime = 0f;
@@ -149,12 +133,11 @@ namespace RWS
         }
 
         //----------------------------------------------------------------------------------------------------
-
-        //float wingSurface;
+        
         float rollSetpoint;
         float pitchSetpoint;
         float throttle;
-        Vector3 velocity;
+        //Vector3 velocity;
         Vector3 velocityLocal;
         float liftSum;
         float dragSum;
@@ -182,28 +165,14 @@ namespace RWS
         {
             airfoilSections = GetComponentsInChildren<AirfoilSection>( false );
 
-            // Total surface area
-            //wingSurface = 0f;
-            //for( var i = 0; i < airfoilSections.Length; i++ )
-            //{
-            //    wingSurface += airfoilSections[ i ].SurfaceArea;
-            //}
-
-            //aspectRatio = Aerodynamics.AR( wingspan, wingSurface );
-            //foreach( var airfoilSection in airfoilSections )
-            //{
-            //    airfoilSection.aspectRatio = aspectRatio;
-            //}
-
-            //var CDi = AerodynamicsFormulas.CDi( 1f, aspectRatio, 0.85f );
-            //var Di = AerodynamicsFormulas.L( 1.225f, 40f, wingSurface, CDi );
+            if( !centerOfMass )
+            {
+                centerOfMass = GetComponent<CenterOfMass>();
+            }
         }
 
         void Awake()
         {
-            //wingRigidbody.ResetInertiaTensor();
-            //wingRigidbody.ResetCenterOfMass();
-            wingRigidbody.centerOfMass = GC;
             wingRigidbody.maxAngularVelocity = maxAngularVelocity * Mathf.Deg2Rad;
         }
 
@@ -211,9 +180,9 @@ namespace RWS
         {
             var deltaTime = Time.fixedDeltaTime;
 
-            velocity = wingRigidbody.velocity;
-            velocityLocal = wingTransform.InverseTransformDirection( velocity );
-            speed = velocity.magnitude;
+            //velocity = wingRigidbody.velocity;
+            velocityLocal = wingTransform.InverseTransformDirection( wingRigidbody.velocity );
+            speed = velocityLocal.magnitude;
             altitude = altimeter.Altitude;
 
             angleOfAttack = Vector3.SignedAngle( Vector3.forward, new Vector3( 0f, velocityLocal.y, velocityLocal.z ).normalized, Vector3.right );
@@ -293,31 +262,9 @@ namespace RWS
             batteryCapacityDrawn = battery.CapacityDrawn * 1000f;
 
 
-            // Linear drag
-
-            velocityLocal = new Vector3
-            {
-                x = velocityLocal.x * Mathf.Clamp01( 1f - drag.x * deltaTime ),
-                y = velocityLocal.y * Mathf.Clamp01( 1f - drag.y * deltaTime ),
-                z = velocityLocal.z * Mathf.Clamp01( 1f - drag.z * deltaTime )
-            };
-            wingRigidbody.velocity = wingTransform.TransformDirection( velocityLocal );
-
-
-            // Angular drag
-
-            var localAngularVelocity = wingTransform.InverseTransformDirection( wingRigidbody.angularVelocity );
-            localAngularVelocity = Vector3.Scale( localAngularVelocity, new Vector3
-            {
-                x = Mathf.Clamp01( 1f - agularDrag.x * deltaTime ),
-                y = Mathf.Clamp01( 1f - agularDrag.y * deltaTime ),
-                z = Mathf.Clamp01( 1f - agularDrag.z * deltaTime )
-            } );
-            wingRigidbody.angularVelocity = wingTransform.TransformDirection( localAngularVelocity );
-
-
             // Angular speed
 
+            var localAngularVelocity = wingTransform.InverseTransformDirection( wingRigidbody.angularVelocity );
             rollSpeed = -localAngularVelocity.z * Mathf.Rad2Deg;
             pitchSpeed = -localAngularVelocity.x * Mathf.Rad2Deg;
         }
@@ -330,24 +277,14 @@ namespace RWS
 
             Gizmos.color = Color.red;
             Gizmos.matrix = wingTransform.localToWorldMatrix;
-
-            // GC point
-            Gizmos.DrawWireSphere( GC, 0.0025f );
+            
 
             // Gravity vector
             var downLocal = wingTransform.InverseTransformVector( Vector3.down );
-            Gizmos.DrawRay( GC, downLocal * 0.1f );
+            Gizmos.DrawRay( centerOfMass.value, downLocal * 0.1f );
 
             // Velocity vector
-            Gizmos.DrawRay( GC, velocityLocal * ( wingRigidbody.velocity.magnitude * 0.01f ) );
-
-            // Wingspan
-            Gizmos.color = new Color( 0f, 0f, 0f, 0.25f );
-            var leftWingTip = Vector3.left * ( wingspan * 0.5f );
-            var rightWingTip = Vector3.right * ( wingspan * 0.5f );
-            Gizmos.DrawLine( leftWingTip, rightWingTip );
-            Gizmos.DrawRay( leftWingTip, Vector3.back * 0.05f );
-            Gizmos.DrawRay( rightWingTip, Vector3.back * 0.05f );
+            Gizmos.DrawRay( centerOfMass.value, velocityLocal * ( wingRigidbody.velocity.magnitude * 0.01f ) );
 
 
             Gizmos.matrix = gizmosMatrixTemp;

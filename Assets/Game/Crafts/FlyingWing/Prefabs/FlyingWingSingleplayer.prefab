@@ -2739,7 +2739,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 7b2f9e2298bebd64e8e1f311bab74849, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.01
+  m_Volume: 0
   m_Pitch: 0.75
   Loop: 1
   Mute: 0
@@ -2835,56 +2835,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01d04e0ffa0f84e4fbb292f6b9eae597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flyingWing: {fileID: 8986317438905119613}
+  _rigidbody: {fileID: 1359027184328412837}
   audioSource: {fileID: 1359027184948566892}
-  volumeCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0.01
-      inSlope: 0.99
-      outSlope: 0.99
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0.99
-      outSlope: 0.99
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  pitchCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0.75
-      inSlope: 2.75
-      outSlope: 2.75
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 3.5
-      inSlope: 2.75
-      outSlope: 2.75
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  windSoundSettings: {fileID: 11400000, guid: 67e807f24201e494dab331b5286e3a60, type: 2}
   soundTransition: 0
 --- !u!1 &1359027184949966673
 GameObject:
@@ -6898,11 +6851,15 @@ GameObject:
   m_Component:
   - component: {fileID: 8625455569264246421}
   - component: {fileID: 1359027184328412837}
+  - component: {fileID: -8831200034411445313}
+  - component: {fileID: 8056826259553556127}
+  - component: {fileID: 974533517284072413}
   - component: {fileID: 1359027184328412836}
+  - component: {fileID: 3426731792858701255}
   - component: {fileID: 1359027184328412830}
   - component: {fileID: 3395907697331497997}
-  - component: {fileID: 8730231875667303592}
   - component: {fileID: 8986317438905119613}
+  - component: {fileID: 8730231875667303592}
   m_Layer: 10
   m_Name: FlyingWingSingleplayer
   m_TagString: Untagged
@@ -6946,10 +6903,51 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 3
+--- !u!114 &-8831200034411445313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4749221707724491910}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d38660ff97df6e0428e7326d2c23c95c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value: {x: 0, y: 0, z: 0}
+--- !u!114 &8056826259553556127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4749221707724491910}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e592595b2cd27147ae5742243559825, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value: {x: 0, y: 0, z: 0}
+--- !u!114 &974533517284072413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4749221707724491910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47b74e204c88c9c42abab093e20b4a3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value: {x: 0, y: -0.0035, z: -0.06}
+  gizmoColor: {r: 1, g: 0, b: 0, a: 1}
+  gizmoRadius: 0.005
 --- !u!114 &1359027184328412836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7031,6 +7029,20 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3426731792858701255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4749221707724491910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 122dbfa3e65621b4ba3d2e75823dfebc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wingspan: 0.94
+  gizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!114 &1359027184328412830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7060,23 +7072,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTransform: {fileID: 8625455569264246421}
---- !u!114 &8730231875667303592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4749221707724491910}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd6923acfc4b71b4db0a76a731b831e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wing: {fileID: 8986317438905119613}
-  rollRate: 1
-  pitchRate: 1
-  pitchTrim: 0
-  pitchTrimRate: 0.1
 --- !u!114 &8986317438905119613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7113,8 +7108,7 @@ MonoBehaviour:
   - {fileID: 1359027185143129892}
   - {fileID: 1359027184758956048}
   - {fileID: 1359027185078371624}
-  wingspan: 0.94
-  aspectRatio: 4.665258
+  centerOfMass: {fileID: 974533517284072413}
   leftElevon: {fileID: 1359027184281148317}
   rightElevon: {fileID: 1359027184102951840}
   elevonRange: {x: -25, y: 25}
@@ -7125,10 +7119,24 @@ MonoBehaviour:
   attitude: {fileID: 3395907697331497997}
   altimeter: {fileID: 1359027184328412830}
   transceiver: {fileID: 6423237760949825752}
-  GC: {x: 0, y: -0.0035, z: -0.06}
-  drag: {x: 0, y: 0, z: 0}
-  agularDrag: {x: 0, y: 0, z: 0}
   maxAngularVelocity: 720
+--- !u!114 &8730231875667303592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4749221707724491910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6923acfc4b71b4db0a76a731b831e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wing: {fileID: 8986317438905119613}
+  rollRate: 1
+  pitchRate: 1
+  pitchTrim: 0
+  pitchTrimRate: 0.1
 --- !u!1 &4854525780831716244
 GameObject:
   m_ObjectHideFlags: 0

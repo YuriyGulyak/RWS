@@ -104,11 +104,11 @@ namespace RWS
 
         //--------------------------------------------------------------------------------------------------------------
 
-        readonly string rollExpoKey = "RollExpo";
-        readonly string rollSuperExpoKey = "RollSuperExpo";
-
-        readonly string pitchExpoKey = "PitchExpo";
-        readonly string pitchSuperExpoKey = "PitchSuperExpo";
+        const string rollExpoKey = "RollExpo";
+        const string rollSuperExpoKey = "RollSuperExpo";
+        
+        const string pitchExpoKey = "PitchExpo";
+        const string pitchSuperExpoKey = "PitchSuperExpo";
 
         float rollExpo;
         float rollSuperExpo;

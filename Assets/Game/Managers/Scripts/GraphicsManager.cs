@@ -140,9 +140,20 @@ namespace RWS
 
         void OnValidate()
         {
-            displayManger = GetComponent<DisplayManger>();
-            postProcessVolume = FindObjectOfType<PostProcessVolume>();
-            terrainController = FindObjectOfType<TerrainController>();
+            if( !displayManger )
+            {
+                displayManger = GetComponent<DisplayManger>();
+            }
+
+            if( !postProcessVolume )
+            {
+                postProcessVolume = FindObjectOfType<PostProcessVolume>();
+            }
+
+            if( !terrainController )
+            {
+                terrainController = FindObjectOfType<TerrainController>();
+            }
         }
 
         void Awake()

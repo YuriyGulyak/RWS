@@ -53,8 +53,7 @@ namespace RWS
             rightElevonAngleLast = rightRlevon.Angle;
             var rightElevonSpeed = rightElevonAngleDelta / deltaTime;
 
-            var elevonSpeedAbs =
-                Mathf.Max( Mathf.Abs( leftElevonSpeed ), Mathf.Abs( rightElevonSpeed ) ); // Degrees per second
+            var elevonSpeedAbs = Mathf.Max( Mathf.Abs( leftElevonSpeed ), Mathf.Abs( rightElevonSpeed ) ); // Degrees per second
             if( elevonSpeedAbs < 1f )
             {
                 SoundTransition = 0f;

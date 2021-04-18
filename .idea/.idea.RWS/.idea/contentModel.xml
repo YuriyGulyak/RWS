@@ -11,9 +11,11 @@
           <e p="Dreamlo.txt" t="Include" />
         </e>
         <e p="@Tests" t="Include">
+          <e p="Orientation.cs" t="Include" />
           <e p="TestLeaderboard" t="Include">
             <e p="TestLeaderboard.cs" t="Include" />
           </e>
+          <e p="WingAutoControl.cs" t="Include" />
         </e>
         <e p="Game" t="Include">
           <e p="BestLapKeyStorage" t="Include">
@@ -35,18 +37,18 @@
                 <e p="Motor.cs" t="Include" />
                 <e p="MotorModel.cs" t="Include" />
                 <e p="MotorSound.cs" t="Include" />
-                <e p="Orientation.cs" t="Include" />
                 <e p="PIDController.cs" t="Include" />
                 <e p="Propeller.cs" t="Include" />
                 <e p="ServoSound.cs" t="Include" />
                 <e p="Transceiver.cs" t="Include" />
                 <e p="WindSound.cs" t="Include" />
-                <e p="WingAutoControl.cs" t="Include" />
+                <e p="WindSoundSettings.cs" t="Include" />
                 <e p="WingLauncher.cs" t="Include" />
                 <e p="WingPhotonView.cs" t="Include" />
                 <e p="WingPlayerControl.cs" t="Include" />
                 <e p="WingSetupHelper.cs" t="Include" />
                 <e p="WingSetupHelperEditor.cs" t="Include" />
+                <e p="WingspanGizmo.cs" t="Include" />
                 <e p="WingSpawner.cs" t="Include" />
               </e>
             </e>
@@ -621,7 +623,6 @@
           </e>
           <e p="CustomUpdate.cs" t="Include" />
           <e p="DisplayManger.cs" t="Include" />
-          <e p="DragRect.cs" t="Include" />
           <e p="DreamloLeaderboard" t="Include">
             <e p="DreamloLeaderboard.cs" t="Include" />
             <e p="TestDreamloLeaderboard.cs" t="Include" />
@@ -635,15 +636,22 @@
           <e p="MathUtils.cs" t="Include" />
           <e p="Patterns" t="Include">
             <e p="BaseState.cs" t="Include" />
-            <e p="ServiceLocator.cs" t="Include" />
             <e p="Singleton.cs" t="Include" />
+          </e>
+          <e p="Physics" t="Include">
+            <e p="AngularDrag.cs" t="Include" />
+            <e p="CenterOfMass.cs" t="Include" />
+            <e p="Drag.cs" t="Include" />
           </e>
           <e p="PixelateImageEffect" t="Include">
             <e p="PixelateImageEffect.cs" t="Include" />
             <e p="Pixelation.shader" t="Include" />
           </e>
-          <e p="SliderWithInputField.cs" t="Include" />
-          <e p="UILineRenderer.cs" t="Include" />
+          <e p="UI" t="Include">
+            <e p="DragRect.cs" t="Include" />
+            <e p="SliderWithInputField.cs" t="Include" />
+            <e p="UILineRenderer.cs" t="Include" />
+          </e>
           <e p="VersionDisplay.cs" t="Include" />
         </e>
       </e>

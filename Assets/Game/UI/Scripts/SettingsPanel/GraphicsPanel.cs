@@ -13,6 +13,9 @@ namespace RWS
         GraphicsManager graphicsManager = null;
 
         [SerializeField]
+        InputManager inputManager = null;
+        
+        [SerializeField]
         TMP_Dropdown resolutionDropdown = null;
 
         [SerializeField]
@@ -80,14 +83,17 @@ namespace RWS
         
         int targetDisplay;
         int fpsLimit;
-        InputManager inputManager;
-        
+
 
         void OnValidate()
         {
             if( !graphicsManager )
             {
                 graphicsManager = GraphicsManager.Instance;
+            }
+            if( !inputManager )
+            {
+                inputManager = InputManager.Instance;
             }
         }
 
@@ -143,8 +149,6 @@ namespace RWS
 
             applyButton.onClick.AddListener( OnApplyButton );
             applyButton.gameObject.SetActive( false );
-
-            inputManager = InputManager.Instance;
         }
 
         void OnEnable()

@@ -7,6 +7,12 @@ namespace RWS
     public class SoundPanel : MonoBehaviour
     {
         [SerializeField]
+        InputManager inputManager = null;
+        
+        [SerializeField]
+        SoundManager soundManager = null;
+        
+        [SerializeField]
         SliderWithInputField masterVolumeSlider = null;
 
         [SerializeField]
@@ -43,9 +49,17 @@ namespace RWS
 
         //----------------------------------------------------------------------------------------------------
         
-        InputManager inputManager;
-        SoundManager soundManager;
-        
+        void OnValidate()
+        {
+            if( !inputManager )
+            {
+                inputManager = InputManager.Instance;
+            }
+            if( !soundManager )
+            {
+                soundManager = SoundManager.Instance;
+            }
+        }
 
         void Awake()
         {
@@ -63,11 +77,8 @@ namespace RWS
         
         void OnEnable()
         {
-            inputManager = InputManager.Instance;
             inputManager.OnEscapeButton += OnEscapeButton;
 
-            soundManager = SoundManager.Instance;
-            
             masterVolumeSlider.Value = soundManager.MasterVolume * 100f;
             motorVolumeSlider.Value = soundManager.MotorVolume * 100f;
             servoVolumeSlider.Value = soundManager.ServoVolume * 100f;

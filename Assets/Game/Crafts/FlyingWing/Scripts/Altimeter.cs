@@ -26,8 +26,7 @@ namespace RWS
 
         void Start()
         {
-            if( Physics.Raycast( craftTransform.position, Vector3.down, out var hit, 100f, terrainLayer,
-                QueryTriggerInteraction.Ignore ) )
+            if( Physics.Raycast( craftTransform.position, Vector3.down, out var hit, 100f, terrainLayer, QueryTriggerInteraction.Ignore ) )
             {
                 terrainHeight = hit.point.y;
             }

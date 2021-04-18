@@ -120,6 +120,11 @@ namespace RWS
 
         void Awake()
         {
+            if( !flyingWing )
+            {
+                Debug.LogWarning( "flyingWing == null" );
+            }
+
             voltageFormat = voltageText.text;
             mahUsedFormat = mahUsedText.text;
             currentFormat = currentText.text;

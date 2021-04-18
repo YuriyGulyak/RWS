@@ -8,6 +8,9 @@ namespace RWS
     public class SensitivityPanel : MonoBehaviour
     {
         [SerializeField]
+        InputManager inputManager = null;
+        
+        [SerializeField]
         SliderWithInputField rollExpoSlider = null;
 
         [SerializeField]
@@ -60,8 +63,15 @@ namespace RWS
         //--------------------------------------------------------------------------------------------------------------
 
         ControlSensitivity sensitivity;
-        InputManager inputManager;
 
+
+        void OnValidate()
+        {
+            if( !inputManager )
+            {            
+                inputManager = InputManager.Instance;
+            }
+        }
 
         void Awake()
         {
@@ -75,8 +85,6 @@ namespace RWS
             backButton.onClick.AddListener( OnBackButton );
             saveButton.onClick.AddListener( OnSaveButton );
             saveButton.gameObject.SetActive( false );
-
-            inputManager = InputManager.Instance;
         }
 
         void Start()

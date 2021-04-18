@@ -102,6 +102,16 @@ PrefabInstance:
       propertyPath: motor
       value: 
       objectReference: {fileID: 6403355473821547836}
+    - target: {fileID: 5782733046389017472, guid: f5d5f8ce0f100e240a0100710d5e1311,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6392611561864614882, guid: f5d5f8ce0f100e240a0100710d5e1311,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8281669443235075637, guid: f5d5f8ce0f100e240a0100710d5e1311,
         type: 3}
       propertyPath: motor
@@ -113,6 +123,10 @@ PrefabInstance:
     - {fileID: 2661165179159629045, guid: f5d5f8ce0f100e240a0100710d5e1311, type: 3}
     - {fileID: 2410419871685124896, guid: f5d5f8ce0f100e240a0100710d5e1311, type: 3}
     - {fileID: 5699978252259209799, guid: f5d5f8ce0f100e240a0100710d5e1311, type: 3}
+    - {fileID: 8234948929232473498, guid: f5d5f8ce0f100e240a0100710d5e1311, type: 3}
+    - {fileID: 5782733046389017472, guid: f5d5f8ce0f100e240a0100710d5e1311, type: 3}
+    - {fileID: 6392611561864614882, guid: f5d5f8ce0f100e240a0100710d5e1311, type: 3}
+    - {fileID: 3605624944097576642, guid: f5d5f8ce0f100e240a0100710d5e1311, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f5d5f8ce0f100e240a0100710d5e1311, type: 3}
 --- !u!114 &6403355473821547836 stripped
 MonoBehaviour:

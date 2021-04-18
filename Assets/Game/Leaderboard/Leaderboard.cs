@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace RWS
 {
+    [RequireComponent( typeof( DreamloLeaderboard ) )]
     public class Leaderboard : Singleton<Leaderboard>
     {
         [SerializeField]

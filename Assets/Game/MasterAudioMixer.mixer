@@ -166,7 +166,7 @@ AudioMixerController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: AudioMixer
+  m_Name: MasterAudioMixer
   m_OutputGroup: {fileID: 0}
   m_MasterGroup: {fileID: 24300002}
   m_Snapshots:
@@ -189,14 +189,14 @@ AudioMixerController:
   m_AudioMixerGroupViews:
   - guids:
     - 4cc67e17ca890e64998874986582cdfa
-    - 608b13a5575ded640a9cc8dfc7df3538
-    - 667c1c73d276ecc4383ac9e63cb915f7
-    - b28916c83313263449f3a99e6ac23ac4
-    - 7d39e5751b06bc943ae9fff3489b8dc6
     - 6a9938d669f5a834da9e0600205df1d9
+    - 608b13a5575ded640a9cc8dfc7df3538
     - 73a173104cb47774fa96c1ae6878eb7f
+    - b28916c83313263449f3a99e6ac23ac4
     - 78f9b83937eafa3458487f2a870f45f0
+    - 7d39e5751b06bc943ae9fff3489b8dc6
     - 0b88d22b59b18884ab1dac866d59a845
+    - 667c1c73d276ecc4383ac9e63cb915f7
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 635195367367476907}
@@ -319,7 +319,7 @@ AudioMixerSnapshotController:
     cacb8bf90e495764f9fab002dc97dbc9: 0
     77b9b03a19e540f46bb70cdefe8fb083: 7.8
     877ebcaaf5532a644a8705f8fb88b64a: 6000
-    76edcdca9ebc6954aaefa932e6d89068: 14
+    76edcdca9ebc6954aaefa932e6d89068: 5
     8cae7d4b9cb483748aa1bf4e08d65607: 0.143
     3276f10c6f9dfcc46b951bafb643270e: 1
     5f31362cd5bea884f8ac5949dbceea41: 3000

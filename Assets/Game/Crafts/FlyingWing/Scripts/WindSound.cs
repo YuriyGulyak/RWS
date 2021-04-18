@@ -5,51 +5,49 @@ namespace RWS
     public class WindSound : MonoBehaviour
     {
         [SerializeField]
-        FlyingWing flyingWing = null;
+        Rigidbody _rigidbody = null;
 
         [SerializeField]
         AudioSource audioSource = null;
 
         [SerializeField]
-        AnimationCurve volumeCurve = AnimationCurve.Linear( 0f, 0.1f, 1f, 1f );
+        WindSoundSettings windSoundSettings = null;
 
-        [SerializeField]
-        AnimationCurve pitchCurve = AnimationCurve.Linear( 0f, 0.75f, 1f, 3.5f );
-
-        // Serialized for sound debug
+        // Serialized for sound tests
         [SerializeField, Range( 0f, 1f )]
         float soundTransition = 0f;
 
         //--------------------------------------------------------------------------------------------------------------
 
-        public float SoundTransition
-        {
-            get => soundTransition;
-            set
-            {
-                soundTransition = Mathf.Clamp01( value );
-                UpdateAudioSource();
-            }
-        }
-
-        //--------------------------------------------------------------------------------------------------------------
-
         void OnValidate()
         {
+            if( !_rigidbody )
+            {
+                _rigidbody = GetComponentInParent<Rigidbody>();
+            }
+
             UpdateAudioSource();
         }
 
         void Update()
         {
-            SoundTransition = flyingWing.TAS / 160f;
+            soundTransition = CalcSpeedKmh() / windSoundSettings.maxSpeedKmh;
+            soundTransition = Mathf.Clamp01( soundTransition );
+            
+            UpdateAudioSource();
         }
 
         //--------------------------------------------------------------------------------------------------------------
 
         void UpdateAudioSource()
         {
-            audioSource.volume = volumeCurve.Evaluate( soundTransition );
-            audioSource.pitch = pitchCurve.Evaluate( soundTransition );
+            audioSource.volume = windSoundSettings.volumeCurve.Evaluate( soundTransition );
+            audioSource.pitch = windSoundSettings.pitchCurve.Evaluate( soundTransition );
+        }
+
+        float CalcSpeedKmh()
+        {
+            return _rigidbody.velocity.magnitude * 3.6f;
         }
     }
 }

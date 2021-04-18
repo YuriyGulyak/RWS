@@ -7,6 +7,9 @@ namespace RWS
     public class NavigationPanel : MonoBehaviour
     {
         [SerializeField]
+        InputManager inputManager;
+        
+        [SerializeField]
         Button graphicsButton = null;
 
         [SerializeField]
@@ -28,8 +31,7 @@ namespace RWS
         public void Show()
         {
             gameObject.SetActive( true );
-            
-            inputManager = InputManager.Instance;
+
             inputManager.OnEscapeButton += OnEscapeButtonClicked;
         }
 
@@ -39,11 +41,16 @@ namespace RWS
             
             inputManager.OnEscapeButton -= OnEscapeButtonClicked;
         }
-    
-    
-        InputManager inputManager;
-        
-        
+
+
+        void OnValidate()
+        {
+            if( !inputManager )
+            {
+                inputManager = InputManager.Instance;
+            }
+        }
+
         void Awake()
         {
             graphicsButton.onClick.AddListener( () => OnGraphicsButtonClicked?.Invoke() );

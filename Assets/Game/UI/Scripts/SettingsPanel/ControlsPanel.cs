@@ -7,6 +7,9 @@ namespace RWS
     public class ControlsPanel : MonoBehaviour
     {
         [SerializeField]
+        InputManager inputManager = null;
+        
+        [SerializeField]
         ControlListEntry throttleControlListEntry = null;
 
         [SerializeField]
@@ -77,17 +80,18 @@ namespace RWS
 
         //----------------------------------------------------------------------------------------------------
 
-        readonly string notDefinedName = "Not defined";
-        
-        InputManager inputManager;
+        const string notDefinedName = "Not defined";
+
         ControlListEntry[] allControls;
 
 
-        void Awake()
+        void OnValidate()
         {
             inputManager = InputManager.Instance;
+        }
 
-
+        void Awake()
+        {
             // Throttle
 
             throttleControlListEntry.BindingName = inputManager.ThrottleControl.BindingName ?? notDefinedName;
