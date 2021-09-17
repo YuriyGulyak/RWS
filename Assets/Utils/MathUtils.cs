@@ -51,6 +51,7 @@ public static class MathUtils
     
     
     // a, b, c - sides, c - opposite side
+    // Return angle abc
     public static float LawOfCos( float a, float b, float c )
     {
         var cos = ( a * a + b * b - c * c ) / ( 2f *  a * b );

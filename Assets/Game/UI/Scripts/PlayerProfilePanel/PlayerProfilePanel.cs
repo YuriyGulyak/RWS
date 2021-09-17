@@ -1,12 +1,14 @@
 ﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using Random = UnityEngine.Random;
 
 namespace RWS
 {
     public class PlayerProfilePanel : MonoBehaviour
     {
+        [SerializeField]
+        InputManager inputManager = null;
+        
         [SerializeField]
         RectTransform panelRect = null;
 
@@ -20,9 +22,17 @@ namespace RWS
         TextMeshProUGUI infoText = null;
 
         [SerializeField]
+        PlayerStatsPanel statsPanel = null;
+        
+        [SerializeField]
         Button applyButton = null;
 
         //----------------------------------------------------------------------------------------------------
+
+        public void Initialize( PlayerProfile playerProfile )
+        {
+            this.playerProfile = playerProfile;
+        }
 
         public bool IsOpen => gameObject.activeSelf;
 
@@ -52,10 +62,20 @@ namespace RWS
 
         //----------------------------------------------------------------------------------------------------
 
-        string pilotName;
-        const string pilotNameKey = "Nickname";
-        InputManager inputManager;
+        PlayerProfile playerProfile;
         
+
+        void OnValidate()
+        {
+            if( !inputManager )
+            {
+                inputManager = InputManager.Instance;
+            }
+            if( !statsPanel )
+            {
+                statsPanel = GetComponentInChildren<PlayerStatsPanel>();
+            }
+        }
 
         void Awake()
         {
@@ -68,24 +88,15 @@ namespace RWS
 
             applyButton.onClick.AddListener( OnApplyButton );
             applyButton.gameObject.SetActive( false );
-
-            if( PlayerPrefs.HasKey( pilotNameKey ) )
-            {
-                pilotName = PlayerPrefs.GetString( pilotNameKey );
-            }
-            else
-            {
-                pilotName = $"Pilot{Random.Range( 0, 10000 ):0000}";
-                PlayerPrefs.SetString( pilotNameKey, pilotName );
-            }
-
-            inputManager = InputManager.Instance;
         }
 
         void OnEnable()
         {
-            nameInputField.text = pilotName;
-            
+            if( playerProfile != null )
+            {
+                RefreshData( playerProfile );
+            }
+
             inputManager.OnEscapeButton += OnEscapeButton;
         }
 
@@ -95,35 +106,58 @@ namespace RWS
         }
 
 
+        void RefreshData( PlayerProfile player )
+        {
+            nameInputField.text = player.playerName;
+
+            statsPanel.SetTotalFlightTime( player.totalFlightTime );
+            statsPanel.SetTotalFlightDistance( player.totalFlightDistance );
+            statsPanel.SetLongestFlightTime( player.longestFlightTime );
+            statsPanel.SetTopSpeed( player.topSpeed * 3.6f );
+            statsPanel.SetCompletedLaps( player.completedLaps );
+            statsPanel.SetNumberOfLaunches( player.numberOfLaunches );
+            statsPanel.SetNumberOfCrashes( player.numberOfCrashes );
+            
+            // statsPanel.SetTotalFlightTime( Random.Range( 0f, 6000f ) );
+            // statsPanel.SetTotalFlightDistance( Random.Range( 0f, 6000f ) );
+            // statsPanel.SetLongestFlightTime( Random.Range( 0f, 6000f ) );
+            // statsPanel.SetTopSpeed( Random.Range( 0f, 200f ) );
+            // statsPanel.SetCompletedLaps( Random.Range( 0, 200 ) );
+            // statsPanel.SetNumberOfLaunches( Random.Range( 0, 200 ) );
+            // statsPanel.SetNumberOfCrashes( Random.Range( 0, 200 ) );
+        }
+
         void OnNameInput( string newName )
         {
             newName = newName.Trim();
-
-            if( newName.Equals( pilotName ) )
+            
+            infoText.text = "";
+            applyButton.gameObject.SetActive( false );
+            
+            if( newName.Equals( playerProfile.playerName ) )
             {
                 return;
             }
-
             if( newName.Length < 4 )
             {
                 infoText.text = "Name must be minimum 4 characters";
                 nameInputField.ActivateInputField();
+                return;
             }
-            else
-            {
-                infoText.text = "";
-                applyButton.gameObject.SetActive( true );
-            }
+            
+            applyButton.gameObject.SetActive( true );
         }
+
 
         void OnApplyButton()
         {
             infoText.text = "Name changed";
 
-            pilotName = nameInputField.text.Trim();
-            nameInputField.text = pilotName;
+            var newPlayerName = nameInputField.text.Trim();
+            nameInputField.text = newPlayerName;
 
-            PlayerPrefs.SetString( pilotNameKey, pilotName );
+            playerProfile.playerName = newPlayerName;
+            PlayerProfileDatabase.SavePlayerProfile( playerProfile );
 
             applyButton.gameObject.SetActive( false );
         }

@@ -7,16 +7,13 @@ namespace RWS
     public class TrackPanel : MonoBehaviour
     {
         [SerializeField]
-        TextMeshProUGUI localBestLapText = null;
+        TextMeshProUGUI localBestLapText = default;
 
         [SerializeField]
-        TextMeshProUGUI globalBestLapText = null;
+        TextMeshProUGUI globalBestLapText = default;
 
         [SerializeField]
-        BestLapKeyStorage bestLapKeyStorage = null;
-
-        [SerializeField]
-        int trackIndex = 0;
+        BestLapKeys bestLapKeys = default;
 
         //----------------------------------------------------------------------------------------------------
 
@@ -31,9 +28,7 @@ namespace RWS
 
         void OnEnable()
         {
-            var bestLapKeyItem = bestLapKeyStorage.items[ trackIndex ];
-
-            var localBestLapKey = bestLapKeyItem.playerPrefsKey;
+            var localBestLapKey = bestLapKeys.playerPrefsKey;
             if( PlayerPrefs.HasKey( localBestLapKey ) )
             {
                 var bestLapSeconds = PlayerPrefs.GetFloat( localBestLapKey );
@@ -44,7 +39,7 @@ namespace RWS
                 localBestLapText.text = "N/A";
             }
 
-            var dreamloPublicCode = bestLapKeyItem.dreamloPublicCode;
+            var dreamloPublicCode = bestLapKeys.dreamloPublicCode;
             leaderboard.GetRecords( dreamloPublicCode, 0, 1, records =>
             {
                 if( records.Length == 0 )

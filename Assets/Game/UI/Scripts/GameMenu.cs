@@ -7,13 +7,13 @@ namespace RWS
     public class GameMenu : MonoBehaviour
     {
         [SerializeField]
-        Button resumeButton = null;
+        Button resumeButton = default;
 
         [SerializeField]
-        Button settingsButton = null;
+        Button settingsButton = default;
 
         [SerializeField]
-        Button exitButton = null;
+        Button exitButton = default;
 
         //----------------------------------------------------------------------------------------------------
 

@@ -6,103 +6,134 @@ namespace RWS
     public class SingleplayerGameLogic : MonoBehaviour
     {
         [SerializeField]
-        GameObject pilotCamera = null;
+        GameObject pilotCamera = default;
 
         [SerializeField]
-        PilotLook pilotLook = null;
+        PilotLook pilotLook = default;
 
         [SerializeField]
-        FlyingWing flyingWing = null;
+        FlyingWing flyingWing = default;
 
         [SerializeField]
-        GameObject fpvCamera = null;
+        GameObject fpvCamera = default;
         
         [SerializeField]
-        WingLauncher wingLauncher = null;
+        WingLauncher wingLauncher = default;
 
         [SerializeField]
-        RaceTrack raceTrack = null;
+        RaceTrack raceTrack = default;
 
         [SerializeField]
-        LapTime lapTime = null;
+        LapTime lapTime = default;
 
         [SerializeField]
-        OSDTelemetry osdTelemetry = null;
+        GameObject osdTelemetry = default;
 
         [SerializeField]
-        GameMenu gameMenu = null;
+        GameMenu gameMenu = default;
 
         [SerializeField]
-        BlackScreen blackScreen = null;
+        BlackScreen blackScreen = default;
 
         [SerializeField]
-        SettingsPanel settingsPanel = null;
+        SettingsPanel settingsPanel = default;
 
         [SerializeField]
-        BloorEffectController bloorEffect = null;
+        BloorEffectController bloorEffect = default;
 
         [SerializeField]
-        GhostReplaySystem ghostReplay = null;
+        GhostReplaySystem ghostReplay = default;
 
         [SerializeField]
-        BestLapKeyStorage bestLapKeyStorage = null;
-
-        [SerializeField]
-        int trackIndex = 0;
+        Leaderboard leaderboard = default;
         
+        [SerializeField]
+        BestLapKeys bestLapKeys = default;
+
+        [SerializeField]
+        InputManager inputManager = default;
+
         //----------------------------------------------------------------------------------------------------
 
-        readonly string infiniteBatteryKey = "InfiniteBattery";
-        readonly string infiniteRangeKey = "InfiniteRange";
-        readonly string showGhostKey = "ShowGhost";
+        const string infiniteBatteryKey = "InfiniteBattery";
+        const string infiniteRangeKey = "InfiniteRange";
+        const string showGhostKey = "ShowGhost";
 
         Vector3 spawnPosition;
         Quaternion spawnRotation;
         float lastLaunchTime;
         bool fpvMode;
-        Leaderboard leaderboard;
         bool showGhost;
+        PlayerProfile playerProfile;
 
-
-        void Awake()
+        
+        void OnValidate()
         {
-            gameMenu.OnResumeButton += OnResumeButton;
-            gameMenu.OnSettingsButton += OnSettingsButton;
-            gameMenu.OnExitButton += OnExitButton;
+            if( !leaderboard )
+            {
+                leaderboard = Leaderboard.Instance;
+            }
 
-            var inputManager = InputManager.Instance;
+            if( !inputManager )
+            {
+                inputManager = InputManager.Instance;
+            }
+        }
+
+        void OnEnable()
+        {
+            SceneManager.sceneLoaded += OnSceneLoaded;
+            
             inputManager.LaunchResetControl.Performed += OnLaunchResetButton;
             inputManager.ViewControl.Performed += OnViewButton;
             inputManager.OnEscapeButton += OnEscapeButton;
             
-            leaderboard = Leaderboard.Instance;
-        }
-        
-        void OnEnable()
-        {
-            SceneManager.sceneLoaded += OnSceneLoaded;
+            gameMenu.OnResumeButton += OnResumeButton;
+            gameMenu.OnSettingsButton += OnSettingsButton;
+            gameMenu.OnExitButton += OnExitButton;
         }
 
         void OnDisable()
         {
             SceneManager.sceneLoaded -= OnSceneLoaded;
+            
+            inputManager.LaunchResetControl.Performed -= OnLaunchResetButton;
+            inputManager.ViewControl.Performed -= OnViewButton;
+            inputManager.OnEscapeButton -= OnEscapeButton;
+            
+            gameMenu.OnResumeButton -= OnResumeButton;
+            gameMenu.OnSettingsButton -= OnSettingsButton;
+            gameMenu.OnExitButton -= OnExitButton;
+            
+            
+            playerProfile.totalFlightTime += flyingWing.Flytime;
+            playerProfile.totalFlightDistance += flyingWing.FlightDistance;
+            playerProfile.longestFlightTime = Mathf.Max( playerProfile.longestFlightTime, flyingWing.Flytime );
+            playerProfile.topSpeed = Mathf.Max( playerProfile.topSpeed, flyingWing.Speedometer.TopSpeedMs );
+            PlayerProfileDatabase.SavePlayerProfile( playerProfile );
         }
 
         void Start()
         {
+            playerProfile = PlayerProfileDatabase.LoadPlayerProfile();
+            
             flyingWing.Battery.InfiniteCapacity = PlayerPrefs.GetInt( infiniteBatteryKey, 0 ) > 0;
             flyingWing.Transceiver.InfiniteRange = PlayerPrefs.GetInt( infiniteRangeKey, 0 ) > 0;
 
+            flyingWing.CrashDetector.OnCrashed.AddListener( OnCrash );
+            
             spawnPosition = wingLauncher.transform.position;
             spawnRotation = wingLauncher.transform.rotation;
 
             pilotCamera.SetActive( true );
             fpvCamera.SetActive( false );
-
-            osdTelemetry.Hide();
+            
+            osdTelemetry.SetActive( false );
+            
             settingsPanel.Hide();
             gameMenu.Hide();
 
+            
             showGhost = PlayerPrefs.GetInt( showGhostKey, 0 ) > 0;
 
             if( showGhost )
@@ -126,11 +157,13 @@ namespace RWS
             {
                 lapTime.CompareTime();
                 
-            } );
+                playerProfile.completedLaps++;
 
-            var bestLapKeyItem = bestLapKeyStorage.items[ trackIndex ];
-            var localBestLapKey = bestLapKeyItem.playerPrefsKey; 
-            var dreamloPrivateCode = bestLapKeyItem.dreamloPrivateCode; 
+            } );
+            
+            
+            var localBestLapKey = bestLapKeys.playerPrefsKey; 
+            var dreamloPrivateCode = bestLapKeys.dreamloPrivateCode; 
             
             lapTime.Init( PlayerPrefs.GetFloat( localBestLapKey, -1f ) );
             lapTime.OnNewBestTime += newBestTime =>
@@ -142,8 +175,7 @@ namespace RWS
                 {
                     leaderboard.AddRecord( dreamloPrivateCode, pilotName, "Mini Race Wing", newBestTime, null );
                 }
-                
-                //ghostReplay.StopReplaying();
+
                 ghostReplay.SaveReplay();
                 
             };
@@ -171,7 +203,8 @@ namespace RWS
 
             if( fpvMode )
             {
-                osdTelemetry.Show();
+                osdTelemetry.SetActive( true );
+                
                 if( lapTime.Started )
                 {
                     lapTime.Show();
@@ -204,8 +237,7 @@ namespace RWS
                 {
                     pilotCamera.SetActive( true );
                     fpvCamera.SetActive( false );
-
-                    osdTelemetry.Hide();
+                    osdTelemetry.SetActive( false );
 
                     blackScreen.StartFromBlackScreenAnimation( () => { fpvMode = false; } );
                 } );
@@ -218,8 +250,8 @@ namespace RWS
                 {
                     pilotCamera.SetActive( false );
                     fpvCamera.SetActive( true );
-
-                    osdTelemetry.Show();
+                    
+                    osdTelemetry.SetActive( true );
 
                     blackScreen.StartFromBlackScreenAnimation( () => { fpvMode = true; } );
                 } );
@@ -243,16 +275,21 @@ namespace RWS
             {
                 wingLauncher.Launch();
                 lastLaunchTime = Time.time;
+
+                playerProfile.numberOfLaunches++;
             }
 
             // Reset
             else
             {
+                playerProfile.totalFlightTime += flyingWing.Flytime;
+                playerProfile.totalFlightDistance += flyingWing.FlightDistance;
+                playerProfile.longestFlightTime = Mathf.Max( playerProfile.longestFlightTime, flyingWing.Flytime );
+                playerProfile.topSpeed = Mathf.Max( playerProfile.topSpeed, flyingWing.Speedometer.TopSpeedMs );
+                
                 blackScreen.StartToBlackScreenAnimation( () =>
                 {
                     flyingWing.Reset( spawnPosition, spawnRotation );
-
-                    osdTelemetry.Reset();
 
                     lapTime.Reset();
                     lapTime.Hide();
@@ -269,7 +306,6 @@ namespace RWS
 
                     blackScreen.StartFromBlackScreenAnimation( wingLauncher.Reset );
                 } );
-                
             }
         }
 
@@ -277,16 +313,23 @@ namespace RWS
         {
             if( !gameMenu.IsActive )
             {
-                osdTelemetry.Hide();
+                osdTelemetry.SetActive( false );
                 lapTime.Hide();
                 gameMenu.Show();
+                
                 Cursor.visible = true;
+                
                 bloorEffect.BloorEffectEnabled = true;
             }
             else if( !settingsPanel.IsOpen )
             {
                 OnResumeButton();
             }
+        }
+
+        void OnCrash()
+        {
+            playerProfile.numberOfCrashes++;
         }
     }
 }

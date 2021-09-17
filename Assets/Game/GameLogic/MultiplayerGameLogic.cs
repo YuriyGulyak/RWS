@@ -12,49 +12,40 @@ namespace RWS
     public class MultiplayerGameLogic : MonoBehaviour, IOnEventCallback
     {
         [SerializeField]
-        GameObject pilotAvatar = null;
+        GameObject pilotAvatar = default;
 
         [SerializeField]
-        WingSpawner wingSpawner = null;
+        WingSpawner wingSpawner = default;
 
         [SerializeField]
-        WingLauncher wingLauncher = null;
+        WingLauncher wingLauncher = default;
 
         [SerializeField]
-        WingTelemetry wingTelemetry = null;
+        RaceTrack raceTrack = default;
 
         [SerializeField]
-        BatteryTelemetry batteryTelemetry = null;
+        LapTime lapTime = default;
 
         [SerializeField]
-        MotorTelemetry motorTelemetry = null;
+        PlayerOverviewPanel playerOverviewPanel = default;
 
         [SerializeField]
-        RaceTrack raceTrack = null;
+        GameObject osdTelemetry = default;
 
         [SerializeField]
-        LapTime lapTime = null;
+        GameMenu gameMenu = default;
 
         [SerializeField]
-        PlayerOverviewPanel playerOverviewPanel = null;
+        SettingsPanel settingsPanel = default;
 
         [SerializeField]
-        OSDTelemetry osdTelemetry = null;
+        RoomChat roomChat = default;
 
         [SerializeField]
-        GameMenu gameMenu = null;
+        BlackScreen blackScreen = default;
 
         [SerializeField]
-        SettingsPanel settingsPanel = null;
-
-        [SerializeField]
-        RoomChat roomChat = null;
-
-        [SerializeField]
-        BlackScreen blackScreen = null;
-
-        [SerializeField]
-        BloorEffectController bloorEffect = null;
+        BloorEffectController bloorEffect = default;
 
         [SerializeField]
         int photonSendRate = 60; // Default 20
@@ -63,10 +54,13 @@ namespace RWS
         int photonSerializationRate = 60; // Default 10
 
         [SerializeField]
-        BestLapKeyStorage bestLapKeyStorage = null;
+        Leaderboard leaderboard = default;
+        
+        [SerializeField]
+        BestLapKeys bestLapKeys = default;
 
         [SerializeField]
-        int trackIndex = 0;
+        InputManager inputManager = default;
         
         //----------------------------------------------------------------------------------------------------
 
@@ -117,10 +111,23 @@ namespace RWS
         Quaternion spawnRotation;
         float lastLaunchTime;
         bool fpvMode;
-        Leaderboard leaderboard;
         float currentSessionLapStartTime;
         float currentSessionBestLap;
+        PlayerProfile playerProfile;
+        
+        
+        void OnValidate()
+        {
+            if( !leaderboard )
+            {
+                leaderboard = Leaderboard.Instance;
+            }
 
+            if( !inputManager )
+            {
+                inputManager = InputManager.Instance;
+            }
+        }
         
         void Awake()
         {
@@ -130,14 +137,11 @@ namespace RWS
             gameMenu.OnResumeButton += OnResumeButton;
             gameMenu.OnSettingsButton += OnSettingsButton;
             gameMenu.OnExitButton += OnExitButton;
-
-            var inputManager = InputManager.Instance;
+            
             inputManager.LaunchResetControl.Performed += OnLaunchResetButton;
             inputManager.ViewControl.Performed += OnViewButton;
             inputManager.OnEnterButton += OnEnterButton;
             inputManager.OnEscapeButton += OnEscapeButton;
-            
-            leaderboard = Leaderboard.Instance;
         }
 
         void OnEnable()
@@ -150,12 +154,23 @@ namespace RWS
         {
             PhotonNetwork.RemoveCallbackTarget( this );
             SceneManager.sceneLoaded -= OnSceneLoaded;
+
+            if( localWing )
+            {
+                playerProfile.totalFlightTime += localWing.Flytime;
+                playerProfile.totalFlightDistance += localWing.FlightDistance;
+                playerProfile.longestFlightTime = Mathf.Max( playerProfile.longestFlightTime, localWing.Flytime );
+                playerProfile.topSpeed = Mathf.Max( playerProfile.topSpeed, localWing.Speedometer.SpeedMs );
+            }
+            PlayerProfileDatabase.SavePlayerProfile( playerProfile );
         }
 
         void Start()
         {
+            playerProfile = PlayerProfileDatabase.LoadPlayerProfile();
+            
             gameMenu.Hide();
-            osdTelemetry.Hide();
+            osdTelemetry.SetActive( false );
             playerOverviewPanel.Show();
             settingsPanel.Hide();
             roomChat.HideInput();
@@ -163,9 +178,9 @@ namespace RWS
             losCameraGameObject = pilotAvatar.GetComponentInChildren<Camera>( true ).gameObject;
             losCameraGameObject.SetActive( true );
             
-            var bestLapKeyItem = bestLapKeyStorage.items[ trackIndex ];
-            var localBestLapKey = bestLapKeyItem.playerPrefsKey; 
-            var dreamloPrivateCode = bestLapKeyItem.dreamloPrivateCode; 
+            
+            var localBestLapKey = bestLapKeys.playerPrefsKey; 
+            var dreamloPrivateCode = bestLapKeys.dreamloPrivateCode; 
             
             lapTime.Init( PlayerPrefs.GetFloat( localBestLapKey, -1f ) );
             lapTime.OnNewBestTime += newBestTime =>
@@ -209,6 +224,8 @@ namespace RWS
                         // Receiving in PlayerOverviewPanel. Need refactoring
                         PhotonNetwork.LocalPlayer.SetCustomProperties( new Hashtable { { bestLapPropertyKey, newLapTime } } );
                     }
+                    
+                    playerProfile.completedLaps++;
                 }
             } );
 
@@ -220,7 +237,8 @@ namespace RWS
                 spawnPointIndex = PhotonNetwork.LocalPlayer.ActorNumber;
                 localWingGameObject = wingSpawner.SpawnLocalPlayerWing( spawnPointIndex );
                 localWing = localWingGameObject.GetComponent<FlyingWing>();
-
+                localWing.Rigidbody.isKinematic = true;
+                
                 var wingTransform = localWing.Transform;
                 spawnPosition = wingTransform.position;
                 spawnRotation = wingTransform.rotation;
@@ -240,11 +258,8 @@ namespace RWS
 
                 localWing.Transceiver.Init( pilotPosition + new Vector3( 0f, 2f, 0f ) );
 
-                osdTelemetry.Init( localWing );
-                wingTelemetry.Init( localWing );
-                batteryTelemetry.Init( localWing.Battery );
-                motorTelemetry.Init( localWing.Motor );
-
+                localWing.CrashDetector.OnCrashed.AddListener( OnCrash );
+                
                 var roomProperties = PhotonNetwork.CurrentRoom.CustomProperties;
                 if( roomProperties.TryGetValue( "InfiniteBattery", out var infiniteCapacityObj ) )
                 {
@@ -281,7 +296,7 @@ namespace RWS
 
             if( fpvMode )
             {
-                osdTelemetry.Show();
+                osdTelemetry.SetActive( true );
 
                 if( lapTime.Started )
                 {
@@ -316,7 +331,7 @@ namespace RWS
                     losCameraGameObject.SetActive( true );
                     fpvCameraGameObject.SetActive( false );
 
-                    osdTelemetry.Hide();
+                    osdTelemetry.SetActive( false );
 
                     blackScreen.StartFromBlackScreenAnimation( () => { fpvMode = false; } );
                 } );
@@ -330,7 +345,7 @@ namespace RWS
                     losCameraGameObject.SetActive( false );
                     fpvCameraGameObject.SetActive( true );
 
-                    osdTelemetry.Show();
+                    osdTelemetry.SetActive( true );
 
                     blackScreen.StartFromBlackScreenAnimation( () => { fpvMode = true; } );
                 } );
@@ -339,6 +354,11 @@ namespace RWS
 
         void OnLaunchResetButton()
         {
+            if( !localWing )
+            {
+                return;
+            }
+
             if( gameMenu.IsActive )
             {
                 return;
@@ -354,17 +374,22 @@ namespace RWS
             {
                 wingLauncher.Launch( localWing.Rigidbody );
                 lastLaunchTime = Time.time;
+                
+                playerProfile.numberOfLaunches++;
             }
 
             // Reset
             else
             {
+                playerProfile.totalFlightTime += localWing.Flytime;
+                playerProfile.totalFlightDistance += localWing.FlightDistance;
+                playerProfile.longestFlightTime = Mathf.Max( playerProfile.longestFlightTime, localWing.Flytime );
+                playerProfile.topSpeed = Mathf.Max( playerProfile.topSpeed, localWing.Speedometer.TopSpeedMs );
+                
                 blackScreen.StartToBlackScreenAnimation( () =>
                 {
                     localWing.Reset( spawnPosition, spawnRotation );
 
-                    osdTelemetry.Reset();
-                    
                     lapTime.Reset();
                     lapTime.Hide();
 
@@ -398,12 +423,14 @@ namespace RWS
         {
             if( !gameMenu.IsActive )
             {
-                osdTelemetry.Hide();
+                osdTelemetry.SetActive( false );
                 lapTime.Hide();
                 playerOverviewPanel.Hide();
                 gameMenu.Show();
                 roomChat.ShowInput();
+                
                 Cursor.visible = true;
+                
                 bloorEffect.BloorEffectEnabled = true;
             }
             else if( !settingsPanel.IsOpen )
@@ -411,12 +438,23 @@ namespace RWS
                 OnResumeButton();
             }
         }
+        
+        void OnCrash()
+        {
+            playerProfile.numberOfCrashes++;
+        }
 
 
         IEnumerator ExitCoroutine()
         {
-            Destroy( localWingGameObject );
+            playerProfile.totalFlightTime += localWing.Flytime;
+            playerProfile.totalFlightDistance += localWing.FlightDistance;
+            playerProfile.longestFlightTime = Mathf.Max( playerProfile.longestFlightTime, localWing.Flytime );
+            playerProfile.topSpeed = Mathf.Max( playerProfile.topSpeed, localWing.Speedometer.TopSpeedMs );
 
+            Destroy( localWingGameObject );
+            losCameraGameObject.SetActive( true );
+            
             if( remoteWingDictionary != null && remoteWingDictionary.Count > 0 )
             {
                 foreach( var entry in remoteWingDictionary )

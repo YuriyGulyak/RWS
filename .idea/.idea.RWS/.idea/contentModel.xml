@@ -15,16 +15,18 @@
           <e p="TestLeaderboard" t="Include">
             <e p="TestLeaderboard.cs" t="Include" />
           </e>
+          <e p="TestPlayerProfileSaveLoad" t="Include">
+            <e p="TestPlayerProfileSaveLoad.cs" t="Include" />
+          </e>
           <e p="WingAutoControl.cs" t="Include" />
         </e>
         <e p="Game" t="Include">
           <e p="BestLapKeyStorage" t="Include">
-            <e p="BestLapKeyStorage.cs" t="Include" />
+            <e p="BestLapKeys.cs" t="Include" />
           </e>
           <e p="Crafts" t="Include">
-            <e p="FlyingWing" t="Include">
+            <e p="Common" t="Include">
               <e p="Scripts" t="Include">
-                <e p="Aerodynamics.cs" t="Include" />
                 <e p="AirfoilConfig.cs" t="Include" />
                 <e p="AirfoilSection.cs" t="Include" />
                 <e p="Altimeter.cs" t="Include" />
@@ -32,14 +34,22 @@
                 <e p="Battery.cs" t="Include" />
                 <e p="BuzzerSound.cs" t="Include" />
                 <e p="ControlSensitivity.cs" t="Include" />
+                <e p="CrashDetector.cs" t="Include" />
                 <e p="Elevon.cs" t="Include" />
+                <e p="ElevonLinkageKinematic.cs" t="Include" />
                 <e p="FlyingWing.cs" t="Include" />
+                <e p="Home.cs" t="Include" />
                 <e p="Motor.cs" t="Include" />
                 <e p="MotorModel.cs" t="Include" />
                 <e p="MotorSound.cs" t="Include" />
                 <e p="PIDController.cs" t="Include" />
                 <e p="Propeller.cs" t="Include" />
                 <e p="ServoSound.cs" t="Include" />
+                <e p="SignalStatusVariable.cs" t="Include" />
+                <e p="Speedometer.cs" t="Include" />
+                <e p="StatusEnum.cs" t="Include" />
+                <e p="StatusVariable.cs" t="Include" />
+                <e p="TelemetryUpdate.cs" t="Include" />
                 <e p="Transceiver.cs" t="Include" />
                 <e p="WindSound.cs" t="Include" />
                 <e p="WindSoundSettings.cs" t="Include" />
@@ -109,6 +119,10 @@
               <e p="SwayEffect.cs" t="Include" />
             </e>
           </e>
+          <e p="PlayerProfile" t="Include">
+            <e p="PlayerProfile.cs" t="Include" />
+            <e p="PlayerProfileDatabase.cs" t="Include" />
+          </e>
           <e p="PostProcessing" t="Include">
             <e p="BloorEffectController.cs" t="Include" />
           </e>
@@ -122,9 +136,16 @@
             </e>
           </e>
           <e p="UI" t="Include">
+            <e p="OSD" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="OSDAttitude.cs" t="Include" />
+                <e p="OSDElement.cs" t="Include" />
+                <e p="OSDElementTime.cs" t="Include" />
+                <e p="OSDHomeDirection.cs" t="Include" />
+                <e p="OSDWarnings.cs" t="Include" />
+              </e>
+            </e>
             <e p="Scripts" t="Include">
-              <e p="AttitudeIndicator.cs" t="Include" />
-              <e p="BatteryTelemetry.cs" t="Include" />
               <e p="BlackScreen.cs" t="Include" />
               <e p="ButtonWithCanvasGroup.cs" t="Include" />
               <e p="CraftPanel.cs" t="Include" />
@@ -136,8 +157,6 @@
                 <e p="LeaderboardPanel.cs" t="Include" />
               </e>
               <e p="MainMenu.cs" t="Include" />
-              <e p="MenuPanel.cs" t="Include" />
-              <e p="MotorTelemetry.cs" t="Include" />
               <e p="MultiplayerPanel" t="Include">
                 <e p="CreateRoomPanel.cs" t="Include" />
                 <e p="InsideRoomPanel.cs" t="Include" />
@@ -147,16 +166,12 @@
                 <e p="RoomListEntry.cs" t="Include" />
                 <e p="RoomListPanel.cs" t="Include" />
               </e>
-              <e p="OSDHome.cs" t="Include" />
-              <e p="OSDTelemetry.cs" t="Include" />
-              <e p="OSDWarnings.cs" t="Include" />
               <e p="PingDisplay.cs" t="Include" />
               <e p="PlayerOverviewPanel" t="Include">
                 <e p="PlayerOverviewEntry.cs" t="Include" />
                 <e p="PlayerOverviewPanel.cs" t="Include" />
               </e>
               <e p="PlayerProfilePanel" t="Include">
-                <e p="PlayerNamePanel.cs" t="Include" />
                 <e p="PlayerProfilePanel.cs" t="Include" />
                 <e p="PlayerStatsPanel.cs" t="Include" />
               </e>
@@ -188,8 +203,6 @@
               <e p="StickDisplay.cs" t="Include" />
               <e p="UIHelper.cs" t="Include" />
               <e p="UIHelperEditor.cs" t="Include" />
-              <e p="UIView.cs" t="Include" />
-              <e p="WingTelemetry.cs" t="Include" />
             </e>
           </e>
         </e>
@@ -609,6 +622,7 @@
           </e>
         </e>
         <e p="Utils" t="Include">
+          <e p="Aerodynamics.cs" t="Include" />
           <e p="Blinker.cs" t="Include" />
           <e p="CursorHider.cs" t="Include" />
           <e p="CurveEditor" t="Include">
@@ -646,6 +660,35 @@
           <e p="PixelateImageEffect" t="Include">
             <e p="PixelateImageEffect.cs" t="Include" />
             <e p="Pixelation.shader" t="Include" />
+          </e>
+          <e p="SelectionBaseBehaviour.cs" t="Include" />
+          <e p="SO" t="Include">
+            <e p="Events" t="Include">
+              <e p="Editor" t="Include">
+                <e p="FloatEventEditor.cs" t="Include" />
+                <e p="GameEventEditor.cs" t="Include" />
+              </e>
+              <e p="FloatEvent.cs" t="Include" />
+              <e p="FloatEventListener.cs" t="Include" />
+              <e p="GameEvent.cs" t="Include" />
+              <e p="GameEventListener.cs" t="Include" />
+              <e p="IGameEvent.cs" t="Include" />
+              <e p="IGameEventListener.cs" t="Include" />
+            </e>
+            <e p="Example" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="KeyboardInput.cs" t="Include" />
+                <e p="Mover.cs" t="Include" />
+                <e p="TestFloatEvent.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Variables" t="Include">
+              <e p="BaseVariable.cs" t="Include" />
+              <e p="Editor" t="Include">
+                <e p="FloatVariableEditor.cs" t="Include" />
+              </e>
+              <e p="FloatVariable.cs" t="Include" />
+            </e>
           </e>
           <e p="UI" t="Include">
             <e p="DragRect.cs" t="Include" />

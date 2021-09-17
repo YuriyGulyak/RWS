@@ -12,10 +12,10 @@ namespace RWS
         TextMeshProUGUI nameText = null;
 
 
-        public void Init( int number, string name )
+        public void Init( int number, string playerName )
         {
             numberText.text = $"{number}.";
-            nameText.text = name;
+            nameText.text = playerName;
         }
     }
 }

@@ -41,9 +41,18 @@ namespace RWS
 
         void Start()
         {
-            if( !PlayerPrefs.HasKey( "Nickname" ) )
+            var playerProfile = PlayerProfileDatabase.LoadPlayerProfile();
+            if( playerProfile == null )
             {
+                playerProfile = new PlayerProfile();
+                PlayerProfileDatabase.SavePlayerProfile( playerProfile );
+                
+                profilePanel.Initialize( playerProfile );
                 profilePanel.Show();
+            }
+            else
+            {
+                profilePanel.Initialize( playerProfile );
             }
         }
 

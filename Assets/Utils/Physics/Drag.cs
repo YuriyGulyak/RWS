@@ -3,6 +3,7 @@
 public class Drag : MonoBehaviour
 {
     public Vector3 value = Vector3.zero;
+    public bool manualUpdate;
 
     Rigidbody _rigidbody;
     Transform _transform;
@@ -16,8 +17,15 @@ public class Drag : MonoBehaviour
 
     void FixedUpdate()
     {
-        var deltaTime = Time.fixedDeltaTime;
-        
+        if( !manualUpdate )
+        {
+            ApplyDrag( Time.fixedDeltaTime );
+        }
+    }
+
+    
+    public void ApplyDrag( float deltaTime )
+    {
         var velocityLocal = _transform.InverseTransformDirection(  _rigidbody.velocity );
 
         velocityLocal.x *= Mathf.Clamp01( 1f - value.x * deltaTime );

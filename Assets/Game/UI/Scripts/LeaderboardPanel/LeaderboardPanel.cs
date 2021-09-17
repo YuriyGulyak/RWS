@@ -24,7 +24,7 @@ namespace RWS
         TextMeshProUGUI messageTextMesh = null;
 
         [SerializeField]
-        BestLapKeyStorage bestLapKeyStorage = null;
+        BestLapKeys[] bestLapKeys = null;
         
         //----------------------------------------------------------------------------------------------------
 
@@ -80,7 +80,7 @@ namespace RWS
 
         void UpdateLeaderboard()
         {
-            var bestLapKeyItem = bestLapKeyStorage.items[ trackDropdown.value ];
+            var bestLapKeyItem = bestLapKeys[ trackDropdown.value ];
             var dreamloPublicCode = bestLapKeyItem.dreamloPublicCode;
             
             leaderboard.GetRecords( dreamloPublicCode, 0, 100, OnDownloadSuccess, OnDownloadError );

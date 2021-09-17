@@ -158,8 +158,7 @@ namespace RWS
 
         void UpdatePlayerCountText()
         {
-            playerCountText.text =
-                $"Players: {PhotonNetwork.CurrentRoom.PlayerCount}/{PhotonNetwork.CurrentRoom.MaxPlayers}";
+            playerCountText.text = $"Players: {PhotonNetwork.CurrentRoom.PlayerCount}/{PhotonNetwork.CurrentRoom.MaxPlayers}";
         }
 
         void AddPlayerListEntry( Player player )

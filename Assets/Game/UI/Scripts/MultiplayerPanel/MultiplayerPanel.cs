@@ -57,16 +57,19 @@ namespace RWS
 
             gameObject.SetActive( true );
 
+            var playerProfile = PlayerProfileDatabase.LoadPlayerProfile();
+            var playerName = playerProfile.playerName;
+            
             if( PhotonNetwork.IsConnected )
             {
-                var nicknameChanged = !PhotonNetwork.NickName.Equals( PlayerPrefs.GetString( "Nickname" ) );
+                var nicknameChanged = !PhotonNetwork.NickName.Equals( playerName );
                 if( nicknameChanged )
                 {
                     HideNavigationButtons();
                     stateText.gameObject.SetActive( true );
 
                     PhotonNetwork.Disconnect();
-                    PhotonNetwork.NickName = PlayerPrefs.GetString( "Nickname" );
+                    PhotonNetwork.NickName = playerName;
                     PhotonNetwork.ConnectUsingSettings();
                 }
                 else
@@ -82,7 +85,7 @@ namespace RWS
                 regionText.gameObject.SetActive( false );
                 stateText.gameObject.SetActive( true );
 
-                PhotonNetwork.NickName = PlayerPrefs.GetString( "Nickname" );
+                PhotonNetwork.NickName = playerName;
                 PhotonNetwork.ConnectUsingSettings();
             }
         }

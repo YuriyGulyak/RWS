@@ -3,7 +3,8 @@
 public class AngularDrag : MonoBehaviour
 {
     public Vector3 value = Vector3.zero;
-
+    public bool manualUpdate;
+    
     Rigidbody _rigidbody;
     Transform _transform;
     
@@ -16,8 +17,15 @@ public class AngularDrag : MonoBehaviour
 
     void FixedUpdate()
     {
-        var deltaTime = Time.fixedDeltaTime;
-        
+        if( !manualUpdate )
+        {
+            ApplyAngularDrag( Time.fixedDeltaTime );
+        }
+    }
+
+
+    public void ApplyAngularDrag( float deltaTime )
+    {
         var localAngularVelocity = _transform.InverseTransformDirection( _rigidbody.angularVelocity );
 
         localAngularVelocity.x *= Mathf.Clamp01( 1f - value.x * deltaTime );

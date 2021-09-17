@@ -51,7 +51,6 @@ namespace RWS
             SetBinding( BindingPath );
         }
         
-
         
         public void Save( string dataKey )
         {
